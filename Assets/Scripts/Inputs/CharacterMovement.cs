@@ -7,25 +7,52 @@ public class CharacterMovement : MonoBehaviour
 {
     
     public Vector2 moveVal;
+    public Vector2 rotateVal;
+    
     public float moveSpeed;
+    public float rotateSpeed;
+
+    public bool oneStick;
 
     void OnMove(InputValue value)
     {
         moveVal = value.Get<Vector2>();
     }
 
-    void Update()
+    void OnRotate(InputValue value)
     {
-        // Vector3 vp = Camera.main.WorldToViewportPoint(transform.position);
-        // Vector3 bottomPoint = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, vp.z));
-        //
-        // if (vp.y < 0f)
-        // {
-        //     transform.position = new Vector3(transform.position.x, transform.position.y, bottomPoint.z);
-        //     return;  // Short circuit other imput
-        // }
-        
-        transform.Translate(Time.deltaTime * moveSpeed * new Vector3(moveVal.x, 0, moveVal.y));
+        rotateVal = value.Get<Vector2>();
     }
 
+    void Update()
+    {
+        if (oneStick)
+        {
+            DoMoveAndRotate();
+        }
+        else
+        {
+            DoRotate();
+            DoMove();
+        }
+    }
+
+    private void DoMove()
+    {
+        if (moveVal == Vector2.zero) return;
+        transform.position += (Time.deltaTime * moveSpeed * new Vector3( moveVal.x, 0, moveVal.y));
+    }
+
+    private void DoRotate()
+    {
+        if (rotateVal == Vector2.zero) return;
+        transform.rotation = Quaternion.LookRotation(new Vector3(rotateVal.x, 0, rotateVal.y));
+    }
+
+    private void DoMoveAndRotate()
+    {
+        if (moveVal == Vector2.zero) return;
+        transform.rotation = Quaternion.LookRotation(new Vector3(moveVal.x, 0, moveVal.y));
+        transform.Translate(Time.deltaTime * moveSpeed * Vector3.forward);
+    }
 }
