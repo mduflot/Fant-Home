@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     public float rotateSpeed;
 
     public bool oneStick;
+    public bool triggerFire;
 
     void OnMove(InputValue value)
     {
@@ -23,6 +25,15 @@ public class CharacterMovement : MonoBehaviour
     {
         rotateVal = value.Get<Vector2>();
     }
+
+    void OnFire(InputValue value)
+    {
+        if (triggerFire)
+        {
+            Fire();
+        }
+    }
+    
 
     void Update()
     {
@@ -35,6 +46,23 @@ public class CharacterMovement : MonoBehaviour
             DoRotate();
             DoMove();
         }
+
+        if (!triggerFire) CheckFire();
+        
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void CheckFire()
+    {
+        if (rotateVal.x > 0.99f || rotateVal.x < -0.99f || rotateVal.y > 0.99f || rotateVal.y < -0.99f)
+        {
+            Fire();
+        }
+    }
+
+    private void Fire()
+    {
+        Debug.Log("Fire");
     }
 
     private void DoMove()
