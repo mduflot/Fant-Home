@@ -12,6 +12,6 @@ public class PlayerDetails : MonoBehaviour
     private void Start()
     {
         transform.position = spawnPos;
-        GetComponent<Material>().color = playerColor;
+        //GetComponent<Material>().color = playerColor;
     }
 }

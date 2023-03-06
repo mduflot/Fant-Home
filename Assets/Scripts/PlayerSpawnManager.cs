@@ -7,10 +7,17 @@ using UnityEngine.InputSystem;
 public class PlayerSpawnManager : MonoBehaviour
 {
     [SerializeField] private CinemachineTargetGroup targetGroup;
-    [SerializeField] private GameObject[] spawnLocations;
-    
+    [SerializeField] private Transform[] spawnLocations;
+    [SerializeField] private Color[] colors;
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        Debug.Log("PlayerInput ID: " + playerInput.playerIndex);
+        //Debug.Log("PlayerInput ID: " + playerInput.playerIndex);
+        
+        targetGroup.AddMember(playerInput.transform, 1,2);
+        
+        playerInput.gameObject.GetComponent<MeshRenderer>().material.color = colors[playerInput.playerIndex];
+        
+        playerInput.transform.position = spawnLocations[playerInput.playerIndex].position;
     }
 }
