@@ -1,7 +1,9 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace Entities
@@ -12,7 +14,8 @@ namespace Entities
         [SerializeField] private float _reloadTime = 0.05f;
         [SerializeField] private Material _material;
         [SerializeField] private Mesh _mesh;
-
+        [SerializeField] private bool _triggerShoot;
+        
         private bool _shootOrder;
         private EntityManager _entityManager;
         private float _lastShootTime;
@@ -31,21 +34,34 @@ namespace Entities
                     typeof(ProjectileTag));
         }
 
-        private void Update()
+        private void OnRotate(InputValue value)
         {
-            _shootOrder = Input.GetMouseButton(0);
+            if (!_triggerShoot && _lastShootTime + _reloadTime < Time.fixedTime)
+            {
+                CheckFire(value.Get<Vector2>());
+            }
         }
 
-        private void FixedUpdate()
+        private void CheckFire(Vector2 value)
         {
-            if (_shootOrder)
-            {
-                if (_lastShootTime + _reloadTime < Time.fixedTime)
-                {
-                    _lastShootTime = Time.fixedTime;
+            if (value == Vector2.zero) return;
+            _lastShootTime = Time.fixedTime;
+            Shoot();
+        }
 
-                    Shoot();
-                }
+        private void OnFire()
+        {
+            if (!_triggerShoot) return;
+            _shootOrder = !_shootOrder;
+        }
+
+        private void Update()
+        {
+            if (_shootOrder && _lastShootTime + _reloadTime < Time.fixedTime)
+            {
+                _lastShootTime = Time.fixedTime;
+
+                Shoot();
             }
         }
 
