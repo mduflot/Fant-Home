@@ -226,6 +226,89 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &291935970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291935972}
+  - component: {fileID: 291935971}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &291935971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291935970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8de26ab90d1e5f42867236a2ca6534e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 1442791852}
+  waveName: Wave 1
+  waves:
+  - waveNumber: 0
+    spawnTime: 5
+    enemies:
+    - myMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
+      number: 10
+    - myMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
+      number: 10
+    - myMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
+      number: 10
+  - waveNumber: 0
+    spawnTime: 5
+    enemies:
+    - myMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
+      number: 10
+    - myMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
+      number: 10
+    - myMesh: {fileID: -277298175661527236, guid: d059e478ca51ec943829daa8ac2b6ff4, type: 3}
+      myMaterial: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
+      number: 10
+  - waveNumber: 0
+    spawnTime: 5
+    enemies:
+    - myMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
+      number: 10
+    - myMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+      myMaterial: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
+      number: 10
+    - myMesh: {fileID: -277298175661527236, guid: d059e478ca51ec943829daa8ac2b6ff4, type: 3}
+      myMaterial: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
+      number: 10
+--- !u!4 &291935972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291935970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &611981140
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,9 +897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf945d0a4e19624cbd17c1744412d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 3}
+  _mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   _material: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
-  _enemyCount: 100
   _spawns:
   - {fileID: 1650661035}
   - {fileID: 1465636183}
