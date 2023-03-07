@@ -26,7 +26,7 @@
                 {
                     "name": "Fire",
                     "type": "Button",
-                    "id": "6ffc2e3c-cef5-4d77-a35e-91f3c1ecebc0",
+                    "id": "962a2792-baf7-4c3c-b74a-95f456ae96b7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -58,9 +58,9 @@
                 },
                 {
                     "name": "",
-                    "id": "dbff7ec1-5f6d-409e-9277-830db48cd68a",
+                    "id": "a8d34d29-8528-4268-962e-0364514c4bd1",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "Controller",
                     "action": "Fire",
