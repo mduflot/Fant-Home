@@ -15,26 +15,18 @@ public class CharacterMovement : MonoBehaviour
     public bool oneStick;
     public bool triggerFire;
 
-    void OnMove(InputValue value)
+    private void OnMove(InputValue value)
     {
         _moveVal = value.Get<Vector2>();
     }
 
-    void OnRotate(InputValue value)
+    private void OnRotate(InputValue value)
     {
         _rotateVal = value.Get<Vector2>();
     }
 
-    void OnFire(InputValue value)
-    {
-        if (triggerFire)
-        {
-            Fire();
-        }
-    }
-    
 
-    void Update()
+    private void Update()
     {
         if (oneStick)
         {
@@ -45,18 +37,7 @@ public class CharacterMovement : MonoBehaviour
             DoRotate();
             DoMove();
         }
-
-        if (!triggerFire) CheckFire();
         
-    }
-
-    // ReSharper disable Unity.PerformanceAnalysis
-    private void CheckFire()
-    {
-        if (rotateVal.x > 0.99f || rotateVal.x < -0.99f || rotateVal.y > 0.99f || rotateVal.y < -0.99f)
-        {
-            Fire();
-        }
     }
 
     private void Fire()
