@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpawnManager : MonoBehaviour
 {
+    [SerializeField] private Room initialRoom;
+    [SerializeField] private PlayerStatsSO stats;
     [SerializeField] private CinemachineTargetGroup targetGroup;
     [SerializeField] private Transform[] spawnLocations;
     [SerializeField] private Color[] colors;
@@ -19,5 +21,9 @@ public class PlayerSpawnManager : MonoBehaviour
         playerInput.gameObject.GetComponent<MeshRenderer>().material.color = colors[playerInput.playerIndex];
         
         playerInput.transform.position = spawnLocations[playerInput.playerIndex].position;
+        
+        playerInput.gameObject.GetComponent<Player>().curRoom = initialRoom;
+
+        playerInput.gameObject.GetComponent<PlayerHealth>().curHealth = stats.maxHealth;
     }
 }

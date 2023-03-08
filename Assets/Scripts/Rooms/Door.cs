@@ -13,6 +13,7 @@ public class Door : MonoBehaviour
     private void Start()
     {
         CheckIfLocked();
+        
     }
 
     public void ToggleDoor()
@@ -36,7 +37,6 @@ public class Door : MonoBehaviour
             }
         }
 
-        Debug.Log("no");
         locked = false;
     }
 }

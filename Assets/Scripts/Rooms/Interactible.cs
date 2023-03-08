@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider))]
 public class Interactible : MonoBehaviour
 {
-    public virtual void Interact(){}
+    public virtual void Interact() { }
 
     private void OnTriggerEnter(Collider other)
     {

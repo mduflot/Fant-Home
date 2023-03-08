@@ -18,7 +18,7 @@ public class PlayerInteract : MonoBehaviour
     
     private void OnInteract()
     {
-        if (canInteract && interact)
+        if (canInteract && interact != null)
         {
             interact.Interact();
         }

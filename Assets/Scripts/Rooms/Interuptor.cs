@@ -23,6 +23,5 @@ public class Interuptor : Interactible
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, door.transform.position);
         }
-        
     }
 }
