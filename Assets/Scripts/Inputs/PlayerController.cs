@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     
     private Vector2 _moveVal;
@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
 
     public bool oneStick;
     public bool triggerFire;
+    public GameObject flashLight;
 
     private void OnMove(InputValue value)
     {
@@ -25,6 +26,10 @@ public class CharacterMovement : MonoBehaviour
         _rotateVal = value.Get<Vector2>();
     }
 
+    private void OnLight()
+    {
+        flashLight.SetActive(!flashLight.activeSelf);
+    }
 
     private void Update()
     {
@@ -38,11 +43,6 @@ public class CharacterMovement : MonoBehaviour
             DoMove();
         }
         
-    }
-
-    private void Fire()
-    {
-        Debug.Log("Fire");
     }
 
     private void DoMove()
