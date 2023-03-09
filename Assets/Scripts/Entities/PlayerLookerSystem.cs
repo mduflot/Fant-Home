@@ -30,25 +30,49 @@ namespace Entities
 
             NativeList<float3> gameObjectPlayersJob = s_gameObjectPlayers;
 
+            EntityQuery waypointsEntityQuery = GetEntityQuery(ComponentType.ReadOnly<WaypointTag>(),
+                ComponentType.ReadOnly<LocalTransform>());
+
+            NativeArray<Entity> waypointsEntityNativeArray = waypointsEntityQuery.ToEntityArray(Allocator.Temp);
+            NativeArray<LocalTransform> waypointsLocalTransformNativeArray =
+                waypointsEntityQuery.ToComponentDataArray<LocalTransform>(Allocator.Temp);
+
             Entities.WithReadOnly(gameObjectPlayersJob).WithAll<PlayerLooker>().ForEach(
-                (ref LocalTransform localTransform) =>
+                (Entity entity, ref LocalTransform localTransform, in PlayerLooker playerLooker) =>
                 {
                     if (gameObjectPlayersJob.Length < 1) return;
                     float currentDistance = math.sqrt(math.lengthsq(localTransform.Position - gameObjectPlayersJob[0]));
-                    float3 playerPos = gameObjectPlayersJob[0];
-                        
+                    float3 playerPos;
+
                     foreach (var player in gameObjectPlayersJob)
                     {
-                        if (currentDistance >
-                            math.sqrt(math.lengthsq(localTransform.Position - player)))
+                        if (currentDistance < playerLooker.DistanceAlert)
                         {
                             playerPos = player;
+                            EntityManager.SetComponentData(entity, new PlayerLooker()
+                            {
+                                DistanceAlert = playerLooker.DistanceAlert,
+                                IsTargeting = true,
+                                CurrentCheckpoint = playerLooker.CurrentCheckpoint
+                            });
+                            localTransform.Rotation = quaternion.LookRotation(playerPos - localTransform.Position,
+                                new float3(0, 1, 0));
+                        }
+                        else
+                        {
+                            EntityManager.SetComponentData(entity, new PlayerLooker()
+                            {
+                                DistanceAlert = playerLooker.DistanceAlert,
+                                IsTargeting = false,
+                                CurrentCheckpoint = playerLooker.CurrentCheckpoint
+                            });
+                            localTransform.Rotation = quaternion.LookRotation(
+                                waypointsLocalTransformNativeArray[playerLooker.CurrentCheckpoint].Position -
+                                localTransform.Position,
+                                new float3(0, 1, 0));
                         }
                     }
-                    
-                    localTransform.Rotation = quaternion.LookRotation(playerPos - localTransform.Position,
-                        new float3(0, 1, 0));
-                }).ScheduleParallel();
+                }).WithoutBurst().Run();
         }
     }
 }
