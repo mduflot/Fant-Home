@@ -11,7 +11,6 @@ namespace Entities
     {
         [SerializeField] private Mesh _mesh;
         [SerializeField] private Material _material;
-        [SerializeField] private int _enemyCount = 100;
         [SerializeField] private Transform[] _spawns;
         [SerializeField] private float _spawnRadius = 5;
         [SerializeField] private float _minSpeed = 0.75f;
@@ -22,15 +21,18 @@ namespace Entities
         private RenderMeshDescription _renderMeshDescription =
             new(ShadowCastingMode.Off, receiveShadows: false);
 
-        private void Start()
+        public void MakeWave(Mesh mesh, Material mat, int enemyCount)
         {
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            
+            _mesh = mesh;
+            _material = mat;
 
             EntityArchetype entityArchetype =
                 _entityManager.CreateArchetype(typeof(LocalTransform), typeof(RenderMeshArray), typeof(MoveForward),
                     typeof(PlayerLooker), typeof(EnemyTag), typeof(Avoidance));
-
-            for (int i = 0; i < _enemyCount; i++)
+            
+            for (int i = 0; i < enemyCount; i++)
             {
                 SpawnEnemy(entityArchetype);
             }
