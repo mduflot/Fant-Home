@@ -7,15 +7,38 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class Interactible : MonoBehaviour
 {
+    private List<PlayerInteract> curPlayers = new List<PlayerInteract>();
     public virtual void Interact() { }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<PlayerInteract>()?.isInside(true, this);
+        PlayerInteract player = other.GetComponent<PlayerInteract>();
+
+        if (!player) return;
+        
+        player.isInside(true, this);
+        if (!curPlayers.Contains(player))
+        {
+            curPlayers.Add(player);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.GetComponent<PlayerInteract>()?.isInside(false);
+        PlayerInteract player = other.GetComponent<PlayerInteract>();
+        if (!player) return;
+        
+        player.isInside(false);
+        curPlayers.Remove(player);
+    }
+
+    private void OnDisable()
+    {
+        foreach (var player in curPlayers)
+        {
+            player.isInside(false);
+        }
+        curPlayers.Clear();
+        Debug.Log(curPlayers.Count);
     }
 }

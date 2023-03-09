@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [HideInInspector] public Room curRoom;
 
+    
+
     private void Start()
     {
         curRoom?.PlayerEnter(this);
