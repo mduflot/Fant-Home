@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   oneStick: 0
+  triggerFire: 0
 --- !u!114 &3240254547839694736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,10 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef40a11ce64db691e97863d6b1f846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileSpeed: 50
-  _reloadTime: 0.05
-  _material: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
-  _mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  _projectileSpeed: 30
+  _reloadTime: 0.1
   _triggerShoot: 1
 --- !u!1 &2042164082364595310
 GameObject:
@@ -214,7 +213,7 @@ GameObject:
   - component: {fileID: 4817339799251885345}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
