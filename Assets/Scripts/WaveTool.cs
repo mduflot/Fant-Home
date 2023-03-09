@@ -33,7 +33,7 @@ public class WaveTool : MonoBehaviour
         if (wave.enemies.Length == 0) return;
         foreach (var enemy in wave.enemies)
         {
-            spawner.MakeWave(enemy.myMesh, enemy.myMaterial, enemy.number);
+            spawner.MakeWave(enemy.id, enemy.myMesh, enemy.myMaterial, enemy.number, enemy.DistanceAlert);
         }
 
         StartCoroutine(WaveDuration(wave.spawnTime));
