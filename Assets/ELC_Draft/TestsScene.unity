@@ -5190,7 +5190,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_NotificationBehavior
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Id
+      value: 439902d6-5b47-4378-8e26-a6e225886af5
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
       objectReference: {fileID: 0}
     - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

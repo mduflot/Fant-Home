@@ -16,7 +16,7 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private List<GameObject> playersList = new List<GameObject>();
 
-    private void Start()
+    /*private void Start()
     {
         // for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
         // {
@@ -40,7 +40,7 @@ public class PlayerSpawnManager : MonoBehaviour
             PlayerInput.Instantiate(PlayerGO, controlScheme: "Controller", pairWithDevice: Gamepad.all[PlayerInput.all.Count]);
         }
         
-    }
+    }*/
 
 
     public void SpawnPlayer(PlayerInput playerInput)

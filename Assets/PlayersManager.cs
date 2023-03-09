@@ -14,7 +14,9 @@ public class PlayersManager : MonoBehaviour
     [SerializeField] private List<PlayerInput> inputs = new List<PlayerInput>();
 
     public int GetPlayerCount => inputs.Count;
-    
+
+    private List<InputDevice> devices = new List<InputDevice>();
+
     private void Awake()
     {
         if (!instance) instance = this;

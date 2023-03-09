@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Light",
+                    "type": "Button",
+                    "id": "8291ffce-af47-4ece-a74d-b6d7a9278cc8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "b71158c9-9544-4729-b7d5-97caa8a3184d",
@@ -73,6 +82,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b4f766a-cf0b-4ab1-843a-ea0a7b6d4d9b",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Light",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
