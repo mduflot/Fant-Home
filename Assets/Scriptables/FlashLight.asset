@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FlashLight
   m_EditorClassIdentifier: 
   shape: 1
-  angle: 60
-  width: 0
-  range: 6
+  angle: 52
+  width: 0.54
+  range: 5.8
   tickRate: 0.25
   damagesPerTick: 2
   energyLostPerTick: 3

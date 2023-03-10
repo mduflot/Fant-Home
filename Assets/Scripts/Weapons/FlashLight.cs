@@ -13,6 +13,7 @@ public class FlashLight : MonoBehaviour
     
     [SerializeField] private GameObject flashLightGO;
     [SerializeField] private bool isActive;
+    [SerializeField] private LayerMask obstaclesMask, enemiesMask;
 
     private Coroutine curLoop;
     private void Start()
@@ -22,9 +23,29 @@ public class FlashLight : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        /*Vector3 center = transform.position + (transform.forward * stats.range / 2);
-        Vector3 halfExt = new Vector3(1, 1, stats.range / 2);
-        ExtDebug.DrawBoxCastBox(center, halfExt, Quaternion.identity, transform.forward, stats.range);*/
+        switch (stats.shape)
+        {
+            case FlashLightSO.LightShape.BOX:
+                Vector3 center = transform.position + (transform.forward * stats.range / 2);
+                Vector3 halfExt = new Vector3(stats.width, stats.width, stats.range / 2);
+                ExtDebug.DrawBoxCastBox(center, halfExt, transform.rotation, transform.forward, stats.range, Color.green);
+                break;
+            case FlashLightSO.LightShape.CONIC:
+                float halfFOV = stats.angle / 2;
+                
+                Quaternion leftRayRot = Quaternion.AngleAxis( -halfFOV, Vector3.up );
+                Quaternion rightRayRot = Quaternion.AngleAxis( halfFOV, Vector3.up );
+                Vector3 leftRayDirection = leftRayRot * transform.forward;
+                Vector3 rightRayDirection = rightRayRot * transform.forward;
+                Gizmos.color = Color.green;
+                Gizmos.DrawRay( transform.position, leftRayDirection * stats.range );
+                Gizmos.DrawRay( transform.position, rightRayDirection * stats.range );
+                
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
     }
 
     private void OnLight()
@@ -44,6 +65,7 @@ public class FlashLight : MonoBehaviour
             switch (stats.shape)
             {
                 case FlashLightSO.LightShape.BOX:
+                    BoxDamages();
                     break;
                 case FlashLightSO.LightShape.CONIC:
                     ConicDamages();
@@ -59,8 +81,10 @@ public class FlashLight : MonoBehaviour
     private void ConicDamages()
     {
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, stats.range, transform.forward, stats.range,
-            stats.enemiesMask);
+            enemiesMask);
 
+        
+        
         if (hits.Length > 0)
         {
             foreach (var hit in hits)
@@ -68,7 +92,7 @@ public class FlashLight : MonoBehaviour
                 float angle = Vector3.Angle(hit.collider.gameObject.transform.position - transform.position, transform.forward);
                 if (angle < stats.angle)
                 {
-                    //hit enemy shield
+                    hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
                 }
             }
         }
@@ -77,11 +101,28 @@ public class FlashLight : MonoBehaviour
     private void BoxDamages()
     {
         Vector3 center = transform.position + (transform.forward * stats.range / 2);
-        Vector3 halfExt = new Vector3(1, 1, stats.range / 2);
-        RaycastHit[] hits = Physics.BoxCastAll(center, halfExt, transform.forward, transform.rotation);
+        Vector3 halfExt = new Vector3(stats.width, stats.width, stats.range / 2);
+        RaycastHit[] hits = Physics.BoxCastAll(center, halfExt, transform.forward, transform.rotation, stats.range, enemiesMask);
+        
+        if (hits.Length > 0)
+        {
+            foreach (var hit in hits)
+            {
+                hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
+            }
+        }
     }
-    
-    
+
+    private bool IsVisible(Transform trans)
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Linecast(transform.position, trans.position, out hit, obstaclesMask))
+        {
+            return hit.collider;
+        }
+
+        return true;
+    }
     
 
 }

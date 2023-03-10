@@ -5,20 +5,20 @@ public class GhostManager : MonoBehaviour, IEnemy
 {
     // todo: scriptable object for stats
     [SerializeField] private string _name = "Trash";
-    [SerializeField] private int _health = 3;
-    [SerializeField] private int _veil = 1;
+    [SerializeField] private float _health = 3;
+    [SerializeField] private float _veil = 1;
     [SerializeField] private int _durationStun;
     [SerializeField] private int _damage = 1;
     [SerializeField] private int _speed = 5;
 
     public bool IsStun;
 
-    int IEnemy.health => _health;
+    float IEnemy.health => _health;
     string IEnemy.name => _name;
-    int IEnemy.damage => _damage;
+    float IEnemy.damage => _damage;
     int IEnemy.speed => _speed;
 
-    public void TakeVeil(int damageVeil)
+    public void TakeVeil(float damageVeil)
     {
         _veil -= damageVeil;
         if (_veil <= 0)
@@ -34,7 +34,7 @@ public class GhostManager : MonoBehaviour, IEnemy
         IsStun = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         _health -= damage;
         if (_health <= 0)
