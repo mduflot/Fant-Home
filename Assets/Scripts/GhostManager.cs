@@ -11,37 +11,20 @@ public class GhostManager : MonoBehaviour, IEnemy
     [SerializeField] private int _damage = 1;
     [SerializeField] private int _speed = 5;
 
-    public bool IsVulnerable;
-    public bool IsStun; 
-    
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // todo: add "Light" tag
-        if (collision.gameObject.CompareTag("Light"))
-        {
-            if (!IsVulnerable) TakeVeil();
-        }
-        if (collision.gameObject.CompareTag("Bullet") && IsVulnerable)
-        {
-            Pooler.instance.Depop("Bullet", collision.gameObject);
-            TakeDamage();
-        }
-    }
+    public bool IsStun;
 
     int IEnemy.health => _health;
     string IEnemy.name => _name;
     int IEnemy.damage => _damage;
     int IEnemy.speed => _speed;
 
-    public void TakeVeil()
+    public void TakeVeil(int damageVeil)
     {
-        _veil--;
+        _veil -= damageVeil;
         if (_veil <= 0)
         {
-            IsVulnerable = true;
             IsStun = true;
-            
+            StartCoroutine(StunDuration());
         }
     }
 
@@ -51,10 +34,10 @@ public class GhostManager : MonoBehaviour, IEnemy
         IsStun = false;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        _health--;
-        if (_health == 0)
+        _health -= damage;
+        if (_health <= 0)
         {
             Pooler.instance.Depop("Ghost", gameObject);
         }
