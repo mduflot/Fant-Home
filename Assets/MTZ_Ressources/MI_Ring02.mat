@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Ring
+  m_Name: MI_Ring02
   m_Shader: {fileID: -6465566751694194690, guid: 709b8956c0e695144bf121c8e8da2a15, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,7 +51,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Fade: 0
-    - _Max_Width: 30
+    - _Max_Width: 6
     - _Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0

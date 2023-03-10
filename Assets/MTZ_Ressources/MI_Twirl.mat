@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1139225651495916932
+--- !u!114 &-9163058525423803082
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Ring
-  m_Shader: {fileID: -6465566751694194690, guid: 709b8956c0e695144bf121c8e8da2a15, type: 3}
+  m_Name: MI_Twirl
+  m_Shader: {fileID: -6465566751694194690, guid: f85428e4f08148044b26f8a2516b6eb2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -50,11 +50,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fade: 0
-    - _Max_Width: 30
-    - _Offset: 0
+    - _FadeEnd: 0.25
+    - _FadeTip: 0.75
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Width: 1
+    - _Width: 0.5
+    - _Width_Power: 0.3
+    - _offsetr: -23.64
+    - _rotation: 0.9
+    - _tile1: 1.28
+    - _tile2: 4
     m_Colors: []
   m_BuildTextureStacks: []
