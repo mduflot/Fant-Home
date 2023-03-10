@@ -1,4 +1,3 @@
-using Unity.Entities;
 using UnityEngine;
 
 public enum MonsterType
@@ -8,7 +7,7 @@ public enum MonsterType
     Zombie
 }
 
-[CreateAssetMenu(fileName = "MonsterStats", menuName = "Scriptables/MonsterStats", order = 2)]
+[CreateAssetMenu(fileName = "new GhostStatsSO", menuName = "Scriptables/GhostsSO/GhostsStatsSO", order = 2)]
 public class GhostSO: ScriptableObject
 {
     public int health;
