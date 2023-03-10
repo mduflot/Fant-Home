@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -2052162364953370403}
   - component: {fileID: -2067640080414732985}
   - component: {fileID: 5141427380708455269}
+  - component: {fileID: 6926874619026008322}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -247,6 +248,21 @@ MonoBehaviour:
   oneStick: 0
   triggerFire: 0
   flashLight: {fileID: 720861636594008487}
+--- !u!114 &6926874619026008322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431617770969380398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249a3e44f6e772f4d816b37c6279f5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 51e2e001aad25824a952e0e533a573c7, type: 2}
+  flashLightGO: {fileID: 720861636594008487}
+  isActive: 0
 --- !u!1 &720861636594008487
 GameObject:
   m_ObjectHideFlags: 0

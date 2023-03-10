@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public bool oneStick;
     public bool triggerFire;
-    public GameObject flashLight;
+    //public GameObject flashLight;
 
     private void OnMove(InputValue value)
     {
@@ -26,10 +26,7 @@ public class PlayerController : MonoBehaviour
         _rotateVal = value.Get<Vector2>();
     }
 
-    private void OnLight()
-    {
-        flashLight.SetActive(!flashLight.activeSelf);
-    }
+    
 
     private void Update()
     {

@@ -8,7 +8,7 @@ public class Room : MonoBehaviour
     [SerializeField] private bool locked;
     public bool IsLocked => locked;
 
-    [SerializeField] private FogOfWarTrigger fog;
+    [SerializeField] private FogOfWarTrigger[] fog;
     [SerializeField] private Door[] doors;
     [SerializeField] private EntryDetector[] entries;
     private List<Player> curPlayersInRoom = new List<Player>();
@@ -45,7 +45,7 @@ public class Room : MonoBehaviour
         
         if(!curPlayersInRoom.Contains(player)) curPlayersInRoom.Add(player);
         
-        fog.DisplayRoom();
+        EnableFog(true);
     }
 
     private void PlayerExit(Player player)
@@ -56,7 +56,16 @@ public class Room : MonoBehaviour
 
     private void CheckFogState()
     {
-        if(curPlayersInRoom.Count > 0) fog.DisplayRoom();
-        else fog.HideRoom();
+        if(curPlayersInRoom.Count > 0) EnableFog(true);
+        else EnableFog(false);
+    }
+
+    private void EnableFog(bool enable)
+    {
+        foreach (var f in fog)
+        {
+            if(enable) f.DisplayRoom();
+            else f.HideRoom();
+        }
     }
 }
