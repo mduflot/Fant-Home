@@ -1151,58 +1151,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[1].key
-      value: Poltergeist
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].key
-      value: Zombie
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[3].key
-      value: Chain
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[1].pool.prefab
-      value: 
-      objectReference: {fileID: 6043481272550239876, guid: 91036aba7dd99c249a023f20eab50cba, type: 3}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].pool.prefab
-      value: 
-      objectReference: {fileID: 6043481272550239876, guid: e57420a36563d76489a6097cf3594fec, type: 3}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.prefab
-      value: 
-      objectReference: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].pool.baseCount
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.baseCount
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].pool.refreshSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.refreshSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].pool.baseRefreshSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.baseRefreshSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5440807499856759422, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
       propertyPath: m_Name
       value: Pooler
