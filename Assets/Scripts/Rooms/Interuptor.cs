@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Interuptor : Interactible
 {
-    [SerializeField] private Door[] linkedDoor;
+    [SerializeField] private Door[] linkedDoor = Array.Empty<Door>();
     
     [ContextMenu("Interact")]
     public override void Interact()
