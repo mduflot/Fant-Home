@@ -24,6 +24,7 @@ namespace AI.GhostAI
             
             Node root = new Selector(new List<Node>
             {
+                new CheckStun(transform),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform),
