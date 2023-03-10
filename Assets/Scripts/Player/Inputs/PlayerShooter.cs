@@ -10,13 +10,29 @@ namespace Entities
 {
     public class PlayerShooter : MonoBehaviour
     {
-        [SerializeField] private float _projectileSpeed = 50f;
-        [SerializeField] private float _reloadTime = 0.05f;
-        private GameObject _bullet;
+        [SerializeField] private WeaponsSO weapon;
         [SerializeField] private bool _triggerShoot;
+
+        private GameObject _bullet;
+        
+        private float _bulletSpeed;
+        private float _reloadTime;
+        private string _bulletKey;
         
         private bool _shootOrder;
         private float _lastShootTime;
+
+        private void Start()
+        {
+            ChangeWeapon();
+        }
+
+        public void ChangeWeapon()
+        {
+            _bulletSpeed = weapon.bulletSpeed;
+            _reloadTime = weapon.reloadTime;
+            _bulletKey = weapon.key.ToString();
+        }
 
         private void OnRotate(InputValue value)
         {
@@ -52,8 +68,10 @@ namespace Entities
         // ReSharper disable Unity.PerformanceAnalysis
         private void Shoot()
         {
-            _bullet = Pooler.instance.Pop("Bullet");
-            _bullet.GetComponent<Bullet>().speed = _projectileSpeed;
+            _bullet = Pooler.instance.Pop(_bulletKey);
+            _bullet.GetComponent<Bullet>().speed = _bulletSpeed;
+            _bullet.GetComponent<Bullet>().key = _bulletKey;
+            _bullet.GetComponent<Bullet>().StartTimer();
             _bullet.transform.rotation = transform.rotation;
             _bullet.transform.position = transform.position + transform.forward;
         }
