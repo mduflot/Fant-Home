@@ -1,4 +1,3 @@
-using AI.GhostAI;
 using UnityEngine;
 using Unity.Mathematics;
 
@@ -8,7 +7,6 @@ namespace Entities
     {
         [SerializeField] private Transform[] _spawns;
         [SerializeField] private float _spawnRadius = 5;
-        [SerializeField] private Transform[] _waypoints;
 
         public void MakeWave(int enemyCount)
         {
@@ -26,7 +24,6 @@ namespace Entities
                 _spawns[randomSpawnPosition].position.z + randomPosition2D.y);
             GameObject ghost = Pooler.instance.Pop("Ghost");
             ghost.transform.position = randomPosition3D;
-            ghost.GetComponent<GhostBT>().Waypoints = _waypoints;
         }
     }
 }

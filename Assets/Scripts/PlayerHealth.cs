@@ -45,6 +45,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     private void Fall()
     {
+        Debug.Log("WASTED");
         curState = PlayerState.DOWN;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;

@@ -238,17 +238,17 @@ MonoBehaviour:
     - id: 1
       myMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
       myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
-      number: 5
+      number: 1
       DistanceAlert: 5
     - id: 2
       myMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
       myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
-      number: 5
+      number: 1
       DistanceAlert: 10
     - id: 3
       myMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
       myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
-      number: 5
+      number: 1
       DistanceAlert: 15
 --- !u!4 &291935972
 Transform:

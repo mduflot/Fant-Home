@@ -1,8 +1,7 @@
-﻿using AI.GhostAI;
+﻿using BehaviorTree;
 using UnityEngine;
-using BehaviorTree;
 
-namespace AI
+namespace AI.PoltergeistAI
 {
     public class CheckPlayerInFOVRange : Node
     {
@@ -23,7 +22,7 @@ namespace AI
             if (t == null)
             {
                 Collider[] colliders = Physics.OverlapSphere(
-                    _transform.position, GhostBT.FOVRange, _enemyLayerMask);
+                    _transform.position, PoltergeistBT.FOVRange, _enemyLayerMask);
 
                 if (colliders.Length > 0)
                 {

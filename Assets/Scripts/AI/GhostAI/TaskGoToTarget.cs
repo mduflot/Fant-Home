@@ -1,8 +1,7 @@
-﻿using AI.GhostAI;
+﻿using BehaviorTree;
 using UnityEngine;
-using BehaviorTree;
 
-namespace AI
+namespace AI.GhostAI
 {
     public class TaskGoToTarget : Node
     {

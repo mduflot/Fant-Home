@@ -1,17 +1,17 @@
-﻿using UnityEngine;
-using BehaviorTree;
+﻿using BehaviorTree;
+using UnityEngine;
 
-namespace AI
+namespace AI.GhostAI
 {
     public class TaskAttack : Node
     {
         private Animator _animator;
         private Transform _lastTarget;
         private PlayerHealth _playerHealth;
-        private float _attackTime = 1f;
+        private float _attackTime = 2f;
         private float _attackCounter;
 
-        public TaskAttack(Transform transform)
+        public TaskAttack(Transform transform, float attackTime)
         {
             _animator = transform.GetComponent<Animator>();
         }
