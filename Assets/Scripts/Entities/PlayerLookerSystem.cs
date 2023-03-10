@@ -1,31 +1,41 @@
-﻿using Unity.Collections;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-namespace Entities
-{
-    public partial class PlayerLookerSystem : SystemBase
-    {
-        private static NativeList<float3> s_gameObjectPlayers;
 
-        protected override void OnCreate()
+public partial class PlayerLookerSystem : MonoBehaviour
+{
+    private static NativeList<float3> s_gameObjectPlayers;
+    private GameObject[] _players;
+
+    protected void Update()
+    {
+        _players = GameObject.FindGameObjectsWithTag("Player");
+        s_gameObjectPlayers = new NativeList<float3>(0, Allocator.Persistent);
+        s_gameObjectPlayers.Dispose();
+        s_gameObjectPlayers = new NativeList<float3>(_players.Length, Allocator.Persistent);
+
+        NativeList<float3>.ParallelWriter gameObjectPlayersParallel = s_gameObjectPlayers.AsParallelWriter();
+
+        foreach (var player in _players)
         {
-            s_gameObjectPlayers = new NativeList<float3>(0, Allocator.Persistent);
+            gameObjectPlayersParallel.AddNoResize(player.transform.position);
         }
 
-        protected override void OnUpdate()
+        NativeList<float3> gameObjectPlayersJob = s_gameObjectPlayers;
+
+        if (gameObjectPlayersJob.Length < 1) return;
+        float currentDistance = math.sqrt(math.lengthsq(transform.localPosition - (Vector3)gameObjectPlayersJob[0]));
+        float3 playerPos = gameObjectPlayersJob[0];
+            
+        foreach (var player in gameObjectPlayersJob)
         {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            s_gameObjectPlayers.Dispose();
-            s_gameObjectPlayers = new NativeList<float3>(players.Length, Allocator.Persistent);
-
-            NativeList<float3>.ParallelWriter gameObjectPlayersParallel = s_gameObjectPlayers.AsParallelWriter();
-
-            foreach (var player in players)
+            if (currentDistance >
+                math.sqrt(math.lengthsq(transform.localPosition - (Vector3)player)))
             {
-                gameObjectPlayersParallel.AddNoResize(player.transform.position);
+                playerPos = player;
             }
 
             NativeList<float3> gameObjectPlayersJob = s_gameObjectPlayers;
@@ -74,5 +84,8 @@ namespace Entities
                     }
                 }).WithoutBurst().Run();
         }
+        
+        transform.rotation = quaternion.LookRotation((Vector3)playerPos - transform.localPosition,
+            new float3(0, 1, 0));
     }
 }
