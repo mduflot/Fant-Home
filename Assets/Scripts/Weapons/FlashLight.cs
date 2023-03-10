@@ -22,9 +22,20 @@ public class FlashLight : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        /*Vector3 center = transform.position + (transform.forward * stats.range / 2);
-        Vector3 halfExt = new Vector3(1, 1, stats.range / 2);
-        ExtDebug.DrawBoxCastBox(center, halfExt, Quaternion.identity, transform.forward, stats.range);*/
+        switch (stats.shape)
+        {
+            case FlashLightSO.LightShape.BOX:
+                Vector3 center = transform.position + (transform.forward * stats.range / 2);
+                Vector3 halfExt = new Vector3(stats.width, stats.width, stats.range / 2);
+                ExtDebug.DrawBoxCastBox(center, halfExt, transform.rotation, transform.forward, stats.range, Color.cyan);
+                break;
+            case FlashLightSO.LightShape.CONIC:
+                Gizmos.DrawWireSphere(transform.position, stats.range);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
     }
 
     private void OnLight()
@@ -44,6 +55,7 @@ public class FlashLight : MonoBehaviour
             switch (stats.shape)
             {
                 case FlashLightSO.LightShape.BOX:
+                    BoxDamages();
                     break;
                 case FlashLightSO.LightShape.CONIC:
                     ConicDamages();
@@ -61,6 +73,8 @@ public class FlashLight : MonoBehaviour
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, stats.range, transform.forward, stats.range,
             stats.enemiesMask);
 
+        
+        
         if (hits.Length > 0)
         {
             foreach (var hit in hits)
@@ -68,7 +82,7 @@ public class FlashLight : MonoBehaviour
                 float angle = Vector3.Angle(hit.collider.gameObject.transform.position - transform.position, transform.forward);
                 if (angle < stats.angle)
                 {
-                    //hit enemy shield
+                    hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
                 }
             }
         }
@@ -77,8 +91,19 @@ public class FlashLight : MonoBehaviour
     private void BoxDamages()
     {
         Vector3 center = transform.position + (transform.forward * stats.range / 2);
-        Vector3 halfExt = new Vector3(1, 1, stats.range / 2);
-        RaycastHit[] hits = Physics.BoxCastAll(center, halfExt, transform.forward, transform.rotation);
+        Vector3 halfExt = new Vector3(stats.width, stats.width, stats.range / 2);
+        RaycastHit[] hits = Physics.BoxCastAll(center, halfExt, transform.forward, transform.rotation, stats.range);
+
+        
+        
+        if (hits.Length > 0)
+        {
+            foreach (var hit in hits)
+            {
+                hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
+            }
+        }
+
     }
     
     
