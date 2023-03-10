@@ -18,16 +18,6 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        // for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
-        // {
-        //     GameObject go = Instantiate(PlayerGO, spawnLocations[i].position, Quaternion.identity);
-        //     playersList.Add(go);
-        // }
-        //
-        // PlayersManager.instance.TransferPlayerInput(playersList.ToArray());
-        
-        //PlayersManager.instance.EnablePlayers(spawnLocations);
-
         if (PlayersManager.instance != null)
         {
             for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
@@ -43,7 +33,7 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         Debug.Log("PlayerInput ID: " + playerInput.playerIndex);
         
-        targetGroup.AddMember(transform, 1,2);
+        targetGroup.AddMember(playerInput.transform, 1,2);
         
         playerInput.gameObject.GetComponent<MeshRenderer>().material.color = colors[playerInput.playerIndex];
         
