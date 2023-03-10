@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 using BehaviorTree;
 
-namespace GhostAI
+namespace AI
 {
     public class TaskAttack : Node
     {
         private Animator _animator;
-
         private Transform _lastTarget;
-        // private EnemyManager _enemyManager;
-
+        private PlayerHealth _playerHealth;
         private float _attackTime = 1f;
-        private float _attackCounter = 0f;
+        private float _attackCounter;
 
         public TaskAttack(Transform transform)
         {
@@ -23,15 +21,15 @@ namespace GhostAI
             Transform target = (Transform)GetData("target");
             if (target != _lastTarget)
             {
-                // _enemyManager = target.GetComponent<EnemyManager>();
+                _playerHealth = target.GetComponent<PlayerHealth>();
                 _lastTarget = target;
             }
 
             _attackCounter += Time.deltaTime;
             if (_attackCounter >= _attackTime)
             {
-                bool enemyIsDead = true; // _enemyManager.TakeHit();
-                if (enemyIsDead)
+                _playerHealth.GetHit(1);
+                if (_playerHealth.curHealth >= 0)
                 {
                     ClearData("target");
                     // _animator.SetBool("Attacking", false);

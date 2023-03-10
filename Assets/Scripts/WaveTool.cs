@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WaveTool : MonoBehaviour
 {
-    public EnemySpawner spawner;
+    public GhostSpawner spawner;
     
     public string waveName = "Wave";
     public Wave[] waves = new Wave[3];

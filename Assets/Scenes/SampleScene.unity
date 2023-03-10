@@ -250,42 +250,6 @@ MonoBehaviour:
       myMaterial: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
       number: 5
       DistanceAlert: 15
-  - waveNumber: 0
-    spawnTime: 5
-    enemies:
-    - id: 1
-      myMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-      myMaterial: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
-      number: 5
-      DistanceAlert: 5
-    - id: 2
-      myMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-      myMaterial: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
-      number: 5
-      DistanceAlert: 10
-    - id: 3
-      myMesh: {fileID: -277298175661527236, guid: d059e478ca51ec943829daa8ac2b6ff4, type: 3}
-      myMaterial: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
-      number: 5
-      DistanceAlert: 15
-  - waveNumber: 0
-    spawnTime: 5
-    enemies:
-    - id: 1
-      myMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-      myMaterial: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
-      number: 5
-      DistanceAlert: 5
-    - id: 2
-      myMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-      myMaterial: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
-      number: 5
-      DistanceAlert: 10
-    - id: 3
-      myMesh: {fileID: -277298175661527236, guid: d059e478ca51ec943829daa8ac2b6ff4, type: 3}
-      myMaterial: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
-      number: 5
-      DistanceAlert: 15
 --- !u!4 &291935972
 Transform:
   m_ObjectHideFlags: 0
@@ -800,8 +764,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialRoom: {fileID: 0}
-  stats: {fileID: 0}
-  PlayerGO: {fileID: 0}
+  stats: {fileID: 11400000, guid: 2293f5e13799caa4fa716334cad39890, type: 2}
+  PlayerGO: {fileID: 431617770969380398, guid: 1260109a4e5b5114e98163de34ef60f2, type: 3}
   targetGroup: {fileID: 1997434134}
   spawnLocations:
   - {fileID: 695373841}
@@ -905,6 +869,7 @@ MonoBehaviour:
   - {fileID: 22335123}
   - {fileID: 1029744006}
   _spawnRadius: 5
+  _waypoints: []
 --- !u!4 &1442791853
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour, Enemy
@@ -10,7 +7,6 @@ public class Ghost : MonoBehaviour, Enemy
     private int _damage;
     private int _speed;
 
-    // Start is called before the first frame update
     void Start()
     {
         _health = 1;
@@ -19,7 +15,6 @@ public class Ghost : MonoBehaviour, Enemy
         _speed = 5;
     }
 
-    // Update is called once per frame
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Bullet")) return;
@@ -37,12 +32,7 @@ public class Ghost : MonoBehaviour, Enemy
 
     public void Attack()
     {
-        Debug.Log("Attacking");
-    }
-
-    private void Update()
-    {
-        transform.position += transform.forward * (Time.deltaTime * _speed);
+        
     }
 
     public void TakeDamage()

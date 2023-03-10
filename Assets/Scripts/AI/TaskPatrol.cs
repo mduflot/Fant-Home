@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using AI.GhostAI;
+using UnityEngine;
 using BehaviorTree;
 
-namespace GhostAI
+namespace AI
 {
     public class TaskPatrol : Node
     {

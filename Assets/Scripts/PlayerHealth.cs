@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IHitable
@@ -11,10 +9,9 @@ public class PlayerHealth : MonoBehaviour, IHitable
         DOWN,
         INVINCIBLE
     }
-    [SerializeField]
-    public int curHealth;
-    [SerializeField]
-    private PlayerState curState;
+
+    [SerializeField] public int curHealth;
+    [SerializeField] private PlayerState curState;
 
     [SerializeField] private GameObject deathInteractionGO;
 
@@ -22,22 +19,21 @@ public class PlayerHealth : MonoBehaviour, IHitable
     {
         curState = PlayerState.BASE;
     }
-
-
+    
     [ContextMenu("TakeHits")]
     private void TestHit()
     {
         GetHit(3);
     }
-    
+
     public void GetHit(int damage)
     {
-        if(curState == PlayerState.INVINCIBLE) return;
-        
+        if (curState == PlayerState.INVINCIBLE) return;
+
         curHealth -= damage;
+        Debug.Log("OOF - Health:" + curHealth);
         if (curHealth <= 0) Fall();
         else StartCoroutine(Invincible());
-
     }
 
     private IEnumerator Invincible()

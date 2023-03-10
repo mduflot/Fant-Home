@@ -3,16 +3,16 @@ using BehaviorTree;
 using UnityEngine;
 using Tree = BehaviorTree.Tree;
 
-namespace GhostAI
+namespace AI.PoltergeistAI
 {
-    public class GhostBT : Tree
+    public class PoltergeistBT : Tree
     {
         public Transform[] Waypoints;
-        
+
         public static float Speed = 2f;
         public static float FOVRange = 6f;
         public static float AttackRange = 1f;
-
+        
         protected override Node SetupTree()
         {
             Node root = new Selector(new List<Node>
