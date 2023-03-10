@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public void SwitchScene()
     {
+        
         SceneManager.LoadScene("TestsScene");
     }
 }

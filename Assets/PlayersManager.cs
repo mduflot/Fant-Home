@@ -3,19 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XInput;
 
 public class PlayersManager : MonoBehaviour
 {
     public static PlayersManager instance;
     
+    public List<InputDevice> devices = new List<InputDevice>();
     public GameObject PlayerGO;
     
-    [SerializeField] private List<PlayerInput> inputs = new List<PlayerInput>();
+    //[SerializeField] private List<PlayerInput> inputs = new List<PlayerInput>();
 
-    public int GetPlayerCount => inputs.Count;
-
-    private List<InputDevice> devices = new List<InputDevice>();
+    public int GetPlayerCount => devices.Count;
 
     private void Awake()
     {
@@ -27,10 +25,12 @@ public class PlayersManager : MonoBehaviour
 
     public void PlayerJoin(PlayerInput playerInput)
     {
-        if (inputs.Contains(playerInput)) return;
+        if (devices.Contains(playerInput.devices[0])) return;
         
-        inputs.Add(playerInput);
+        devices.Add(playerInput.devices[0]);
+        
         playerInput.transform.SetParent(gameObject.transform);
+        Destroy(playerInput.gameObject);
     }
 
     public void TransferPlayerInput(GameObject[] playersGO)
@@ -54,20 +54,4 @@ public class PlayersManager : MonoBehaviour
             
         }
     }
-
-    public void EnablePlayers(Transform[] pos)
-    {
-        for (int i = 0; i < inputs.Count; i++)
-        {
-            inputs[i].transform.position = pos[i].position;
-            inputs[i].transform.GetChild(0).gameObject.SetActive(true);
-        }
-    }
-
-    private IEnumerator AssignDevice(PlayerInput input)
-    {
-        yield return new WaitForSeconds(1f);
-        input.SwitchCurrentControlScheme("Controller", Gamepad.all[0]);
-    }
-    
 }

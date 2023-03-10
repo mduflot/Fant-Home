@@ -16,7 +16,7 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private List<GameObject> playersList = new List<GameObject>();
 
-    /*private void Start()
+    private void Start()
     {
         // for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
         // {
@@ -32,24 +32,18 @@ public class PlayerSpawnManager : MonoBehaviour
         {
             for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
             {
-                PlayerInput.Instantiate(PlayerGO, controlScheme: "Controller", pairWithDevice: Gamepad.all[i]);
+                PlayerInput.Instantiate(PlayerGO, controlScheme: "Controller", pairWithDevice: PlayersManager.instance.devices[i]);
+                Debug.Log("Player " + i + " spawned.");
             }
         }
-        else
-        {
-            PlayerInput.Instantiate(PlayerGO, controlScheme: "Controller", pairWithDevice: Gamepad.all[PlayerInput.all.Count]);
-        }
-        
-    }*/
+    }
 
 
     public void SpawnPlayer(PlayerInput playerInput)
     {
-        //Debug.Log("PlayerInput ID: " + playerInput.playerIndex);
-
-        GameObject playerGO = playerInput.transform.GetChild(0).gameObject;
+        Debug.Log("PlayerInput ID: " + playerInput.playerIndex);
         
-        targetGroup.AddMember(playerGO.transform, 1,2);
+        targetGroup.AddMember(transform, 1,2);
         
         playerInput.gameObject.GetComponent<MeshRenderer>().material.color = colors[playerInput.playerIndex];
         
