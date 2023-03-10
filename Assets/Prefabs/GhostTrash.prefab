@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3363399139956902893}
   - component: {fileID: 636653961948503978}
   - component: {fileID: 8732067773027518091}
-  - component: {fileID: 4650898050359308851}
+  - component: {fileID: 5165287362293945979}
   - component: {fileID: 3969293103871739000}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: GhostTrash
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4650898050359308851
+--- !u!114 &5165287362293945979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6043481272550239876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255de4e20d39d6743a0888a8cf901749, type: 3}
+  m_Script: {fileID: 11500000, guid: d103cbdd03b886c48af3e889e2f43c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 11400000, guid: 31b44391f6ad6db4aa38750b67132627, type: 2}
+  _name: Trash
+  _health: 3
+  _veil: 1
+  _durationStun: 0
+  _damage: 1
+  _speed: 5
+  IsStun: 0
 --- !u!114 &3969293103871739000
 MonoBehaviour:
   m_ObjectHideFlags: 0

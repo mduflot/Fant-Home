@@ -1,47 +1,39 @@
-using AI.GhostAI;
+using System.Collections;
 using UnityEngine;
 
-public class Ghost : MonoBehaviour, Enemy
+public class Ghost : MonoBehaviour, IEnemy
 {
-    private int _health;
-    private string _name;
-    private int _damage;
-    private float _speed;
+    [SerializeField] private string _name = "Trash";
+    [SerializeField] private float _health = 3;
+    [SerializeField] private float _veil = 1;
+    [SerializeField] private int _durationStun;
+    [SerializeField] private int _damage = 1;
+    [SerializeField] private int _speed = 5;
 
-    [SerializeField] private GhostSO monster;
-    
+    [HideInInspector] public bool IsStun;
 
-    void Start()
+    public void TakeVeil(float damageVeil)
     {
-        LoadType();
-    }
-
-    private void LoadType()
-    {
-        _health = monster.health;
-        _name = monster.key.ToString();
-        _damage = monster.damage;
-        _speed = monster.speed;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Bullet")) return;
-        Pooler.instance.Depop(collision.gameObject.GetComponent<Bullet>().key, collision.gameObject);
-        TakeDamage();
-    }
-
-    public void Attack()
-    {
-        
-    }
-
-    public void TakeDamage()
-    {
-        _health--;
-        if (_health == 0)
+        _veil -= damageVeil;
+        if (_veil <= 0)
         {
-            Pooler.instance.Depop(_name, this.gameObject);
+            IsStun = true;
+            StartCoroutine(StunDuration());
+        }
+    }
+
+    private IEnumerator StunDuration()
+    {
+        yield return new WaitForSeconds(_durationStun);
+        IsStun = false;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Pooler.instance.Depop("Ghost", gameObject);
         }
     }
 }
