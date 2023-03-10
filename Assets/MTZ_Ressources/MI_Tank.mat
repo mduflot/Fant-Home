@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Tank
-  m_Shader: {fileID: -6465566751694194690, guid: 4693bc0fa3c63c149884f62b6e8e3e14,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4693bc0fa3c63c149884f62b6e8e3e14, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -67,7 +66,7 @@ Material:
     - _Displacement_Intensity_4: 0.2
     - _Flicker_Frequency: 30
     - _Flicker_Transition_Power: 0.2
-    - _HIT: 0.139
+    - _HIT: 0
     - _Hit_Flicker_Frequency: 40
     - _Hit_Flicker_Transition_Power: 0.2
     - _QueueControl: 0

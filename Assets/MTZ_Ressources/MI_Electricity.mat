@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1139225651495916932
+--- !u!114 &-8486726239200297929
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Ring
-  m_Shader: {fileID: -6465566751694194690, guid: 709b8956c0e695144bf121c8e8da2a15, type: 3}
+  m_Name: MI_Electricity
+  m_Shader: {fileID: -6465566751694194690, guid: edce971fb4d876145b46f72412a2cf5b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -50,11 +50,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fade: 0
-    - _Max_Width: 30
-    - _Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Width: 1
-    m_Colors: []
+    m_Colors:
+    - _End_Coordinates: {r: 2, g: 0, b: 0, a: 0}
+    - _Start_Coordinates: {r: 0, g: 0, b: 0, a: 0}
+    - _Target_Coordinates: {r: 4.58, g: 0.5, b: -4.76, a: 0}
   m_BuildTextureStacks: []
