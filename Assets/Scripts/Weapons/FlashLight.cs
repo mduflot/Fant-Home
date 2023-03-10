@@ -13,6 +13,7 @@ public class FlashLight : MonoBehaviour
     
     [SerializeField] private GameObject flashLightGO;
     [SerializeField] private bool isActive;
+    [SerializeField] private LayerMask obstaclesMask, enemiesMask;
 
     private Coroutine curLoop;
     private void Start()
@@ -27,10 +28,19 @@ public class FlashLight : MonoBehaviour
             case FlashLightSO.LightShape.BOX:
                 Vector3 center = transform.position + (transform.forward * stats.range / 2);
                 Vector3 halfExt = new Vector3(stats.width, stats.width, stats.range / 2);
-                ExtDebug.DrawBoxCastBox(center, halfExt, transform.rotation, transform.forward, stats.range, Color.cyan);
+                ExtDebug.DrawBoxCastBox(center, halfExt, transform.rotation, transform.forward, stats.range, Color.green);
                 break;
             case FlashLightSO.LightShape.CONIC:
-                Gizmos.DrawWireSphere(transform.position, stats.range);
+                float halfFOV = stats.angle / 2;
+                
+                Quaternion leftRayRot = Quaternion.AngleAxis( -halfFOV, Vector3.up );
+                Quaternion rightRayRot = Quaternion.AngleAxis( halfFOV, Vector3.up );
+                Vector3 leftRayDirection = leftRayRot * transform.forward;
+                Vector3 rightRayDirection = rightRayRot * transform.forward;
+                Gizmos.color = Color.green;
+                Gizmos.DrawRay( transform.position, leftRayDirection * stats.range );
+                Gizmos.DrawRay( transform.position, rightRayDirection * stats.range );
+                
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -71,7 +81,7 @@ public class FlashLight : MonoBehaviour
     private void ConicDamages()
     {
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, stats.range, transform.forward, stats.range,
-            stats.enemiesMask);
+            enemiesMask);
 
         
         
@@ -92,9 +102,7 @@ public class FlashLight : MonoBehaviour
     {
         Vector3 center = transform.position + (transform.forward * stats.range / 2);
         Vector3 halfExt = new Vector3(stats.width, stats.width, stats.range / 2);
-        RaycastHit[] hits = Physics.BoxCastAll(center, halfExt, transform.forward, transform.rotation, stats.range);
-
-        
+        RaycastHit[] hits = Physics.BoxCastAll(center, halfExt, transform.forward, transform.rotation, stats.range, enemiesMask);
         
         if (hits.Length > 0)
         {
@@ -103,10 +111,18 @@ public class FlashLight : MonoBehaviour
                 hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
             }
         }
-
     }
-    
-    
+
+    private bool IsVisible(Transform trans)
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Linecast(transform.position, trans.position, out hit, obstaclesMask))
+        {
+            return hit.collider;
+        }
+
+        return true;
+    }
     
 
 }

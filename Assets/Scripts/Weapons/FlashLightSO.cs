@@ -11,11 +11,16 @@ public class FlashLightSO : ScriptableObject
         CONIC
     }
 
+    [Header("Shapes")]
     public LightShape shape;
-    public LayerMask enemiesMask;
+    [Range(0, 180)]
     public int angle;
+    [Range(0.1f, 5)]
     public float width;
+    [Range(0.1f, 35)]
     public float range;
+    
+    [Header("Statistics")]
     public float tickRate;
     public float damagesPerTick;
     public float energyLostPerTick;
