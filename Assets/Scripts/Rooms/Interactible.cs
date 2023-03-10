@@ -39,6 +39,5 @@ public class Interactible : MonoBehaviour
             player.isInside(false);
         }
         curPlayers.Clear();
-        Debug.Log(curPlayers.Count);
     }
 }
