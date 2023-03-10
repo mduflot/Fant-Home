@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WaveTool : MonoBehaviour
 {
-    public EnemySpawner spawner;
+    public GhostSpawner spawner;
     
     public string waveName = "Wave";
     public Wave[] waves = new Wave[3];
@@ -33,7 +33,7 @@ public class WaveTool : MonoBehaviour
         if (wave.enemies.Length == 0) return;
         foreach (var enemy in wave.enemies)
         {
-            spawner.MakeWave(enemy.id, enemy.myMesh, enemy.myMaterial, enemy.number, enemy.DistanceAlert);
+            spawner.MakeWave(enemy.number);
         }
 
         StartCoroutine(WaveDuration(wave.spawnTime));
