@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
+public enum Monsters
+{
+    Ghost,
+    Poltergeist,
+    Zombie
+}
+
 [System.Serializable]
 public class Enemies
 {
-    public int id;
-    public Mesh myMesh;
-    public Material myMaterial;
+    public Monsters myType;
     public int number;
-    public int DistanceAlert;
 }

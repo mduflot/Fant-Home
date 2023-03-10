@@ -877,6 +877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8756a7f0c5341c429937ee1e817162e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialRoom: {fileID: 0}
+  stats: {fileID: 0}
+  PlayerGO: {fileID: 0}
   targetGroup: {fileID: 1997434134}
   spawnLocations:
   - {fileID: 695373841}
@@ -918,7 +921,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1155528804
 MonoBehaviour:
@@ -1010,8 +1013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf945d0a4e19624cbd17c1744412d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mob: {fileID: 0}
-  _enemyCount: 100
+  _mesh: {fileID: 0}
+  _material: {fileID: 0}
   _spawns:
   - {fileID: 1650661035}
   - {fileID: 1465636183}

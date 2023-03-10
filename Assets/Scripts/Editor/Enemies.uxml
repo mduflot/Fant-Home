@@ -1,9 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
-        <ui:IntegerField label="Int Field" value="42" binding-path="id" />
-        <uie:ObjectField type="UnityEngine.Mesh, UnityEngine.CoreModule" binding-path="myMesh" />
-        <uie:ObjectField type="UnityEngine.Material, UnityEngine.CoreModule" binding-path="myMaterial" />
-        <ui:IntegerField label="Int Field" value="42" binding-path="DistanceAlert" name="IntegerField" />
-        <ui:IntegerField value="42" binding-path="number" name="quantity" style="flex-shrink: 1; min-width: 15%;" />
+        <uie:PropertyField binding-path="myType" label="Type: " name="type" focusable="true" style="flex-shrink: 0;" />
+        <ui:IntegerField value="42" binding-path="number" name="quantity" label="Quantity: " style="flex-shrink: 0; min-width: 15%;" />
     </ui:VisualElement>
 </ui:UXML>
