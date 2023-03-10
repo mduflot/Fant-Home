@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4650898050359308851}
   - component: {fileID: 3969293103871739000}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2daffcd12698a9a49b21fbb38c9c294f, type: 2}
+  - {fileID: 2100000, guid: 8b81022e9bb4ab24d984af5e4cf80955, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255de4e20d39d6743a0888a8cf901749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 11400000, guid: 31b44391f6ad6db4aa38750b67132627, type: 2}
+  monster: {fileID: 11400000, guid: 003a2d985d1ba5e4f91e3e5964eb31a4, type: 2}
 --- !u!114 &3969293103871739000
 MonoBehaviour:
   m_ObjectHideFlags: 0

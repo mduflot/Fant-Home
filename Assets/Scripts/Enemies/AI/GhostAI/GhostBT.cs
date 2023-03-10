@@ -7,7 +7,7 @@ namespace AI.GhostAI
 {
     public class GhostBT : Tree
     {
-        [SerializeField] private float _speed = 2f;
+        [SerializeField] float _speed = 2f;
         [SerializeField] private float _fovRange = 6f;
         [SerializeField] private float _attackRange = 4f;
         [SerializeField] private float _attackTime = 2f;
