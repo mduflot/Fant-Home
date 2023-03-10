@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerGO: {fileID: 431617770969380398, guid: 1260109a4e5b5114e98163de34ef60f2, type: 3}
-  inputs: []
 --- !u!1 &1071926627
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0545a9323f62b2a41ae4a4f41d53b496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersMaxNumber: 1
+  playersMaxNumber: 2
   LaunchButton: {fileID: 1240160963}
   playersNumDisp: {fileID: 1201171948}
 --- !u!114 &1293891628
