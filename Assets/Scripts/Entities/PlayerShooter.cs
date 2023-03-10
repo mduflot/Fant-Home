@@ -56,8 +56,6 @@ namespace Entities
             _bullet.GetComponent<Bullet>().speed = _projectileSpeed;
             _bullet.transform.rotation = transform.rotation;
             _bullet.transform.position = transform.position + transform.forward;
-            
-            
         }
     }
 }
