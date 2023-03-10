@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8756a7f0c5341c429937ee1e817162e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialRoom: {fileID: 0}
+  stats: {fileID: 11400000, guid: 2293f5e13799caa4fa716334cad39890, type: 2}
   targetGroup: {fileID: 0}
   spawnLocations:
   - {fileID: 8995904437553969065}
