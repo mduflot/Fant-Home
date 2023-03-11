@@ -246,7 +246,6 @@ MonoBehaviour:
   moveSpeed: 10
   oneStick: 0
   triggerFire: 0
-  flashLight: {fileID: 720861636594008487}
 --- !u!114 &6926874619026008322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +261,12 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 51e2e001aad25824a952e0e533a573c7, type: 2}
   flashLightGO: {fileID: 720861636594008487}
   isActive: 0
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 0
+  enemiesMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &720861636594008487
 GameObject:
   m_ObjectHideFlags: 0
