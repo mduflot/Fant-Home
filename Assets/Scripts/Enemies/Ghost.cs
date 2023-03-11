@@ -11,7 +11,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     [SerializeField] private float _health = 3;
     [SerializeField] private float _veil = 1;
-    private int _durationStun;
+    private float _durationStun;
     private int _damage = 1;
     private int _speed = 5;
 
@@ -22,6 +22,7 @@ public class Ghost : MonoBehaviour, IEnemy
         gameObject.name = _name;
         _health = _ghostSO.MaxHealth;
         _veil = _ghostSO.MaxVeil;
+        _durationStun = _ghostSO.StunDuration;
     }
 
     private void OnCollisionEnter(Collision collision)
