@@ -9,8 +9,8 @@ public class Ghost : MonoBehaviour, IEnemy
 
     [HideInInspector] public bool IsStun;
 
-    private float _health = 3;
-    private float _shield = 1;
+    [SerializeField] private float _health = 3;
+    [SerializeField] private float _veil = 1;
     private int _durationStun;
     private int _damage = 1;
     private int _speed = 5;
@@ -21,7 +21,7 @@ public class Ghost : MonoBehaviour, IEnemy
     {
         gameObject.name = _name;
         _health = _ghostSO.MaxHealth;
-        _shield = _ghostSO.MaxVeil;
+        _veil = _ghostSO.MaxVeil;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,16 +29,19 @@ public class Ghost : MonoBehaviour, IEnemy
         if (collision.gameObject.CompareTag("Bullet") && _isVulnerable)
         {
             Pooler.instance.Depop(collision.gameObject.GetComponent<Bullet>().key, collision.gameObject);
-            // TODO: TakeDamage from Weapon.Damage
-            // TakeDamage();
+            // TODO: TakeDamage from Weapon.Damage / Bullet Scriptable Object
+            TakeDamage(collision.gameObject.GetComponent<Bullet>().Damage);
         }
     }
 
     public void TakeVeil(float damageVeil)
     {
-        _shield -= damageVeil;
-        if (_shield <= 0)
+        if (_veil <= 0) return;
+        _veil -= damageVeil;
+        Debug.Log($"Veil took: -{damageVeil} damage", gameObject);
+        if (_veil <= 0)
         {
+            Debug.Log($"Veil is removed", gameObject);
             IsStun = true;
             _isVulnerable = true;
             StartCoroutine(StunDuration());

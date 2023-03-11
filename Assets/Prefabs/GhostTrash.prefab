@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8732067773027518091}
   - component: {fileID: 5165287362293945979}
   - component: {fileID: 3969293103871739000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GhostTrash
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -119,12 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d103cbdd03b886c48af3e889e2f43c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ghostSO: {fileID: 11400000, guid: 31b44391f6ad6db4aa38750b67132627, type: 2}
   _name: Trash
-  _health: 3
-  _veil: 1
-  _durationStun: 0
-  _damage: 1
-  _speed: 5
   IsStun: 0
 --- !u!114 &3969293103871739000
 MonoBehaviour:
