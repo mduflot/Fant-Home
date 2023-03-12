@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     public void GetHit(int damage)
     {
-        if (curState == PlayerState.INVINCIBLE) return;
+        if (curState == PlayerState.INVINCIBLE || curHealth <= 0) return;
 
         curHealth -= damage;
         Debug.Log("OOF - Health:" + curHealth);
