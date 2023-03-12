@@ -1,10 +1,5 @@
-﻿using System;
-using Unity.Entities;
-using Unity.Rendering;
-using Unity.Transforms;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 namespace Entities
 {
@@ -14,11 +9,9 @@ namespace Entities
         [SerializeField] private bool _triggerShoot;
 
         private GameObject _bullet;
-        
         private float _bulletSpeed;
         private float _reloadTime;
         private string _bulletKey;
-        
         private bool _shootOrder;
         private float _lastShootTime;
 
