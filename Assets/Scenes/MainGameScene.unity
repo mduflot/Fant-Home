@@ -4759,6 +4759,10 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 300223053}
+    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].myType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 27770905751116501, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
       propertyPath: m_Name
       value: WaveManager

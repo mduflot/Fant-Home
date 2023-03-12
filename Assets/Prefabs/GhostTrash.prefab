@@ -122,6 +122,8 @@ MonoBehaviour:
   _ghostSO: {fileID: 11400000, guid: 31b44391f6ad6db4aa38750b67132627, type: 2}
   _name: Trash
   IsStun: 0
+  _health: 1
+  _veil: 1
 --- !u!114 &3969293103871739000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,5 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _fovRange: 6
-  _attackRange: 4
-  _attackTime: 2
+  _attackRange: 0
+  _attackTime: 60

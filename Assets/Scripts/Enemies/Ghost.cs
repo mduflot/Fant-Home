@@ -29,6 +29,8 @@ public class Ghost : MonoBehaviour, IEnemy
         _regenVeilPoints = _ghostSO.VeilRegen;
         _regenVeilCD = _ghostSO.VeilRegenCD;
         _durationStun = _ghostSO.StunDuration;
+
+        _isVulnerable = _veil > 0;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,7 +90,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damage)
     {
-        if (_health <= 0) return;
+        //if (_health <= 0) return;
         _health -= damage;
         Debug.Log($"Ghost took: -{damage} damage", gameObject);
         if (_health <= 0)

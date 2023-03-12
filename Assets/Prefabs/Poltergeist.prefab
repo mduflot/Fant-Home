@@ -116,10 +116,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6043481272550239876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255de4e20d39d6743a0888a8cf901749, type: 3}
+  m_Script: {fileID: 11500000, guid: d103cbdd03b886c48af3e889e2f43c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 11400000, guid: b2eee47eb090c924da8f9b6d8b3295b4, type: 2}
+  _ghostSO: {fileID: 11400000, guid: b2eee47eb090c924da8f9b6d8b3295b4, type: 2}
+  _name: Poltergeist
+  IsStun: 0
+  _health: 3
+  _veil: 1
 --- !u!114 &3969293103871739000
 MonoBehaviour:
   m_ObjectHideFlags: 0
