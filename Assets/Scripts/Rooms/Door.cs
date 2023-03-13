@@ -16,11 +16,11 @@ public class Door : MonoBehaviour
         
     }
 
-    public void ToggleDoor()
+    public void ToggleDoor(bool forceOpen = false)
     {
         if (locked) return;
         
-        opened = !opened;
+        opened = forceOpen ? true : !opened;
         
         if(DoorGO) DoorGO.SetActive(!opened);
         else transform.GetChild(0).gameObject.SetActive(!opened);
