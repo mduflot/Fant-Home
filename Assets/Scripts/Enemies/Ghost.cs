@@ -1,23 +1,29 @@
 using System.Collections;
 using Scriptables;
+using Unity.Collections;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour, IEnemy
 {
     [Header("Stats")]
-    [SerializeField] private GhostStatsSO _ghostSO;
+    public GhostStatsSO _ghostSO;
     [SerializeField] private string _name = "Ghost";
+    [SerializeField] private Material _vulnerableMaterial;
+    [SerializeField] private Material _stunMaterial;
+    [SerializeField] private Material _veilMaterial;
 
     [HideInInspector] public bool IsStun;
 
     [Header("Stats in Runtime")]
-    [SerializeField] private float _health = 3;
-    [SerializeField] private float _veil = 1;
-    private float _regenVeilPoints;
-    private float _regenVeilCD;
-    private float _durationStun;
-    private int _damage = 1;
-    private int _speed = 5;
+    [ReadOnly] private float _health = 3;
+    [ReadOnly] private float _veil = 1;
+    [ReadOnly] private float _regenVeilPoints;
+    [ReadOnly] private float _regenVeilCD;
+    [ReadOnly] private float _durationStun;
+    [ReadOnly] private int _damage = 1;
+    [ReadOnly] private int _speed = 5;
+
+    private MeshRenderer _meshRenderer;
 
     private bool _isVulnerable;
 
@@ -29,6 +35,7 @@ public class Ghost : MonoBehaviour, IEnemy
         _regenVeilPoints = _ghostSO.VeilRegen;
         _regenVeilCD = _ghostSO.VeilRegenCD;
         _durationStun = _ghostSO.StunDuration;
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,8 +71,10 @@ public class Ghost : MonoBehaviour, IEnemy
 
     private IEnumerator StunDuration()
     {
+        _meshRenderer.material = _stunMaterial;
         yield return new WaitForSeconds(_durationStun);
         IsStun = false;
+        _meshRenderer.material = _vulnerableMaterial;
     }
 
     private IEnumerator VeilCD()
@@ -81,6 +90,7 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             yield return new WaitForSeconds(1);
             _veil += _regenVeilPoints;
+            _meshRenderer.material = _veilMaterial;
             _isVulnerable = false;
             Debug.Log($"Veil took: +{_regenVeilPoints} veil points", gameObject);
         }
