@@ -14,7 +14,7 @@ public class PlayerSpawnManager : MonoBehaviour
     [SerializeField] private Transform[] spawnLocations;
     [SerializeField] private Color[] colors;
 
-    private List<GameObject> playersList = new List<GameObject>();
+    public List<GameObject> playersList = new List<GameObject>();
 
     private void Start()
     {

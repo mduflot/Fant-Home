@@ -123,6 +123,11 @@ public class FlashLight : MonoBehaviour
 
         return true;
     }
+
+    public void ChangeLight(FlashLightSO newLight)
+    {
+        stats = newLight;
+    }
     
 
 }

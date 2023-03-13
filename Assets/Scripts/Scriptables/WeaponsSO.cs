@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using UnityEngine;
 
 public enum BulletKeys
@@ -14,7 +15,7 @@ public enum BulletTypes
 }
 
 [CreateAssetMenu(fileName = "WeaponStats", menuName = "Scriptables/WeaponStats", order = 2)]
-public class WeaponsSO: ScriptableObject
+public class WeaponsSO: EquipmentSO
 {
     public float bulletSpeed;
     public float reloadTime;
