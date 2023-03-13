@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5311e76af5def44912cb9b700f9aa1, type: 3}
   m_Name: FlashLight
   m_EditorClassIdentifier: 
+  equipType: 1
   shape: 1
   angle: 52
   width: 0.54

@@ -6,6 +6,7 @@ namespace Entities
     public class PlayerShooter : MonoBehaviour
     {
         [SerializeField] private WeaponsSO weapon;
+        public WeaponsSO GetCurWeapon => weapon;
         [SerializeField] private bool _triggerShoot;
 
         private GameObject _bullet;

@@ -11,5 +11,5 @@ public enum EquipmentType
 
 public abstract class EquipmentSO : ScriptableObject
 {
-    public EquipmentType equipType { get; set; }
+    public EquipmentType equipType;
 }

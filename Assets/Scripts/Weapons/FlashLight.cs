@@ -9,7 +9,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class FlashLight : MonoBehaviour
 {
-    public FlashLightSO stats;
+    [SerializeField] private FlashLightSO stats;
+    public FlashLightSO GetFlashLight => stats;
     
     [SerializeField] private GameObject flashLightGO;
     [SerializeField] private bool isActive;

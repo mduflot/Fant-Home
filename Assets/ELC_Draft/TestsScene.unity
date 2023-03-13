@@ -5136,6 +5136,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5416028951390563149, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416028951390563149, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416028951390563149, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].myType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416028951390563149, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].number
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416028951390563149, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[0].number
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416028951390563149, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[1].number
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5539883479031818836, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.5

@@ -9,14 +9,15 @@ public class EquipmentSpawner : Interactible
 {
     public int waveToSpawn;
     
-    [SerializeField]
-    private List<EquipmentSO> WeaponsToSpawn;
+    [SerializeField] private List<EquipmentSO> WeaponsToSpawn;
+    [SerializeField] private bool containWeapon;
     
-    private EquipmentSO weaponToSpawn;
+    private EquipmentSO curWeapon;
 
     private void Start()
     {
         GameManager.instance.waveTool.NewWave += CheckIfSpawn;
+        containWeapon = false;
     }
 
     private void CheckIfSpawn(int index)
@@ -26,23 +27,34 @@ public class EquipmentSpawner : Interactible
 
     private void Spawn()
     {
-        weaponToSpawn = WeaponsToSpawn[Random.Range(0, WeaponsToSpawn.Count)];
-        Debug.Log("Spawn " + weaponToSpawn);
+        curWeapon = WeaponsToSpawn[Random.Range(0, WeaponsToSpawn.Count)];
+        containWeapon = true;
+        Debug.Log("Spawn " + curWeapon);
     }
     
     public override void Interact(PlayerInteract play)
     {
-        switch (weaponToSpawn.equipType)
+        if (containWeapon)
         {
-            case EquipmentType.GUN :
-                
-                play.GetComponent<PlayerShooter>().ChangeWeapon((WeaponsSO)weaponToSpawn);
-                break;
-            case EquipmentType.LIGHT:
-                play.GetComponent<FlashLight>().ChangeLight((FlashLightSO)weaponToSpawn);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            EquipmentSO newWeapon = null;
+            switch (curWeapon.equipType)
+            {
+                case EquipmentType.GUN :
+                    PlayerShooter shooter = play.GetComponent<PlayerShooter>();
+                    newWeapon = shooter.GetCurWeapon;
+                    shooter.ChangeWeapon((WeaponsSO)curWeapon);
+                    break;
+                case EquipmentType.LIGHT:
+                    FlashLight flashLight = play.GetComponent<FlashLight>();
+                    newWeapon = flashLight.GetFlashLight;
+                    flashLight.ChangeLight((FlashLightSO)curWeapon);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            curWeapon = newWeapon;
         }
+        else Debug.Log("No weapon");
     }
 }
