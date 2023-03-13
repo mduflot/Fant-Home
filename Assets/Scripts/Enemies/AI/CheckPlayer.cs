@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using BehaviorTree;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AI
@@ -24,29 +23,23 @@ namespace AI
         {
             _players = GameObject.FindGameObjectsWithTag("Player");
             Transform target;
-            float currentDistance;
 
             object t = GetData("target");
             if (t == null)
             {
-                if (_players.Length > 0)
-                {
-                    if (!_players[0].activeSelf) return NodeState.FAILURE;
-                    currentDistance = math.sqrt(math.lengthsq(_transform.position - _players[0].transform.position));
-                    target = _players[0].transform;
-                }
-                else
+                if (_players.Length < 1)
                 {
                     ClearData("target");
                     _state = NodeState.FAILURE;
                     return _state;
                 }
+                
+                float currentDistance = math.sqrt(math.lengthsq(_transform.position - _players[0].transform.position));
+                target = _players[0].transform;
 
                 List<GameObject> playersInSameRoom = new();
 
-                RaycastHit hit;
-
-                if (Physics.Raycast(_transform.position, -Vector3.up, out hit, 10.0f))
+                if (Physics.Raycast(_transform.position, -Vector3.up, out var hit, 10.0f))
                 {
                     Debug.DrawRay(_transform.position, -Vector3.up * hit.distance, Color.red);
                     if (hit.transform.gameObject.CompareTag("Floor"))
@@ -103,6 +96,7 @@ namespace AI
                 _state = NodeState.FAILURE;
                 return _state;
             }
+            
             _state = NodeState.SUCCESS;
             return _state;
         }

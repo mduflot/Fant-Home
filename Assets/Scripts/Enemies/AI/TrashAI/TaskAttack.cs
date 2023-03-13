@@ -8,12 +8,13 @@ namespace AI.GhostAI
         private Animator _animator;
         private Transform _lastTarget;
         private PlayerHealth _playerHealth;
-        private float _attackTime = 2f;
+        private float _attackTime;
         private float _attackCounter;
 
-        public TaskAttack(Transform transform)
+        public TaskAttack(Transform transform, float attackTime)
         {
             _animator = transform.GetComponent<Animator>();
+            _attackTime = attackTime;
         }
 
         public override NodeState Evaluate()
@@ -26,10 +27,10 @@ namespace AI.GhostAI
             }
 
             _attackCounter += Time.deltaTime;
-            if (_attackCounter >= GhostBT.AttackTime)
+            if (_attackCounter >= _attackTime)
             {
                 _playerHealth.GetHit(1);
-                if (_playerHealth.curHealth >= 0)
+                if (_playerHealth.curHealth <= 0)
                 {
                     ClearData("target");
                     // _animator.SetBool("Attacking", false);
@@ -41,7 +42,7 @@ namespace AI.GhostAI
                 }
             }
 
-            _state = NodeState.RUNNING;
+            _state = NodeState.SUCCESS;
             return _state;
         }
     }

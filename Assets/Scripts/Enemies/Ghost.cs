@@ -56,14 +56,15 @@ public class Ghost : MonoBehaviour, IEnemy
         if (_veil <= 0)
         {
             StopCoroutine(VeilCD());
+            StopCoroutine(StunDuration());
             StartCoroutine(VeilCD());
+            StartCoroutine(StunDuration());
             return;
         }
         _veil -= damageVeil;
         StopCoroutine(RegenVeil());
         if (_veil <= 0)
         {
-            IsStun = true;
             _isVulnerable = true;
             StartCoroutine(StunDuration());
         }
@@ -71,6 +72,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     private IEnumerator StunDuration()
     {
+        IsStun = true;
         _meshRenderer.material = _stunMaterial;
         yield return new WaitForSeconds(_durationStun);
         IsStun = false;
