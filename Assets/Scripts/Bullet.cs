@@ -19,9 +19,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            Pooler.instance.Depop("Bullet", gameObject);
-        }
+        Pooler.instance.Depop(key, gameObject);
     }
 }

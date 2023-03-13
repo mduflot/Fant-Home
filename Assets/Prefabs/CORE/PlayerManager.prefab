@@ -111,7 +111,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 431617770969380398, guid: 1260109a4e5b5114e98163de34ef60f2, type: 3}
+  m_PlayerPrefab: {fileID: 7367198177605583761, guid: b566adb69db1eef4abff7088519323c4, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialRoom: {fileID: 0}
   stats: {fileID: 11400000, guid: 2293f5e13799caa4fa716334cad39890, type: 2}
-  PlayerGO: {fileID: 431617770969380398, guid: 1260109a4e5b5114e98163de34ef60f2, type: 3}
+  PlayerGO: {fileID: 7367198177605583761, guid: b566adb69db1eef4abff7088519323c4, type: 3}
   targetGroup: {fileID: 0}
   spawnLocations:
   - {fileID: 8995904437553969065}
