@@ -14,16 +14,15 @@ namespace AI.GhostAI
         
         public override NodeState Evaluate()
         {
-            if (_transform.GetComponent<GhostManager>().IsStun)
+            if (_transform.GetComponent<Ghost>().IsStun)
             {
+                Debug.Log("Ghost is Stun");
                 _state = NodeState.RUNNING;
                 return _state;
             }
-            else
-            {
-                _state = NodeState.FAILURE;
-                return _state;
-            }
+
+            _state = NodeState.FAILURE;
+            return _state;
         }
     }
 }
