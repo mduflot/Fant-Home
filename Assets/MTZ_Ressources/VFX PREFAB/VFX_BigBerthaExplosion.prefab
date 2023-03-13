@@ -29521,7 +29521,7 @@ GameObject:
   - component: {fileID: 4309805361498953631}
   - component: {fileID: 4309805361498953568}
   m_Layer: 0
-  m_Name: VFX_Explosion
+  m_Name: VFX_BigBerthaExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
