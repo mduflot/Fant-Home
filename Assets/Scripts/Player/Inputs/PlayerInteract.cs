@@ -20,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (canInteract && interact != null)
         {
-            interact.Interact();
+            interact.Interact(this);
         }
     }
 }

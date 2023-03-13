@@ -17,11 +17,12 @@ namespace Entities
 
         private void Start()
         {
-            ChangeWeapon();
+            ChangeWeapon(weapon);
         }
 
-        public void ChangeWeapon()
+        public void ChangeWeapon(WeaponsSO newWeapon)
         {
+            weapon = newWeapon;
             _bulletSpeed = weapon.bulletSpeed;
             _reloadTime = weapon.reloadTime;
             _bulletKey = weapon.key.ToString();
