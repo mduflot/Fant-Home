@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b0bb3bb31b70a40993e0ebe95b577b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  oneStick: 0
-  triggerFire: 0
+  moveSpeed: 5
+  body: {fileID: 0}
+  head: {fileID: 0}
 --- !u!114 &6926874619026008322
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -58,7 +58,7 @@ public class FlashLight : MonoBehaviour
         TurnOn(true);
     }
 
-    private void OnLightRelease()
+    public void LightRelease()
     {
         if (!gunHaveLight) return;
         TurnOn(false);

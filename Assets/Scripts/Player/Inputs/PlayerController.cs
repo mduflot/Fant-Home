@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _shooter = head.GetComponent<PlayerShooter>();
-        _flashLight = body.GetComponent<FlashLight>();
+        _flashLight = head.GetComponent<FlashLight>();
         _rb = GetComponent<Rigidbody>();
 
         StartCoroutine(Interpolation());
@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour
     private void OnLight()
     {
         _flashLight.Light();
+    }
+
+    private void OnLightRelease()
+    {
+        _flashLight.LightRelease();
     }
 
     private void FixedUpdate()

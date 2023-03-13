@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8795013376877263532}
   - component: {fileID: 3220464803180463771}
   - component: {fileID: 1526775785208591348}
+  - component: {fileID: 4460099137264186308}
   m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
@@ -100,6 +101,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 1aea06f780224104da15f2b2e1ce1de8, type: 2}
   _triggerShoot: 1
+  flashLight: {fileID: 4460099137264186308}
+--- !u!114 &4460099137264186308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628199523162835692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249a3e44f6e772f4d816b37c6279f5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 51e2e001aad25824a952e0e533a573c7, type: 2}
+  gunHaveLight: 0
+  flashLightGO: {fileID: 6121242038242206233}
+  isActive: 0
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 1
+  enemiesMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1985378236534454118
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +601,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5848
+  m_VersionIndex: 5851
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -692,7 +716,6 @@ GameObject:
   - component: {fileID: 5992538094862382330}
   - component: {fileID: 4179399866824642850}
   - component: {fileID: 5282765247477500390}
-  - component: {fileID: 3039547261231067178}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -765,27 +788,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3039547261231067178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7074320892742884008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 249a3e44f6e772f4d816b37c6279f5c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 51e2e001aad25824a952e0e533a573c7, type: 2}
-  flashLightGO: {fileID: 6121242038242206233}
-  isActive: 0
-  obstaclesMask:
-    serializedVersion: 2
-    m_Bits: 0
-  enemiesMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7367198177605583761
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +803,7 @@ GameObject:
   - component: {fileID: 4075498153305419733}
   - component: {fileID: 921657409584030972}
   - component: {fileID: 3396234925317575891}
-  - component: {fileID: 3994046227440181110}
+  - component: {fileID: 5992268319480135172}
   m_Layer: 6
   m_Name: PlayerTank
   m_TagString: Player
@@ -853,7 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b0bb3bb31b70a40993e0ebe95b577b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
   body: {fileID: 7074320892742884008}
   head: {fileID: 1628199523162835692}
 --- !u!114 &6800696267629877724
@@ -941,14 +943,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!65 &3994046227440181110
-BoxCollider:
+--- !u!135 &5992268319480135172
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7367198177605583761}
-  m_Material: {fileID: 13400000, guid: 2eee9db1f313d0f49b8da8c01951189d, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -960,8 +962,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.88284385, y: 0.703191, z: 0.6918994}
-  m_Center: {x: -0.0065087676, y: 0.37159547, z: 0.0030469745}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.27, z: 0}
 --- !u!1 &9010937557293367699
 GameObject:
   m_ObjectHideFlags: 0
