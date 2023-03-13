@@ -712,6 +712,7 @@ MonoBehaviour:
   - {r: 0.21016884, g: 1, b: 0, a: 1}
   - {r: 0, g: 0.06871343, b: 1, a: 1}
   - {r: 0.9914521, g: 1, b: 0, a: 1}
+  playersList: []
 --- !u!114 &1442791852 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8675516690592456799, guid: 9056a8a2f9c6d9b42891a597ce64576c, type: 3}
@@ -925,6 +926,10 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1442791852}
+    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].number
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 27770905751116501, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
       propertyPath: m_Name
       value: WaveManager
