@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,9 +11,15 @@ public class EquipmentSpawner : Interactible
     public int waveToSpawn;
     
     [SerializeField] private List<EquipmentSO> WeaponsToSpawn;
-    [SerializeField] private bool containWeapon;
     
-    private EquipmentSO curWeapon;
+    [Header("Debug")]
+    [SerializeField] private bool containWeapon;
+    [SerializeField] private EquipmentSO curWeapon;
+    [SerializeField] private Material emptyMat;
+    [SerializeField] private Material containWeaponMat;
+    [SerializeField] private MeshRenderer mesh;
+    
+    
 
     private void Start()
     {
@@ -43,6 +50,7 @@ public class EquipmentSpawner : Interactible
                     PlayerShooter shooter = play.GetComponent<PlayerShooter>();
                     newWeapon = shooter.GetCurWeapon;
                     shooter.ChangeWeapon((WeaponsSO)curWeapon);
+                    Debug.Log("Player took " + curWeapon + " and dropped his " + newWeapon);
                     break;
                 case EquipmentType.LIGHT:
                     FlashLight flashLight = play.GetComponent<FlashLight>();

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipType: 1
   shape: 1
-  angle: 52
-  width: 0.54
-  range: 5.8
+  angle: 46
+  width: 0.84
+  range: 3.6
   tickRate: 0.25
   damagesPerTick: 2
   energyLostPerTick: 3
