@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6507401ca57d57479ce203c497e4b9e, type: 3}
   m_Name: GhostStats
   m_EditorClassIdentifier: 
-  MaxHealth: 3
+  MaxHealth: 1
   MaxVeil: 1
   VeilRegen: 1
-  VeilRegenCD: 6
-  MoveSpeed: 2
+  VeilRegenCD: 5
+  MoveSpeed: 4
   StunDuration: 1.5
   AttackDamage: 1
-  AttackRange: 6
-  AttackCD: 3
+  AttackRange: 20
+  AttackCD: 3.5
   InteractionRange: 6
   InteractionCD: 6
   Key: 0
