@@ -36,6 +36,7 @@ public class Room : MonoBehaviour
         foreach (var door in doors)
         {
             door.locked = false;
+            door.ToggleDoor(true);
         }
     }
 
