@@ -7,6 +7,8 @@ public class Room : MonoBehaviour
 {
     [SerializeField] private bool locked;
     public bool IsLocked => locked;
+    [SerializeField] private int index;
+    public int GetIndex => index;
 
     [SerializeField] private FogOfWarTrigger[] fog;
     [SerializeField] private Door[] doors;
@@ -28,7 +30,7 @@ public class Room : MonoBehaviour
     }
 
     [ContextMenu("UnlockDoor")]
-    public void UnlockDoor()
+    public void UnlockRoom()
     {
         locked = false;
         foreach (var door in doors)
