@@ -1,4 +1,5 @@
-﻿using BehaviorTree;
+﻿using System.Collections;
+using BehaviorTree;
 using UnityEngine;
 
 namespace AI.GhostAI
@@ -6,15 +7,23 @@ namespace AI.GhostAI
     public class TaskAttack : Node
     {
         private Animator _animator;
+        private Transform _transform;
         private Transform _lastTarget;
         private PlayerHealth _playerHealth;
+        private int _damage;
         private float _attackTime;
+        private float _attackRadius;
         private float _attackCounter;
+        private string _attackKey;
 
-        public TaskAttack(Transform transform, float attackTime)
+        public TaskAttack(Transform transform, int damage, float attackTime, float attackRadius, string attackKey)
         {
+            _transform = transform;
             _animator = transform.GetComponent<Animator>();
+            _damage = damage;
             _attackTime = attackTime;
+            _attackRadius = attackRadius;
+            _attackKey = attackKey;
         }
 
         public override NodeState Evaluate()
@@ -29,7 +38,6 @@ namespace AI.GhostAI
             _attackCounter += Time.deltaTime;
             if (_attackCounter >= _attackTime)
             {
-                _playerHealth.GetHit(1);
                 if (_playerHealth.curHealth <= 0)
                 {
                     ClearData("target");
@@ -38,6 +46,9 @@ namespace AI.GhostAI
                 }
                 else
                 {
+                    GameObject ghost = Pooler.instance.Pop(_attackKey);
+                    ghost.transform.position = target.position;
+                    ghost.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage);
                     _attackCounter = 0f;
                 }
             }

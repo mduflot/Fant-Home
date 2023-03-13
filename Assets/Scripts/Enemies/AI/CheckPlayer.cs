@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BehaviorTree;
 using Unity.Mathematics;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace AI
         private Transform _transform;
         private Animator _animator;
         private Ghost _ghostComponent;
-        private GameObject[] _players;
+        private GameObject[] _playersArray;
+        private List<GameObject> _players;
 
         public CheckPlayer(Transform transform)
         {
@@ -21,19 +23,25 @@ namespace AI
 
         public override NodeState Evaluate()
         {
-            _players = GameObject.FindGameObjectsWithTag("Player");
+            _playersArray = GameObject.FindGameObjectsWithTag("Player");
+            _players = _playersArray.ToList();
             Transform target;
 
             object t = GetData("target");
             if (t == null)
             {
-                if (_players.Length < 1)
+                foreach (var player in _players.Where(player => player.GetComponent<PlayerHealth>().curHealth <= 0))
+                {
+                    _players.Remove(player);
+                }
+                
+                if (_players.Count < 1)
                 {
                     ClearData("target");
                     _state = NodeState.FAILURE;
                     return _state;
                 }
-                
+
                 float currentDistance = math.sqrt(math.lengthsq(_transform.position - _players[0].transform.position));
                 target = _players[0].transform;
 

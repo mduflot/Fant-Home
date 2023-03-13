@@ -29,6 +29,10 @@ public class Ghost : MonoBehaviour, IEnemy
 
     private bool _isVulnerable;
 
+    private Coroutine StunCO;
+    private Coroutine VeilCO;
+    private Coroutine RegenCO;
+
     private void Start()
     {
         gameObject.name = _name;
@@ -53,26 +57,28 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeVeil(float damageVeil)
     {
-        if (_veil <= 0)
+        if (_isVulnerable)
         {
-            StopCoroutine(VeilCD());
-            StopCoroutine(StunDuration());
-            StartCoroutine(VeilCD());
-            StartCoroutine(StunDuration());
+            IsStun = true;
+            if (VeilCO != null) StopCoroutine(VeilCO);
+            if (RegenCO != null) StopCoroutine(RegenCO);
+            if (StunCO != null) StopCoroutine(StunCO);
+            VeilCO = StartCoroutine(VeilCD());
+            StunCO = StartCoroutine(StunDuration());
             return;
         }
         _veil -= damageVeil;
         StopCoroutine(RegenVeil());
-        if (_veil <= 0)
-        {
-            _isVulnerable = true;
-            StartCoroutine(StunDuration());
-        }
+        
+        if (!(_veil <= 0)) return;
+        IsStun = true;
+        _isVulnerable = true;
+        VeilCO = StartCoroutine(VeilCD());
+        StunCO = StartCoroutine(StunDuration());
     }
 
     private IEnumerator StunDuration()
     {
-        IsStun = true;
         _meshRenderer.material = _stunMaterial;
         yield return new WaitForSeconds(_durationStun);
         IsStun = false;
@@ -82,7 +88,7 @@ public class Ghost : MonoBehaviour, IEnemy
     private IEnumerator VeilCD()
     {
         yield return new WaitForSeconds(_regenVeilCD);
-        StartCoroutine(RegenVeil());
+        RegenCO = StartCoroutine(RegenVeil());
     }
 
     private IEnumerator RegenVeil()

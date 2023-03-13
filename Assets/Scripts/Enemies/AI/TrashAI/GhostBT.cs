@@ -15,14 +15,14 @@ namespace AI.GhostAI
         protected override Node SetupTree()
         {
             _ghostStatsSO = GetComponent<Ghost>()._ghostSO;
-            
             Node root = new Selector(new List<Node>
             {
                 new CheckStun(transform),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform, _ghostStatsSO.AttackRange),
-                    new TaskAttack(transform, _ghostStatsSO.AttackCD),
+                    new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackCD,
+                        _ghostStatsSO.AttackRadius, _ghostStatsSO.AttackKey),
                 }),
                 new Sequence(new List<Node>
                 {
