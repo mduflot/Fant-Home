@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108505e4fd0f45d5863394f50ab0d9ea, type: 3}
   m_Name: ChainGun
   m_EditorClassIdentifier: 
-  bulletSpeed: 50
-  reloadTime: 1
+  bulletSpeed: 25
+  reloadTime: 0.05
+  bulletSpread: 22.1
   key: 0
   type: 0

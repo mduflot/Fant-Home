@@ -35,7 +35,7 @@ public class PlayerSpawnManager : MonoBehaviour
         
         targetGroup.AddMember(playerInput.transform, 1,2);
         
-        playerInput.gameObject.GetComponent<MeshRenderer>().material.color = colors[playerInput.playerIndex];
+        playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material.color = colors[playerInput.playerIndex];
         
         playerInput.transform.position = spawnLocations[playerInput.playerIndex].position;
         

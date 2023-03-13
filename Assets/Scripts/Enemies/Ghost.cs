@@ -37,7 +37,6 @@ public class Ghost : MonoBehaviour, IEnemy
     {
         if (collision.gameObject.CompareTag("Bullet") && _isVulnerable)
         {
-            Pooler.instance.Depop(collision.gameObject.GetComponent<Bullet>().key, collision.gameObject);
             TakeDamage(collision.gameObject.GetComponent<Bullet>().Damage);
             StopCoroutine(VeilCD());
             if (_health > 0) StartCoroutine(VeilCD());

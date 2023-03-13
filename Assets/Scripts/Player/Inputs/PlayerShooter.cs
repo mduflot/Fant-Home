@@ -14,6 +14,7 @@ namespace Entities
         private string _bulletKey;
         private bool _shootOrder;
         private float _lastShootTime;
+        private float _bulletSpread;
 
         private void Start()
         {
@@ -24,6 +25,7 @@ namespace Entities
         {
             _bulletSpeed = weapon.bulletSpeed;
             _reloadTime = weapon.reloadTime;
+            _bulletSpread = weapon.bulletSpread;
             _bulletKey = weapon.key.ToString();
         }
 
@@ -42,7 +44,7 @@ namespace Entities
             Shoot();
         }
 
-        private void OnFire()
+        public void Fire()
         {
             if (!_triggerShoot) return;
             _shootOrder = !_shootOrder;
@@ -61,12 +63,15 @@ namespace Entities
         // ReSharper disable Unity.PerformanceAnalysis
         private void Shoot()
         {
+            var randomEuler = transform.eulerAngles;
+            randomEuler.y += Random.Range(0.0f, _bulletSpread);
+            
             _bullet = Pooler.instance.Pop(_bulletKey);
             _bullet.GetComponent<Bullet>().speed = _bulletSpeed;
             _bullet.GetComponent<Bullet>().key = _bulletKey;
             _bullet.GetComponent<Bullet>().StartTimer();
-            _bullet.transform.rotation = transform.rotation;
-            _bullet.transform.position = transform.position + transform.forward;
+            _bullet.transform.eulerAngles = randomEuler;
+            _bullet.transform.position = transform.position;
         }
     }
 }

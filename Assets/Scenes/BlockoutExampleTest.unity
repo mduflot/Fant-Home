@@ -1449,6 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 1881932195}
   doors:
@@ -4420,6 +4421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 9190829}
   doors:
@@ -10032,6 +10034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 235213275}
   - {fileID: 334478204}
@@ -11846,22 +11849,30 @@ PrefabInstance:
     - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: PlayerGO
       value: 
-      objectReference: {fileID: 431617770969380398, guid: 1260109a4e5b5114e98163de34ef60f2, type: 3}
+      objectReference: {fileID: 7367198177605583761, guid: b566adb69db1eef4abff7088519323c4, type: 3}
     - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: initialRoom
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 7367198177605583761, guid: b566adb69db1eef4abff7088519323c4, type: 3}
     - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SpawnPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 792267964508819869, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 24.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267964508819869, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20.42
       objectReference: {fileID: 0}
     - target: {fileID: 792267964994707142, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 7.6
       objectReference: {fileID: 0}
     - target: {fileID: 792267964994707142, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11869,7 +11880,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792267964994707142, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -14.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267965159353598, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.402507
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267965159353598, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.353471
       objectReference: {fileID: 0}
     - target: {fileID: 792267965805869046, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11882,6 +11901,14 @@ PrefabInstance:
     - target: {fileID: 792267965805869046, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.z
       value: -26.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267966075636371, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.402507
+      objectReference: {fileID: 0}
+    - target: {fileID: 792267966075636371, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.353471
       objectReference: {fileID: 0}
     - target: {fileID: 3805329492427995590, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_Name
@@ -12831,6 +12858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 141730972}
   doors:
@@ -14416,6 +14444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 1964813969}
   - {fileID: 1127588166}
@@ -22770,6 +22799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 1643515034}
   doors:
@@ -25235,6 +25265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
+  index: 0
   fog:
   - {fileID: 0}
   doors:

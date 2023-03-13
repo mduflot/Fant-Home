@@ -48,7 +48,7 @@ public class FlashLight : MonoBehaviour
         
     }
 
-    private void OnLight()
+    public void Light()
     {
         isActive = !isActive;
         flashLightGO.SetActive(isActive);
