@@ -61,10 +61,8 @@ public class Ghost : MonoBehaviour, IEnemy
         }
         _veil -= damageVeil;
         StopCoroutine(RegenVeil());
-        Debug.Log($"Veil took: -{damageVeil} damage", gameObject);
         if (_veil <= 0)
         {
-            Debug.Log($"Veil is removed", gameObject);
             IsStun = true;
             _isVulnerable = true;
             StartCoroutine(StunDuration());
@@ -82,7 +80,6 @@ public class Ghost : MonoBehaviour, IEnemy
     private IEnumerator VeilCD()
     {
         yield return new WaitForSeconds(_regenVeilCD);
-        Debug.Log("Start regenerate veil", gameObject);
         StartCoroutine(RegenVeil());
     }
 
@@ -94,7 +91,6 @@ public class Ghost : MonoBehaviour, IEnemy
             _veil += _regenVeilPoints;
             _meshRenderer.material = _veilMaterial;
             _isVulnerable = false;
-            Debug.Log($"Veil took: +{_regenVeilPoints} veil points", gameObject);
         }
     }
 
@@ -102,11 +98,14 @@ public class Ghost : MonoBehaviour, IEnemy
     {
         if (_health <= 0) return;
         _health -= damage;
-        Debug.Log($"Ghost took: -{damage} damage", gameObject);
         if (_health <= 0)
         {
-            Debug.Log($"Ghost is dead", gameObject);
             Pooler.instance.Depop("Ghost", gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 5);
     }
 }

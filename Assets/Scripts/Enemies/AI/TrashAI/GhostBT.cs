@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using BehaviorTree;
 using Scriptables;
+using UnityEngine;
+using UnityEngine.Serialization;
 using Tree = BehaviorTree.Tree;
 
 namespace AI.GhostAI
 {
     public class GhostBT : Tree
     {
+        [SerializeField] private LayerMask _enemiesMask;
+        
         public static float Speed;
         public static float AttackRange;
         public static float AttackTime;
@@ -26,12 +30,12 @@ namespace AI.GhostAI
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform),
-                    new TaskAttack(transform, AttackTime),
+                    new TaskAttack(transform),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayer(transform),
-                    new TaskGoToTarget(transform),
+                    new TaskGoToTarget(transform, _enemiesMask),
                 })
             });
 

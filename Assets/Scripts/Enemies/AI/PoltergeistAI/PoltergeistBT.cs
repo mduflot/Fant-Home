@@ -14,6 +14,8 @@ namespace AI.PoltergeistAI
         [SerializeField] private float _fovRange = 6f;
         [SerializeField] private float _attackRange = 4f;
         [SerializeField] private float _attackTime = 2f;
+
+        [SerializeField] private LayerMask _enemiesMask;
         
         public static float Speed;
         public static float FOVRange;
@@ -30,12 +32,12 @@ namespace AI.PoltergeistAI
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform),
-                    new TaskAttack(transform, _attackTime),
+                    new TaskAttack(transform),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInFOVRange(transform),
-                    new TaskGoToTarget(transform),
+                    new TaskGoToTarget(transform, _enemiesMask),
                 }),
                 new TaskPatrol(transform, Waypoints),
             });
