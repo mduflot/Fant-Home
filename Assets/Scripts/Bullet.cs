@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed;
-
+    public float Damage;
     public string key;
-    // Update is called once per frame
     
     public void StartTimer()
     {
@@ -23,6 +19,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        speed = 0f;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Pooler.instance.Depop("Bullet", gameObject);
+        }
     }
 }
