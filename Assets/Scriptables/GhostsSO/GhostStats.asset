@@ -15,12 +15,12 @@ MonoBehaviour:
   MaxHealth: 3
   MaxVeil: 1
   VeilRegen: 1
-  VeilRegenCD: 3
-  MoveSpeed: 3
-  StunDuration: 0.5
+  VeilRegenCD: 6
+  MoveSpeed: 2
+  StunDuration: 1.5
   AttackDamage: 1
   AttackRange: 6
-  AttackCD: 2
+  AttackCD: 3
   InteractionRange: 6
   InteractionCD: 6
   Key: 0
