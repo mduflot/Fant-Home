@@ -24506,7 +24506,7 @@ GameObject:
   - component: {fileID: 7524734916682919545}
   - component: {fileID: 7524734916682919542}
   m_Layer: 0
-  m_Name: VFX_RocketLaunch
+  m_Name: VFX_BigBerthaLaunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
