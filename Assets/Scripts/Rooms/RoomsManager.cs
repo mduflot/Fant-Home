@@ -17,7 +17,7 @@ public class RoomsManager : MonoBehaviour
         Instance = this;
 
         rooms = FindObjectsOfType<Room>();
-        Debug.Log(rooms.Length + " room(s) found.");
+        Debug.Log(rooms.Length + " room(s) found. :)");
 
         if (!waveTool) waveTool = FindObjectOfType<WaveTool>();
         waveTool.NewWave += TriggerWave;
