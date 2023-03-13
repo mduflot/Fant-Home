@@ -9,7 +9,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class FlashLight : MonoBehaviour
 {
-    public FlashLightSO stats;
+    [SerializeField] private FlashLightSO stats;
+    public FlashLightSO GetFlashLight => stats;
+    public bool gunHaveLight;
     
     [SerializeField] private GameObject flashLightGO;
     [SerializeField] private bool isActive;
@@ -23,6 +25,7 @@ public class FlashLight : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if(!isActive) return;
         switch (stats.shape)
         {
             case FlashLightSO.LightShape.BOX:
@@ -38,8 +41,9 @@ public class FlashLight : MonoBehaviour
                 Vector3 leftRayDirection = leftRayRot * transform.forward;
                 Vector3 rightRayDirection = rightRayRot * transform.forward;
                 Gizmos.color = Color.green;
-                Gizmos.DrawRay( transform.position, leftRayDirection * stats.range );
-                Gizmos.DrawRay( transform.position, rightRayDirection * stats.range );
+                Gizmos.DrawRay( transform.position, leftRayDirection * stats.range * 2 );
+                Gizmos.DrawRay( transform.position, rightRayDirection * stats.range * 2 );
+                //Gizmos.DrawWireSphere(transform.position, stats.range * 2);
                 
                 break;
             default:
@@ -50,11 +54,23 @@ public class FlashLight : MonoBehaviour
 
     private void OnLight()
     {
-        isActive = !isActive;
-        flashLightGO.SetActive(isActive);
+        if (!gunHaveLight) return;
+        TurnOn(true);
+    }
+
+    private void OnLightRelease()
+    {
+        if (!gunHaveLight) return;
+        TurnOn(false);
+    }
+
+    private void TurnOn(bool on)
+    {
+        isActive = on;
+        flashLightGO.SetActive(on);
         
         if(curLoop != null) StopCoroutine(curLoop);
-        curLoop = StartCoroutine(DamageTicksLoop());
+        if(on) curLoop = StartCoroutine(DamageTicksLoop());
     }
 
     private IEnumerator DamageTicksLoop()
@@ -82,8 +98,6 @@ public class FlashLight : MonoBehaviour
     {
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, stats.range, transform.forward, stats.range,
             enemiesMask);
-
-        
         
         if (hits.Length > 0)
         {
@@ -113,7 +127,7 @@ public class FlashLight : MonoBehaviour
         }
     }
 
-    private bool IsVisible(Transform trans)
+    private bool EnemyIsVisible(Transform trans)
     {
         RaycastHit hit = new RaycastHit();
         if (Physics.Linecast(transform.position, trans.position, out hit, obstaclesMask))
@@ -127,6 +141,13 @@ public class FlashLight : MonoBehaviour
     public void ChangeLight(FlashLightSO newLight)
     {
         stats = newLight;
+        TurnOn(false);
+    }
+
+    public void SetEquip(bool enable, FlashLightSO newLight)
+    {
+        gunHaveLight = enable;
+        ChangeLight(newLight);
     }
     
 

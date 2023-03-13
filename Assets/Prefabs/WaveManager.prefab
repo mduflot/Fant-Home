@@ -48,7 +48,12 @@ MonoBehaviour:
   waveName: Wave 1
   waves:
   - waveNumber: 0
-    spawnTime: 10
+    spawnTime: 0
     enemies:
     - myType: 0
-      number: 10
+      number: 3
+  - waveNumber: 0
+    spawnTime: 25
+    enemies:
+    - myType: 0
+      number: 7

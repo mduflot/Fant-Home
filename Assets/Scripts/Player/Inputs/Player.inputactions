@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "b71158c9-9544-4729-b7d5-97caa8a3184d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Light",
                     "type": "Button",
                     "id": "8291ffce-af47-4ece-a74d-b6d7a9278cc8",
@@ -42,12 +51,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "LightRelease",
                     "type": "Button",
-                    "id": "b71158c9-9544-4729-b7d5-97caa8a3184d",
+                    "id": "886fc249-24ba-4479-bd39-8d0d2f5c9cef",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -153,23 +162,34 @@
                 },
                 {
                     "name": "",
-                    "id": "0b4f766a-cf0b-4ab1-843a-ea0a7b6d4d9b",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Light",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a68d5507-3f50-4efe-94fe-d24372b751ec",
                     "path": "<XInputController>/buttonWest",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Controller",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d01fbc9-22da-45e5-8406-bd9120b90704",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "LightRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b4f766a-cf0b-4ab1-843a-ea0a7b6d4d9b",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Light",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

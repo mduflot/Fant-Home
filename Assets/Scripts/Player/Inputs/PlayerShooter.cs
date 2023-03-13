@@ -6,7 +6,9 @@ namespace Entities
     public class PlayerShooter : MonoBehaviour
     {
         [SerializeField] private WeaponsSO weapon;
+        public WeaponsSO GetCurWeapon => weapon;
         [SerializeField] private bool _triggerShoot;
+        [SerializeField] private FlashLight flashLight;
 
         private GameObject _bullet;
         private float _bulletSpeed;
@@ -26,6 +28,15 @@ namespace Entities
             _bulletSpeed = weapon.bulletSpeed;
             _reloadTime = weapon.reloadTime;
             _bulletKey = weapon.key.ToString();
+            if (weapon.flashLight)
+            {
+                flashLight.SetEquip(true, weapon.flashLight);
+            }
+            else
+            {
+                flashLight.SetEquip(false, null);
+            }
+            
         }
 
         private void OnRotate(InputValue value)

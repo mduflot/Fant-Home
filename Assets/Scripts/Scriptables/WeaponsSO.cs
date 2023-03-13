@@ -21,4 +21,5 @@ public class WeaponsSO: EquipmentSO
     public float reloadTime;
     public BulletKeys key;
     public BulletTypes type;
+    public FlashLightSO flashLight;
 }
