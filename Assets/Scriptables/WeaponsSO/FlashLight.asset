@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5311e76af5def44912cb9b700f9aa1, type: 3}
   m_Name: FlashLight
   m_EditorClassIdentifier: 
+  equipType: 1
   shape: 1
-  angle: 52
-  width: 0.54
-  range: 5.8
+  angle: 46
+  width: 0.84
+  range: 3.6
   tickRate: 0.25
   damagesPerTick: 2
   energyLostPerTick: 3

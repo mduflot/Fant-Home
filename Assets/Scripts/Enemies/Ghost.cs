@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour, IEnemy
 {
+    [ReadOnly] public Room CurRoom;
+    
     [Header("Stats")]
     public GhostStatsSO _ghostSO;
     [SerializeField] private string _name = "Ghost";

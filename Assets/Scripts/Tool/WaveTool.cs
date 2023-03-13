@@ -21,6 +21,7 @@ public class WaveTool : MonoBehaviour
         SpawnWave(waves[index]);
     }
 
+    [ContextMenu("NextWave")]
     // ReSharper disable Unity.PerformanceAnalysis
     private void GoToNextWave()
     {

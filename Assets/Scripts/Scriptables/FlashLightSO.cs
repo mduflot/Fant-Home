@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FlashLight", menuName = "Scriptables/FlashLight", order = 1)]
-public class FlashLightSO : ScriptableObject
+public class FlashLightSO : EquipmentSO
 {
+    
+    
     public enum LightShape
     {
         BOX,
@@ -25,4 +28,5 @@ public class FlashLightSO : ScriptableObject
     public float damagesPerTick;
     public float energyLostPerTick;
 
+    
 }

@@ -8,7 +8,7 @@ public class Interuptor : Interactible
     [SerializeField] private Door[] linkedDoor = Array.Empty<Door>();
     
     [ContextMenu("Interact")]
-    public override void Interact()
+    public override void Interact(PlayerInteract player)
     {
         foreach (var door in linkedDoor)
         {

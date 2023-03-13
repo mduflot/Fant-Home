@@ -16,10 +16,10 @@ MonoBehaviour:
   MaxVeil: 1
   VeilRegen: 1
   VeilRegenCD: 5
-  MoveSpeed: 4
+  MoveSpeed: 2.5
   StunDuration: 1.5
   AttackDamage: 1
-  AttackRange: 20
+  AttackRange: 3
   AttackCD: 3.5
   InteractionRange: 6
   InteractionCD: 6

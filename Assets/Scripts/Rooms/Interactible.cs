@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class Interactible : MonoBehaviour
 {
     private List<PlayerInteract> curPlayers = new List<PlayerInteract>();
-    public virtual void Interact() { }
+    public virtual void Interact(PlayerInteract player) { }
 
     private void OnTriggerEnter(Collider other)
     {
