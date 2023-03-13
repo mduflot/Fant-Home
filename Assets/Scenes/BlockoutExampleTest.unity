@@ -1353,6 +1353,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1806212055539253369, guid: 12545adfb1f396a4e8c807d1e84ce0de, type: 3}
   m_PrefabInstance: {fileID: 100133450}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &103172797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 792267964508819869, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+  m_PrefabInstance: {fileID: 843401210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &107260874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6110,6 +6115,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5828242625835728931, guid: 161398682f9e7af42811556399aac32c, type: 3}
   m_PrefabInstance: {fileID: 403038646}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &409781668 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 792267964994707142, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+  m_PrefabInstance: {fileID: 843401210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &421837185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6936,6 +6946,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1806212055539253369, guid: 12545adfb1f396a4e8c807d1e84ce0de, type: 3}
   m_PrefabInstance: {fileID: 466832084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &472060046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 792267964549442022, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+  m_PrefabInstance: {fileID: 843401210}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &472308651
 PrefabInstance:
@@ -11853,7 +11868,23 @@ PrefabInstance:
     - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: initialRoom
       value: 
+      objectReference: {fileID: 114956009}
+    - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: spawnLocations.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: spawnLocations.Array.data[1]
+      value: 
+      objectReference: {fileID: 409781668}
+    - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: spawnLocations.Array.data[2]
+      value: 
+      objectReference: {fileID: 472060046}
+    - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: spawnLocations.Array.data[3]
+      value: 
+      objectReference: {fileID: 103172797}
     - target: {fileID: 792267964056597757, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_PlayerPrefab
       value: 

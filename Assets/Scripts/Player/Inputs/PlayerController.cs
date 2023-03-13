@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Entities;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,18 @@ public class PlayerController : MonoBehaviour
         _shooter = head.GetComponent<PlayerShooter>();
         _flashLight = body.GetComponent<FlashLight>();
         _rb = GetComponent<Rigidbody>();
+
+        StartCoroutine(Interpolation());
+    }
+
+    private IEnumerator Interpolation()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        _rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     private void OnMove(InputValue value)
@@ -49,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DoMove();
+        DoMove(); 
     }
 
     private void Update()

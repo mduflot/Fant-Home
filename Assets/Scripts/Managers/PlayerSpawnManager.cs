@@ -18,13 +18,11 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayersManager.instance != null)
+        if (PlayersManager.instance == null) return;
+        for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
         {
-            for (int i = 0; i < PlayersManager.instance.GetPlayerCount; i++)
-            {
-                PlayerInput.Instantiate(PlayerGO, controlScheme: "Controller", pairWithDevice: PlayersManager.instance.devices[i]);
-                Debug.Log("Player " + i + " spawned.");
-            }
+            PlayerInput.Instantiate(PlayerGO, controlScheme: "Controller", pairWithDevice: PlayersManager.instance.devices[i]);
+            Debug.Log("Player " + i + " spawned.");
         }
     }
 
@@ -34,11 +32,14 @@ public class PlayerSpawnManager : MonoBehaviour
         Debug.Log("PlayerInput ID: " + playerInput.playerIndex);
         
         targetGroup.AddMember(playerInput.transform, 1,2);
-        
-        playerInput.gameObject.GetComponentInChildren<MeshRenderer>().material.color = colors[playerInput.playerIndex];
-        
-        playerInput.transform.position = spawnLocations[playerInput.playerIndex].position;
-        
+
+        foreach (var meshRenderer in playerInput.gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            meshRenderer.material.color = colors[playerInput.playerIndex];
+        }
+
+        playerInput.gameObject.transform.position = spawnLocations[playerInput.playerIndex].position;
+
         playerInput.gameObject.GetComponent<Player>().curRoom = initialRoom;
 
         playerInput.gameObject.GetComponent<PlayerHealth>().curHealth = stats.maxHealth;
