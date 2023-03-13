@@ -20,7 +20,9 @@ MonoBehaviour:
   StunDuration: 1.5
   AttackDamage: 1
   AttackRange: 3
+  AttackRadius: 0
   AttackCD: 3.5
   InteractionRange: 6
   InteractionCD: 6
+  AttackKey: TrashAttack
   Key: 0

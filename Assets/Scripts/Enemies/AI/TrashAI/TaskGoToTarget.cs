@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using BehaviorTree;
-using TMPro;
+﻿using BehaviorTree;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AI.GhostAI
@@ -13,10 +9,13 @@ namespace AI.GhostAI
         private Transform _transform;
         private LayerMask _enemiesMask;
 
-        public TaskGoToTarget(Transform transform, LayerMask enemiesMask)
+        private float _speed;
+
+        public TaskGoToTarget(Transform transform, LayerMask enemiesMask, float speed)
         {
             _transform = transform;
             _enemiesMask = enemiesMask;
+            _speed = speed;
         }
 
         public override NodeState Evaluate()
@@ -39,7 +38,7 @@ namespace AI.GhostAI
                 if (Vector3.Distance(_transform.position, target.position) > 0.01f)
                 {
                     _transform.position = Vector3.MoveTowards(
-                        _transform.position, target.position, GhostBT.Speed * Time.deltaTime);
+                        _transform.position, target.position, _speed * Time.deltaTime);
                     _transform.LookAt(target.position);
                 }
 
@@ -48,14 +47,13 @@ namespace AI.GhostAI
             }
 
             int currentIndex = 0;
-            float currentDistance;
             float previousDistance = 0;
 
             for (var index = 0; index < hits.Length; index++)
             {
                 var hit = hits[index];
                 if (hits[index].transform == _transform) continue;
-                currentDistance = math.sqrt(math.lengthsq(_transform.position - hit.transform.position));
+                float currentDistance = math.sqrt(math.lengthsq(_transform.position - hit.transform.position));
                 if (currentDistance < previousDistance || previousDistance == 0)
                 {
                     previousDistance = currentDistance;
@@ -70,7 +68,7 @@ namespace AI.GhostAI
                 _transform.position = Vector3.MoveTowards(
                     _transform.position,
                     target.position + ((transformPos - hits[currentIndex].transform.position).normalized * 2),
-                    GhostBT.Speed * Time.deltaTime);
+                    _speed * Time.deltaTime);
                 _transform.LookAt(target.position);
             }
 
