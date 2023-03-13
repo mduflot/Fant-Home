@@ -1,17 +1,19 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] private bool locked;
     public bool IsLocked => locked;
-
+    public int GetIndex => index;
+    public List<GameObject> Floors;
+    
+    [SerializeField] private bool locked;
+    [SerializeField] private int index;
     [SerializeField] private FogOfWarTrigger[] fog;
     [SerializeField] private Door[] doors;
     [SerializeField] private EntryDetector[] entries;
-    private List<Player> curPlayersInRoom = new List<Player>();
+
+    private List<Player> curPlayersInRoom = new();
 
     private void Awake()
     {
@@ -28,23 +30,24 @@ public class Room : MonoBehaviour
     }
 
     [ContextMenu("UnlockDoor")]
-    public void UnlockDoor()
+    public void UnlockRoom()
     {
         locked = false;
         foreach (var door in doors)
         {
             door.locked = false;
+            door.ToggleDoor(true);
         }
     }
 
     public void PlayerEnter(Player player)
     {
         if (player.curRoom) player.curRoom.PlayerExit(player);
-        
+
         player.curRoom = this;
-        
-        if(!curPlayersInRoom.Contains(player)) curPlayersInRoom.Add(player);
-        
+
+        if (!curPlayersInRoom.Contains(player)) curPlayersInRoom.Add(player);
+
         EnableFog(true);
     }
 
@@ -56,15 +59,14 @@ public class Room : MonoBehaviour
 
     private void CheckFogState()
     {
-        if(curPlayersInRoom.Count > 0) EnableFog(true);
-        else EnableFog(false);
+        EnableFog(curPlayersInRoom.Count > 0);
     }
 
     private void EnableFog(bool enable)
     {
         foreach (var f in fog)
         {
-            if(enable) f.DisplayRoom();
+            if (enable) f.DisplayRoom();
             else f.HideRoom();
         }
     }

@@ -7,7 +7,8 @@ using UnityEngine;
 public class WaveTool : MonoBehaviour
 {
     public GhostSpawner spawner;
-    
+    public Action<int> NewWave;
+
     public string waveName = "Wave";
     public Wave[] waves = new Wave[3];
 
@@ -20,6 +21,7 @@ public class WaveTool : MonoBehaviour
         SpawnWave(waves[index]);
     }
 
+    [ContextMenu("NextWave")]
     // ReSharper disable Unity.PerformanceAnalysis
     private void GoToNextWave()
     {
@@ -31,6 +33,7 @@ public class WaveTool : MonoBehaviour
     private void SpawnWave(Wave wave)
     {
         if (wave.enemies.Length == 0) return;
+        NewWave?.Invoke(index);
         foreach (var enemy in wave.enemies)
         {
             spawner.MakeWave(enemy.number, enemy.myType.ToString());

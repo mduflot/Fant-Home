@@ -1,26 +1,28 @@
 ﻿using System.Collections.Generic;
 using BehaviorTree;
+using Scriptables;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Tree = BehaviorTree.Tree;
 
 namespace AI.GhostAI
 {
     public class GhostBT : Tree
     {
-        [SerializeField] float _speed = 2f;
-        [SerializeField] private float _fovRange = 6f;
-        [SerializeField] private float _attackRange = 4f;
-        [SerializeField] private float _attackTime = 2f;
-
+        [SerializeField] private LayerMask _enemiesMask;
+        
         public static float Speed;
-        public static float FOVRange;
         public static float AttackRange;
+        public static float AttackTime;
+
+        private GhostStatsSO _ghostStatsSO;
 
         protected override Node SetupTree()
         {
-            Speed = _speed;
-            FOVRange = _fovRange;
-            AttackRange = _attackRange;
+            _ghostStatsSO = GetComponent<Ghost>()._ghostSO;
+            Speed = _ghostStatsSO.MoveSpeed;
+            AttackRange = _ghostStatsSO.AttackRange;
+            AttackTime = _ghostStatsSO.AttackCD;
             
             Node root = new Selector(new List<Node>
             {
@@ -28,12 +30,12 @@ namespace AI.GhostAI
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform),
-                    new TaskAttack(transform, _attackTime),
+                    new TaskAttack(transform),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayer(transform),
-                    new TaskGoToTarget(transform),
+                    new TaskGoToTarget(transform, _enemiesMask),
                 })
             });
 

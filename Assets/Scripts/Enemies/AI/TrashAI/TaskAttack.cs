@@ -11,7 +11,7 @@ namespace AI.GhostAI
         private float _attackTime = 2f;
         private float _attackCounter;
 
-        public TaskAttack(Transform transform, float attackTime)
+        public TaskAttack(Transform transform)
         {
             _animator = transform.GetComponent<Animator>();
         }
@@ -26,7 +26,7 @@ namespace AI.GhostAI
             }
 
             _attackCounter += Time.deltaTime;
-            if (_attackCounter >= _attackTime)
+            if (_attackCounter >= GhostBT.AttackTime)
             {
                 _playerHealth.GetHit(1);
                 if (_playerHealth.curHealth >= 0)

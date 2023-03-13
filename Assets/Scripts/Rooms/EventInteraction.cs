@@ -7,7 +7,7 @@ public class EventInteraction : Interactible
 {
     [SerializeField] private UnityEvent interaction;
     
-    public override void Interact()
+    public override void Interact(PlayerInteract player)
     {
         interaction?.Invoke();
     }

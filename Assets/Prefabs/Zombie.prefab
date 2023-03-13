@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3363399139956902893}
   - component: {fileID: 636653961948503978}
   - component: {fileID: 8732067773027518091}
-  - component: {fileID: 4650898050359308851}
   - component: {fileID: 3969293103871739000}
+  - component: {fileID: 4994278785221274183}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -107,19 +107,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4650898050359308851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043481272550239876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255de4e20d39d6743a0888a8cf901749, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: {fileID: 11400000, guid: 003a2d985d1ba5e4f91e3e5964eb31a4, type: 2}
 --- !u!114 &3969293103871739000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +119,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f89b4b03be424783666c6e26327fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _fovRange: 6
-  _attackRange: 4
-  _attackTime: 2
+--- !u!114 &4994278785221274183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6043481272550239876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d103cbdd03b886c48af3e889e2f43c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ghostSO: {fileID: 11400000, guid: 003a2d985d1ba5e4f91e3e5964eb31a4, type: 2}
+  _name: Zombie
+  _vulnerableMaterial: {fileID: 0}
+  _stunMaterial: {fileID: 0}
+  _veilMaterial: {fileID: 0}
+  IsStun: 0

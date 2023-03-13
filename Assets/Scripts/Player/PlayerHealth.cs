@@ -28,10 +28,9 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     public void GetHit(int damage)
     {
-        if (curState == PlayerState.INVINCIBLE) return;
+        if (curState == PlayerState.INVINCIBLE || curHealth <= 0) return;
 
         curHealth -= damage;
-        Debug.Log("OOF - Health:" + curHealth);
         if (curHealth <= 0) Fall();
         else StartCoroutine(Invincible());
     }
@@ -45,7 +44,6 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     private void Fall()
     {
-        Debug.Log("WASTED");
         curState = PlayerState.DOWN;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;
