@@ -1,16 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class RoomsManager : MonoBehaviour
 {
+    public static RoomsManager Instance;
+
     [SerializeField] private WaveTool waveTool;
     [SerializeField] private WaveBeginInfos[] wavesUnlock;
-    private Room[] rooms;
+    [ReadOnly] public Room[] rooms;
 
     private void Awake()
     {
+        if (Instance != null && Instance != this) Destroy(gameObject);
+
+        Instance = this;
+
         rooms = FindObjectsOfType<Room>();
         Debug.Log(rooms.Length + " room(s) found.");
 
