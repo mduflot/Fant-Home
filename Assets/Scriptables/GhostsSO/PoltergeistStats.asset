@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6507401ca57d57479ce203c497e4b9e, type: 3}
   m_Name: PoltergeistStats
   m_EditorClassIdentifier: 
-  health: 0
-  damage: 0
-  speed: 0
-  key: 0
+  MaxHealth: 20
+  MaxVeil: 40
+  VeilRegen: 10
+  VeilRegenCD: 5
+  MoveSpeed: 2.5
+  StunDuration: 2
+  AttackDamage: 1
+  AttackRange: 5
+  AttackCD: 3.5
+  InteractionRange: 6
+  InteractionCD: 6
+  Key: 1
