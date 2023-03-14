@@ -15,6 +15,7 @@ public class Ghost : MonoBehaviour, IEnemy
     [SerializeField] private Material _veilMaterial;
 
     [HideInInspector] public bool IsStun;
+    [HideInInspector] public bool IsFleeing;
 
     [Header("Stats in Runtime")] 
     [ReadOnly] private float _health = 3;
@@ -77,7 +78,6 @@ public class Ghost : MonoBehaviour, IEnemy
     public void TakeVeil(float damageVeil)
     {
         _veil -= damageVeil;
-        Debug.Log($"veil: {_veil}");
         if (_veil <= 0) _isVulnerable = true;
         if (!_isVulnerable) return;
         if (!_ghostSO.AlwaysStun)
@@ -92,6 +92,7 @@ public class Ghost : MonoBehaviour, IEnemy
             IsStun = true;
         }
         if (_regenCO != null) StopCoroutine(_regenCO);
+        IsFleeing = true;
         _veil = 0;
         _veilCounter = 0;
         _meshRenderer.material = _stunMaterial;
@@ -118,6 +119,7 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             _veil += _regenVeilPoints;
             _isVulnerable = false;
+            IsFleeing = false;
             _canBeStun = false;
             _meshRenderer.material = _veilMaterial;
             yield return new WaitForSeconds(_regenVeilOverTime);
