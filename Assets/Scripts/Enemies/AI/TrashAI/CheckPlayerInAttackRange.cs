@@ -29,14 +29,15 @@ namespace AI.GhostAI
             }
 
             Transform target = (Transform)t;
-            if (Vector3.Distance(_transform.position, target.position) <= _attackRange)
+            _attackCounter += Time.deltaTime;
+            if (_attackCounter >= _attackTime)
             {
-                // _animator.SetBool("Attacking", true);
-                // _animator.SetBool("Walking", false);
-
-                _attackCounter += Time.deltaTime;
-                if (_attackCounter >= _attackTime)
+                if (Vector3.Distance(_transform.position, target.position) <= _attackRange)
                 {
+                    // _animator.SetBool("Attacking", true);
+                    // _animator.SetBool("Walking", false);
+
+
                     _state = NodeState.SUCCESS;
                     _attackCounter = 0;
                     return _state;

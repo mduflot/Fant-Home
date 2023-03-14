@@ -112,9 +112,4 @@ public class Ghost : MonoBehaviour, IEnemy
             Pooler.instance.Depop("Ghost", gameObject);
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, 5);
-    }
 }
