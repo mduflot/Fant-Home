@@ -10,19 +10,18 @@ namespace AI.GhostAI
         private Transform _lastTarget;
         private PlayerHealth _playerHealth;
         private int _damage;
-        private float _attackTime;
         private float _attackRadius;
-        private float _attackCounter;
         private string _attackKey;
+        private float _attackDelayBeforeAttack;
 
-        public TaskAttack(Transform transform, int damage, float attackTime, float attackRadius, string attackKey)
+        public TaskAttack(Transform transform, int damage, float attackRadius, string attackKey, float attackDelayBeforeAttack)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
             _damage = damage;
-            _attackTime = attackTime;
             _attackRadius = attackRadius;
             _attackKey = attackKey;
+            _attackDelayBeforeAttack = attackDelayBeforeAttack;
         }
 
         public override NodeState Evaluate()
@@ -34,22 +33,17 @@ namespace AI.GhostAI
                 _lastTarget = target;
             }
 
-            _attackCounter += Time.deltaTime;
-            if (_attackCounter >= _attackTime)
+            if (_playerHealth.curHealth <= 0)
             {
-                if (_playerHealth.curHealth <= 0)
-                {
-                    ClearData("target");
-                    // _animator.SetBool("Attacking", false);
-                    // _animator.SetBool("Walking", true);
-                }
-                else
-                {
-                    GameObject ghost = Pooler.instance.Pop(_attackKey);
-                    ghost.transform.position = target.position;
-                    ghost.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage);
-                    _attackCounter = 0f;
-                }
+                ClearData("target");
+                // _animator.SetBool("Attacking", false);
+                // _animator.SetBool("Walking", true);
+            }
+            else
+            {
+                GameObject ghost = Pooler.instance.Pop(_attackKey);
+                ghost.transform.position = target.position;
+                ghost.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage, _attackDelayBeforeAttack);
             }
 
             _state = NodeState.SUCCESS;

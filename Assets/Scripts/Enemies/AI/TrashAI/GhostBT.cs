@@ -20,14 +20,14 @@ namespace AI.GhostAI
                 new CheckStun(transform),
                 new Sequence(new List<Node>
                 {
-                    new CheckPlayerInAttackRange(transform, _ghostStatsSO.AttackRange),
-                    new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackCD,
-                        _ghostStatsSO.AttackRadius, _ghostStatsSO.AttackKey),
+                    new CheckPlayerInAttackRange(transform, _ghostStatsSO.AttackRange, _ghostStatsSO.AttackCD),
+                    new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackRadius,
+                        _ghostStatsSO.AttackKey, _ghostStatsSO.AttackDelayBeforeAttack),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayer(transform),
-                    new TaskGoToTarget(transform, _enemiesMask, _ghostStatsSO.MoveSpeed),
+                    new TaskGoToTarget(transform, _enemiesMask, _ghostStatsSO.MoveSpeed, _ghostStatsSO.AttackRange),
                 })
             });
 
