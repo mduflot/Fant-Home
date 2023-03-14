@@ -14,6 +14,7 @@ public class Interuptor : Interactible
         {
             door.ToggleDoor();
         }
+        AudioManager.Instance.PlaySFXRandom("Lever", 0.8f, 1.2f);
     }
 
     private void OnDrawGizmos()

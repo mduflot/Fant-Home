@@ -27,5 +27,6 @@ namespace Scriptables
         public int InteractionCD;
         public string AttackKey;
         public MonsterType Key;
+        public string Attack_SFX, Connect_SFX, Damage_SFX, Death_SFX;
     }   
 }

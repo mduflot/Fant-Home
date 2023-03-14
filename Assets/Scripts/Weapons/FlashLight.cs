@@ -56,12 +56,14 @@ public class FlashLight : MonoBehaviour
     {
         if (!gunHaveLight) return;
         TurnOn(true);
+        AudioManager.Instance.PlaySFXRandom("Player_FlashlightOn", 0.8f, 1.2f);
     }
 
     public void LightRelease()
     {
         if (!gunHaveLight) return;
         TurnOn(false);
+        AudioManager.Instance.PlaySFXRandom("Player_FlashlightOFF", 0.8f, 1.2f);
     }
 
     private void TurnOn(bool on)

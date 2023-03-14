@@ -24,6 +24,14 @@ public class Door : MonoBehaviour
         
         if(DoorGO) DoorGO.SetActive(!opened);
         else transform.GetChild(0).gameObject.SetActive(!opened);
+        if (opened)
+        {
+            AudioManager.Instance.PlaySFXRandom("Door_Open", 0.8f, 1.2f);
+        } else
+        {
+
+            AudioManager.Instance.PlaySFXRandom("Door_Close", 0.8f, 1.2f);
+        }
     }
 
     public void CheckIfLocked()
