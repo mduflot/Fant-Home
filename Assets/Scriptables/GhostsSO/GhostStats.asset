@@ -20,7 +20,7 @@ MonoBehaviour:
   StunDuration: 1.5
   AttackDamage: 1
   AttackRange: 3
-  AttackRadius: 3
+  AttackRadius: 1.5
   AttackCD: 3.5
   AttackDelayBeforeAttack: 2
   InteractionRange: 6

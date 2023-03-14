@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -39,5 +40,10 @@ public class TrashAttack : MonoBehaviour
         _indicator.SetActive(true);
         yield return new WaitForSeconds(_attackDelayBeforeAttack);
         GetComponent<ParticleSystem>().Play();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, _radius);
     }
 }
