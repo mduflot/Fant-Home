@@ -457,6 +457,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 27770906297155217, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[0].number
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 27770906297155217, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: waves.Array.data[3].enemies.Array.data[0].number
       value: 10
       objectReference: {fileID: 0}
@@ -472,6 +476,10 @@ PrefabInstance:
       propertyPath: waves.Array.data[6].enemies.Array.data[0].number
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: initialRoom
+      value: 
+      objectReference: {fileID: 770138420}
     - target: {fileID: 792267966075636371, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2918124
