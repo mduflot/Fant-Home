@@ -3,6 +3,7 @@ using System.Linq;
 using BehaviorTree;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace AI
 {
@@ -77,9 +78,27 @@ namespace AI
 
                 if (playersInSameRoom.Count < 1)
                 {
+                    if (_players.Count == 1)
+                    {
+                        Parent.Parent.SetData("target", target);
+                        _state = NodeState.SUCCESS;
+                        return _state;
+                    }
+
+                    var random = Random.Range(0f, 1.01f);
+                    if (random < 0.5f)
+                    {
+                        Parent.Parent.SetData("target", target);
+                        _state = NodeState.SUCCESS;
+                        return _state;
+                    }
+
+                    var randomPlayer = Random.Range(0, _players.Count);
+                    target = _players[randomPlayer].transform;
                     Parent.Parent.SetData("target", target);
                     _state = NodeState.SUCCESS;
                     return _state;
+
                 }
                 
                 currentDistance = math.sqrt(math.lengthsq(_transform.position - playersInSameRoom[0].transform.position));
