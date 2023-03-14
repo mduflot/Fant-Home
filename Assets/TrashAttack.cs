@@ -19,20 +19,27 @@ public class TrashAttack : MonoBehaviour
         _attackDelayBeforeAttack = attackDelayBeforeAttack;
 
         StartCoroutine(PrepareSpell());
+        AudioManager.Instance.PlaySFXRandom("Ghost_Trash_Attack", 0.8f, 1.2f);
     }
 
     private void OnParticleSystemStopped()
     {
         Collider[] hitColliders = Physics.OverlapSphere(_center, _radius);
+        bool hitAPlayer = false;
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.transform.CompareTag("Player"))
             {
                 hitCollider.transform.GetComponent<PlayerHealth>().GetHit(_damage);
+                AudioManager.Instance.PlaySFXRandom("Ghost_Trash_Attack_Connect", 0.8f, 1.2f);
+                hitAPlayer = true;
             }
         }
         _indicator.SetActive(false);
         Pooler.instance.Depop("TrashAttack", gameObject);
+        if (hitAPlayer)
+            AudioManager.Instance.PlaySFXRandom("Ghost_Attack_Whiff", 0.8f, 1.2f);
+
     }
     
     private IEnumerator PrepareSpell()
