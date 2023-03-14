@@ -18,11 +18,13 @@ namespace Scriptables
         public float VeilRegenCD;
         public float MoveSpeed;
         public float StunDuration;
-        public float AttackDamage;
+        public int AttackDamage;
         public float AttackRange;
+        public float AttackRadius;
         public float AttackCD;
         public int InteractionRange;
         public int InteractionCD;
+        public string AttackKey;
         public MonsterType Key;
     }   
 }

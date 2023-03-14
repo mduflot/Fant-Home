@@ -7,11 +7,13 @@ namespace AI.GhostAI
     {
         private Transform _transform;
         private Animator _animator;
+        private float _attackRange;
 
-        public CheckPlayerInAttackRange(Transform transform)
+        public CheckPlayerInAttackRange(Transform transform, float attackRange)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
+            _attackRange = attackRange;
         }
 
         public override NodeState Evaluate()
@@ -24,7 +26,7 @@ namespace AI.GhostAI
             }
 
             Transform target = (Transform)t;
-            if (Vector3.Distance(_transform.position, target.position) <= GhostBT.AttackRange)
+            if (Vector3.Distance(_transform.position, target.position) <= _attackRange)
             {
                 // _animator.SetBool("Attacking", true);
                 // _animator.SetBool("Walking", false);
