@@ -108,7 +108,7 @@ public class FlashLight : MonoBehaviour
                 float angle = Vector3.Angle(hit.collider.gameObject.transform.position - transform.position, transform.forward);
                 if (angle < stats.angle)
                 {
-                    hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
+                    if(EnemyIsVisible(hit.transform)) hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
                 }
             }
         }
@@ -124,7 +124,7 @@ public class FlashLight : MonoBehaviour
         {
             foreach (var hit in hits)
             {
-                hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
+                if(EnemyIsVisible(hit.transform)) hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
             }
         }
     }
@@ -134,7 +134,7 @@ public class FlashLight : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         if (Physics.Linecast(transform.position, trans.position, out hit, obstaclesMask))
         {
-            return hit.collider;
+            return false;
         }
 
         return true;
