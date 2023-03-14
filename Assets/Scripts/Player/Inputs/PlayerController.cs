@@ -43,11 +43,15 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputValue value)
     {
         _moveVal = value.Get<Vector2>();
+        if (_moveVal.x is > -0.3f and < 0.3f) _moveVal.x = 0;
+        if (_moveVal.y is > -0.3f and < 0.3f) _moveVal.y = 0;
     }
 
     private void OnRotate(InputValue value)
     {
         _rotateVal = value.Get<Vector2>();
+        if (_rotateVal.x is > -0.3f and < 0.3f) _rotateVal.x = 0;
+        if (_rotateVal.y is > -0.3f and < 0.3f) _rotateVal.y = 0;
     }
 
     private void OnFire()
