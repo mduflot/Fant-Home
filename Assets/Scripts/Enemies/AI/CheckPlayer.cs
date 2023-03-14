@@ -26,12 +26,18 @@ namespace AI
         {
             _playersArray = GameObject.FindGameObjectsWithTag("Player");
             _players = _playersArray.ToList();
+            List<GameObject> _playersToRemove = new List<GameObject>();
             Transform target;
 
             object t = GetData("target");
             if (t == null)
             {
                 foreach (var player in _players.Where(player => player.GetComponent<PlayerHealth>().curHealth <= 0))
+                {
+                    _playersToRemove.Add(player);
+                }
+
+                foreach (var player in _playersToRemove)
                 {
                     _players.Remove(player);
                 }
