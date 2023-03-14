@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            sfxSource.PlayOneShot(s.clip);
+            sfxSource.PlayOneShot(s.clip, s.level);
         }
     }
 
@@ -73,7 +73,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.pitch = Random.Range(minRand, maxRand);
-            sfxSource.PlayOneShot(s.clip);
+            sfxSource.PlayOneShot(s.clip, s.level);
         }
     }
 

@@ -28,8 +28,11 @@ namespace AI.PoltergeistAI
                 GameObject ghost = Pooler.instance.Pop(_ghostKeyToSpawn.ToString());
                 ghost.transform.position = randomPosition3D;
             }
-            
+
+            AudioManager.Instance.PlaySFXRandom("Ghost_PG_Interact", 0.8f, 1.2f);
+
             return NodeState.RUNNING;
+
         }
     }
 }
