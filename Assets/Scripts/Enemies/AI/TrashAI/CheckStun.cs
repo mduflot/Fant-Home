@@ -16,7 +16,6 @@ namespace AI.GhostAI
         {
             if (_transform.GetComponent<Ghost>().IsStun)
             {
-                Debug.Log("Ghost is Stun");
                 _state = NodeState.RUNNING;
                 return _state;
             }
