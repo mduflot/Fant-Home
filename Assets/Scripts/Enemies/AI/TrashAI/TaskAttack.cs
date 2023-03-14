@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using BehaviorTree;
+﻿using BehaviorTree;
 using UnityEngine;
 
 namespace AI.GhostAI
