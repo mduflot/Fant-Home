@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-self: auto; justify-content: flex-start; align-items: center;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; flex-direction: row; min-width: 70%;">
+            <ui:Label tabindex="-1" text="Wave" display-tooltip-when-elided="true" style="flex-grow: 0;" />
+            <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="waveNumber" binding-path="waveNumber" style="flex-direction: column-reverse; flex-wrap: nowrap;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-self: center; align-items: center; flex-shrink: 0;">
+            <ui:Label tabindex="-1" text="Timer" display-tooltip-when-elided="true" style="justify-content: flex-start; align-items: center; max-width: none; min-width: 14%;" />
+            <ui:FloatField value="42,2" name="waveTimer" binding-path="spawnTime" style="flex-shrink: 0; max-width: 34%; flex-grow: 1; padding-right: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <uie:PropertyField binding-path="enemies" name="content" style="flex-shrink: 0;" />
+</ui:UXML>
