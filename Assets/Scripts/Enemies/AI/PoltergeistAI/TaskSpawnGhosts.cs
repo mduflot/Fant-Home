@@ -20,6 +20,7 @@ namespace AI.PoltergeistAI
         
         public override NodeState Evaluate()
         {
+            
             for (int i = 0; i < _numberToSpawn; i++)
             {
                 float2 randomPosition2D = UnityEngine.Random.insideUnitCircle * 4;

@@ -29,6 +29,7 @@ public class Ghost : MonoBehaviour, IEnemy
     private MeshRenderer _meshRenderer;
 
     private bool _isVulnerable;
+    private bool _canBeStun;
     private float _stunCounter;
     private float _veilCounter;
 
@@ -58,7 +59,7 @@ public class Ghost : MonoBehaviour, IEnemy
             }
         }
 
-        if (!(_veil <= 0)) return;
+        if (!_isVulnerable) return;
         _veilCounter += Time.deltaTime;
         if (!(_veilCounter >= _regenVeilCD)) return;
         _regenCO = StartCoroutine(RegenVeil());
@@ -76,16 +77,25 @@ public class Ghost : MonoBehaviour, IEnemy
     public void TakeVeil(float damageVeil)
     {
         _veil -= damageVeil;
-        if (!(_veil <= 0)) return;
-
-        _veil = 0;
+        Debug.Log($"veil: {_veil}");
+        if (_veil <= 0) _isVulnerable = true;
+        if (!_isVulnerable) return;
+        if (!_ghostSO.AlwaysStun)
+        {
+            _stunCounter = 0;
+            IsStun = true;
+        }
+        else if (!_canBeStun)
+        {
+            _canBeStun = true;
+            _stunCounter = 0;
+            IsStun = true;
+        }
         if (_regenCO != null) StopCoroutine(_regenCO);
-        AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
-        _stunCounter = 0;
+        _veil = 0;
         _veilCounter = 0;
-        IsStun = true;
-        _isVulnerable = true;
         _meshRenderer.material = _stunMaterial;
+        AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
     }
 
     public void TakeDamage(float damage)
@@ -108,6 +118,7 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             _veil += _regenVeilPoints;
             _isVulnerable = false;
+            _canBeStun = false;
             _meshRenderer.material = _veilMaterial;
             yield return new WaitForSeconds(_regenVeilOverTime);
         }

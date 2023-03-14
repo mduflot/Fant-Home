@@ -22,6 +22,7 @@ namespace AI.PoltergeistAI
 
             Node root = new Selector(new List<Node>
             {
+                new CheckStun(transform),
                 new Sequence(new List<Node>
                 {
                    new CheckCooldownSpawn(_poltergeistStatsSO.UnitMakingCD),
@@ -42,11 +43,6 @@ namespace AI.PoltergeistAI
             });
 
             return root;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, _poltergeistStatsSO.DetectionRange);
         }
     }
 }

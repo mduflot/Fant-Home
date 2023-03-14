@@ -37,7 +37,7 @@ namespace AI.GhostAI
 
             if (!isEnemy)
             {
-                if (Vector3.Distance(_transform.position, target.position) > 0.01f)
+                if (Vector3.Distance(_transform.position, target.position) > _attackRange)
                 {
                     _transform.position = Vector3.MoveTowards(
                         _transform.position, target.position, _speed * Time.deltaTime);
