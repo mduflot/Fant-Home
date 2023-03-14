@@ -20,7 +20,7 @@ namespace Entities
         {
             int randomSpawnPosition = UnityEngine.Random.Range(0, _spawns.Length);
             float2 randomPosition2D = UnityEngine.Random.insideUnitCircle * _spawnRadius;
-            float3 randomPosition3D = new(_spawns[randomSpawnPosition].position.x + randomPosition2D.x, 1.5f,
+            float3 randomPosition3D = new(_spawns[randomSpawnPosition].position.x + randomPosition2D.x, 0f,
                 _spawns[randomSpawnPosition].position.z + randomPosition2D.y);
             GameObject ghost = Pooler.instance.Pop(enemyKey);
             ghost.transform.position = randomPosition3D;

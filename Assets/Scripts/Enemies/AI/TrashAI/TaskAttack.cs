@@ -6,14 +6,22 @@ namespace AI.GhostAI
     public class TaskAttack : Node
     {
         private Animator _animator;
+        private Transform _transform;
         private Transform _lastTarget;
         private PlayerHealth _playerHealth;
-        private float _attackTime = 2f;
-        private float _attackCounter;
+        private int _damage;
+        private float _attackRadius;
+        private string _attackKey;
+        private float _attackDelayBeforeAttack;
 
-        public TaskAttack(Transform transform, float attackTime)
+        public TaskAttack(Transform transform, int damage, float attackRadius, string attackKey, float attackDelayBeforeAttack)
         {
+            _transform = transform;
             _animator = transform.GetComponent<Animator>();
+            _damage = damage;
+            _attackRadius = attackRadius;
+            _attackKey = attackKey;
+            _attackDelayBeforeAttack = attackDelayBeforeAttack;
         }
 
         public override NodeState Evaluate()
@@ -25,23 +33,20 @@ namespace AI.GhostAI
                 _lastTarget = target;
             }
 
-            _attackCounter += Time.deltaTime;
-            if (_attackCounter >= _attackTime)
+            if (_playerHealth.curHealth <= 0)
             {
-                _playerHealth.GetHit(1);
-                if (_playerHealth.curHealth >= 0)
-                {
-                    ClearData("target");
-                    // _animator.SetBool("Attacking", false);
-                    // _animator.SetBool("Walking", true);
-                }
-                else
-                {
-                    _attackCounter = 0f;
-                }
+                ClearData("target");
+                // _animator.SetBool("Attacking", false);
+                // _animator.SetBool("Walking", true);
+            }
+            else
+            {
+                GameObject ghost = Pooler.instance.Pop(_attackKey);
+                ghost.transform.position = target.position;
+                ghost.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage, _attackDelayBeforeAttack);
             }
 
-            _state = NodeState.RUNNING;
+            _state = NodeState.SUCCESS;
             return _state;
         }
     }

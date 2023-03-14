@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AI.GhostAI;
 using BehaviorTree;
+using Scriptables;
 using UnityEngine;
 using Tree = BehaviorTree.Tree;
 
@@ -8,36 +9,30 @@ namespace AI.PoltergeistAI
 {
     public class PoltergeistBT : Tree
     {
-        public Transform[] Waypoints;
+        [SerializeField] private LayerMask _enemiesMask;
 
-        [SerializeField] private float _speed = 2f;
-        [SerializeField] private float _fovRange = 6f;
-        [SerializeField] private float _attackRange = 4f;
-        [SerializeField] private float _attackTime = 2f;
-        
-        public static float Speed;
-        public static float FOVRange;
-        public static float AttackRange;
-        
+        private PoltergeistStatsSO _poltergeistStatsSO;
+        private Transform[] _waypoints;
+
         protected override Node SetupTree()
         {
-            Speed = _speed;
-            FOVRange = _fovRange;
-            AttackRange = _attackRange;
-            
+            _poltergeistStatsSO = (PoltergeistStatsSO)GetComponent<Ghost>()._ghostSO;
+            _waypoints = WaypointsManager.Instance.GetWaypoints();
+
             Node root = new Selector(new List<Node>
             {
                 new Sequence(new List<Node>
                 {
-                    new CheckPlayerInAttackRange(transform),
-                    new TaskAttack(transform, _attackTime),
+                    new CheckPlayerInAttackRange(transform, _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.AttackCD),
+                    new TaskAttack(transform, _poltergeistStatsSO.AttackDamage, _poltergeistStatsSO.AttackRadius,
+                        _poltergeistStatsSO.AttackKey, _poltergeistStatsSO.AttackDelayBeforeAttack),
                 }),
                 new Sequence(new List<Node>
                 {
-                    new CheckPlayerInFOVRange(transform),
-                    new TaskGoToTarget(transform),
+                    new CheckPlayerInFOVRange(transform, _poltergeistStatsSO.DetectionRange),
+                    new TaskGoToTarget(transform, _enemiesMask, _poltergeistStatsSO.MoveSpeed, _poltergeistStatsSO.AttackRange),
                 }),
-                new TaskPatrol(transform, Waypoints),
+                new TaskPatrol(transform, _waypoints, _poltergeistStatsSO.MoveSpeed),
             });
 
             return root;

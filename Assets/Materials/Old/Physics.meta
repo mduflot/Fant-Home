@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Blocking/Rooms.meta
+guid: b84238fb493dc904cad735afc107e640
+========
+guid: 1f64e6f39f05aae4cb5be3d0bf5ee3b3
+>>>>>>>> controller:Assets/Materials/Physics.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

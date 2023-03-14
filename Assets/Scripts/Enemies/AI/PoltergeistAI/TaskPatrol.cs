@@ -10,17 +10,19 @@ namespace AI.PoltergeistAI
         private Animator _animator;
         private Transform[] _waypoints;
 
-        private int _currentWaypointIndex = 0;
+        private int _currentWaypointIndex;
 
         private float _waitTime = 1f;
-        private float _waitCounter = 0f;
-        private bool _waiting = false;
+        private float _waitCounter;
+        private bool _waiting;
+        private float _speed;
 
-        public TaskPatrol(Transform transform, Transform[] waypoints)
+        public TaskPatrol(Transform transform, Transform[] waypoints, float speed)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
             _waypoints = waypoints;
+            _speed = speed;
         }
 
         public override NodeState Evaluate()
@@ -49,7 +51,7 @@ namespace AI.PoltergeistAI
                 else
                 {
                     _transform.position =
-                        Vector3.MoveTowards(_transform.position, wp.position, GhostBT.Speed * Time.deltaTime);
+                        Vector3.MoveTowards(_transform.position, wp.position, _speed * Time.deltaTime);
                     _transform.LookAt(wp.position);
                 }
             }
