@@ -26,6 +26,10 @@ public class WaveTool : MonoBehaviour
     private void GoToNextWave()
     {
         index++;
+        if (index == 3 || index == 5 || index == 7)
+        {
+            AudioManager.Instance.PlayNextMusic();
+        }
         if (index > waves.Length-1) return;
         SpawnWave(waves[index]);
     }
