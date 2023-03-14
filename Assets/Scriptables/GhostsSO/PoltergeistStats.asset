@@ -31,3 +31,7 @@ MonoBehaviour:
   UnitMakingCD: 8
   NbrUnitsToSpawn: 4
   KeyGhostToSpawn: 0
+  Attack_SFX: Ghost_PG_Attack
+  Connect_SFX: Ghost_PG_Attack_Connect
+  Damage_SFX: Ghost_PG_Damage
+  Death_SFX: Ghost_PG_Death

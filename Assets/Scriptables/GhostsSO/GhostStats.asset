@@ -27,3 +27,7 @@ MonoBehaviour:
   InteractionCD: 6
   AttackKey: TrashAttack
   Key: 0
+  Attack_SFX: Ghost_Trash_Attack
+  Connect_SFX: Ghost_Trash_Attack_Connect
+  Damage_SFX: Ghost_Trash_Damage
+  Death_SFX: Ghost_Trash_Damage
