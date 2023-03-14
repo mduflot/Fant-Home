@@ -843,6 +843,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curRoom: {fileID: 0}
+  playerShoot: {fileID: 1526775785208591348}
+  flashLight: {fileID: 4460099137264186308}
 --- !u!114 &2776199430036081876
 MonoBehaviour:
   m_ObjectHideFlags: 0
