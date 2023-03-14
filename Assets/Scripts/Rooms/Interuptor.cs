@@ -6,6 +6,7 @@ using UnityEngine;
 public class Interuptor : Interactible
 {
     [SerializeField] private Door[] linkedDoor = Array.Empty<Door>();
+    [SerializeField] private StaticFlashLight[] linkedLights = Array.Empty<StaticFlashLight>();
     
     [ContextMenu("Interact")]
     public override void Interact(PlayerInteract player)
@@ -13,6 +14,11 @@ public class Interuptor : Interactible
         foreach (var door in linkedDoor)
         {
             door.ToggleDoor();
+        }
+
+        foreach (var light in linkedLights)
+        {
+            light.ToggleLight();
         }
     }
 

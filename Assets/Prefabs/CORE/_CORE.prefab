@@ -296,14 +296,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 4329776671740140988}
     m_Modifications:
     - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].key
-      value: Chain
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
-      propertyPath: poolKeys.Array.data[2].pool.prefab
-      value: 
-      objectReference: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
-    - target: {fileID: 5440807499856759416, guid: f82a98e9ecc5ac74a8fc1945c9ec9764, type: 3}
       propertyPath: poolKeys.Array.data[0].pool.baseCount
       value: 40
       objectReference: {fileID: 0}

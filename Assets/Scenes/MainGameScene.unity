@@ -464,6 +464,10 @@ PrefabInstance:
       propertyPath: waves.Array.data[6].enemies.Array.data[0].number
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 792267966075636371, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.2918124
+      objectReference: {fileID: 0}
     - target: {fileID: 1760945989499659823, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: rooms.Array.size
       value: 7
@@ -608,38 +612,6 @@ PrefabInstance:
       propertyPath: waveTool
       value: 
       objectReference: {fileID: 1645640653}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[2].key
-      value: TrashAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[3].key
-      value: Chain
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[2].pool.prefab
-      value: 
-      objectReference: {fileID: 1105258508726045632, guid: 97f81a0759baabb4cb22c88a22e7db60, type: 3}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.prefab
-      value: 
-      objectReference: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.baseCount
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.refreshSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
-      propertyPath: poolKeys.Array.data[3].pool.baseRefreshSpeed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

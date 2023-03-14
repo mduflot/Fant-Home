@@ -63,6 +63,12 @@ MonoBehaviour:
       baseCount: 50
       baseRefreshSpeed: 5
       refreshSpeed: 5
+  - key: Chain
+    pool:
+      prefab: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
   - key: BigBertha
     pool:
       prefab: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
