@@ -2,7 +2,6 @@ using System.Collections;
 using Scriptables;
 using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Ghost : MonoBehaviour, IEnemy
 {
@@ -17,8 +16,8 @@ public class Ghost : MonoBehaviour, IEnemy
     [HideInInspector] public bool IsFleeing;
 
     [Header("Stats in Runtime")] 
-    private float _health = 3;
-    [HideInInspector] public float Veil = 1;
+    private float _health;
+    [HideInInspector] public float Veil;
     private float _regenVeilPoints;
     private float _regenVeilCD;
     private float _regenVeilOverTime;
@@ -82,11 +81,16 @@ public class Ghost : MonoBehaviour, IEnemy
     public void TakeVeil(float damageVeil)
     {
         Veil -= damageVeil;
-        if (Veil != _ghostSO.MaxHealth) _meshRenderer.enabled = true;
-        var alpha = Veil / _ghostSO.MaxVeil - 1;
+        if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
+
+        if (Veil <= 0)
+        {
+            Veil = 0;
+            _isVulnerable = true;
+        }
+        var alpha = 1 - (Veil / _ghostSO.MaxVeil);
         _colorVeil.a = alpha;
         _meshRenderer.material.color = _colorVeil;
-        if (Veil <= 0) _isVulnerable = true;
         if (!_isVulnerable) return;
         if (_ghostSO.AlwaysStun)
         {
@@ -113,6 +117,7 @@ public class Ghost : MonoBehaviour, IEnemy
         if (_health <= 0 || !_isVulnerable) return;
         _health -= damage;
         _colorHealth = Color.Lerp(Color.red, Color.green, _health / _ghostSO.MaxHealth);
+        _colorHealth.a = 0.8f;
         _meshRenderer.material.color = _colorHealth;
         if (_health <= 0)
         {
@@ -133,12 +138,13 @@ public class Ghost : MonoBehaviour, IEnemy
             _isVulnerable = false;
             IsFleeing = false;
             _canBeStun = false;
-            alpha = Veil / _ghostSO.MaxVeil - 1;
+            alpha = 1 - (Veil / _ghostSO.MaxVeil);
             _colorVeil.a = alpha;
             _meshRenderer.material.color = _colorVeil;
             yield return new WaitForSeconds(_regenVeilOverTime);
         }
-        alpha = Veil / _ghostSO.MaxVeil - 1;
+
+        alpha = 1 - (Veil / _ghostSO.MaxVeil);
         _colorVeil.a = alpha;
         _meshRenderer.material.color = _colorVeil;
         if (Veil >= _ghostSO.MaxHealth) _meshRenderer.enabled = false;

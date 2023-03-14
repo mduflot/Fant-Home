@@ -48,6 +48,15 @@ namespace AI.GhostAI
 
             if (!isEnemy)
             {
+                if (Vector3.Distance(_transform.position, target.position) < _visibleToPlayer)
+                {
+                    _meshRenderer.enabled = true;
+                }
+                else if (_playerHealth.curHealth >= _maxHealth || _transform.GetComponent<Ghost>().Veil >= _maxVeil)
+                {
+                    _meshRenderer.enabled = false;
+                }
+                
                 if (Vector3.Distance(_transform.position, target.position) > _attackRange)
                 {
                     _transform.position = Vector3.MoveTowards(
