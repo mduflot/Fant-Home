@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scriptables
 {
@@ -20,6 +19,7 @@ namespace Scriptables
         public float VeilRegenOverTime;
         public float MoveSpeed;
         public float StunDuration;
+        public bool AlwaysStun;
         public int AttackDamage;
         public float AttackRange;
         public float AttackRadius;

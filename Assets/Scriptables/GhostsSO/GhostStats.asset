@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 10
   MaxVeil: 1
-  VeilRegen: 0.5
+  VeilRegenPoints: 0
   VeilRegenCD: 2.5
+  VeilRegenOverTime: 0
   MoveSpeed: 2.5
   StunDuration: 1.5
+  AlwaysStun: 1
   AttackDamage: 1
   AttackRange: 3
   AttackRadius: 1
