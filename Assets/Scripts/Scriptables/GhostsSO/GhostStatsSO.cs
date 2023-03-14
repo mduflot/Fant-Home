@@ -23,7 +23,7 @@ namespace Scriptables
         public bool AlwaysStun;
         public int AttackDamage;
         public float AttackRange;
-        public float AttackRadius;
+        public Vector3 AttackScale;
         public float AttackCD;
         public float AttackDelayBeforeAttack;
         public int InteractionRange;
