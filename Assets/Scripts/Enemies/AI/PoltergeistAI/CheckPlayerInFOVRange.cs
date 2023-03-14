@@ -9,11 +9,13 @@ namespace AI.PoltergeistAI
 
         private Transform _transform;
         private Animator _animator;
+        private float _fovRange;
 
-        public CheckPlayerInFOVRange(Transform transform)
+        public CheckPlayerInFOVRange(Transform transform, float fovRange)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
+            _fovRange = fovRange;
         }
 
         public override NodeState Evaluate()
@@ -22,7 +24,7 @@ namespace AI.PoltergeistAI
             if (t == null)
             {
                 Collider[] colliders = Physics.OverlapSphere(
-                    _transform.position, PoltergeistBT.FOVRange, _enemyLayerMask);
+                    _transform.position, _fovRange, _enemyLayerMask);
 
                 if (colliders.Length > 0)
                 {

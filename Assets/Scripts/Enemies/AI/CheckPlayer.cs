@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BehaviorTree;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AI
@@ -11,7 +11,8 @@ namespace AI
         private Transform _transform;
         private Animator _animator;
         private Ghost _ghostComponent;
-        private GameObject[] _players;
+        private GameObject[] _playersArray;
+        private List<GameObject> _players;
 
         public CheckPlayer(Transform transform)
         {
@@ -22,31 +23,31 @@ namespace AI
 
         public override NodeState Evaluate()
         {
-            _players = GameObject.FindGameObjectsWithTag("Player");
+            _playersArray = GameObject.FindGameObjectsWithTag("Player");
+            _players = _playersArray.ToList();
             Transform target;
-            float currentDistance;
 
             object t = GetData("target");
             if (t == null)
             {
-                if (_players.Length > 0)
+                foreach (var player in _players.Where(player => player.GetComponent<PlayerHealth>().curHealth <= 0))
                 {
-                    if (!_players[0].activeSelf) return NodeState.FAILURE;
-                    currentDistance = math.sqrt(math.lengthsq(_transform.position - _players[0].transform.position));
-                    target = _players[0].transform;
+                    _players.Remove(player);
                 }
-                else
+                
+                if (_players.Count < 1)
                 {
                     ClearData("target");
                     _state = NodeState.FAILURE;
                     return _state;
                 }
 
+                float currentDistance = math.sqrt(math.lengthsq(_transform.position - _players[0].transform.position));
+                target = _players[0].transform;
+
                 List<GameObject> playersInSameRoom = new();
 
-                RaycastHit hit;
-
-                if (Physics.Raycast(_transform.position, -Vector3.up, out hit, 10.0f))
+                if (Physics.Raycast(_transform.position, -Vector3.up, out var hit, 10.0f))
                 {
                     Debug.DrawRay(_transform.position, -Vector3.up * hit.distance, Color.red);
                     if (hit.transform.gameObject.CompareTag("Floor"))
@@ -103,6 +104,7 @@ namespace AI
                 _state = NodeState.FAILURE;
                 return _state;
             }
+            
             _state = NodeState.SUCCESS;
             return _state;
         }
