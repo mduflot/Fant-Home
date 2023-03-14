@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d51405c44a2c740a1ab312d6873e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveTool: {fileID: 0}
+  waveTool: {fileID: 27770906297155217}
   roomsManager: {fileID: 1760945989499659823}
   playerManager: {fileID: 792267964056597756}
 --- !u!1 &4660405781704207386
@@ -422,6 +422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 4987919317452932528}
     - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
       propertyPath: waves.Array.size
       value: 3
