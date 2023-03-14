@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolKeys:
-  - key: Ghost
+  - key: GHOST
     pool:
       prefab: {fileID: 6043481272550239876, guid: ccaf9c3a524cd6e4e9cc625f123e47fc, type: 3}
       baseCount: 50
@@ -72,6 +72,12 @@ MonoBehaviour:
   - key: BigBertha
     pool:
       prefab: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: ZOMBIE
+    pool:
+      prefab: {fileID: 6043481272550239876, guid: e57420a36563d76489a6097cf3594fec, type: 3}
       baseCount: 50
       baseRefreshSpeed: 5
       refreshSpeed: 5
