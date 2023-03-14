@@ -73,6 +73,7 @@ public class Ghost : MonoBehaviour, IEnemy
         
         if (!(_veil <= 0)) return;
         IsStun = true;
+        AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
         _isVulnerable = true;
         VeilCO = StartCoroutine(VeilCD());
         StunCO = StartCoroutine(StunDuration());
@@ -110,6 +111,9 @@ public class Ghost : MonoBehaviour, IEnemy
         if (_health <= 0)
         {
             Pooler.instance.Depop("Ghost", gameObject);
+            AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
+            return;
         }
+        AudioManager.Instance.PlaySFXRandom(_ghostSO.Damage_SFX, 0.8f, 1.2f);
     }
 }

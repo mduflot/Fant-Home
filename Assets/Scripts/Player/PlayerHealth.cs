@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
         curHealth -= damage;
         if (curHealth <= 0) Fall();
         else StartCoroutine(Invincible());
+        AudioManager.Instance.PlaySFXRandom("Player_Damage", 0.8f, 1.2f);
     }
 
     private IEnumerator Invincible()
@@ -58,5 +59,6 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
         deathInteractionGO.SetActive(false);
+        AudioManager.Instance.PlaySFXRandom("Player_Revive", 0.8f, 1.2f);
     }
 }
