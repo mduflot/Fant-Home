@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cef8f22588882459a9d574f803e174a8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9bbaec5f10fa5c646a1a28c1f6685fd6, type: 2}
+      objectReference: {fileID: 2100000, guid: f37f7cde98fc04d47956cfd5ab06caf1, type: 2}
     - target: {fileID: 919132149155446097, guid: cef8f22588882459a9d574f803e174a8, type: 3}
       propertyPath: m_Name
       value: SM_Candle Variant
