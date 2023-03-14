@@ -12,7 +12,7 @@ public class WaveTool : MonoBehaviour
     public string waveName = "Wave";
     public Wave[] waves = new Wave[3];
 
-    private int index = 0;
+    public int index = 0;
     private float timer;
 
     private void Start()
