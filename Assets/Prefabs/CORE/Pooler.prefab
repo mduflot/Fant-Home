@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5440807499856759416
 MonoBehaviour:
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolKeys:
-  - key: Ghost
+  - key: GHOST
     pool:
       prefab: {fileID: 6043481272550239876, guid: ccaf9c3a524cd6e4e9cc625f123e47fc, type: 3}
       baseCount: 50
       baseRefreshSpeed: 5
       refreshSpeed: 5
-  - key: Poltergeist
+  - key: POLTERGEIST
     pool:
       prefab: {fileID: 6043481272550239876, guid: 91036aba7dd99c249a023f20eab50cba, type: 3}
       baseCount: 50
@@ -71,7 +71,49 @@ MonoBehaviour:
       refreshSpeed: 5
   - key: BigBertha
     pool:
-      prefab: {fileID: 6576146819100268301, guid: 4e5b731774c68194996ca19b55546941, type: 3}
+      prefab: {fileID: 6576146819100268301, guid: 854e7383de9b10d4c91fb900d4ec34d2, type: 3}
       baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: MultiZap
+    pool:
+      prefab: {fileID: 6576146819100268301, guid: 25131a82ea9d3d04ea7a1ec12631e4f9, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_ChainLaunch
+    pool:
+      prefab: {fileID: 8616110551902925102, guid: 9b635ac85e1db6840a7eabe160890ade, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_BigBerthaLaunch
+    pool:
+      prefab: {fileID: 7524734916682919543, guid: 0f58eb9da08f0114888fec397075f34a, type: 3}
+      baseCount: 20
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_ChainHit
+    pool:
+      prefab: {fileID: 944695900412284088, guid: 49451e22fd1992a45b8f163567b4cebd, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_BigBerthaHit
+    pool:
+      prefab: {fileID: 4309805361498953569, guid: 12ff5bcd5e6906a41b6025d638b11cef, type: 3}
+      baseCount: 10
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_MultiZapLaunch
+    pool:
+      prefab: {fileID: 8616110551902925102, guid: 9b635ac85e1db6840a7eabe160890ade, type: 3}
+      baseCount: 10
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_MultiZapHit
+    pool:
+      prefab: {fileID: 944695900412284088, guid: 49451e22fd1992a45b8f163567b4cebd, type: 3}
+      baseCount: 10
       baseRefreshSpeed: 5
       refreshSpeed: 5

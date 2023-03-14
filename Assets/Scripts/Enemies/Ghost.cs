@@ -71,8 +71,11 @@ public class Ghost : MonoBehaviour, IEnemy
         if (!other.gameObject.CompareTag("Bullet") || !_isVulnerable) return;
         if (_regenCO != null) StopCoroutine(_regenCO);
         _veilCounter = 0;
-        Pooler.instance.Depop(other.gameObject.GetComponent<Bullet>().key, other.gameObject);
-        TakeDamage(other.gameObject.GetComponent<Bullet>().Damage);
+        if (other.gameObject.GetComponent<Bullet>().isPhysic)
+        {
+            other.gameObject.GetComponent<Bullet>().Contact();
+        }
+        TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
     }
 
     public void TakeVeil(float damageVeil)
@@ -101,7 +104,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damage)
     {
-        if (_health <= 0) return;
+        if (_health <= 0 || !_isVulnerable) return;
         _health -= damage;
         if (_health <= 0)
         {
