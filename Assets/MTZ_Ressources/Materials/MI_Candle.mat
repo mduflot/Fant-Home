@@ -58,8 +58,8 @@ Material:
     - _Speed: 2.5
     - _Transition_Power: 1
     m_Colors:
-    - _Color: {r: 3.031433, g: 0.2611313, b: 0, a: 0}
-    - _Color_Core: {r: 4, g: 1.9848455, b: 0.09433961, a: 0}
+    - _Color: {r: 0, g: 2.9688873, b: 3.4822016, a: 0}
+    - _Color_Core: {r: 2.5587022, g: 4.8868904, b: 4.4828835, a: 0}
     - _CoreSize: {r: 3.41, g: 1.86, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &558118863317225127

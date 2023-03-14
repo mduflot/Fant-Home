@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108505e4fd0f45d5863394f50ab0d9ea, type: 3}
+  m_Name: ChainGun
+  m_EditorClassIdentifier: 
+  equipType: 0
+  bulletSpeed: 9
+  reloadTime: 0.15
+  bulletSpread: 18.7
+  key: 0
+  type: 0
+  flashLight: {fileID: 11400000, guid: 51e2e001aad25824a952e0e533a573c7, type: 2}
+  particles: {fileID: 7449831038719637692, guid: 763a2252c866e5943a240481fb84cae1, type: 3}
