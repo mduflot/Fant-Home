@@ -77,6 +77,7 @@ namespace Entities
         {
             var randomEuler = transform.eulerAngles;
             randomEuler.y += Random.Range(0.0f, _bulletSpread);
+            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
             
             _bullet = Pooler.instance.Pop(_bulletKey);
             _bullet.GetComponent<Bullet>().speed = _bulletSpeed;
