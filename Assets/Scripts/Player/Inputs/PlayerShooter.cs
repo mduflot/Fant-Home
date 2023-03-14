@@ -10,6 +10,9 @@ namespace Entities
         [SerializeField] private bool _triggerShoot;
         [SerializeField] private FlashLight flashLight;
 
+        private delegate void ShootAction();
+        private ShootAction _shootAction;
+        
         private GameObject _bullet;
         private float _bulletSpeed;
         private float _reloadTime;
@@ -38,7 +41,12 @@ namespace Entities
             {
                 flashLight.SetEquip(false, null);
             }
-            
+
+            _shootAction = weapon.type switch
+            {
+                BulletTypes.Multiple => ShootMultiple,
+                _ => Shoot
+            };
         }
 
         private void OnRotate(InputValue value)
@@ -53,7 +61,7 @@ namespace Entities
         {
             if (value == Vector2.zero) return;
             _lastShootTime = Time.fixedTime;
-            Shoot();
+            _shootAction.Invoke();
         }
 
         public void Fire()
@@ -64,12 +72,10 @@ namespace Entities
 
         private void Update()
         {
-            if (_shootOrder && _lastShootTime + _reloadTime < Time.fixedTime)
-            {
-                _lastShootTime = Time.fixedTime;
+            if (!_shootOrder || !(_lastShootTime + _reloadTime < Time.fixedTime)) return;
+            _lastShootTime = Time.fixedTime;
 
-                Shoot();
-            }
+            _shootAction.Invoke();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -85,6 +91,16 @@ namespace Entities
             _bullet.GetComponent<Bullet>().StartTimer();
             _bullet.transform.eulerAngles = randomEuler;
             _bullet.transform.position = transform.position;
+        }
+
+        private void ShootMultiple()
+        {
+            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
+            for (int i = 0; i < weapon.bulletNumber; i++)
+            {
+                var randomEuler = transform.eulerAngles;
+                _bullet = Pooler.instance.Pop(_bulletKey);
+            }
         }
     }
 }

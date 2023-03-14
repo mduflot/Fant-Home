@@ -5,6 +5,8 @@ using Unity.Entities;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public enum BulletKeys
 {
@@ -16,7 +18,7 @@ public enum BulletTypes
 {
     Classic,
     Explosive,
-    Triple
+    Multiple
 }
 
 [CreateAssetMenu(fileName = "WeaponStats", menuName = "Scriptables/WeaponStats", order = 2)]
@@ -31,35 +33,39 @@ public class WeaponsSO: EquipmentSO
     public BulletTypes type;
     public FlashLightSO flashLight;
     
-    
+    [HideInInspector]
+    public float AOE_Range;
+
+    [HideInInspector] 
+    public int bulletNumber;
 }
 
-[CustomEditor(typeof(WeaponsSO)), CanEditMultipleObjects]
-public class WeaponEditor : Editor
+#if UNITY_EDITOR
+[CustomEditor(typeof(WeaponsSO))]
+public class RandomScript_Editor : Editor
 {
-    private SerializedProperty iDamage;
-    private SerializedProperty fSpeed;
-    private SerializedProperty fReload;
-    private SerializedProperty fSpread;
-    private SerializedProperty bkKey;
-    private SerializedProperty btType;
-    private SerializedProperty fsoFlashlight;
-
-    private void OnEnable()
-    {
-        iDamage = serializedObject.FindProperty("damage");
-        iDamage = serializedObject.FindProperty("bulletSpeed");
-        iDamage = serializedObject.FindProperty("reloadTime");
-        iDamage = serializedObject.FindProperty("bulletSpread");
-        iDamage = serializedObject.FindProperty("key");
-        iDamage = serializedObject.FindProperty("type");
-        iDamage = serializedObject.FindProperty("flashlight");
-    }
 
     public override void OnInspectorGUI()
     {
-        serializedObject.Update();
-        EditorGUILayout.PropertyField(fSpread);
-        base.OnInspectorGUI();
+        DrawDefaultInspector(); // for other non-HideInInspector fields
+ 
+        WeaponsSO script = (WeaponsSO)target;
+
+        
+        if (script.type == BulletTypes.Explosive)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel("AOE Range");
+            script.AOE_Range = EditorGUILayout.Slider(script.AOE_Range, 0, 100);
+            EditorGUILayout.EndHorizontal();
+        } else if (script.type == BulletTypes.Multiple)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel("Number of bullets");
+            script.bulletNumber = EditorGUILayout.IntSlider(script.bulletNumber, 0, 8);
+            EditorGUILayout.EndHorizontal();
+        }
+        
     }
 }
+#endif
