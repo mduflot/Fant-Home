@@ -25,10 +25,14 @@ public class Interuptor : Interactible
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.green;
         foreach (var door in linkedDoor)
         {
-            Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.position, door.transform.position);
+        }
+        foreach (var light in linkedLights)
+        {
+            Gizmos.DrawLine(transform.position, light.transform.position);
         }
     }
 }
