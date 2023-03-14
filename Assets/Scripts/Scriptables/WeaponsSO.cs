@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using Unity.Entities;
 using Unity.VisualScripting;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -11,7 +13,8 @@ using UnityEngine.UIElements;
 public enum BulletKeys
 {
     Chain,
-    BigBertha
+    BigBertha,
+    MultiZap
 }
 
 public enum BulletTypes
@@ -32,7 +35,7 @@ public class WeaponsSO: EquipmentSO
     public BulletKeys key;
     public BulletTypes type;
     public FlashLightSO flashLight;
-    
+
     [HideInInspector]
     public float AOE_Range;
 

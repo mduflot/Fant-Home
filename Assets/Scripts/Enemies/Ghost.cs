@@ -44,12 +44,15 @@ public class Ghost : MonoBehaviour, IEnemy
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Bullet") && _isVulnerable)
         {
-            Pooler.instance.Depop(other.gameObject.GetComponent<Bullet>().key, other.gameObject);
-            TakeDamage(other.gameObject.GetComponent<Bullet>().Damage);
+            if (other.gameObject.GetComponent<Bullet>().isPhysic)
+            {
+                other.gameObject.GetComponent<Bullet>().Contact();
+            }
+            TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
             StopCoroutine(VeilCD());
             if (_health > 0) StartCoroutine(VeilCD());
         }
@@ -105,7 +108,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damage)
     {
-        if (_health <= 0) return;
+        if (_health <= 0 || !_isVulnerable) return;
         _health -= damage;
         if (_health <= 0)
         {
