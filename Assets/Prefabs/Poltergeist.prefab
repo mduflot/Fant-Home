@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8732067773027518091}
   - component: {fileID: 3969293103871739000}
   - component: {fileID: 3314382811300991161}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Poltergeist
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 509eaf3bef6c6374389ae5b251afb0b9, type: 2}
+  - {fileID: 2100000, guid: 8b81022e9bb4ab24d984af5e4cf80955, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f89b4b03be424783666c6e26327fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemiesMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &3314382811300991161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d103cbdd03b886c48af3e889e2f43c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ghostSO: {fileID: 11400000, guid: b2eee47eb090c924da8f9b6d8b3295b4, type: 2}
-  _name: PoltergeistStats
-  _vulnerableMaterial: {fileID: 0}
-  _stunMaterial: {fileID: 0}
-  _veilMaterial: {fileID: 0}
+  CurRoom: {fileID: 0}
+  _ghostSO: {fileID: 11400000, guid: a31b5943ed09b4a45b9d0877bfbc9b56, type: 2}
+  _name: Poltergeist
+  _vulnerableMaterial: {fileID: 2100000, guid: 2daffcd12698a9a49b21fbb38c9c294f, type: 2}
+  _stunMaterial: {fileID: 2100000, guid: 509eaf3bef6c6374389ae5b251afb0b9, type: 2}
+  _veilMaterial: {fileID: 2100000, guid: 8b81022e9bb4ab24d984af5e4cf80955, type: 2}
   IsStun: 0

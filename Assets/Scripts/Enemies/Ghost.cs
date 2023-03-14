@@ -28,7 +28,7 @@ public class Ghost : MonoBehaviour, IEnemy
     private MeshRenderer _meshRenderer;
 
     private bool _isVulnerable;
-
+    
     private Coroutine StunCO;
     private Coroutine VeilCO;
     private Coroutine RegenCO;
@@ -110,7 +110,7 @@ public class Ghost : MonoBehaviour, IEnemy
         _health -= damage;
         if (_health <= 0)
         {
-            Pooler.instance.Depop("Ghost", gameObject);
+            Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
             AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
             return;
         }

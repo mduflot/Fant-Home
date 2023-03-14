@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AI.GhostAI;
 using BehaviorTree;
 using Scriptables;
@@ -12,15 +13,20 @@ namespace AI.PoltergeistAI
         [SerializeField] private LayerMask _enemiesMask;
 
         private PoltergeistStatsSO _poltergeistStatsSO;
-        private Transform[] _waypoints;
+        private Room[] _roomWaypoints;
 
         protected override Node SetupTree()
         {
             _poltergeistStatsSO = (PoltergeistStatsSO)GetComponent<Ghost>()._ghostSO;
-            _waypoints = WaypointsManager.Instance.GetWaypoints();
+            _roomWaypoints = RoomsManager.Instance.rooms;
 
             Node root = new Selector(new List<Node>
             {
+                new Sequence(new List<Node>
+                {
+                   new CheckCooldownSpawn(_poltergeistStatsSO.UnitMakingCD),
+                   new TaskSpawnGhosts(transform, _poltergeistStatsSO.NbrUnitsToSpawn, _poltergeistStatsSO.KeyGhostToSpawn)
+                }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform, _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.AttackCD),
@@ -32,10 +38,15 @@ namespace AI.PoltergeistAI
                     new CheckPlayerInFOVRange(transform, _poltergeistStatsSO.DetectionRange),
                     new TaskGoToTarget(transform, _enemiesMask, _poltergeistStatsSO.MoveSpeed, _poltergeistStatsSO.AttackRange),
                 }),
-                new TaskPatrol(transform, _waypoints, _poltergeistStatsSO.MoveSpeed),
+                new TaskPatrol(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed),
             });
 
             return root;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(transform.position, _poltergeistStatsSO.DetectionRange);
         }
     }
 }
