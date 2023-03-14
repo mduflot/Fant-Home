@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public WaveTool waveTool;
     public RoomsManager roomsManager;
     public PlayerSpawnManager playerManager;
+    public MessageDisplayer messageDisplayer;
 
     private void Awake()
     {
