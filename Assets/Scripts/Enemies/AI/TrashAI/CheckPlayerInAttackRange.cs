@@ -8,12 +8,15 @@ namespace AI.GhostAI
         private Transform _transform;
         private Animator _animator;
         private float _attackRange;
+        private float _attackCounter;
+        private float _attackTime;
 
-        public CheckPlayerInAttackRange(Transform transform, float attackRange)
+        public CheckPlayerInAttackRange(Transform transform, float attackRange, float attackTime)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
             _attackRange = attackRange;
+            _attackTime = attackTime;
         }
 
         public override NodeState Evaluate()
@@ -31,8 +34,13 @@ namespace AI.GhostAI
                 // _animator.SetBool("Attacking", true);
                 // _animator.SetBool("Walking", false);
 
-                _state = NodeState.SUCCESS;
-                return _state;
+                _attackCounter += Time.deltaTime;
+                if (_attackCounter >= _attackTime)
+                {
+                    _state = NodeState.SUCCESS;
+                    _attackCounter = 0;
+                    return _state;
+                }
             }
 
             _state = NodeState.FAILURE;

@@ -22,6 +22,7 @@ namespace Scriptables
         public float AttackRange;
         public float AttackRadius;
         public float AttackCD;
+        public float AttackDelayBeforeAttack;
         public int InteractionRange;
         public int InteractionCD;
         public string AttackKey;
