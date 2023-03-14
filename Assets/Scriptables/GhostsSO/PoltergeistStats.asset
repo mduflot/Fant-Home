@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 150
   MaxVeil: 40
-  VeilRegen: 10
+  VeilRegenPoints: 1
   VeilRegenCD: 2.5
+  VeilRegenOverTime: 0
   MoveSpeed: 10
   StunDuration: 2
+  AlwaysStun: 0
   AttackDamage: 1
   AttackRange: 5
   AttackRadius: 1
@@ -27,11 +29,11 @@ MonoBehaviour:
   InteractionCD: 6
   AttackKey: TrashAttack
   Key: 0
-  DetectionRange: 6
-  UnitMakingCD: 8
-  NbrUnitsToSpawn: 4
-  KeyGhostToSpawn: 0
   Attack_SFX: Ghost_PG_Attack
   Connect_SFX: Ghost_PG_Attack_Connect
   Damage_SFX: Ghost_PG_Damage
   Death_SFX: Ghost_PG_Death
+  DetectionRange: 6
+  UnitMakingCD: 8
+  NbrUnitsToSpawn: 4
+  KeyGhostToSpawn: 0
