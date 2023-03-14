@@ -26,7 +26,8 @@ public class Zombie : MonoBehaviour
     private GhostStatsSO _stats;
 
     private int _attackDamage;
-    private float _attackRange, _attackRadius, _attackCD, _delayBeforeAttack;
+    private float _attackRange, _attackCD, _delayBeforeAttack;
+    private Vector3 _attackScale;
     private bool _attackIsInCD;
     private string _attackKey;
 
@@ -37,7 +38,7 @@ public class Zombie : MonoBehaviour
         _stats = _ghost._ghostSO;
         _attackDamage = _stats.AttackDamage;
         _attackRange = _stats.AttackRange;
-        _attackRadius = _stats.AttackRadius;
+        _attackScale = _stats.AttackScale;
         _attackCD = _stats.AttackCD;
         _delayBeforeAttack = _stats.AttackDelayBeforeAttack;
         _attackKey = _stats.AttackKey;
@@ -114,7 +115,7 @@ public class Zombie : MonoBehaviour
         
         GameObject ghost = Pooler.instance.Pop(_attackKey);
         ghost.transform.position = target;
-        ghost.GetComponent<TrashAttack>().Explode(target, _attackRadius, _attackDamage, _delayBeforeAttack);
+        ghost.GetComponent<TrashAttack>().Explode(target, _attackScale, _attackDamage, _delayBeforeAttack);
         
         
         yield return new WaitForSeconds(_delayBeforeAttack);
