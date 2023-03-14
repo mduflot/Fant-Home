@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scriptables
 {
@@ -14,8 +15,9 @@ namespace Scriptables
     {
         public float MaxHealth;
         public float MaxVeil;
-        public float VeilRegen;
+        public float VeilRegenPoints;
         public float VeilRegenCD;
+        public float VeilRegenOverTime;
         public float MoveSpeed;
         public float StunDuration;
         public int AttackDamage;

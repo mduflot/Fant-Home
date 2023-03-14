@@ -1,4 +1,5 @@
-﻿using AI.GhostAI;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BehaviorTree;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace AI.PoltergeistAI
     {
         private Transform _transform;
         private Animator _animator;
-        private Transform[] _waypoints;
+        private List<Room> _roomWaypoints;
 
         private int _currentWaypointIndex;
 
@@ -17,16 +18,24 @@ namespace AI.PoltergeistAI
         private bool _waiting;
         private float _speed;
 
-        public TaskPatrol(Transform transform, Transform[] waypoints, float speed)
+        public TaskPatrol(Transform transform, Room[] roomWaypoints, float speed)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
-            _waypoints = waypoints;
+            _roomWaypoints = roomWaypoints.ToList();
             _speed = speed;
         }
 
         public override NodeState Evaluate()
         {
+            foreach (var room in _roomWaypoints)
+            {
+                if (room.IsLocked)
+                {
+                    _roomWaypoints.Remove(room);
+                }
+            }
+            
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;
@@ -38,21 +47,22 @@ namespace AI.PoltergeistAI
             }
             else
             {
-                Transform wp = _waypoints[_currentWaypointIndex];
+                Transform wp = _roomWaypoints[_currentWaypointIndex].transform;
+                Vector3 waypointPos = new Vector3(wp.position.x, 1.23f, wp.position.z);
                 if (Vector3.Distance(_transform.position, wp.position) < 0.01f)
                 {
-                    _transform.position = wp.position;
+                    _transform.position = waypointPos;
                     _waitCounter = 0f;
                     _waiting = true;
 
-                    _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+                    _currentWaypointIndex = (_currentWaypointIndex + 1) % _roomWaypoints.Count;
                     // _animator.SetBool("Walking", false);
                 }
                 else
                 {
                     _transform.position =
-                        Vector3.MoveTowards(_transform.position, wp.position, _speed * Time.deltaTime);
-                    _transform.LookAt(wp.position);
+                        Vector3.MoveTowards(_transform.position, waypointPos, _speed * Time.deltaTime);
+                    _transform.LookAt(waypointPos);
                 }
             }
 

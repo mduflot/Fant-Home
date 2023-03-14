@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6507401ca57d57479ce203c497e4b9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 497126ebf80f405b9cdd58d91ac4a4fd, type: 3}
   m_Name: PoltergeistStats
   m_EditorClassIdentifier: 
   MaxHealth: 150
@@ -25,5 +25,9 @@ MonoBehaviour:
   AttackDelayBeforeAttack: 1.5
   InteractionRange: 6
   InteractionCD: 6
-  AttackKey: 
-  Key: 1
+  AttackKey: TrashAttack
+  Key: 0
+  DetectionRange: 6
+  UnitMakingCD: 8
+  NbrUnitsToSpawn: 4
+  KeyGhostToSpawn: 0

@@ -8,5 +8,6 @@ namespace Scriptables
         public float DetectionRange;
         public float UnitMakingCD;
         public int NbrUnitsToSpawn;
+        public MonsterType KeyGhostToSpawn;
     }
 }
