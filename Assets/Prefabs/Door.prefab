@@ -204,7 +204,7 @@ Transform:
   - {fileID: 540692795980436929}
   - {fileID: 8474652326427720232}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8034350148386616026
 MonoBehaviour:
@@ -218,10 +218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ccaac9653ea74bad5104f357d4459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorGO: {fileID: 8034350147441157271}
+  doorGO: {fileID: 8034350147441157271}
   opened: 0
   locked: 0
   linkedRooms: []
+  unlockedMat: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
+  lockedMat: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
 --- !u!1 &9134380165665122598
 GameObject:
   m_ObjectHideFlags: 0

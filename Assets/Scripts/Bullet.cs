@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     
     public void StartTimer()
     {
-        Debug.Log(key);
+        //Debug.Log(key);
         Pooler.instance.DelayedDepop(2, key, this.gameObject);
     }
     
