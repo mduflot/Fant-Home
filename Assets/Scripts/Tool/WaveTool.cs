@@ -12,7 +12,7 @@ public class WaveTool : MonoBehaviour
     public string waveName = "Wave";
     public Wave[] waves = new Wave[3];
 
-    private int index = 0;
+    public int index = 0;
     private float timer;
 
     private void Start()
@@ -38,6 +38,7 @@ public class WaveTool : MonoBehaviour
     {
         if (wave.enemies.Length == 0) return;
         NewWave?.Invoke(index);
+        GameManager.instance.messageDisplayer.DisplayText("Wave " + index, MessageDisplayer.TextHeight.HEADER, 3);
         foreach (var enemy in wave.enemies)
         {
             spawner.MakeWave(enemy.number, enemy.myType.ToString());
