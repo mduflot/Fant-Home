@@ -72,8 +72,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e92ff479f8f36b4d92c6dec6eb71250, type: 2}
   containWeapon: 0
   curWeapon: {fileID: 0}
-  emptyMat: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
-  containWeaponMat: {fileID: 2100000, guid: 1d182eaea0a689b47a8fe0aa6e5088b6, type: 2}
+  emptyMat: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
+  containWeaponMat: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
   mesh: {fileID: 3299705821477110927}
 --- !u!1 &3299705821477110922
 GameObject:

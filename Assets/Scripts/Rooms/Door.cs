@@ -6,14 +6,22 @@ using UnityEngine;
 [Serializable]
 public class Door : MonoBehaviour
 {
-    public GameObject DoorGO;
+    public GameObject doorGO;
     public bool opened, locked;
     [HideInInspector] public List<Room> linkedRooms = new List<Room>();
+
+    [SerializeField] private Material unlockedMat, lockedMat;
+
+    private MeshRenderer _meshRend;
+
+    private void Awake()
+    {
+        _meshRend = doorGO.GetComponent<MeshRenderer>();
+    }
 
     private void Start()
     {
         CheckIfLocked();
-        
     }
 
     public void ToggleDoor(bool forceOpen = false)
@@ -22,8 +30,16 @@ public class Door : MonoBehaviour
         
         opened = forceOpen ? true : !opened;
         
-        if(DoorGO) DoorGO.SetActive(!opened);
+        if(doorGO) doorGO.SetActive(!opened);
         else transform.GetChild(0).gameObject.SetActive(!opened);
+        if (opened)
+        {
+            AudioManager.Instance.PlaySFXRandom("Door_Open", 0.8f, 1.2f);
+        } else
+        {
+
+            AudioManager.Instance.PlaySFXRandom("Door_Close", 0.8f, 1.2f);
+        }
     }
 
     public void CheckIfLocked()
@@ -33,10 +49,11 @@ public class Door : MonoBehaviour
             if (room.IsLocked)
             {
                 locked = true;
+                _meshRend.material = lockedMat;
                 return;
             }
         }
-
         locked = false;
+        _meshRend.material = unlockedMat;
     }
 }

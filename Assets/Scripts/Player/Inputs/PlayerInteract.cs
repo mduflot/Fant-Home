@@ -21,6 +21,7 @@ public class PlayerInteract : MonoBehaviour
         if (canInteract && interact != null)
         {
             interact.Interact(this);
+            AudioManager.Instance.PlaySFXRandom("Player_Interact", 0.8f, 1.2f);
         }
     }
 }

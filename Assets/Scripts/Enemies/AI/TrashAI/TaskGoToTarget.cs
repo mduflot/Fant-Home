@@ -10,12 +10,14 @@ namespace AI.GhostAI
         private LayerMask _enemiesMask;
 
         private float _speed;
+        private float _attackRange;
 
-        public TaskGoToTarget(Transform transform, LayerMask enemiesMask, float speed)
+        public TaskGoToTarget(Transform transform, LayerMask enemiesMask, float speed, float attackRange)
         {
             _transform = transform;
             _enemiesMask = enemiesMask;
             _speed = speed;
+            _attackRange = attackRange;
         }
 
         public override NodeState Evaluate()
@@ -35,7 +37,7 @@ namespace AI.GhostAI
 
             if (!isEnemy)
             {
-                if (Vector3.Distance(_transform.position, target.position) > 0.01f)
+                if (Vector3.Distance(_transform.position, target.position) > _attackRange)
                 {
                     _transform.position = Vector3.MoveTowards(
                         _transform.position, target.position, _speed * Time.deltaTime);
@@ -61,14 +63,14 @@ namespace AI.GhostAI
                 }
             }
 
-            Vector3 transformPos = new Vector3(_transform.position.x, target.position.y, _transform.position.z);
+            Vector3 posToGo = target.position +
+                              ((_transform.position - hits[currentIndex].transform.position).normalized * 2);
+            Vector3 posToGoCheck = new Vector3(posToGo.x, target.position.y, posToGo.z);
 
-            if (Vector3.Distance(_transform.position, target.position) > 0.01f)
+            if (Vector3.Distance(_transform.position, target.position) > _attackRange)
             {
                 _transform.position = Vector3.MoveTowards(
-                    _transform.position,
-                    target.position + ((transformPos - hits[currentIndex].transform.position).normalized * 2),
-                    _speed * Time.deltaTime);
+                    _transform.position, posToGoCheck, _speed * Time.deltaTime);
                 _transform.LookAt(target.position);
             }
 

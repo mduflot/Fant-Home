@@ -38,11 +38,15 @@ public class PlayerSpawnManager : MonoBehaviour
             meshRenderer.material.color = colors[playerInput.playerIndex];
         }
 
-        playerInput.gameObject.transform.position = spawnLocations[playerInput.playerIndex].position;
+        GameObject playGO;
+        
+        (playGO = playerInput.gameObject).transform.position = spawnLocations[playerInput.playerIndex].position;
 
-        playerInput.gameObject.GetComponent<Player>().curRoom = initialRoom;
+        playGO.GetComponent<Player>().curRoom = initialRoom;
 
-        playerInput.gameObject.GetComponent<PlayerHealth>().curHealth = stats.maxHealth;
+        playGO.GetComponent<PlayerHealth>().curHealth = stats.maxHealth;
+        
+        playersList.Add(playGO);
     }
     
 }

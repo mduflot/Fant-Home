@@ -6,8 +6,8 @@ using UnityEngine;
 public class Ghost : MonoBehaviour, IEnemy
 {
     [ReadOnly] public Room CurRoom;
-    
-    [Header("Stats")]
+
+    [Header("Stats")] 
     public GhostStatsSO _ghostSO;
     [SerializeField] private string _name = "Ghost";
     [SerializeField] private Material _vulnerableMaterial;
@@ -16,91 +16,86 @@ public class Ghost : MonoBehaviour, IEnemy
 
     [HideInInspector] public bool IsStun;
 
-    [Header("Stats in Runtime")]
+    [Header("Stats in Runtime")] 
     [ReadOnly] private float _health = 3;
     [ReadOnly] private float _veil = 1;
     [ReadOnly] private float _regenVeilPoints;
     [ReadOnly] private float _regenVeilCD;
-    [ReadOnly] private float _durationStun;
+    [ReadOnly] private float _regenVeilOverTime;
+    [ReadOnly] private float _stunTime;
     [ReadOnly] private int _damage = 1;
     [ReadOnly] private int _speed = 5;
 
     private MeshRenderer _meshRenderer;
 
     private bool _isVulnerable;
+    private bool _canBeStun;
+    private float _stunCounter;
+    private float _veilCounter;
 
-    private Coroutine StunCO;
-    private Coroutine VeilCO;
-    private Coroutine RegenCO;
+    private Coroutine _regenCO;
 
     private void Start()
     {
         gameObject.name = _name;
         _health = _ghostSO.MaxHealth;
         _veil = _ghostSO.MaxVeil;
-        _regenVeilPoints = _ghostSO.VeilRegen;
+        _regenVeilPoints = _ghostSO.VeilRegenPoints;
         _regenVeilCD = _ghostSO.VeilRegenCD;
-        _durationStun = _ghostSO.StunDuration;
+        _regenVeilOverTime = _ghostSO.VeilRegenOverTime;
+        _stunTime = _ghostSO.StunDuration;
         _meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    private void Update()
+    {
+        if (IsStun)
+        {
+            _stunCounter += Time.deltaTime;
+            if (_stunCounter >= _stunTime)
+            {
+                IsStun = false;
+                _meshRenderer.material = _vulnerableMaterial;
+            }
+        }
+
+        if (!_isVulnerable) return;
+        _veilCounter += Time.deltaTime;
+        if (!(_veilCounter >= _regenVeilCD)) return;
+        _regenCO = StartCoroutine(RegenVeil());
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet") && _isVulnerable)
-        {
-            Pooler.instance.Depop(other.gameObject.GetComponent<Bullet>().key, other.gameObject);
-            TakeDamage(other.gameObject.GetComponent<Bullet>().Damage);
-            StopCoroutine(VeilCD());
-            if (_health > 0) StartCoroutine(VeilCD());
-        }
+        if (!other.gameObject.CompareTag("Bullet") || !_isVulnerable) return;
+        if (_regenCO != null) StopCoroutine(_regenCO);
+        _veilCounter = 0;
+        Pooler.instance.Depop(other.gameObject.GetComponent<Bullet>().key, other.gameObject);
+        TakeDamage(other.gameObject.GetComponent<Bullet>().Damage);
     }
 
     public void TakeVeil(float damageVeil)
     {
-        if (_isVulnerable)
-        {
-            IsStun = true;
-            _isVulnerable = true;
-            if (VeilCO != null) StopCoroutine(VeilCO);
-            if (RegenCO != null) StopCoroutine(RegenCO);
-            if (StunCO != null) StopCoroutine(StunCO);
-            VeilCO = StartCoroutine(VeilCD());
-            StunCO = StartCoroutine(StunDuration());
-            return;
-        }
         _veil -= damageVeil;
-        StopCoroutine(RegenVeil());
-        
-        if (!(_veil <= 0)) return;
-        IsStun = true;
-        _isVulnerable = true;
-        VeilCO = StartCoroutine(VeilCD());
-        StunCO = StartCoroutine(StunDuration());
-    }
-
-    private IEnumerator StunDuration()
-    {
-        _meshRenderer.material = _stunMaterial;
-        yield return new WaitForSeconds(_durationStun);
-        IsStun = false;
-        _meshRenderer.material = _vulnerableMaterial;
-    }
-
-    private IEnumerator VeilCD()
-    {
-        yield return new WaitForSeconds(_regenVeilCD);
-        RegenCO = StartCoroutine(RegenVeil());
-    }
-
-    private IEnumerator RegenVeil()
-    {
-        while (_veil <= _ghostSO.MaxVeil)
+        Debug.Log($"veil: {_veil}");
+        if (_veil <= 0) _isVulnerable = true;
+        if (!_isVulnerable) return;
+        if (!_ghostSO.AlwaysStun)
         {
-            yield return new WaitForSeconds(1);
-            _veil += _regenVeilPoints;
-            _meshRenderer.material = _veilMaterial;
-            _isVulnerable = false;
+            _stunCounter = 0;
+            IsStun = true;
         }
+        else if (!_canBeStun)
+        {
+            _canBeStun = true;
+            _stunCounter = 0;
+            IsStun = true;
+        }
+        if (_regenCO != null) StopCoroutine(_regenCO);
+        _veil = 0;
+        _veilCounter = 0;
+        _meshRenderer.material = _stunMaterial;
+        AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
     }
 
     public void TakeDamage(float damage)
@@ -109,12 +104,23 @@ public class Ghost : MonoBehaviour, IEnemy
         _health -= damage;
         if (_health <= 0)
         {
-            Pooler.instance.Depop("Ghost", gameObject);
+            Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
+            AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
+            return;
         }
+
+        AudioManager.Instance.PlaySFXRandom(_ghostSO.Damage_SFX, 0.8f, 1.2f);
     }
 
-    private void OnDrawGizmos()
+    private IEnumerator RegenVeil()
     {
-        Gizmos.DrawWireSphere(transform.position, 5);
+        while (_veil <= _ghostSO.MaxVeil)
+        {
+            _veil += _regenVeilPoints;
+            _isVulnerable = false;
+            _canBeStun = false;
+            _meshRenderer.material = _veilMaterial;
+            yield return new WaitForSeconds(_regenVeilOverTime);
+        }
     }
 }
