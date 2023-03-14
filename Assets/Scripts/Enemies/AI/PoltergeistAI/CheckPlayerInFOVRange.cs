@@ -18,30 +18,23 @@ namespace AI.PoltergeistAI
 
         public override NodeState Evaluate()
         {
-            object t = GetData("target");
-            if (t == null)
+            Collider[] colliders = Physics.OverlapSphere(
+                _transform.position, _fovRange);
+
+            if (colliders.Length > 0)
             {
-                Collider[] colliders = Physics.OverlapSphere(
-                    _transform.position, _fovRange);
-
-                if (colliders.Length > 0)
+                foreach (var collider in colliders)
                 {
-                    foreach (var collider in colliders)
-                    {
-                        if (!collider.gameObject.CompareTag("Player")) continue;
-                        Parent.Parent.SetData("target", collider.transform);
-                        // _animator.SetBool("Walking", true);
-                        _state = NodeState.SUCCESS;
-                        return _state;
-                    }
-                    
+                    if (!collider.gameObject.CompareTag("Player")) continue;
+                    Parent.Parent.SetData("target", collider.transform);
+                    // _animator.SetBool("Walking", true);
+                    _state = NodeState.SUCCESS;
+                    return _state;
                 }
-
-                _state = NodeState.FAILURE;
-                return _state;
             }
 
-            _state = NodeState.SUCCESS;
+            ClearData("target");
+            _state = NodeState.FAILURE;
             return _state;
         }
     }

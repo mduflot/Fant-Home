@@ -10,13 +10,20 @@ namespace Entities
         [SerializeField] private bool _triggerShoot;
         [SerializeField] private FlashLight flashLight;
 
+        private delegate void ShootAction();
+        private ShootAction _shootAction;
+        
         private GameObject _bullet;
+        private Bullet _bulletScript;
+        private Vector3 _eulerAngles;
         private float _bulletSpeed;
+        private int _bulletDamage;
         private float _reloadTime;
         private string _bulletKey;
         private bool _shootOrder;
         private float _lastShootTime;
         private float _bulletSpread;
+        private float AOE_Range;
 
         private void Start()
         {
@@ -29,6 +36,8 @@ namespace Entities
             _bulletSpeed = weapon.bulletSpeed;
             _reloadTime = weapon.reloadTime;
             _bulletSpread = weapon.bulletSpread;
+            _bulletDamage = weapon.damage;
+            AOE_Range = weapon.AOE_Range;
             _bulletKey = weapon.key.ToString();
             if (weapon.flashLight)
             {
@@ -38,7 +47,22 @@ namespace Entities
             {
                 flashLight.SetEquip(false, null);
             }
-            
+
+            _shootAction += ShootParticles;
+            _shootAction += weapon.type switch
+            {
+                BulletTypes.Multiple => ShootMultiple,
+                BulletTypes.Explosive => ShootExplosive,
+                _ => Shoot
+            };
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void ShootParticles()
+        {
+            GameObject particles = Pooler.instance.Pop("VFX_"+_bulletKey+"Launch");
+            particles.transform.position = transform.position + transform.forward;
+            Pooler.instance.DelayedDepop(0.5f, "VFX_"+_bulletKey+"Launch", particles);
         }
 
         private void OnRotate(InputValue value)
@@ -53,7 +77,7 @@ namespace Entities
         {
             if (value == Vector2.zero) return;
             _lastShootTime = Time.fixedTime;
-            Shoot();
+            _shootAction.Invoke();
         }
 
         public void Fire()
@@ -64,27 +88,54 @@ namespace Entities
 
         private void Update()
         {
-            if (_shootOrder && _lastShootTime + _reloadTime < Time.fixedTime)
-            {
-                _lastShootTime = Time.fixedTime;
+            if (!_shootOrder || !(_lastShootTime + _reloadTime < Time.fixedTime)) return;
+            _lastShootTime = Time.fixedTime;
 
-                Shoot();
-            }
+            _shootAction.Invoke();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
         private void Shoot()
         {
-            var randomEuler = transform.eulerAngles;
-            randomEuler.y += Random.Range(0.0f, _bulletSpread);
-            AudioManager.Instance.PlaySFXRandom(weapon.key.ToString()+"_Shoot", 0.8f, 1.2f);
+            _eulerAngles = transform.eulerAngles;
+            _eulerAngles.y += Random.Range(0.0f, _bulletSpread);
+            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
+            SetBullet();
+            _bulletScript.SetBase();
+        }
+        
+        private void ShootExplosive()
+        {
+            _eulerAngles = transform.eulerAngles;
+            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
+            SetBullet();
+            _bulletScript.SetExplosive();
+        }
+
+        private void ShootMultiple()
+        {
+            float totalAngle = weapon.bulletNumber %2 == 0 ? 30 : 45;
+            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
             
+            for (int i = 0; i < weapon.bulletNumber; i++)
+            {
+                _eulerAngles = transform.eulerAngles;
+                _eulerAngles.y += -totalAngle / 2 + i*totalAngle/(weapon.bulletNumber-1);
+                SetBullet();
+                _bulletScript.SetMultiple();
+            }
+        }
+
+        private void SetBullet()
+        {
             _bullet = Pooler.instance.Pop(_bulletKey);
-            _bullet.GetComponent<Bullet>().speed = _bulletSpeed;
-            _bullet.GetComponent<Bullet>().key = _bulletKey;
-            _bullet.GetComponent<Bullet>().StartTimer();
-            _bullet.transform.eulerAngles = randomEuler;
-            _bullet.transform.position = transform.position;
+            _bulletScript = _bullet.GetComponent<Bullet>();
+            _bulletScript.speed = _bulletSpeed;
+            _bulletScript.key = _bulletKey;
+            _bulletScript.AOE_Range = AOE_Range;
+            _bulletScript.damage = _bulletDamage;
+            _bullet.transform.eulerAngles = _eulerAngles;
+            _bullet.transform.position = transform.position + transform.forward;
         }
     }
 }

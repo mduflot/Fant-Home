@@ -27,7 +27,8 @@ namespace AI.GhostAI
                 new Sequence(new List<Node>
                 {
                     new CheckPlayer(transform),
-                    new TaskGoToTarget(transform, _enemiesMask, _ghostStatsSO.MoveSpeed, _ghostStatsSO.AttackRange),
+                    new TaskGoToTarget(transform, GetComponent<MeshRenderer>(), _enemiesMask, _ghostStatsSO.MoveSpeed,
+                        _ghostStatsSO.AttackRange, _ghostStatsSO.RangeVisibleToPlayer, _ghostStatsSO.MaxHealth, _ghostStatsSO.MaxVeil),
                 })
             });
 

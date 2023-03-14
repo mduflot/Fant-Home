@@ -12,11 +12,12 @@ namespace Scriptables
     [CreateAssetMenu(fileName = "new GhostStatsSO", menuName = "Scriptables/GhostsSO/GhostStatsSO", order = 2)]
     public class GhostStatsSO: ScriptableObject
     {
-        public float MaxHealth;
+        public int MaxHealth;
         public float MaxVeil;
         public float VeilRegenPoints;
         public float VeilRegenCD;
         public float VeilRegenOverTime;
+        public float RangeVisibleToPlayer;
         public float MoveSpeed;
         public float StunDuration;
         public bool AlwaysStun;
