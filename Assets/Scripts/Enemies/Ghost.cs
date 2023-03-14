@@ -44,12 +44,12 @@ public class Ghost : MonoBehaviour, IEnemy
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Bullet") && _isVulnerable)
+        if (other.gameObject.CompareTag("Bullet") && _isVulnerable)
         {
-            Pooler.instance.Depop(collision.gameObject.GetComponent<Bullet>().key, collision.gameObject);
-            TakeDamage(collision.gameObject.GetComponent<Bullet>().Damage);
+            Pooler.instance.Depop(other.gameObject.GetComponent<Bullet>().key, other.gameObject);
+            TakeDamage(other.gameObject.GetComponent<Bullet>().Damage);
             StopCoroutine(VeilCD());
             if (_health > 0) StartCoroutine(VeilCD());
         }
@@ -60,6 +60,7 @@ public class Ghost : MonoBehaviour, IEnemy
         if (_isVulnerable)
         {
             IsStun = true;
+            _isVulnerable = true;
             if (VeilCO != null) StopCoroutine(VeilCO);
             if (RegenCO != null) StopCoroutine(RegenCO);
             if (StunCO != null) StopCoroutine(StunCO);
