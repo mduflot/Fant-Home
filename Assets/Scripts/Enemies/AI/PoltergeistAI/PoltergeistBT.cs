@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AI.GhostAI;
 using BehaviorTree;
 using Scriptables;
@@ -25,19 +24,27 @@ namespace AI.PoltergeistAI
                 new CheckStun(transform),
                 new Sequence(new List<Node>
                 {
-                   new CheckCooldownSpawn(_poltergeistStatsSO.UnitMakingCD),
-                   new TaskSpawnGhosts(transform, _poltergeistStatsSO.NbrUnitsToSpawn, _poltergeistStatsSO.KeyGhostToSpawn)
+                    new CheckFleeing(transform),
+                    new TaskFleeing(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed)
                 }),
                 new Sequence(new List<Node>
                 {
-                    new CheckPlayerInAttackRange(transform, _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.AttackCD),
+                    new CheckCooldownSpawn(_poltergeistStatsSO.UnitMakingCD),
+                    new TaskSpawnGhosts(transform, _poltergeistStatsSO.NbrUnitsToSpawn,
+                        _poltergeistStatsSO.KeyGhostToSpawn)
+                }),
+                new Sequence(new List<Node>
+                {
+                    new CheckPlayerInAttackRange(transform, _poltergeistStatsSO.AttackRange,
+                        _poltergeistStatsSO.AttackCD),
                     new TaskAttack(transform, _poltergeistStatsSO.AttackDamage, _poltergeistStatsSO.AttackRadius,
                         _poltergeistStatsSO.AttackKey, _poltergeistStatsSO.AttackDelayBeforeAttack),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInFOVRange(transform, _poltergeistStatsSO.DetectionRange),
-                    new TaskGoToTarget(transform, _enemiesMask, _poltergeistStatsSO.MoveSpeed, _poltergeistStatsSO.AttackRange),
+                    new TaskGoToTarget(transform, _enemiesMask, _poltergeistStatsSO.MoveSpeed,
+                        _poltergeistStatsSO.AttackRange),
                 }),
                 new TaskPatrol(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed),
             });

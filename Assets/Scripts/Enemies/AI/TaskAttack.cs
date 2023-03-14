@@ -41,9 +41,10 @@ namespace AI.GhostAI
             }
             else
             {
-                GameObject ghost = Pooler.instance.Pop(_attackKey);
-                ghost.transform.position = target.position;
-                ghost.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage, _attackDelayBeforeAttack);
+                GameObject attackTrash = Pooler.instance.Pop(_attackKey);
+                attackTrash.transform.position = target.position;
+                attackTrash.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage, _attackDelayBeforeAttack);
+                _transform.GetComponent<Ghost>().IsFleeing = true;
             }
 
             _state = NodeState.SUCCESS;
