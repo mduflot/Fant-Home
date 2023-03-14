@@ -16,13 +16,14 @@ MonoBehaviour:
   MaxVeil: 40
   VeilRegenPoints: 1
   VeilRegenCD: 2.5
-  VeilRegenOverTime: 0
+  VeilRegenOverTime: 2.5
+  RangeVisibleToPlayer: 6
   MoveSpeed: 10
   StunDuration: 2
   AlwaysStun: 0
   AttackDamage: 1
   AttackRange: 5
-  AttackRadius: 1
+  AttackScale: {x: 0, y: 0, z: 0}
   AttackCD: 3
   AttackDelayBeforeAttack: 1.5
   InteractionRange: 6

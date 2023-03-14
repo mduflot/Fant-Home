@@ -41,6 +41,7 @@ namespace AI.GhostAI
             }
             else
             {
+                _transform.LookAt(target.position);
                 GameObject attackTrash = Pooler.instance.Pop(_attackKey);
                 attackTrash.transform.position = target.position;
                 attackTrash.GetComponent<TrashAttack>().Explode(_transform.position, _attackScale, _damage, _attackDelayBeforeAttack);
