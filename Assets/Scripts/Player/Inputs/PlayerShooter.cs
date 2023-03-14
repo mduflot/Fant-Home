@@ -63,20 +63,20 @@ namespace Entities
         {
             if (!_triggerShoot) return;
             _shootOrder = !_shootOrder;
-            if (_shootOrder)
-            {
-                Debug.Log(_particle.name);
-                _currentParticle = Pooler.instance.Pop(_particle.name);
-                _currentParticle.transform.parent = transform;
-                _currentParticle.transform.localPosition = Vector3.zero;
-                _currentParticle.transform.localPosition += transform.forward;
-                
-                _currentParticle.transform.rotation = transform.rotation;
-            }
-            else
-            {
-                Pooler.instance.Depop(_particle.name, _currentParticle);
-            }
+            // if (_shootOrder)
+            // {
+            //     Debug.Log(_particle.name);
+            //     _currentParticle = Pooler.instance.Pop(_particle.name);
+            //     _currentParticle.transform.parent = transform;
+            //     _currentParticle.transform.localPosition = Vector3.zero;
+            //     _currentParticle.transform.localPosition += transform.forward;
+            //     
+            //     _currentParticle.transform.rotation = transform.rotation;
+            // }
+            // else
+            // {
+            //     Pooler.instance.Depop(_particle.name, _currentParticle);
+            // }
         }
 
         private void Update()
@@ -89,16 +89,16 @@ namespace Entities
         // ReSharper disable Unity.PerformanceAnalysis
         private void Shoot()
         {
-            // var randomEuler = transform.eulerAngles;
-            // randomEuler.y += Random.Range(0.0f, _bulletSpread);
+            var randomEuler = transform.eulerAngles;
+            randomEuler.y += Random.Range(0.0f, _bulletSpread);
             AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
-            //
-            // _bullet = Pooler.instance.Pop(_bulletKey);
-            // _bullet.GetComponent<Bullet>().speed = _bulletSpeed;
-            // _bullet.GetComponent<Bullet>().key = _bulletKey;
-            // _bullet.GetComponent<Bullet>().StartTimer();
-            // _bullet.transform.eulerAngles = randomEuler;
-            // _bullet.transform.position = transform.position;
+            
+            _bullet = Pooler.instance.Pop(_bulletKey);
+            _bullet.GetComponent<Bullet>().speed = _bulletSpeed;
+            _bullet.GetComponent<Bullet>().key = _bulletKey;
+            _bullet.GetComponent<Bullet>().StartTimer();
+            _bullet.transform.eulerAngles = randomEuler;
+            _bullet.transform.position = transform.position;
         }
     }
 }
