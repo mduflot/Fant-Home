@@ -81,7 +81,6 @@ public class Ghost : MonoBehaviour, IEnemy
         _veil = 0;
         if (_regenCO != null) StopCoroutine(_regenCO);
         AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
-        Debug.Log("Stuck & Veil");
         _stunCounter = 0;
         _veilCounter = 0;
         IsStun = true;
