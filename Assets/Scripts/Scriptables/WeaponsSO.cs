@@ -24,4 +24,5 @@ public class WeaponsSO: EquipmentSO
     public BulletKeys key;
     public BulletTypes type;
     public FlashLightSO flashLight;
+    public GameObject particles;
 }
