@@ -18,6 +18,7 @@ namespace AI.PoltergeistAI
             _spawnCounter += Time.deltaTime;
             if (_spawnCounter >= _spawnTime)
             {
+                _spawnCounter = 0;
                 _state = NodeState.SUCCESS;
                 return _state;
             }
