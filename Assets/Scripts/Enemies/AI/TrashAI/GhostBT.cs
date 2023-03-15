@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AI.PoltergeistAI;
 using BehaviorTree;
 using Scriptables;
 using UnityEngine;
@@ -23,6 +24,11 @@ namespace AI.GhostAI
                     new CheckPlayerInAttackRange(transform, _ghostStatsSO.AttackRange, _ghostStatsSO.AttackCD),
                     new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackScale,
                         _ghostStatsSO.AttackKey, _ghostStatsSO.AttackDelayBeforeAttack),
+                }),
+                new Sequence(new List<Node>
+                {
+                    new CheckInteractable(transform, _ghostStatsSO.InteractionCD, _ghostStatsSO.InteractionRange),
+                    new TaskInteractable(transform, _ghostStatsSO.MoveSpeed, _ghostStatsSO.CanActivateObject)
                 }),
                 new Sequence(new List<Node>
                 {

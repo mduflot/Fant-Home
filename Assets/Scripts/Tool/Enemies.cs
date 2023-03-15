@@ -2,7 +2,7 @@
 {
     GHOST,
     POLTERGEIST,
-    ZOMBIE
+    ECTOPLASMA
 }
 
 [System.Serializable]
