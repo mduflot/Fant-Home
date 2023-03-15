@@ -16,10 +16,10 @@ public class GhostAttack : MonoBehaviour
     private int _damage;
     private float _attackDelayBeforeAttack;
 
-    public void Explode(Vector3 center, Vector3 scale, Vector3 direction, Quaternion rotation, int damage, float attackRange, float attackDelayBeforeAttack,
+    public void Explode(Vector3 center, Vector3 scale, Vector3 direction, Quaternion rotation, int damage,
+        float attackRange, float attackDelayBeforeAttack,
         Ghost sender, LayerMask playerMask)
     {
-        transform.rotation = rotation;
         _center = center;
         _scale = scale;
         _direction = direction;
@@ -35,7 +35,8 @@ public class GhostAttack : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
-        RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, _rotation, _attackRange, _playerMask);
+        RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, Quaternion.identity, _attackRange,
+            _playerMask);
         bool hitAPlayer = false;
         if (hits.Length > 0)
         {
@@ -49,6 +50,7 @@ public class GhostAttack : MonoBehaviour
 
         if (_indicator) _indicator.SetActive(false);
         if (hitAPlayer) AudioManager.Instance.PlaySFXRandom("Ghost_Attack_Whiff", 0.8f, 1.2f);
+        _sender.IsAttacking = false;
         Pooler.instance.Depop("TrashAttack", gameObject);
     }
 
@@ -57,12 +59,11 @@ public class GhostAttack : MonoBehaviour
         if (_indicator) _indicator.SetActive(true);
         yield return new WaitForSeconds(_attackDelayBeforeAttack);
         GetComponent<ParticleSystem>().Play();
-        _sender.IsAttacking = false;
         AudioManager.Instance.PlaySFXRandom("Ghost_Trash_Attack", 0.8f, 1.2f);
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(_center, _scale);
+        Debug.DrawRay(_center, _direction, Color.red);
     }
 }

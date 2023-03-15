@@ -1,4 +1,5 @@
 ﻿using BehaviorTree;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace AI.GhostAI
@@ -42,13 +43,17 @@ namespace AI.GhostAI
             {
                 _transform.LookAt(target.position);
                 GameObject attackGhost = Pooler.instance.Pop(_attackKey);
-                attackGhost.transform.position = _transform.position;
                 _transform.GetComponent<Ghost>().IsAttacking = true;
+                attackGhost.transform.position = _transform.position;
+                attackGhost.transform.rotation = Quaternion.LookRotation(target.position - _transform.position);
+
                 attackGhost.GetComponent<GhostAttack>().Explode(
-                    (_transform.position + (target.position - _transform.position) / 2), _attackScale,
+                    _transform.position, _attackScale,
                     target.position - _transform.position,
-                    Quaternion.LookRotation(target.position - _transform.position), _damage, _attackRange, _attackDelayBeforeAttack,
+                    Quaternion.LookRotation(target.position - _transform.position), _damage, _attackRange,
+                    _attackDelayBeforeAttack,
                     _transform.GetComponent<Ghost>(), _playerMask);
+
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }
 

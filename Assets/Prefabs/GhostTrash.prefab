@@ -4933,6 +4933,7 @@ MonoBehaviour:
   _stunObject: {fileID: 4060155084722820505}
   IsStun: 0
   IsFleeing: 0
+  IsAttacking: 0
   Veil: 1
 --- !u!114 &3969293103871739000
 MonoBehaviour:
@@ -4949,6 +4950,9 @@ MonoBehaviour:
   _enemiesMask:
     serializedVersion: 2
     m_Bits: 128
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!65 &7588961759950954742
 BoxCollider:
   m_ObjectHideFlags: 0

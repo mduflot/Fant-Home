@@ -39,7 +39,8 @@ namespace AI.PoltergeistAI
                     new CheckPlayerInAttackRange(transform, _poltergeistStatsSO.AttackRange,
                         _poltergeistStatsSO.AttackCD),
                     new TaskAttack(transform, _poltergeistStatsSO.AttackDamage, _poltergeistStatsSO.AttackScale,
-                        _poltergeistStatsSO.AttackKey, _poltergeistStatsSO.AttackDelayBeforeAttack, _poltergeistStatsSO.AttackRange,_playerMask),
+                        _poltergeistStatsSO.AttackKey, _poltergeistStatsSO.AttackDelayBeforeAttack,
+                        _poltergeistStatsSO.AttackRange, _playerMask),
                 }),
                 new Sequence(new List<Node>
                 {
