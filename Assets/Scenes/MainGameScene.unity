@@ -972,10 +972,26 @@ PrefabInstance:
       propertyPath: waves.Array.data[19].enemies.Array.data[2].number
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: sfxSounds.Array.data[6].level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: sfxSounds.Array.data[7].level
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: initialRoom
       value: 
       objectReference: {fileID: 770138420}
+    - target: {fileID: 900577538590846007, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900577538590846007, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1760945989499659823, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: rooms.Array.data[0]
       value: 
@@ -1028,6 +1044,10 @@ PrefabInstance:
       propertyPath: wavesUnlock.Array.data[3].roomsToOpen.Array.data[1]
       value: 
       objectReference: {fileID: 770138422}
+    - target: {fileID: 2231601768462814107, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3805329492427995590, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: m_Name
       value: _CORE

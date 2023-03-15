@@ -99,7 +99,7 @@ namespace Entities
         {
             _eulerAngles = transform.eulerAngles;
             _eulerAngles.y += Random.Range(0.0f, _bulletSpread);
-            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
+            AudioManager.Instance.PlaySFXRandom(_bulletKey + "_Shoot", 0.8f, 1.2f);
             SetBullet();
             _bulletScript.SetBase();
         }
