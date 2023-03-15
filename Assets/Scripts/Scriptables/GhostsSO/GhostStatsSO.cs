@@ -6,7 +6,7 @@ namespace Scriptables
     {
         GHOST,
         POLTERGEIST,
-        ZOMBIE
+        ECTOPLASMA
     }
 
     [CreateAssetMenu(fileName = "new GhostStatsSO", menuName = "Scriptables/GhostsSO/GhostStatsSO", order = 2)]
@@ -26,6 +26,7 @@ namespace Scriptables
         public Vector3 AttackScale;
         public float AttackCD;
         public float AttackDelayBeforeAttack;
+        public bool CanActivateObject;
         public int InteractionRange;
         public int InteractionCD;
         public string AttackKey;

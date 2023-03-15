@@ -35,7 +35,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     private Coroutine _regenCO;
 
-    private void Start()
+    private void OnEnable()
     {
         gameObject.name = _name;
         _health = _ghostSO.MaxHealth;
@@ -45,6 +45,7 @@ public class Ghost : MonoBehaviour, IEnemy
         _regenVeilOverTime = _ghostSO.VeilRegenOverTime;
         _stunTime = _ghostSO.StunDuration;
         _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer.enabled = false;
         _colorVeil = _meshRenderer.material.color;
     }
 
@@ -82,7 +83,6 @@ public class Ghost : MonoBehaviour, IEnemy
     {
         Veil -= damageVeil;
         if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
-
         if (Veil <= 0)
         {
             Veil = 0;
@@ -114,13 +114,14 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damage)
     {
-        if (_health <= 0 || !_isVulnerable) return;
+        if (!_isVulnerable) return;
         _health -= damage;
         _colorHealth = Color.Lerp(Color.red, Color.green, _health / _ghostSO.MaxHealth);
         _colorHealth.a = 0.8f;
         _meshRenderer.material.color = _colorHealth;
         if (_health <= 0)
         {
+            _health = 0;
             Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
             AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
             return;
