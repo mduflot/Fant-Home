@@ -12,8 +12,11 @@ namespace AI.GhostAI
         private Vector3 _attackScale;
         private string _attackKey;
         private float _attackDelayBeforeAttack;
+        private float _attackRange;
+        private LayerMask _playerMask;
 
-        public TaskAttack(Transform transform, int damage, Vector3 attackScale, string attackKey, float attackDelayBeforeAttack)
+        public TaskAttack(Transform transform, int damage, Vector3 attackScale, string attackKey,
+            float attackDelayBeforeAttack, float attackRange, LayerMask playerMask)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
@@ -21,6 +24,8 @@ namespace AI.GhostAI
             _attackScale = attackScale;
             _attackKey = attackKey;
             _attackDelayBeforeAttack = attackDelayBeforeAttack;
+            _attackRange = attackRange;
+            _playerMask = playerMask;
         }
 
         public override NodeState Evaluate()
@@ -38,9 +43,12 @@ namespace AI.GhostAI
                 _transform.LookAt(target.position);
                 GameObject attackGhost = Pooler.instance.Pop(_attackKey);
                 attackGhost.transform.position = _transform.position;
-                attackGhost.transform.rotation = Quaternion.LookRotation(target.position - _transform.position);
                 _transform.GetComponent<Ghost>().IsAttacking = true;
-                attackGhost.GetComponent<GhostAttack>().Explode((_transform.position + (target.position - _transform.position) / 2), _attackScale, _damage, _attackDelayBeforeAttack, _transform.GetComponent<Ghost>());
+                attackGhost.GetComponent<GhostAttack>().Explode(
+                    (_transform.position + (target.position - _transform.position) / 2), _attackScale,
+                    target.position - _transform.position,
+                    Quaternion.LookRotation(target.position - _transform.position), _damage, _attackRange, _attackDelayBeforeAttack,
+                    _transform.GetComponent<Ghost>(), _playerMask);
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }
 

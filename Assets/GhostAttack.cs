@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,16 +12,21 @@ public class GhostAttack : MonoBehaviour
     private Vector3 _direction;
     private Quaternion _rotation;
     private LayerMask _playerMask;
+    private float _attackRange;
     private int _damage;
     private float _attackDelayBeforeAttack;
 
-    public void Explode(Vector3 center, Vector3 scale, Vector3 direction, int damage, float attackDelayBeforeAttack,
-        Ghost sender)
+    public void Explode(Vector3 center, Vector3 scale, Vector3 direction, Quaternion rotation, int damage, float attackRange, float attackDelayBeforeAttack,
+        Ghost sender, LayerMask playerMask)
     {
+        transform.rotation = rotation;
         _center = center;
         _scale = scale;
         _direction = direction;
+        _rotation = rotation;
         _damage = damage;
+        _playerMask = playerMask;
+        _attackRange = attackRange;
         _attackDelayBeforeAttack = attackDelayBeforeAttack;
         _sender = sender;
 
@@ -29,7 +35,7 @@ public class GhostAttack : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
-        RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, _rotation, _playerMask);
+        RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, _rotation, _attackRange, _playerMask);
         bool hitAPlayer = false;
         if (hits.Length > 0)
         {
