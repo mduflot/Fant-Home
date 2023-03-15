@@ -17,7 +17,11 @@ public class UIManager : MonoBehaviour
     public void FocusOn(GameObject target)
     {
         eventSys.SetSelectedGameObject(target);
-        Debug.Log(eventSys.isFocused);
+        
     }
 
+    private void Update()
+    {
+        Debug.Log(eventSys.currentSelectedGameObject);
+    }
 }

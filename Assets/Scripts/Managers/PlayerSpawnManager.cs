@@ -33,10 +33,10 @@ public class PlayerSpawnManager : MonoBehaviour
         
         targetGroup.AddMember(playerInput.transform, 1,2);
 
-        foreach (var meshRenderer in playerInput.gameObject.GetComponentsInChildren<MeshRenderer>())
+        /*foreach (var meshRenderer in playerInput.gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material.color = colors[playerInput.playerIndex];
-        }
+        }*/
 
         GameObject playGO;
         

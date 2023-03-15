@@ -20,9 +20,5 @@ MonoBehaviour:
   key: 1
   type: 1
   flashLight: {fileID: 0}
-<<<<<<< HEAD:Assets/Scriptables/WeaponsSO/BigBerthaGun.asset
-  AOE_Range: 5
-=======
   AOE_Range: 3
->>>>>>> main:Assets/Scriptables/WeaponsSO/W_BigBerthaGun.asset
   bulletNumber: 0
