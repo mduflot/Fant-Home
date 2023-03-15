@@ -91,7 +91,6 @@ public class Pooler : MonoBehaviour
 
         if (pool.queue.Count > pool.baseCount)
         {
-            Debug.Log("refresh");
             AddInstance(pool);
             pool.refreshSpeed = pool.baseRefreshSpeed * (pool.queue.Count / pool.baseCount);
         }
@@ -106,8 +105,6 @@ public class Pooler : MonoBehaviour
             Debug.LogWarning("pull of " + key + " is empty");
             AddInstance(pools[key]);
         }
-
-        Debug.Log("Dequeue");
         objectInstance = pools[key].queue.Dequeue();
         objectInstance.SetActive(true);
 
@@ -116,7 +113,6 @@ public class Pooler : MonoBehaviour
 
     public void Depop(string key, GameObject go)
     {
-        Debug.Log("Enqueue");
         pools[key].queue.Enqueue(go);
         go.transform.parent = transform; //Au cas où on a déplacé le GO
         go.SetActive(false);
