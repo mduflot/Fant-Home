@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443075544571751992}
-  m_LocalRotation: {x: 1.541438e-15, y: 1, z: 0.00000008146035, w: 0.000000044703484}
-  m_LocalPosition: {x: -0.049274445, y: 0.07858217, z: 1.807579}
-  m_LocalScale: {x: 0.35331634, y: 0.43432, z: 0.43432}
+  m_LocalRotation: {x: 0.000000005337494, y: 0.9928465, z: 0.119397804, w: 0.0000000443837}
+  m_LocalPosition: {x: -0.049274445, y: -0.19, z: 1.807579}
+  m_LocalScale: {x: 0.4292087, y: 0.43432, z: 0.43432}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6831763305908440090}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.715, y: 180, z: 0}
 --- !u!33 &5751515333911175924
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -131,14 +131,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4784968125924438537}
-  m_LocalRotation: {x: 0.11050475, y: -0, z: -0, w: 0.9938757}
-  m_LocalPosition: {x: -0.049274445, y: 1.2015827, z: -0.27242088}
+  m_LocalRotation: {x: -0.020316418, y: -0, z: -0, w: 0.99979365}
+  m_LocalPosition: {x: -0.049274445, y: 0.815, z: -0.27242088}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6831763305908440090}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 12.689, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.328, y: 0, z: 0}
 --- !u!108 &6799935978452751911
 Light:
   m_ObjectHideFlags: 0
@@ -151,10 +151,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 275
-  m_Range: 10
-  m_SpotAngle: 63.111763
-  m_InnerSpotAngle: 52.32508
+  m_Intensity: 100
+  m_Range: 6
+  m_SpotAngle: 80
+  m_InnerSpotAngle: 70.11161
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6831763305908440090}
   m_Layer: 0
-  m_Name: Player_StrongLight
+  m_Name: Player_Photos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ Transform:
   m_GameObject: {fileID: 5493742972843922059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.049274445, y: 0.49239182, z: 0.23370934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4016, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8845218815536584846}

@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443075544571751992}
-  m_LocalRotation: {x: 1.541438e-15, y: 1, z: 0.00000008146035, w: 0.000000044703484}
-  m_LocalPosition: {x: -0.049274445, y: 0.07858217, z: 1.807579}
-  m_LocalScale: {x: 0.35331634, y: 0.43432, z: 0.43432}
+  m_LocalRotation: {x: 0.000000005337494, y: 0.9928465, z: 0.119397804, w: 0.0000000443837}
+  m_LocalPosition: {x: -0.05, y: -0.59, z: 7.42}
+  m_LocalScale: {x: 0.1613653, y: 0.43432, z: 1.6474192}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6831763305908440090}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.715, y: 180, z: 0}
 --- !u!33 &5751515333911175924
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -151,10 +151,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 95.2
-  m_Range: 10
-  m_SpotAngle: 53.271587
-  m_InnerSpotAngle: 29.911922
+  m_Intensity: 275
+  m_Range: 30
+  m_SpotAngle: 10.341633
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6831763305908440090}
   m_Layer: 0
-  m_Name: Player_BaseLight
+  m_Name: Player_HandLightHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,5 +255,5 @@ Transform:
   - {fileID: 8845218815536584846}
   - {fileID: 1701748221726026093}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
