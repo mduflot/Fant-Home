@@ -118,7 +118,7 @@ public class Zombie : MonoBehaviour
         ghost.transform.position = target;
         ghost.GetComponent<GhostAttack>().Explode(target, _attackScale, (target - transform.position), _attackDamage,
             _attackRange, _delayBeforeAttack,
-            transform.GetComponent<Ghost>(), playerMask);
+            transform.GetComponent<Ghost>(), playerMask, _attackKey);
 
         yield return new WaitForSeconds(_delayBeforeAttack);
         navAgent.isStopped = false;
