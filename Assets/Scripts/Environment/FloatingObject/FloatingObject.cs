@@ -12,9 +12,12 @@ public class FloatingObject : MonoBehaviour
     {
         if(other.gameObject.layer != enemies)
         {
+            if(ghostInStack == 0)
+            {
+                AudioManager.Instance.PlaySFXRandom("Floating_Object", 0.8f, 1.2f);
+            }
             ghostInStack++;
             animator.SetInteger("Stack", ghostInStack);
-            AudioManager.Instance.PlaySFXRandom("Floating_Object", 0.8f, 1.2f);
         }
     }
 
