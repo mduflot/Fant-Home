@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5220708659382950580}
   - component: {fileID: 5504345245189044767}
   m_Layer: 7
-  m_Name: Zombie
+  m_Name: Ectoplasma
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
