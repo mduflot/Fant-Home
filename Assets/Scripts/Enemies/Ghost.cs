@@ -30,10 +30,10 @@ public class Ghost : MonoBehaviour, IEnemy
     private float _stunCounter;
     private float _veilCounter;
 
-    private Color _colorVeil;
     private Color _colorHealth;
 
     private Coroutine _regenCO;
+    private static readonly int Opacity = Shader.PropertyToID("_Opacity");
 
     private void OnEnable()
     {
@@ -46,7 +46,6 @@ public class Ghost : MonoBehaviour, IEnemy
         _stunTime = _ghostSO.StunDuration;
         _meshRenderer = GetComponent<MeshRenderer>();
         _meshRenderer.enabled = false;
-        _colorVeil = _meshRenderer.material.color;
     }
 
     private void Update()
@@ -82,7 +81,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeVeil(float damageVeil)
     {
-        if (Veil > 0 && Veil-damageVeil <= 0)
+        if (Veil > 0 && Veil - damageVeil <= 0)
         {
             AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
         }
@@ -96,8 +95,7 @@ public class Ghost : MonoBehaviour, IEnemy
         }
 
         var alpha = 1 - (Veil / _ghostSO.MaxVeil);
-        _colorVeil.a = alpha;
-        _meshRenderer.material.color = _colorVeil;
+        _meshRenderer.material.SetFloat(Opacity, alpha);
         if (!_isVulnerable) return;
         if (_ghostSO.AlwaysStun)
         {
@@ -121,13 +119,15 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damage)
     {
-        if (_health > 0 && _health-damage <= 0)
+        if (_health > 0 && _health - damage <= 0)
         {
             AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
-        } else if (_health-damage > 0)
+        }
+        else if (_health - damage > 0)
         {
             AudioManager.Instance.PlaySFXRandom(_ghostSO.Damage_SFX, 0.8f, 1.2f);
         }
+
         if (!_isVulnerable) return;
         _health -= damage;
         _colorHealth = Color.Lerp(Color.red, Color.green, _health / _ghostSO.MaxHealth);
@@ -136,8 +136,9 @@ public class Ghost : MonoBehaviour, IEnemy
         if (_health <= 0)
         {
             _health = 0;
+            GameObject ghostDeath = Pooler.instance.Pop(_ghostSO.DeathKey);
+            ghostDeath.transform.position = transform.position + Vector3.up;
             Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
-            return;
         }
     }
 
@@ -151,14 +152,12 @@ public class Ghost : MonoBehaviour, IEnemy
             IsFleeing = false;
             _canBeStun = false;
             alpha = 1 - (Veil / _ghostSO.MaxVeil);
-            _colorVeil.a = alpha;
-            _meshRenderer.material.color = _colorVeil;
+            _meshRenderer.material.SetFloat(Opacity, alpha);
             yield return new WaitForSeconds(_regenVeilOverTime);
         }
 
         alpha = 1 - (Veil / _ghostSO.MaxVeil);
-        _colorVeil.a = alpha;
-        _meshRenderer.material.color = _colorVeil;
+        _meshRenderer.material.SetFloat(Opacity, alpha);
         if (Veil >= _ghostSO.MaxHealth) _meshRenderer.enabled = false;
     }
 }
