@@ -31,7 +31,7 @@ MonoBehaviour:
   InteractionCD: 6
   AttackKey: VFX_GhostAtk
   DeathKey: VFX_GhostDeath
-  InteractableKey: 
+  InteractableKey: VFX_Interactable
   Key: 0
   Attack_SFX: Ghost_Trash_Attack
   Connect_SFX: Ghost_Trash_Attack_Connect
