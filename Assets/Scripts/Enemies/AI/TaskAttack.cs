@@ -44,9 +44,8 @@ namespace AI.GhostAI
                 _transform.LookAt(target.position);
                 GameObject attackGhost = Pooler.instance.Pop(_attackKey);
                 _transform.GetComponent<Ghost>().IsAttacking = true;
-                attackGhost.transform.parent = _transform;
-                attackGhost.transform.localPosition = Vector3.zero;
-                attackGhost.transform.localEulerAngles = new Vector3(-90, 90, 0);
+                attackGhost.transform.position = _transform.position;
+                attackGhost.transform.rotation = Quaternion.LookRotation(target.position - _transform.position);
 
                 attackGhost.GetComponent<GhostAttack>().Explode(
                     _transform.position, _attackScale,
