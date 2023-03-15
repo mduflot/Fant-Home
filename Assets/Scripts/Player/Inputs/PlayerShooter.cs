@@ -24,7 +24,7 @@ namespace Entities
         private int _bulletDamage;
         private float _reloadTime;
         private string _bulletKey;
-        private bool _shootOrder;
+        public bool ShootOrder;
         private float _lastShootTime;
         private float _bulletSpread;
         private float AOE_Range;
@@ -93,7 +93,7 @@ namespace Entities
         public void Fire()
         {
             if (!_triggerShoot) return;
-            _shootOrder = !_shootOrder;
+            ShootOrder = !ShootOrder;
             // if (_shootOrder)
             // {
             //     Debug.Log(_particle.name);
@@ -112,7 +112,7 @@ namespace Entities
 
         private void Update()
         {
-            if (_shootOrder && _lastShootTime + _reloadTime < Time.fixedTime)
+            if (ShootOrder && _lastShootTime + _reloadTime < Time.fixedTime)
             {
                 _lastShootTime = Time.fixedTime;
 
@@ -123,6 +123,7 @@ namespace Entities
         // ReSharper disable Unity.PerformanceAnalysis
         private void Shoot()
         {
+            if (flashLight.isActive) return;
             _eulerAngles = transform.eulerAngles;
             _eulerAngles.y += Random.Range(0.0f, _bulletSpread);
             AudioManager.Instance.PlaySFXRandom(_bulletKey + "_Shoot", 0.8f, 1.2f);
