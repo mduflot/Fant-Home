@@ -120,9 +120,13 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
 <<<<<<< HEAD
+  controlID: 50
+=======
+<<<<<<< HEAD
   controlID: 5482
 =======
   controlID: 48
+>>>>>>> main
 >>>>>>> main
 --- !u!114 &6
 MonoBehaviour:
@@ -153,9 +157,13 @@ MonoBehaviour:
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
 <<<<<<< HEAD
+  controlID: 51
+=======
+<<<<<<< HEAD
   controlID: 5483
 =======
   controlID: 49
+>>>>>>> main
 >>>>>>> main
 --- !u!114 &7
 MonoBehaviour:
@@ -185,11 +193,15 @@ MonoBehaviour:
   controlID: 5484
 =======
     width: 1466
-    height: 592
+    height: 680
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 52
+=======
   controlID: 50
+>>>>>>> main
 >>>>>>> main
 --- !u!114 &8
 MonoBehaviour:
@@ -209,6 +221,10 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+    width: 473
+    height: 680
+=======
+<<<<<<< HEAD
     width: 266
     height: 633
   m_MinSize: {x: 201, y: 221}
@@ -219,6 +235,7 @@ MonoBehaviour:
 =======
     width: 372
     height: 592
+>>>>>>> main
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
@@ -243,6 +260,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+    x: 473
+=======
+<<<<<<< HEAD
     x: 266
     y: 0
     width: 1183
@@ -258,11 +278,12 @@ MonoBehaviour:
   m_LastSelected: 2
 =======
     x: 372
+>>>>>>> main
     y: 0
-    width: 1094
-    height: 592
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 993
+    height: 680
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -291,6 +312,9 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+    y: 680
+=======
+<<<<<<< HEAD
     y: 633
     width: 1449
     height: 314
@@ -300,12 +324,17 @@ MonoBehaviour:
   controlID: 5543
 =======
     y: 592
+>>>>>>> main
     width: 1466
-    height: 355
+    height: 267
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 114
+=======
   controlID: 60
+>>>>>>> main
 >>>>>>> main
 --- !u!114 &11
 MonoBehaviour:
@@ -325,11 +354,16 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+    width: 918
+    height: 267
+=======
+<<<<<<< HEAD
     width: 696
     height: 314
 =======
     width: 919
     height: 355
+>>>>>>> main
 >>>>>>> main
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
@@ -362,6 +396,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+    x: 918
+=======
+<<<<<<< HEAD
     x: 696
     y: 0
     width: 753
@@ -373,9 +410,10 @@ MonoBehaviour:
   - {fileID: 20}
 =======
     x: 919
+>>>>>>> main
     y: 0
-    width: 547
-    height: 355
+    width: 548
+    height: 267
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 21}
@@ -411,7 +449,11 @@ MonoBehaviour:
     height: 947
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
+<<<<<<< HEAD
+  m_ActualView: {fileID: 22}
+=======
   m_ActualView: {fileID: 21}
+>>>>>>> main
   m_Panes:
 <<<<<<< HEAD
   - {fileID: 21}
@@ -5511,11 +5553,16 @@ MonoBehaviour:
     x: 0
     y: 73
 <<<<<<< HEAD
+    width: 472
+    height: 659
+=======
+<<<<<<< HEAD
     width: 265
     height: 612
 =======
     width: 371
     height: 571
+>>>>>>> main
 >>>>>>> main
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -5528,6 +5575,12 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
+<<<<<<< HEAD
+      scrollPos: {x: 0, y: 48}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: e262f1ff4463f1ffce63f1ff7c610100c8610100
+=======
       scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
       m_SelectedIDs: 
@@ -5537,6 +5590,7 @@ MonoBehaviour:
       m_SelectedIDs: dc8f0000
       m_LastClickedID: 0
       m_ExpandedIDs: ca70ffffb2f9ffffdefaffffea870000d2890000f2890000da8a0000ee8a0000
+>>>>>>> main
 >>>>>>> main
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -5586,6 +5640,12 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+    x: 473
+    y: 73
+    width: 991
+    height: 659
+=======
+<<<<<<< HEAD
     x: 266
     y: 73
     width: 1181
@@ -5595,6 +5655,7 @@ MonoBehaviour:
     y: 73
     width: 1092
     height: 571
+>>>>>>> main
 >>>>>>> main
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -5719,7 +5780,11 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 15}
 =======
       snapOffset: {x: 0, y: 0}
+<<<<<<< HEAD
+      snapOffsetDelta: {x: 0, y: 25}
+=======
       snapOffsetDelta: {x: 0, y: 0}
+>>>>>>> main
 >>>>>>> main
       snapCorner: 0
       id: Scene View/Camera
@@ -5914,9 +5979,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 48, y: 48}
+      snapOffset: {x: -216, y: -300}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 3
       id: AINavigationOverlay
       index: 11
       layout: 4
@@ -5928,8 +5993,13 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 0
   m_SceneIsLit: 0
 =======
+<<<<<<< HEAD
+  m_OverrideSceneCullingMask: 0
+  m_SceneIsLit: 0
+=======
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
+>>>>>>> main
 >>>>>>> main
   m_SceneLighting: 1
   m_2DMode: 0
@@ -5938,6 +6008,11 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+    m_Target: {x: -5.019009, y: 18.22895, z: 5.13106}
+    speed: 2
+    m_Value: {x: -5.019009, y: 18.22895, z: 5.13106}
+=======
+<<<<<<< HEAD
     m_Target: {x: -12.59868, y: 14.638053, z: -8.1042595}
     speed: 2
     m_Value: {x: -12.59868, y: 14.638053, z: -8.1042595}
@@ -5945,6 +6020,7 @@ MonoBehaviour:
     m_Target: {x: 2.8704908, y: -2.725458, z: -13.583641}
     speed: 2
     m_Value: {x: 2.8704908, y: -2.725458, z: -13.583641}
+>>>>>>> main
 >>>>>>> main
   m_RenderMode: 0
   m_CameraMode:
@@ -5992,6 +6068,9 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< HEAD
+    m_Target: {x: -0.4418196, y: 0.5487619, z: -0.4289548, w: -0.5655753}
+=======
+<<<<<<< HEAD
     m_Target: {x: 0.23564586, y: 0.7510264, z: -0.34811434, w: 0.5093542}
     speed: 2
     m_Value: {x: 0.23666608, y: 0.7494219, z: -0.347372, w: 0.51155514}
@@ -6001,12 +6080,17 @@ MonoBehaviour:
     m_Value: 9.93331
 =======
     m_Target: {x: 0.43969885, y: 0.55612093, z: -0.45092344, w: 0.54228747}
+>>>>>>> main
     speed: 2
-    m_Value: {x: 0.441186, y: 0.5546272, z: -0.4510929, w: 0.5424563}
+    m_Value: {x: -0.44261822, y: 0.54805696, z: -0.42973, w: -0.56484944}
   m_Size:
-    m_Target: 13.538516
+    m_Target: 5.6049566
     speed: 2
+<<<<<<< HEAD
+    m_Value: 5.6049566
+=======
     m_Value: 13.538516
+>>>>>>> main
 >>>>>>> main
   m_Ortho:
     m_Target: 0
@@ -6187,6 +6271,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+    y: 753
+    width: 917
+    height: 246
+=======
+<<<<<<< HEAD
     y: 706
     width: 695
     height: 293
@@ -6194,6 +6283,7 @@ MonoBehaviour:
     y: 665
     width: 918
     height: 334
+>>>>>>> main
 >>>>>>> main
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -6220,7 +6310,11 @@ MonoBehaviour:
 <<<<<<< HEAD
     - Assets/Meshes/Prefab
 =======
+<<<<<<< HEAD
+    - Assets/Meshes/Prefab
+=======
     - Assets/Prefabs/Integration_GA
+>>>>>>> main
 >>>>>>> main
     m_Globs: []
     m_OriginalText: 
@@ -6243,16 +6337,23 @@ MonoBehaviour:
 =======
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Integration_GA
+  - Assets/Meshes/Prefab
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\lolah\Desktop\rubika\Projet_mobile\Projet-Mars
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
+<<<<<<< HEAD
+    scrollPos: {x: 0, y: 540}
+    m_SelectedIDs: e0900000
+    m_LastClickedID: 37088
+    m_ExpandedIDs: 00000000a68e0000a88e0000aa8e0000ac8e0000ae8e0000b08e0000b28e0000b48e0000b68e0000909000009290000000ca9a3b
+=======
     scrollPos: {x: 0, y: 180}
     m_SelectedIDs: da8e0000
     m_LastClickedID: 36570
     m_ExpandedIDs: 00000000f08c0000f28c0000f48c0000f68c0000f88c0000fa8c0000408d0000448d0000508d0000528d000000ca9a3b
+>>>>>>> main
 >>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -6286,7 +6387,11 @@ MonoBehaviour:
 =======
     m_SelectedIDs: 5cbddeff
     m_LastClickedID: -2179748
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000a68e0000a88e0000aa8e0000ac8e0000ae8e0000b08e0000b28e0000b48e0000b68e0000
+=======
     m_ExpandedIDs: 00000000f08c0000f28c0000f48c0000f68c0000f88c0000fa8c0000
+>>>>>>> main
 >>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -6344,12 +6449,16 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
 <<<<<<< HEAD
+    m_ScrollPosition: {x: 0, y: 370}
+=======
+<<<<<<< HEAD
     m_ScrollPosition: {x: 0, y: 127}
     m_GridSize: 58
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 200
 =======
     m_ScrollPosition: {x: 0, y: 0}
+>>>>>>> main
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 294
@@ -6381,9 +6490,9 @@ MonoBehaviour:
     height: 293
 =======
     x: 8
-    y: 663
-    width: 1051
-    height: 328
+    y: 679
+    width: 910
+    height: 312
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -6413,10 +6522,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
+    x: 918
+    y: 753
+    width: 546
+    height: 246
+=======
     x: 919
     y: 665
     width: 545
     height: 334
+>>>>>>> main
 >>>>>>> main
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -6440,13 +6556,16 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Textures/T_Carpet_Blue
+    - Assets/Prefabs/Integration_GA
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
+<<<<<<< HEAD
+  - Assets/Prefabs/Integration_GA
+=======
 <<<<<<< HEAD
   - Assets/Prefabs/Blocking/Rooms
   m_LastFoldersGridSize: 53
@@ -6461,15 +6580,23 @@ MonoBehaviour:
     m_ExpandedIDs: 0000000024ab000028ab00006aab00006eab000042bb000000ca9a3b
 =======
   - Assets/Textures/T_Carpet_Blue
+>>>>>>> main
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\lolah\Desktop\rubika\Projet_mobile\Projet-Mars
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
+<<<<<<< HEAD
+    scrollPos: {x: 0, y: 143}
+    m_SelectedIDs: a2900000
+    m_LastClickedID: 37026
+    m_ExpandedIDs: 00000000a68e0000a88e0000aa8e0000ac8e0000ae8e0000b08e0000b28e0000b48e0000b68e000000ca9a3b
+=======
     scrollPos: {x: 0, y: 240}
     m_SelectedIDs: 8e8f0000
     m_LastClickedID: 36750
     m_ExpandedIDs: 00000000f08c0000f28c0000f48c0000f68c0000f88c0000fa8c0000528d000000ca9a3b
+>>>>>>> main
 >>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -6503,9 +6630,13 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+    m_ExpandedIDs: 00000000a68e0000a88e0000aa8e0000ac8e0000ae8e0000b08e0000b28e0000b48e0000b68e0000
+=======
+<<<<<<< HEAD
     m_ExpandedIDs: 0000000024ab000028ab000000ca9a3b
 =======
     m_ExpandedIDs: 00000000f08c0000f28c0000f48c0000f68c0000f88c0000fa8c0000
+>>>>>>> main
 >>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
