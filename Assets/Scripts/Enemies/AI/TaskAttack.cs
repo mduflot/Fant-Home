@@ -51,7 +51,7 @@ namespace AI.GhostAI
 
                 attackGhost.GetComponent<GhostAttack>().Explode(_transform.position, _attackScale,
                     target.position - _transform.position, _damage, _attackRange, _attackDelayBeforeAttack,
-                    _transform.GetComponent<Ghost>(), _playerMask);
+                    _transform.GetComponent<Ghost>(), _playerMask, _attackKey);
 
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }

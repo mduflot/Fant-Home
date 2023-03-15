@@ -13,10 +13,11 @@ public class GhostAttack : MonoBehaviour
     private float _attackRange;
     private int _damage;
     private float _attackDelayBeforeAttack;
+    private string _attackKey;
 
     public void Explode(Vector3 center, Vector3 scale, Vector3 direction, int damage,
         float attackRange, float attackDelayBeforeAttack,
-        Ghost sender, LayerMask playerMask)
+        Ghost sender, LayerMask playerMask, string attackKey)
     {
         _center = center;
         _scale = scale;
@@ -25,6 +26,7 @@ public class GhostAttack : MonoBehaviour
         _playerMask = playerMask;
         _attackRange = attackRange;
         _attackDelayBeforeAttack = attackDelayBeforeAttack;
+        _attackKey = attackKey;
         _sender = sender;
 
         StartCoroutine(PrepareSpell());
@@ -48,7 +50,7 @@ public class GhostAttack : MonoBehaviour
 
         if (_indicator) _indicator.SetActive(false);
         if (hitAPlayer) AudioManager.Instance.PlaySFXRandom("Ghost_Attack_Whiff", 0.8f, 1.2f);
-        Pooler.instance.Depop("TrashAttack", gameObject);
+        Pooler.instance.Depop(_attackKey, gameObject);
     }
 
     private IEnumerator PrepareSpell()
