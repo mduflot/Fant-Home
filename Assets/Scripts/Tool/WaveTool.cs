@@ -17,6 +17,7 @@ public class WaveTool : MonoBehaviour
 
     private void Start()
     {
+        index = 0;
         if (waves.Length == 0) return;
         SpawnWave(waves[index]);
     }

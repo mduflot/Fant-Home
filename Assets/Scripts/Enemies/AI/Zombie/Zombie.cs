@@ -110,7 +110,6 @@ public class Zombie : MonoBehaviour
     IEnumerator Attack()
     {
         curState = ZombieState.ATTACKING;
-        Debug.Log("passe");
         navAgent.isStopped = true;
         
         GameObject ghost = Pooler.instance.Pop(_attackKey);
