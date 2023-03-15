@@ -6,7 +6,7 @@ namespace Scriptables
     {
         GHOST,
         POLTERGEIST,
-        ZOMBIE
+        ECTOPLASMA
     }
 
     [CreateAssetMenu(fileName = "new GhostStatsSO", menuName = "Scriptables/GhostsSO/GhostStatsSO", order = 2)]
