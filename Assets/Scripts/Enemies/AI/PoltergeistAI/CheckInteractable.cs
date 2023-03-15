@@ -66,6 +66,7 @@ namespace AI.PoltergeistAI
                     }
                 }
 
+                _interactableCounter = 0;
                 Parent.Parent.SetData("object", hitColliders[currentIndex].transform);
                 _state = NodeState.SUCCESS;
                 return _state;
