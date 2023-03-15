@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Scriptables;
 using Unity.Collections;
@@ -46,6 +47,12 @@ public class Ghost : MonoBehaviour, IEnemy
         _stunTime = _ghostSO.StunDuration;
         _meshRenderer = GetComponent<MeshRenderer>();
         _meshRenderer.enabled = false;
+        
+    }
+
+    private void Start()
+    {
+        GameManager.instance.inGameUiManager.UpdateEnemiesRemaining(true);
     }
 
     private void Update()
@@ -135,6 +142,7 @@ public class Ghost : MonoBehaviour, IEnemy
         _meshRenderer.material.color = _colorHealth;
         if (_health <= 0)
         {
+            GameManager.instance.inGameUiManager.UpdateEnemiesRemaining(false);
             _health = 0;
             GameObject ghostDeath = Pooler.instance.Pop(_ghostSO.DeathKey);
             ghostDeath.transform.position = transform.position + Vector3.up;
