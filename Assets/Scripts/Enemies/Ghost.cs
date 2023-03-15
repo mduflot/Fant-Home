@@ -1,22 +1,21 @@
 using System.Collections;
 using Scriptables;
 using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour, IEnemy
 {
     [ReadOnly] public Room CurRoom;
 
-    [Header("Stats")] 
-    public GhostStatsSO _ghostSO;
+    [Header("Stats")] public GhostStatsSO _ghostSO;
     [SerializeField] private string _name = "Ghost";
     [SerializeField] private GameObject _stunObject;
 
     [HideInInspector] public bool IsStun;
     [HideInInspector] public bool IsFleeing;
 
-    [Header("Stats in Runtime")] 
-    private float _health;
+    [Header("Stats in Runtime")] private float _health;
     [HideInInspector] public float Veil;
     private float _regenVeilPoints;
     private float _regenVeilCD;
@@ -76,6 +75,7 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             other.gameObject.GetComponent<Bullet>().Contact();
         }
+
         TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
     }
 
@@ -88,6 +88,7 @@ public class Ghost : MonoBehaviour, IEnemy
             Veil = 0;
             _isVulnerable = true;
         }
+
         var alpha = 1 - (Veil / _ghostSO.MaxVeil);
         _colorVeil.a = alpha;
         _meshRenderer.material.color = _colorVeil;
@@ -105,6 +106,7 @@ public class Ghost : MonoBehaviour, IEnemy
             IsStun = true;
             _stunObject.SetActive(true);
         }
+
         if (_regenCO != null) StopCoroutine(_regenCO);
         IsFleeing = true;
         Veil = 0;

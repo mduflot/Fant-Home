@@ -414,44 +414,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: spawner
-      value: 
-      objectReference: {fileID: 4987919317452932528}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[0].spawnTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[1].spawnTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[2].spawnTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
       propertyPath: waves.Array.data[0].enemies.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[1].enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[2].enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[0].enemies.Array.data[0].number
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
-      propertyPath: waves.Array.data[1].enemies.Array.data[0].number
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
       propertyPath: waves.Array.data[2].enemies.Array.data[0].number

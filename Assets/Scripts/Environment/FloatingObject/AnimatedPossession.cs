@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatingObject : MonoBehaviour
+public class AnimatedPossession : MonoBehaviour
 {
     [SerializeField] Animator animator;
     int ghostInStack = 0;
-    public LayerMask enemies;
+    [SerializeField] private LayerMask enemies;
+    [SerializeField] private string[] sounds;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer != enemies)
+        if (other.CompareTag("Enemy"))
         {
             if(ghostInStack == 0)
             {
-                AudioManager.Instance.PlaySFXRandom("Floating_Object", 0.8f, 1.2f);
+                int soundToPlay = Random.Range(0, sounds.Length);
+                AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f);
             }
             ghostInStack++;
             animator.SetInteger("Stack", ghostInStack);
@@ -23,7 +25,7 @@ public class FloatingObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer != enemies)
+        if (other.CompareTag("Enemy"))
         {
             ghostInStack--;
             animator.SetInteger("Stack", ghostInStack);
