@@ -35,6 +35,7 @@ Transform:
   - {fileID: 7389979443246085326}
   - {fileID: 2674913168199750542}
   - {fileID: 8395016602452124673}
+  - {fileID: 4455055523480535414}
   m_Father: {fileID: 7887591960396323115}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,6 +104,7 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: 1aea06f780224104da15f2b2e1ce1de8, type: 2}
   _triggerShoot: 1
   flashLight: {fileID: 4460099137264186308}
+  player: {fileID: 5051371393466933211}
 --- !u!114 &4460099137264186308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +931,7 @@ MonoBehaviour:
   curRoom: {fileID: 0}
   playerShoot: {fileID: 1526775785208591348}
   flashLight: {fileID: 4460099137264186308}
+  playerUI: {fileID: 0}
 --- !u!114 &2776199430036081876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +962,7 @@ MonoBehaviour:
   curHealth: 0
   curState: 0
   deathInteractionGO: {fileID: 1985378236534454118}
+  player: {fileID: 5051371393466933211}
 --- !u!114 &4075498153305419733
 MonoBehaviour:
   m_ObjectHideFlags: 0

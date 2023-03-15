@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace Entities
 {
@@ -9,6 +11,7 @@ namespace Entities
         public WeaponsSO GetCurWeapon => weapon;
         [SerializeField] private bool _triggerShoot;
         [SerializeField] private FlashLight flashLight;
+        [SerializeField] private Player player;
 
         private delegate void ShootAction();
         private ShootAction _shootAction;
@@ -26,8 +29,11 @@ namespace Entities
         private float _bulletSpread;
         private float AOE_Range;
 
+        
+
         private void Start()
         {
+            if (!player) player = GetComponent<Player>();
             ChangeWeapon(weapon);
         }
 
@@ -57,6 +63,8 @@ namespace Entities
                 BulletTypes.Explosive => ShootExplosive,
                 _ => Shoot
             };
+            
+            player.playerUI.UpdateWeaponUI(weapon);
         }
 
         // ReSharper disable Unity.PerformanceAnalysis

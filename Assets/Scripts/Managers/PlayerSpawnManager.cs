@@ -11,6 +11,7 @@ public class PlayerSpawnManager : MonoBehaviour
     [SerializeField] private PlayerStatsSO stats;
     [SerializeField] private GameObject PlayerGO;
     [SerializeField] private CinemachineTargetGroup targetGroup;
+    [SerializeField] private PlayerUI[] playersUI;
     [SerializeField] private Transform[] spawnLocations;
     [SerializeField] private Color[] colors;
 
@@ -37,6 +38,8 @@ public class PlayerSpawnManager : MonoBehaviour
         {
             meshRenderer.material.color = colors[playerInput.playerIndex];
         }*/
+
+        playerInput.GetComponent<Player>().playerUI = playersUI[playerInput.playerIndex];
 
         GameObject playGO;
         
