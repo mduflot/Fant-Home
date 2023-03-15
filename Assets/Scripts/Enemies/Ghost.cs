@@ -45,6 +45,7 @@ public class Ghost : MonoBehaviour, IEnemy
         _regenVeilOverTime = _ghostSO.VeilRegenOverTime;
         _stunTime = _ghostSO.StunDuration;
         _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer.enabled = false;
         _colorVeil = _meshRenderer.material.color;
     }
 
@@ -82,7 +83,6 @@ public class Ghost : MonoBehaviour, IEnemy
     {
         Veil -= damageVeil;
         if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
-
         if (Veil <= 0)
         {
             Veil = 0;
