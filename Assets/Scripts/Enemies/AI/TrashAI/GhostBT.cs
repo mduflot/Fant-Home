@@ -21,13 +21,14 @@ namespace AI.GhostAI
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInAttackRange(transform, _ghostStatsSO.AttackRange, _ghostStatsSO.AttackCD),
-                    new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackRadius,
+                    new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackScale,
                         _ghostStatsSO.AttackKey, _ghostStatsSO.AttackDelayBeforeAttack),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayer(transform),
-                    new TaskGoToTarget(transform, _enemiesMask, _ghostStatsSO.MoveSpeed, _ghostStatsSO.AttackRange),
+                    new TaskGoToTarget(transform, GetComponent<MeshRenderer>(), _enemiesMask, _ghostStatsSO.MoveSpeed,
+                        _ghostStatsSO.AttackRange, _ghostStatsSO.RangeVisibleToPlayer, _ghostStatsSO.MaxHealth, _ghostStatsSO.MaxVeil),
                 })
             });
 

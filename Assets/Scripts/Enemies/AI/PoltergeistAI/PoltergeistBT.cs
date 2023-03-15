@@ -37,14 +37,15 @@ namespace AI.PoltergeistAI
                 {
                     new CheckPlayerInAttackRange(transform, _poltergeistStatsSO.AttackRange,
                         _poltergeistStatsSO.AttackCD),
-                    new TaskAttack(transform, _poltergeistStatsSO.AttackDamage, _poltergeistStatsSO.AttackRadius,
+                    new TaskAttack(transform, _poltergeistStatsSO.AttackDamage, _poltergeistStatsSO.AttackScale,
                         _poltergeistStatsSO.AttackKey, _poltergeistStatsSO.AttackDelayBeforeAttack),
                 }),
                 new Sequence(new List<Node>
                 {
                     new CheckPlayerInFOVRange(transform, _poltergeistStatsSO.DetectionRange),
-                    new TaskGoToTarget(transform, _enemiesMask, _poltergeistStatsSO.MoveSpeed,
-                        _poltergeistStatsSO.AttackRange),
+                    new TaskGoToTarget(transform, GetComponent<MeshRenderer>(), _enemiesMask,
+                        _poltergeistStatsSO.MoveSpeed,
+                        _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.RangeVisibleToPlayer, _poltergeistStatsSO.MaxHealth, _poltergeistStatsSO.MaxVeil),
                 }),
                 new TaskPatrol(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed),
             });

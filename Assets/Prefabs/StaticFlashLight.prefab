@@ -375,10 +375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0472fe9e8059e6d4b88f751a8c595b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
   light: {fileID: 6302631639036068071}
   tickRate: 0.25
   damagesPerTick: 2
-  angle: 45
+  angle: 70.4
+  length: 2.3
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -10,16 +10,16 @@ namespace AI.GhostAI
         private Transform _lastTarget;
         private PlayerHealth _playerHealth;
         private int _damage;
-        private float _attackRadius;
+        private Vector3 _attackScale;
         private string _attackKey;
         private float _attackDelayBeforeAttack;
 
-        public TaskAttack(Transform transform, int damage, float attackRadius, string attackKey, float attackDelayBeforeAttack)
+        public TaskAttack(Transform transform, int damage, Vector3 attackScale, string attackKey, float attackDelayBeforeAttack)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
             _damage = damage;
-            _attackRadius = attackRadius;
+            _attackScale = attackScale;
             _attackKey = attackKey;
             _attackDelayBeforeAttack = attackDelayBeforeAttack;
         }
@@ -41,9 +41,10 @@ namespace AI.GhostAI
             }
             else
             {
+                _transform.LookAt(target.position);
                 GameObject attackTrash = Pooler.instance.Pop(_attackKey);
                 attackTrash.transform.position = target.position;
-                attackTrash.GetComponent<TrashAttack>().Explode(_transform.position, _attackRadius, _damage, _attackDelayBeforeAttack);
+                attackTrash.GetComponent<TrashAttack>().Explode(_transform.position, _attackScale, _damage, _attackDelayBeforeAttack);
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }
 
