@@ -36,17 +36,8 @@ namespace AI.GhostAI
             _playerHealth = target.GetComponent<PlayerHealth>();
             
             RaycastHit[] hits = Physics.SphereCastAll(_transform.position, 5f, _transform.forward, 5f, _enemiesMask);
-            bool isEnemy = false;
-
-            foreach (var hit in hits)
-            {
-                if (hit.transform.CompareTag("Enemy") && _transform != hit.transform)
-                {
-                    isEnemy = true;
-                }
-            }
-
-            if (!isEnemy)
+            
+            if (hits.Length < 1)
             {
                 if (Vector3.Distance(_transform.position, target.position) < _visibleToPlayer)
                 {
@@ -83,9 +74,9 @@ namespace AI.GhostAI
                 }
             }
 
-            Vector3 posToGo = target.position +
-                              ((_transform.position - hits[currentIndex].transform.position).normalized * 2);
-            Vector3 posToGoCheck = new Vector3(posToGo.x, target.position.y, posToGo.z);
+            Vector3 posToGoCheck = target.position +
+                                   ((_transform.position - hits[currentIndex].transform.position).normalized * 2);
+            Vector3 posToGo = new Vector3(posToGoCheck.x, target.position.y, posToGoCheck.z);
 
             if (Vector3.Distance(_transform.position, target.position) < _visibleToPlayer)
             {
@@ -99,7 +90,7 @@ namespace AI.GhostAI
             if (Vector3.Distance(_transform.position, target.position) > _attackRange)
             {
                 _transform.position = Vector3.MoveTowards(
-                    _transform.position, posToGoCheck, _speed * Time.deltaTime);
+                    _transform.position, posToGo, _speed * Time.deltaTime);
                 _transform.LookAt(target.position);
             }
 
