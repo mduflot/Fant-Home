@@ -91,9 +91,12 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Tail_Intensity: 0.125
+    - _WIND_UP: 0
+    - _Wind_Up_Displacement: 0.5
     m_Colors:
     - _Color: {r: 0, g: 1.0237021, b: 60.58241, a: 0}
     - _ColorEyes: {r: 0.003921569, g: 0.003921569, b: 0.015686275, a: 0}
+    - _ColorEyes_Atk: {r: 14.247049, g: 0.76083016, b: 194.0117, a: 1}
     - _Color_Background: {r: 0.04846031, g: 0.0632105, b: 0.103773594, a: 0}
     - _Displacement_Axis_Intensity: {r: 1, g: 0.5, b: 0.25, a: 0}
     - _Displacement_Axis_Intensity_1: {r: 0, g: 0.5, b: 1, a: 0}
