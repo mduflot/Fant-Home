@@ -69,7 +69,9 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            // Debug.Log("Sound not found");
+            Debug.Log("Sound " + name + " not found");
+
+            return 0f;
         }
         else
         {

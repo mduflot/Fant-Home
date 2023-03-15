@@ -973,12 +973,28 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: sfxSounds.Array.data[35].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 412ed94dc1cfb7b4f8f28bc6e262471a, type: 3}
+    - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: sfxSounds.Array.data[35].name
+      value: Radio_WhiteNoise3
+      objectReference: {fileID: 0}
+    - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: sfxSounds.Array.data[6].level
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: sfxSounds.Array.data[7].level
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 773452828053232564, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: sfxSounds.Array.data[35].level
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 792267964056597756, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
       propertyPath: initialRoom
