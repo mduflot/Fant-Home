@@ -14,6 +14,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     [HideInInspector] public bool IsStun;
     [HideInInspector] public bool IsFleeing;
+    [HideInInspector] public bool IsAttacking;
 
     [Header("Stats in Runtime")] private float _health;
     [HideInInspector] public float Veil;
@@ -81,6 +82,11 @@ public class Ghost : MonoBehaviour, IEnemy
 
     public void TakeVeil(float damageVeil)
     {
+        if (Veil > 0 && Veil-damageVeil <= 0)
+        {
+            AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
+        }
+
         Veil -= damageVeil;
         if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
         if (Veil <= 0)
@@ -111,11 +117,17 @@ public class Ghost : MonoBehaviour, IEnemy
         IsFleeing = true;
         Veil = 0;
         _veilCounter = 0;
-        AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
     }
 
     public void TakeDamage(float damage)
     {
+        if (_health > 0 && _health-damage <= 0)
+        {
+            AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
+        } else if (_health-damage > 0)
+        {
+            AudioManager.Instance.PlaySFXRandom(_ghostSO.Damage_SFX, 0.8f, 1.2f);
+        }
         if (!_isVulnerable) return;
         _health -= damage;
         _colorHealth = Color.Lerp(Color.red, Color.green, _health / _ghostSO.MaxHealth);
@@ -125,11 +137,8 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             _health = 0;
             Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
-            AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
             return;
         }
-
-        AudioManager.Instance.PlaySFXRandom(_ghostSO.Damage_SFX, 0.8f, 1.2f);
     }
 
     private IEnumerator RegenVeil()

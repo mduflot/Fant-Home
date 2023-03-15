@@ -51,7 +51,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
-    - _Cull: 2
+    - _Cull: 0
     - _DstBlend: 0
     - _EmissiveIntensity: 0
     - _QueueControl: 0
@@ -64,7 +64,8 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    m_Colors: []
+    m_Colors:
+    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7620543383688132116
 MonoBehaviour:
