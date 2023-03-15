@@ -42,10 +42,18 @@ namespace AI.PoltergeistAI
                 }),
                 new Sequence(new List<Node>
                 {
+                    new CheckInteractable(transform, _poltergeistStatsSO.InteractionCD,
+                        _poltergeistStatsSO.InteractionRange),
+                    new TaskInteractable(transform, _poltergeistStatsSO.MoveSpeed,
+                        _poltergeistStatsSO.CanActivateObject)
+                }),
+                new Sequence(new List<Node>
+                {
                     new CheckPlayerInFOVRange(transform, _poltergeistStatsSO.DetectionRange),
                     new TaskGoToTarget(transform, GetComponent<MeshRenderer>(), _enemiesMask,
                         _poltergeistStatsSO.MoveSpeed,
-                        _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.RangeVisibleToPlayer, _poltergeistStatsSO.MaxHealth, _poltergeistStatsSO.MaxVeil),
+                        _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.RangeVisibleToPlayer,
+                        _poltergeistStatsSO.MaxHealth, _poltergeistStatsSO.MaxVeil),
                 }),
                 new TaskPatrol(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed),
             });

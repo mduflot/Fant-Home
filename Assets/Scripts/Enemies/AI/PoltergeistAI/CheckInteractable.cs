@@ -1,4 +1,5 @@
-﻿using BehaviorTree;
+﻿using System.Linq;
+using BehaviorTree;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -10,14 +11,14 @@ namespace AI.PoltergeistAI
         private float _interactableCounter;
         private float _interactableCD;
         private float _radius;
-        
+
         public CheckInteractable(Transform transform, float interactableCD, float radius)
         {
             _transform = transform;
             _interactableCD = interactableCD;
             _radius = radius;
         }
-        
+
         public override NodeState Evaluate()
         {
             object isInteract = GetData("isInteract");
@@ -27,13 +28,13 @@ namespace AI.PoltergeistAI
                 _state = NodeState.SUCCESS;
                 return _state;
             }
-            
+
             _interactableCounter += Time.deltaTime;
             if (_interactableCounter >= _interactableCD)
             {
                 int currentIndex = 0;
                 float previousDistance = 0;
-                
+
                 Collider[] hitColliders = Physics.OverlapSphere(_transform.position, _radius);
 
                 if (hitColliders.Length < 1)
@@ -41,7 +42,15 @@ namespace AI.PoltergeistAI
                     _state = NodeState.FAILURE;
                     return _state;
                 }
-                
+
+                if (!hitColliders.Any(hitCollider =>
+                        hitCollider.CompareTag("Interactable") || hitCollider.CompareTag("Wall")))
+                {
+                    Debug.Log("No object detect");
+                    _state = NodeState.FAILURE;
+                    return _state;
+                }
+
                 for (var index = 0; index < hitColliders.Length; index++)
                 {
                     var hitCollider = hitColliders[index];
@@ -56,7 +65,7 @@ namespace AI.PoltergeistAI
                         }
                     }
                 }
-                
+
                 Parent.Parent.SetData("object", hitColliders[currentIndex].transform);
                 _state = NodeState.SUCCESS;
                 return _state;
