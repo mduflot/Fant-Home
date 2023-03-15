@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 5357407890667331008}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5608089203824179755
 PrefabInstance:
@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ca620c08a30a61247bc85a1338409cfd, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 98058fa468abff949b8b513c31554ffc, type: 2}
+      objectReference: {fileID: 2100000, guid: cb4fb637a64733d48861af47ddc1dd89, type: 2}
     - target: {fileID: 919132149155446097, guid: ca620c08a30a61247bc85a1338409cfd, type: 3}
       propertyPath: m_Name
       value: SM_tile_wall_attach

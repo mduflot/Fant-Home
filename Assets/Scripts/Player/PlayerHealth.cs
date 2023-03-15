@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
         if (curState == PlayerState.INVINCIBLE || curHealth <= 0) return;
 
         curHealth -= damage;
+        Debug.Log("got hit");
         if (curHealth <= 0) Fall();
         else StartCoroutine(Invincible());
         AudioManager.Instance.PlaySFXRandom("Player_Damage", 0.8f, 1.2f);
