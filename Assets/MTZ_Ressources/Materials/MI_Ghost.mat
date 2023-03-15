@@ -92,7 +92,7 @@ Material:
     - _QueueOffset: 0
     - _Tail_Intensity: 0.125
     m_Colors:
-    - _Color: {r: 0, g: 2.35185, b: 139.18184, a: 0}
+    - _Color: {r: 0, g: 1.0237021, b: 60.58241, a: 0}
     - _ColorEyes: {r: 0.003921569, g: 0.003921569, b: 0.015686275, a: 0}
     - _Color_Background: {r: 0.04846031, g: 0.0632105, b: 0.103773594, a: 0}
     - _Displacement_Axis_Intensity: {r: 1, g: 0.5, b: 0.25, a: 0}
