@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,20 +9,18 @@ public class GhostAttack : MonoBehaviour
     private Vector3 _center;
     private Vector3 _scale;
     private Vector3 _direction;
-    private Quaternion _rotation;
     private LayerMask _playerMask;
     private float _attackRange;
     private int _damage;
     private float _attackDelayBeforeAttack;
 
-    public void Explode(Vector3 center, Vector3 scale, Vector3 direction, Quaternion rotation, int damage,
+    public void Explode(Vector3 center, Vector3 scale, Vector3 direction, int damage,
         float attackRange, float attackDelayBeforeAttack,
         Ghost sender, LayerMask playerMask)
     {
         _center = center;
         _scale = scale;
         _direction = direction;
-        _rotation = rotation;
         _damage = damage;
         _playerMask = playerMask;
         _attackRange = attackRange;
@@ -35,6 +32,7 @@ public class GhostAttack : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
+        _sender.IsAttacking = false;
         RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, Quaternion.identity, _attackRange,
             _playerMask);
         bool hitAPlayer = false;
@@ -50,7 +48,6 @@ public class GhostAttack : MonoBehaviour
 
         if (_indicator) _indicator.SetActive(false);
         if (hitAPlayer) AudioManager.Instance.PlaySFXRandom("Ghost_Attack_Whiff", 0.8f, 1.2f);
-        _sender.IsAttacking = false;
         Pooler.instance.Depop("TrashAttack", gameObject);
     }
 
@@ -64,6 +61,9 @@ public class GhostAttack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawRay(_center, _direction, Color.red);
+        //Draw a Ray forward from GameObject toward the maximum distance
+        Gizmos.DrawRay(transform.position, _direction.normalized * _attackRange);
+        //Draw a cube at the maximum distance
+        Gizmos.DrawWireCube(transform.position + _direction.normalized * _attackRange, _scale);
     }
 }
