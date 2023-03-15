@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be5311e76af5def44912cb9b700f9aa1, type: 3}
-  m_Name: AppareilPhotoLight
+  m_Name: L_PhareLight
   m_EditorClassIdentifier: 
   equipType: 1
-  shape: 1
-  angle: 80
-  width: 0.84
-  range: 6
-  tickRate: 0.4
-  damagesPerTick: 4
-  energyLostPerTick: 4
+  shape: 0
+  angle: 0
+  width: 3
+  range: 30
+  tickRate: 0.3
+  damagesPerTick: 5
+  energyLostPerTick: 5
