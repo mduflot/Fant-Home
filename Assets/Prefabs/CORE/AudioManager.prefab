@@ -288,7 +288,7 @@ Transform:
   - {fileID: 8260292746833327038}
   - {fileID: 201022445910330054}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8849368044936227798
 MonoBehaviour:
@@ -304,29 +304,122 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Room 1&2
+    level: 0
     clip: {fileID: 8300000, guid: 615d63ab78d2e6f4798f546c9be1af34, type: 3}
   - name: Room 3&4
+    level: 0
     clip: {fileID: 8300000, guid: c41d518a745afa24cb39fb4e3547f780, type: 3}
   - name: Room 5&6
+    level: 0
     clip: {fileID: 8300000, guid: 35df2d02e241ef0428a6104458d7ec76, type: 3}
   - name: Room Final
+    level: 0
     clip: {fileID: 8300000, guid: cd9f685c677d2944fb8750751b1d33f1, type: 3}
   sfxSounds:
-  - name: Ghost_PG_Attack_Connect
-    clip: {fileID: 8300000, guid: 66975faa1f585674f890e2fb3f06eb14, type: 3}
-  - name: Menu_Click
-    clip: {fileID: 8300000, guid: d6566feaa6e27aa45838d8b3c1f1c64f, type: 3}
+  - name: Player_Move
+    level: 0
+    clip: {fileID: 8300000, guid: c164af702c398c042b05278859a1753e, type: 3}
+  - name: Player_Interact
+    level: 0
+    clip: {fileID: 8300000, guid: 2186dbd59b944584a9cf65dbe5bc7877, type: 3}
+  - name: Player_Damage
+    level: 0
+    clip: {fileID: 8300000, guid: 644886205fde98e4cbd6382952e517c2, type: 3}
   - name: Player_Revive
+    level: 0
     clip: {fileID: 8300000, guid: 0438935660516cf4ebf336940fdcfb17, type: 3}
-  - name: Chain_Shoot
-    clip: {fileID: 8300000, guid: 69f2bae65ce3d7045a42f9d6345fdf59, type: 3}
-  - name: Big Bertha_Shoot
-    clip: {fileID: 8300000, guid: 7ae0ac444d67bcd4292583ac45a2516f, type: 3}
   - name: Player_FlashlightON
+    level: 0
     clip: {fileID: 8300000, guid: 274afdf8d62e8904d907c54a0b92776f, type: 3}
   - name: Player_FlashlightOFF
+    level: 0
     clip: {fileID: 8300000, guid: 644886205fde98e4cbd6382952e517c2, type: 3}
-  - name: Player_Damage
-    clip: {fileID: 8300000, guid: 644886205fde98e4cbd6382952e517c2, type: 3}
+  - name: Chain_Shoot
+    level: 0
+    clip: {fileID: 8300000, guid: 69f2bae65ce3d7045a42f9d6345fdf59, type: 3}
+  - name: Big Bertha_Shoot
+    level: 0
+    clip: {fileID: 8300000, guid: 7ae0ac444d67bcd4292583ac45a2516f, type: 3}
+  - name: Big Bertha_Thrust
+    level: 0
+    clip: {fileID: 8300000, guid: 54e94fb943df4cb4abceab01dceb83f5, type: 3}
+  - name: Big Bertha_Explode
+    level: 0
+    clip: {fileID: 8300000, guid: 6f7e637cb7eee984ca9cd82548d6ea0b, type: 3}
+  - name: Menu_Hover
+    level: 0
+    clip: {fileID: 8300000, guid: ceacea0b4f98beb4180701e97b78ee28, type: 3}
+  - name: Menu_Click
+    level: 0
+    clip: {fileID: 8300000, guid: d6566feaa6e27aa45838d8b3c1f1c64f, type: 3}
+  - name: Wave_Warning
+    level: 0
+    clip: {fileID: 8300000, guid: e4d156e696d77ed49b6d676b96516e1e, type: 3}
+  - name: Wave_Start
+    level: 0
+    clip: {fileID: 8300000, guid: ce69869932ddfe04bae2806abc04ccf7, type: 3}
+  - name: Ghost_Revealed
+    level: 0
+    clip: {fileID: 8300000, guid: 7923c34347f444146a49e671d064fb4a, type: 3}
+  - name: Ghost_Trash_Attack
+    level: 0
+    clip: {fileID: 8300000, guid: ce188f20062602f4dac68dbb53b9cd84, type: 3}
+  - name: Ghost_Trash_Attack_Connect
+    level: 0
+    clip: {fileID: 8300000, guid: 8e5614ee1a374954eb70c2da9123f56a, type: 3}
+  - name: Ghost_Trash_Damage
+    level: 0
+    clip: {fileID: 8300000, guid: 3b0c17346ecbd524a8c1b60510bd04ec, type: 3}
+  - name: Ghost_Trash_Death
+    level: 0
+    clip: {fileID: 8300000, guid: af66612225b2f9f4395517ca28923f4d, type: 3}
+  - name: Ghost_PG_Attack
+    level: 0
+    clip: {fileID: 8300000, guid: cc946adefd40c29489cb4b87fa1fe385, type: 3}
+  - name: Ghost_PG_Attack_Connect
+    level: 0
+    clip: {fileID: 8300000, guid: 66975faa1f585674f890e2fb3f06eb14, type: 3}
+  - name: Ghost_PG_Damage
+    level: 0
+    clip: {fileID: 8300000, guid: 1bab3d93e6340ae449be5fc99c938ef8, type: 3}
+  - name: Ghost_PG_Death
+    level: 0
+    clip: {fileID: 8300000, guid: 6bbe1223b2abf7241a9b3a8f3d6e5a4d, type: 3}
+  - name: Ghost_PG_GoDark
+    level: 0
+    clip: {fileID: 8300000, guid: de2ba112389c5544991bbd952279a4a5, type: 3}
+  - name: Ghost_PG_Interact
+    level: 0
+    clip: {fileID: 8300000, guid: 27035a76ffda09445864c853b149a668, type: 3}
+  - name: Door_Close
+    level: 0
+    clip: {fileID: 8300000, guid: 5c707846404a4054b9ea0f82800f49f3, type: 3}
+  - name: Door_Open
+    level: 0
+    clip: {fileID: 8300000, guid: 26fb52f9b99ad554197f89d1b0f67804, type: 3}
+  - name: Floating_Object
+    level: 0.5
+    clip: {fileID: 8300000, guid: c6af858e2a763744c9b436ac45de92d7, type: 3}
+  - name: Lamp_Flicker1
+    level: 0.2
+    clip: {fileID: 8300000, guid: c662c40f20dcf0849bca92dd498cd497, type: 3}
+  - name: Lamp_Flicker2
+    level: 0.2
+    clip: {fileID: 8300000, guid: fe67d627509073244bb0421de8953adb, type: 3}
+  - name: Lever
+    level: 0
+    clip: {fileID: 8300000, guid: 8fd9d6ce020ea8f4dac571ec2fc08b0e, type: 3}
+  - name: TV_WhiteNoise
+    level: 0
+    clip: {fileID: 8300000, guid: a5bcc099ba2be014db1f41cbfc5a9864, type: 3}
+  - name: Radio_WhiteNoise1
+    level: 0.5
+    clip: {fileID: 8300000, guid: c59a52f887007d3458260386e3d1ecc3, type: 3}
+  - name: Radio_WhiteNoise2
+    level: 0.5
+    clip: {fileID: 8300000, guid: dc1fa369936dea94f928cb9902b3dfac, type: 3}
+  - name: Radio_WhiteNoise3
+    level: 0.5
+    clip: {fileID: 8300000, guid: 412ed94dc1cfb7b4f8f28bc6e262471a, type: 3}
   musicSource: {fileID: 8938484287315418197}
   sfxSource: {fileID: 7965921723786968057}
