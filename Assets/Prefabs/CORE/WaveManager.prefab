@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &27770905751116500
 MonoBehaviour:
@@ -51,9 +51,82 @@ MonoBehaviour:
     spawnTime: 0
     enemies:
     - myType: 0
-      number: 3
+      number: 7
   - waveNumber: 0
-    spawnTime: 25
+    spawnTime: 115
     enemies:
     - myType: 0
+      number: 8
+    - myType: 2
+      number: 3
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 12
+    - myType: 1
+      number: 1
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 12
+    - myType: 2
+      number: 12
+    - myType: 1
+      number: 1
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 6
+    - myType: 2
+      number: 8
+    - myType: 1
+      number: 3
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 30
+    - myType: 2
+      number: 6
+    - myType: 1
+      number: 4
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 10
+    - myType: 2
+      number: 12
+    - myType: 1
+      number: 4
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 12
+    - myType: 2
+      number: 15
+    - myType: 1
+      number: 5
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 10
+    - myType: 2
+      number: 10
+    - myType: 1
+      number: 5
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 13
+    - myType: 2
+      number: 12
+    - myType: 1
       number: 7
+  index: 0
