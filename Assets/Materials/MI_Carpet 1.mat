@@ -90,6 +90,7 @@ Material:
     - _Float: -0.001
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Roughness: 0.085
     - _Unit_Size: 0.25
     m_Colors: []
   m_BuildTextureStacks: []
