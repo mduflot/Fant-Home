@@ -12,6 +12,8 @@ public class Ghost : MonoBehaviour, IEnemy
     [Header("Stats")] public GhostStatsSO _ghostSO;
     [SerializeField] private string _name = "Ghost";
     [SerializeField] private GameObject _stunObject;
+    [SerializeField] private GameObject _veilLossObject;
+    [SerializeField] private GameObject _hitLightGameObject;
 
     [HideInInspector] public bool IsStun;
     [HideInInspector] public bool IsFleeing;
@@ -70,6 +72,7 @@ public class Ghost : MonoBehaviour, IEnemy
         if (!_isVulnerable) return;
         _veilCounter += Time.deltaTime;
         if (!(_veilCounter >= _regenVeilCD)) return;
+        _hitLightGameObject.SetActive(false);
         _regenCO = StartCoroutine(RegenVeil());
     }
 
@@ -94,11 +97,13 @@ public class Ghost : MonoBehaviour, IEnemy
         }
 
         Veil -= damageVeil;
+        _hitLightGameObject.SetActive(true);
         if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
         if (Veil <= 0)
         {
             Veil = 0;
             _isVulnerable = true;
+            _veilLossObject.SetActive(true);
         }
 
         var alpha = 1 - (Veil / _ghostSO.MaxVeil);
@@ -156,6 +161,7 @@ public class Ghost : MonoBehaviour, IEnemy
         while (Veil <= _ghostSO.MaxVeil)
         {
             Veil += _regenVeilPoints;
+            _veilLossObject.SetActive(false);
             _isVulnerable = false;
             IsFleeing = false;
             _canBeStun = false;

@@ -153,3 +153,15 @@ MonoBehaviour:
       baseCount: 50
       baseRefreshSpeed: 5
       refreshSpeed: 5
+  - key: VFX_HitLight
+    pool:
+      prefab: {fileID: 7400902286867068484, guid: 7800f69b40b36ba4ba3025b0d983741c, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
+  - key: VFX_PlayerGhostProximity
+    pool:
+      prefab: {fileID: 43484051788488687, guid: db1a1ded3bb94ec459a48f9cb6d89174, type: 3}
+      baseCount: 5
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
