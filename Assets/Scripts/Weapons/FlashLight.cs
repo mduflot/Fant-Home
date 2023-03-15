@@ -56,7 +56,7 @@ public class FlashLight : MonoBehaviour
     {
         if (!gunHaveLight) return;
         TurnOn(true);
-        AudioManager.Instance.PlaySFXRandom("Player_FlashlightOn", 0.8f, 1.2f);
+        AudioManager.Instance.PlaySFXRandom("Player_FlashlightON", 0.8f, 1.2f);
     }
 
     public void LightRelease()
