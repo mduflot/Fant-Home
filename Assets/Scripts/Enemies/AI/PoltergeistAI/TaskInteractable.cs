@@ -22,12 +22,10 @@ namespace AI.PoltergeistAI
 
             if (_canInteract)
             {
-                Debug.Log("Interact with something");
-                if (targetObject.GetComponent<Interuptor>())
+                if (targetObject.GetComponent<Interuptor>() || targetObject.parent.GetComponent<Interuptor>())
                 {
                     if (Vector3.Distance(_transform.position, targetObject.position) > 1f)
                     {
-                        Debug.Log("Interact with interuptor");
                         _transform.position = Vector3.MoveTowards(
                             _transform.position, targetObject.position, _speed * Time.deltaTime);
                         _transform.LookAt(targetObject.position);
@@ -35,18 +33,20 @@ namespace AI.PoltergeistAI
                     }
                     else
                     {
-                        targetObject.GetComponent<Interuptor>().Interact(new PlayerInteract());
+                        if (targetObject.GetComponent<Interuptor>())
+                            targetObject.GetComponent<Interuptor>().Interact(new PlayerInteract());
+                        if (targetObject.parent.GetComponent<Interuptor>())
+                            targetObject.parent.GetComponent<Interuptor>().Interact(new PlayerInteract());
                         ClearData("object");
                         ClearData("isInteract");
                         _state = NodeState.FAILURE;
                         return _state;
                     }
                 }
-                else if (targetObject.GetComponent<Door>())
+                else if (targetObject.GetComponent<Door>() || targetObject.parent.GetComponent<Door>())
                 {
                     if (Vector3.Distance(_transform.position, targetObject.position) > 1f)
                     {
-                        Debug.Log("Interact with door");
                         _transform.position = Vector3.MoveTowards(
                             _transform.position, targetObject.position, _speed * Time.deltaTime);
                         _transform.LookAt(targetObject.position);
@@ -54,7 +54,9 @@ namespace AI.PoltergeistAI
                     }
                     else
                     {
-                        targetObject.GetComponent<Door>().ToggleDoor();
+                        if (targetObject.GetComponent<Door>()) targetObject.GetComponent<Door>().ToggleDoor();
+                        if (targetObject.parent.GetComponent<Door>())
+                            targetObject.parent.GetComponent<Door>().ToggleDoor();
                         ClearData("object");
                         ClearData("isInteract");
                         _state = NodeState.FAILURE;
@@ -63,10 +65,11 @@ namespace AI.PoltergeistAI
                 }
                 else
                 {
-                    Debug.Log("Interact with something with animation or with particleSystem");
-                    if (targetObject.GetComponent<Animation>())
+                    if (targetObject.GetComponent<Animation>() || targetObject.parent.GetComponent<Animation>())
                     {
-                        targetObject.GetComponent<Animation>().Play();
+                        if (targetObject.GetComponent<Animation>()) targetObject.GetComponent<Animation>().Play();
+                        if (targetObject.parent.GetComponent<Animation>())
+                            targetObject.parent.GetComponent<Animation>().Play();
                     }
                     else
                     {
@@ -81,7 +84,6 @@ namespace AI.PoltergeistAI
                 return _state;
             }
 
-            Debug.Log("Interact with something with animation or with particleSystem");
             if (targetObject.GetComponent<Animation>())
             {
                 targetObject.GetComponent<Animation>().Play();

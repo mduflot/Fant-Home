@@ -51,19 +51,17 @@ namespace AI.PoltergeistAI
                     return _state;
                 }
 
+                Debug.Log("object detected");
                 for (var index = 0; index < hitColliders.Length; index++)
                 {
                     var hitCollider = hitColliders[index];
-                    if (hitCollider.transform.CompareTag("Interactable") || hitCollider.transform.CompareTag("Wall"))
-                    {
-                        float currentDistance =
-                            math.sqrt(math.lengthsq(_transform.position - hitCollider.transform.position));
-                        if (currentDistance < previousDistance || previousDistance == 0)
-                        {
-                            previousDistance = currentDistance;
-                            currentIndex = index;
-                        }
-                    }
+                    if (!hitCollider.transform.CompareTag("Interactable") &&
+                        !hitCollider.transform.CompareTag("Wall")) continue;
+                    float currentDistance =
+                        math.sqrt(math.lengthsq(_transform.position - hitCollider.transform.position));
+                    if (!(currentDistance < previousDistance) && previousDistance != 0) continue;
+                    previousDistance = currentDistance;
+                    currentIndex = index;
                 }
 
                 _interactableCounter = 0;
