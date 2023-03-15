@@ -59,6 +59,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip, s.level);
+            Debug.Log("Playing Woohoo");
         }
     }
 
