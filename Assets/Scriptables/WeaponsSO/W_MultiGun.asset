@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 108505e4fd0f45d5863394f50ab0d9ea, type: 3}
-  m_Name: BigBerthaGun
+  m_Name: W_MultiGun
   m_EditorClassIdentifier: 
   equipType: 0
-  damage: 100
-  bulletSpeed: 6
-  reloadTime: 0.3
+  damage: 1
+  bulletSpeed: 9
+  reloadTime: 0.5
   bulletSpread: 0
-  key: 1
-  type: 1
-  flashLight: {fileID: 11400000, guid: 51e2e001aad25824a952e0e533a573c7, type: 2}
-  AOE_Range: 5
-  bulletNumber: 0
+  key: 2
+  type: 2
+  flashLight: {fileID: 11400000, guid: c9fbae23aacfc6f40937605a77bc1fef, type: 2}
+  AOE_Range: 0
+  bulletNumber: 3
