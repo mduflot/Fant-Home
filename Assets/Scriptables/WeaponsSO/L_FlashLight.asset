@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108505e4fd0f45d5863394f50ab0d9ea, type: 3}
-  m_Name: UpgradedWeapon
+  m_Script: {fileID: 11500000, guid: be5311e76af5def44912cb9b700f9aa1, type: 3}
+  m_Name: L_FlashLight
   m_EditorClassIdentifier: 
-  equipType: 0
-  bulletSpeed: 0
-  reloadTime: 0
-  bulletSpread: 0
-  key: 0
-  type: 0
-  flashLight: {fileID: 0}
+  equipType: 1
+  shape: 1
+  angle: 60
+  width: 0.84
+  range: 6
+  tickRate: 0.25
+  damagesPerTick: 2
+  energyLostPerTick: 3
