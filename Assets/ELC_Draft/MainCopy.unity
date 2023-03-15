@@ -1755,6 +1755,30 @@ PrefabInstance:
       propertyPath: waveTool
       value: 
       objectReference: {fileID: 1645640653}
+    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: poolKeys.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: poolKeys.Array.data[13].key
+      value: ECTOPLASMA
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: poolKeys.Array.data[13].pool.prefab
+      value: 
+      objectReference: {fileID: 6043481272550239876, guid: e57420a36563d76489a6097cf3594fec, type: 3}
+    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: poolKeys.Array.data[13].pool.baseCount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: poolKeys.Array.data[13].pool.refreshSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440807499827475915, guid: 7d4c1a2355636d74b8ff18dee0b830a5, type: 3}
+      propertyPath: poolKeys.Array.data[13].pool.baseRefreshSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

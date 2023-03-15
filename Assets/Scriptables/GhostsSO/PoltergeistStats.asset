@@ -30,7 +30,7 @@ MonoBehaviour:
   InteractionRange: 6
   InteractionCD: 6
   AttackKey: TrashAttack
-  Key: 0
+  Key: 1
   Attack_SFX: Ghost_PG_Attack
   Connect_SFX: Ghost_PG_Attack_Connect
   Damage_SFX: Ghost_PG_Damage
