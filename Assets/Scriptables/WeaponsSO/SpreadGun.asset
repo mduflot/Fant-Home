@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: SpreadGun
   m_EditorClassIdentifier: 
   equipType: 0
+  damage: 0
   bulletSpeed: 9
   reloadTime: 0.1
   bulletSpread: 10
   key: 0
   type: 0
-  flashLight: {fileID: 11400000, guid: c9fbae23aacfc6f40937605a77bc1fef, type: 2}
+  flashLight: {fileID: 11400000, guid: c04efd0af578aed4c9738a97e45b57dc, type: 2}
+  AOE_Range: 0
+  bulletNumber: 0
