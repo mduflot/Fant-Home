@@ -36,10 +36,11 @@ namespace AI.GhostAI
             else
             {
                 _transform.LookAt(target.position);
-                GameObject attackTrash = Pooler.instance.Pop(_attackKey);
-                attackTrash.transform.position = _transform.position;
-                attackTrash.transform.LookAt(target.position);
-                attackTrash.GetComponent<TrashAttack>().Explode(_transform.position, _attackScale, _damage, _attackDelayBeforeAttack);
+                GameObject attackGhost = Pooler.instance.Pop(_attackKey);
+                attackGhost.transform.position = _transform.position;
+                attackGhost.transform.rotation = Quaternion.LookRotation(target.position - _transform.position);
+                _transform.GetComponent<Ghost>().IsAttacking = true;
+                attackGhost.GetComponent<GhostAttack>().Explode((_transform.position + (target.position - _transform.position) / 2), _attackScale, _damage, _attackDelayBeforeAttack, _transform.GetComponent<Ghost>());
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }
 

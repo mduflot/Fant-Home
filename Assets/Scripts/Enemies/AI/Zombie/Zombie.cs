@@ -114,7 +114,7 @@ public class Zombie : MonoBehaviour
         
         GameObject ghost = Pooler.instance.Pop(_attackKey);
         ghost.transform.position = target;
-        ghost.GetComponent<TrashAttack>().Explode(target, _attackScale, _attackDamage, _delayBeforeAttack);
+        ghost.GetComponent<GhostAttack>().Explode(target, _attackScale, _attackDamage, _delayBeforeAttack, transform.GetComponent<Ghost>());
         
         
         yield return new WaitForSeconds(_delayBeforeAttack);
