@@ -136,8 +136,9 @@ public class Ghost : MonoBehaviour, IEnemy
         if (_health <= 0)
         {
             _health = 0;
+            GameObject ghostDeath = Pooler.instance.Pop(_ghostSO.DeathKey);
+            ghostDeath.transform.position = transform.position;
             Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
-            return;
         }
     }
 
