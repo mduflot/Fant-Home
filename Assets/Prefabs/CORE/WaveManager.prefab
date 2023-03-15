@@ -56,77 +56,77 @@ MonoBehaviour:
     spawnTime: 115
     enemies:
     - myType: 0
-      number: 8
+      number: 6
     - myType: 2
       number: 3
   - waveNumber: 0
     spawnTime: 115
     enemies:
     - myType: 0
-      number: 12
+      number: 10
     - myType: 1
       number: 1
-  - waveNumber: 0
-    spawnTime: 115
-    enemies:
-    - myType: 0
-      number: 12
-    - myType: 2
-      number: 12
-    - myType: 1
-      number: 1
-  - waveNumber: 0
-    spawnTime: 115
-    enemies:
-    - myType: 0
-      number: 6
-    - myType: 2
-      number: 8
-    - myType: 1
-      number: 3
-  - waveNumber: 0
-    spawnTime: 115
-    enemies:
-    - myType: 0
-      number: 30
-    - myType: 2
-      number: 6
-    - myType: 1
-      number: 4
   - waveNumber: 0
     spawnTime: 115
     enemies:
     - myType: 0
       number: 10
     - myType: 2
-      number: 12
+      number: 10
     - myType: 1
-      number: 4
+      number: 1
   - waveNumber: 0
     spawnTime: 115
     enemies:
     - myType: 0
-      number: 12
+      number: 5
+    - myType: 2
+      number: 7
+    - myType: 1
+      number: 3
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 15
     - myType: 2
       number: 15
     - myType: 1
-      number: 5
+      number: 4
   - waveNumber: 0
     spawnTime: 115
     enemies:
     - myType: 0
-      number: 10
+      number: 8
     - myType: 2
       number: 10
+    - myType: 1
+      number: 4
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 38
+    - myType: 2
+      number: 4
     - myType: 1
       number: 5
   - waveNumber: 0
     spawnTime: 115
     enemies:
     - myType: 0
-      number: 13
+      number: 8
     - myType: 2
-      number: 12
+      number: 11
+    - myType: 1
+      number: 5
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 8
+    - myType: 2
+      number: 11
     - myType: 1
       number: 7
   index: 0

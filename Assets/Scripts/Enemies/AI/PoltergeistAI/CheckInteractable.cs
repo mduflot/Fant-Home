@@ -46,12 +46,10 @@ namespace AI.PoltergeistAI
                 if (!hitColliders.Any(hitCollider =>
                         hitCollider.CompareTag("Interactable") || hitCollider.CompareTag("Wall")))
                 {
-                    Debug.Log("No object detect");
                     _state = NodeState.FAILURE;
                     return _state;
                 }
 
-                Debug.Log("object detected");
                 for (var index = 0; index < hitColliders.Length; index++)
                 {
                     var hitCollider = hitColliders[index];

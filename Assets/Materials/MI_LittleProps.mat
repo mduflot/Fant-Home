@@ -64,7 +64,8 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    m_Colors: []
+    m_Colors:
+    - _EmissiveColor: {r: 0, g: 548.7479, b: 190.79541, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7620543383688132116
 MonoBehaviour:

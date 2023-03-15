@@ -22,6 +22,7 @@ namespace AI.PoltergeistAI
 
             if (_canInteract)
             {
+                AudioManager.Instance.PlaySFXRandom("Ghost_PG_Interact", 0.8f, 1.2f);
                 if (targetObject.GetComponent<Interuptor>() || targetObject.parent.GetComponent<Interuptor>())
                 {
                     if (Vector3.Distance(_transform.position, targetObject.position) > 1f)
