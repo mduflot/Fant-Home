@@ -7,7 +7,6 @@ namespace AI.GhostAI
     {
         private Animator _animator;
         private Transform _transform;
-        private Transform _lastTarget;
         private PlayerHealth _playerHealth;
         private int _damage;
         private Vector3 _attackScale;
@@ -27,13 +26,8 @@ namespace AI.GhostAI
         public override NodeState Evaluate()
         {
             Transform target = (Transform)GetData("target");
-            if (target != _lastTarget)
-            {
-                _playerHealth = target.GetComponent<PlayerHealth>();
-                _lastTarget = target;
-            }
 
-            if (_playerHealth.curHealth <= 0)
+            if (target.GetComponent<PlayerHealth>().curHealth <= 0)
             {
                 ClearData("target");
                 // _animator.SetBool("Attacking", false);
@@ -43,7 +37,8 @@ namespace AI.GhostAI
             {
                 _transform.LookAt(target.position);
                 GameObject attackTrash = Pooler.instance.Pop(_attackKey);
-                attackTrash.transform.position = target.position;
+                attackTrash.transform.position = _transform.position;
+                attackTrash.transform.LookAt(target.position);
                 attackTrash.GetComponent<TrashAttack>().Explode(_transform.position, _attackScale, _damage, _attackDelayBeforeAttack);
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }
