@@ -26,6 +26,7 @@ MonoBehaviour:
   AttackScale: {x: 0, y: 0, z: 0}
   AttackCD: 3.5
   AttackDelayBeforeAttack: 1.5
+  CanActivateObject: 0
   InteractionRange: 6
   InteractionCD: 6
   AttackKey: TrashAttack
@@ -33,4 +34,4 @@ MonoBehaviour:
   Attack_SFX: Ghost_Trash_Attack
   Connect_SFX: Ghost_Trash_Attack_Connect
   Damage_SFX: Ghost_Trash_Damage
-  Death_SFX: Ghost_Trash_Damage
+  Death_SFX: Ghost_Trash_Death
