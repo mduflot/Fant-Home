@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
         _flashLight.LightRelease();
     }
 
+    private void OnPause()
+    {
+        GameManager.instance.inGameUiManager.TogglePause();
+    }
+
     private void FixedUpdate()
     {
         DoMove(); 
