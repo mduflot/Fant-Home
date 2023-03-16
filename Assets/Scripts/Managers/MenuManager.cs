@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
     
     public void SwitchScene()
     {
-        SceneManager.LoadScene("TestsScene");
+        SceneManager.LoadScene("MainGameScene");
     }
 
     public void SetMainButtons(bool enable)

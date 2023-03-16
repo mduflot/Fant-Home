@@ -52,8 +52,7 @@ public class WaveTool : MonoBehaviour
 
     private IEnumerator WaveDuration(float t)
     {
-        float timer = t;
-        float maxTime = t;
+        timer = t;
         while (timer>=0)
         {
             yield return new WaitForEndOfFrame();
@@ -61,5 +60,10 @@ public class WaveTool : MonoBehaviour
             timerUI.UpdateSliderValue(timer/t);
         }
         GoToNextWave();
+    }
+
+    public void AllEnemiesDestroyed()
+    {
+        if (timer > 13) timer = 13;
     }
 }

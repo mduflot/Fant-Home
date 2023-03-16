@@ -49,6 +49,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     private void Fall()
     {
         curState = PlayerState.DOWN;
+        GetComponent<PlayerController>().Immobilisation();
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
@@ -58,7 +59,9 @@ public class PlayerHealth : MonoBehaviour, IHitable
     public void GetUp()
     {
         curState = PlayerState.BASE;
+        
         GetComponent<PlayerController>().enabled = true;
+        
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
         deathInteractionGO.SetActive(false);

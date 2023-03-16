@@ -9,6 +9,7 @@ public class InGameUIManager : MonoBehaviour
 {
     public TimerUI timerUI;
     [SerializeField] private TMP_Text enemiesRemaining;
+    [SerializeField] private PauseMenu pauseMenu;
 
     private int enemiesNumber = 0;
 
@@ -21,5 +22,15 @@ public class InGameUIManager : MonoBehaviour
     {
         enemiesNumber += increase ? 1 : -1;
         enemiesRemaining.text = enemiesNumber.ToString();
+        if (enemiesNumber <= 0)
+        {
+            enemiesNumber = 0;
+            GameManager.instance.waveTool.AllEnemiesDestroyed();
+        }
+    }
+
+    public void TogglePause()
+    {
+        pauseMenu.TogglePause();
     }
 }
