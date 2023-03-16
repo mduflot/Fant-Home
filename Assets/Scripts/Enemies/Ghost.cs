@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using Scriptables;
 using Unity.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour, IEnemy

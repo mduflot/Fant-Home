@@ -49,6 +49,12 @@ public class Zombie : MonoBehaviour
 
     void Update()
     {
+        if (_ghost.IsStun)
+        {
+            navAgent.isStopped = true;
+            return;
+        }
+        navAgent.isStopped = false;
         CheckNearestPlayer();
 
         float targetDist = Vector3.Distance(transform.position, target);
