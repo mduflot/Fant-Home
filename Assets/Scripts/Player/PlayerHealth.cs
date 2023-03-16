@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     }
 
     [SerializeField] public int curHealth;
+    [HideInInspector] public float invincibleTime;
     [SerializeField] private PlayerState curState;
 
     [SerializeField] private GameObject deathInteractionGO;
@@ -65,7 +66,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     private IEnumerator Invincible()
     {
         curState = PlayerState.INVINCIBLE;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(invincibleTime);
         curState = PlayerState.BASE;
     }
 
