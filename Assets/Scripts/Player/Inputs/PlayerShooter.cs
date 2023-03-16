@@ -70,6 +70,7 @@ namespace Entities
         // ReSharper disable Unity.PerformanceAnalysis
         private void ShootParticles()
         {
+            if (flashLight.isActive) return;
             GameObject particles = Pooler.instance.Pop("VFX_"+_bulletKey+"Launch");
             particles.transform.position = transform.position + transform.forward;
             Pooler.instance.DelayedDepop(0.5f, "VFX_"+_bulletKey+"Launch", particles);

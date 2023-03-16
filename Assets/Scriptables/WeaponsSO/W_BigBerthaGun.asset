@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108505e4fd0f45d5863394f50ab0d9ea, type: 3}
   m_Name: W_BigBerthaGun
   m_EditorClassIdentifier: 
+  weaponName: Big Bertha
+  desc: "Gros gun w\xE9"
   equipType: 0
+  icon: {fileID: 21300000, guid: cd3a5ea663f3f0f41a26f4d1f4c64a5b, type: 3}
   damage: 3
   bulletSpeed: 5
   reloadTime: 0.2
@@ -20,5 +23,6 @@ MonoBehaviour:
   key: 1
   type: 1
   flashLight: {fileID: 0}
+  particles: {fileID: 0}
   AOE_Range: 3
   bulletNumber: 0

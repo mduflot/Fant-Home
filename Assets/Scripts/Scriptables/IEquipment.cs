@@ -11,6 +11,8 @@ public enum EquipmentType
 
 public abstract class EquipmentSO : ScriptableObject
 {
+    public string weaponName = "name";
+    public string desc = "desc";
     public EquipmentType equipType;
     public Sprite icon;
 }
