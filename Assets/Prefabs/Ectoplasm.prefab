@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5220708659382950580}
   - component: {fileID: 5504345245189044767}
   m_Layer: 7
-  m_Name: Ectoplasma
+  m_Name: Ectoplasm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d982694c73318294da766ecf841e15e9, type: 2}
+  - {fileID: 2100000, guid: 4bc4e5e09d6092c409f5dabda7f6484e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
