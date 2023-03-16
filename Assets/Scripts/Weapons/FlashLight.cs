@@ -14,7 +14,7 @@ public class FlashLight : MonoBehaviour
     public bool gunHaveLight;
     
     [SerializeField] private GameObject flashLightGO;
-    [SerializeField] private bool isActive;
+    public bool isActive;
     [SerializeField] private LayerMask obstaclesMask, enemiesMask;
 
     private Coroutine curLoop;
@@ -56,12 +56,14 @@ public class FlashLight : MonoBehaviour
     {
         if (!gunHaveLight) return;
         TurnOn(true);
+        AudioManager.Instance.PlaySFXRandom("Player_FlashlightON", 0.8f, 1.2f);
     }
 
     public void LightRelease()
     {
         if (!gunHaveLight) return;
         TurnOn(false);
+        AudioManager.Instance.PlaySFXRandom("Player_FlashlightOFF", 0.8f, 1.2f);
     }
 
     private void TurnOn(bool on)
@@ -106,7 +108,7 @@ public class FlashLight : MonoBehaviour
                 float angle = Vector3.Angle(hit.collider.gameObject.transform.position - transform.position, transform.forward);
                 if (angle < stats.angle)
                 {
-                    hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
+                    if(EnemyIsVisible(hit.transform)) hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
                 }
             }
         }
@@ -122,7 +124,7 @@ public class FlashLight : MonoBehaviour
         {
             foreach (var hit in hits)
             {
-                hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
+                if(EnemyIsVisible(hit.transform)) hit.collider.GetComponent<IEnemy>()?.TakeVeil(stats.damagesPerTick);
             }
         }
     }
@@ -132,7 +134,7 @@ public class FlashLight : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         if (Physics.Linecast(transform.position, trans.position, out hit, obstaclesMask))
         {
-            return hit.collider;
+            return false;
         }
 
         return true;

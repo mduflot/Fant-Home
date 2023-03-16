@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201881767007117458}
   m_LocalRotation: {x: -0, y: -0.000000014901159, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.25, z: 0}
+  m_LocalPosition: {x: -0.869, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 8034350147441157267}
   - component: {fileID: 8034350147441157268}
   - component: {fileID: 8034350147441157269}
+  - component: {fileID: 6125326877437027525}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -171,6 +172,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &6125326877437027525
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034350147441157271}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8034350148386616027
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +221,7 @@ Transform:
   - {fileID: 540692795980436929}
   - {fileID: 8474652326427720232}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8034350148386616026
 MonoBehaviour:
@@ -218,10 +235,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ccaac9653ea74bad5104f357d4459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorGO: {fileID: 8034350147441157271}
+  doorGO: {fileID: 8034350147441157271}
   opened: 0
   locked: 0
   linkedRooms: []
+  unlockedMat: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
+  lockedMat: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
 --- !u!1 &9134380165665122598
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9134380165665122598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.25, z: 0}
+  m_LocalPosition: {x: 0.976, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

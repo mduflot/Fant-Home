@@ -1,22 +1,17 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Entities;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    
     private Vector2 _moveVal;
     private Vector2 _rotateVal;
     private Vector3 _playerVelocity;
     private PlayerShooter _shooter;
     private FlashLight _flashLight;
     private Rigidbody _rb;
-    
+
     public float moveSpeed;
     public GameObject body;
     public GameObject head;
@@ -43,15 +38,11 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputValue value)
     {
         _moveVal = value.Get<Vector2>();
-        if (_moveVal.x is > -0.3f and < 0.3f) _moveVal.x = 0;
-        if (_moveVal.y is > -0.3f and < 0.3f) _moveVal.y = 0;
     }
 
     private void OnRotate(InputValue value)
     {
         _rotateVal = value.Get<Vector2>();
-        if (_rotateVal.x is > -0.3f and < 0.3f) _rotateVal.x = 0;
-        if (_rotateVal.y is > -0.3f and < 0.3f) _rotateVal.y = 0;
     }
 
     private void OnFire()
@@ -61,6 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnLight()
     {
+        if (_shooter.ShootOrder) return;
         _flashLight.Light();
     }
 
@@ -69,14 +61,18 @@ public class PlayerController : MonoBehaviour
         _flashLight.LightRelease();
     }
 
+    private void OnPause()
+    {
+        GameManager.instance.inGameUiManager.TogglePause();
+    }
+
     private void FixedUpdate()
     {
-        DoMove(); 
+        DoMove();
     }
 
     private void Update()
     {
-        
         DoRotate();
     }
 
@@ -86,14 +82,21 @@ public class PlayerController : MonoBehaviour
         {
             _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
             return;
-        };
+        }
+        
         body.transform.rotation = Quaternion.LookRotation(new Vector3(_moveVal.x, 0, _moveVal.y));
-        _rb.velocity =  new Vector3(_moveVal.x * moveSpeed, _rb.velocity.y, _moveVal.y * moveSpeed);
+        _rb.velocity = new Vector3(_moveVal.x * moveSpeed, _rb.velocity.y, _moveVal.y * moveSpeed);
     }
 
     private void DoRotate()
     {
         if (_rotateVal == Vector2.zero) return;
         head.transform.rotation = Quaternion.LookRotation(new Vector3(_rotateVal.x, 0, _rotateVal.y));
+    }
+
+    public void Immobilisation()
+    {
+        _moveVal = Vector2.zero;
+        _rb.velocity = Vector3.zero;
     }
 }

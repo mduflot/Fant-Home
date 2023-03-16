@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-public enum Monsters
+﻿public enum Monsters
 {
-    Ghost,
-    Poltergeist,
-    Zombie
+    GHOST,
+    POLTERGEIST,
+    ECTOPLASMA
 }
 
 [System.Serializable]

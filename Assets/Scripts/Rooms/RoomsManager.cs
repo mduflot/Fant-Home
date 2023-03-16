@@ -34,6 +34,7 @@ public class RoomsManager : MonoBehaviour
                     // ReSharper disable once Unity.NoNullPropagation
                     room?.UnlockRoom();
                 }
+                GameManager.instance.messageDisplayer.DisplayText("New room unlocked.",MessageDisplayer.TextHeight.SUBTITLE);
             }
         }
     }

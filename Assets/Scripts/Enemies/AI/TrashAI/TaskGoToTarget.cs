@@ -7,37 +7,48 @@ namespace AI.GhostAI
     public class TaskGoToTarget : Node
     {
         private Transform _transform;
+        private MeshRenderer _meshRenderer;
         private LayerMask _enemiesMask;
-
+        private PlayerHealth _playerHealth;
         private float _speed;
         private float _attackRange;
+        private float _visibleToPlayer;
+        private int _maxHealth;
+        private float _maxVeil;
 
-        public TaskGoToTarget(Transform transform, LayerMask enemiesMask, float speed, float attackRange)
+        public TaskGoToTarget(Transform transform, MeshRenderer meshRenderer, LayerMask enemiesMask, float speed,
+            float attackRange, float visibleToPlayer, int maxHealth,
+            float maxVeil)
         {
             _transform = transform;
+            _meshRenderer = meshRenderer;
             _enemiesMask = enemiesMask;
             _speed = speed;
             _attackRange = attackRange;
+            _visibleToPlayer = visibleToPlayer;
+            _maxHealth = maxHealth;
+            _maxVeil = maxVeil;
         }
 
         public override NodeState Evaluate()
         {
             Transform target = (Transform)GetData("target");
-
+            _playerHealth = target.GetComponent<PlayerHealth>();
+            
             RaycastHit[] hits = Physics.SphereCastAll(_transform.position, 5f, _transform.forward, 5f, _enemiesMask);
-            bool isEnemy = false;
-
-            foreach (var hit in hits)
+            
+            if (hits.Length < 1)
             {
-                if (hit.transform.CompareTag("Enemy") && _transform != hit.transform)
+                if (Vector3.Distance(_transform.position, target.position) < _visibleToPlayer)
                 {
-                    isEnemy = true;
+                    _meshRenderer.enabled = true;
                 }
-            }
-
-            if (!isEnemy)
-            {
-                if (Vector3.Distance(_transform.position, target.position) > 0.01f)
+                else if (_playerHealth.curHealth >= _maxHealth || _transform.GetComponent<Ghost>().Veil >= _maxVeil)
+                {
+                    _meshRenderer.enabled = false;
+                }
+                
+                if (Vector3.Distance(_transform.position, target.position) > _attackRange)
                 {
                     _transform.position = Vector3.MoveTowards(
                         _transform.position, target.position, _speed * Time.deltaTime);
@@ -63,14 +74,23 @@ namespace AI.GhostAI
                 }
             }
 
-            Vector3 transformPos = new Vector3(_transform.position.x, target.position.y, _transform.position.z);
+            Vector3 posToGoCheck = target.position +
+                                   ((_transform.position - hits[currentIndex].transform.position).normalized * 2);
+            Vector3 posToGo = new Vector3(posToGoCheck.x, target.position.y, posToGoCheck.z);
+
+            if (Vector3.Distance(_transform.position, target.position) < _visibleToPlayer)
+            {
+                _meshRenderer.enabled = true;
+            }
+            else if (_playerHealth.curHealth >= _maxHealth || _transform.GetComponent<Ghost>().Veil >= _maxVeil)
+            {
+                _meshRenderer.enabled = false;
+            }
 
             if (Vector3.Distance(_transform.position, target.position) > _attackRange)
             {
                 _transform.position = Vector3.MoveTowards(
-                    _transform.position,
-                    target.position + ((transformPos - hits[currentIndex].transform.position).normalized * 2),
-                    _speed * Time.deltaTime);
+                    _transform.position, posToGo, _speed * Time.deltaTime);
                 _transform.LookAt(target.position);
             }
 

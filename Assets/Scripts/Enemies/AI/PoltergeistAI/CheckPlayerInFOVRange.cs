@@ -5,8 +5,6 @@ namespace AI.PoltergeistAI
 {
     public class CheckPlayerInFOVRange : Node
     {
-        private static int _enemyLayerMask = 1 << 6;
-
         private Transform _transform;
         private Animator _animator;
         private float _fovRange;
@@ -20,25 +18,23 @@ namespace AI.PoltergeistAI
 
         public override NodeState Evaluate()
         {
-            object t = GetData("target");
-            if (t == null)
-            {
-                Collider[] colliders = Physics.OverlapSphere(
-                    _transform.position, _fovRange, _enemyLayerMask);
+            Collider[] colliders = Physics.OverlapSphere(
+                _transform.position, _fovRange);
 
-                if (colliders.Length > 0)
+            if (colliders.Length > 0)
+            {
+                foreach (var collider in colliders)
                 {
-                    Parent.Parent.SetData("target", colliders[0].transform);
+                    if (!collider.gameObject.CompareTag("Player")) continue;
+                    Parent.Parent.SetData("target", collider.transform);
                     // _animator.SetBool("Walking", true);
                     _state = NodeState.SUCCESS;
                     return _state;
                 }
-
-                _state = NodeState.FAILURE;
-                return _state;
             }
 
-            _state = NodeState.SUCCESS;
+            ClearData("target");
+            _state = NodeState.FAILURE;
             return _state;
         }
     }

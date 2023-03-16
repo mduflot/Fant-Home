@@ -25,6 +25,7 @@ public class EquipmentSpawner : Interactible
     {
         GameManager.instance.waveTool.NewWave += CheckIfSpawn;
         containWeapon = false;
+        mesh.material = emptyMat;
     }
 
     private void CheckIfSpawn(int index)
@@ -36,6 +37,7 @@ public class EquipmentSpawner : Interactible
     {
         curWeapon = WeaponsToSpawn[Random.Range(0, WeaponsToSpawn.Count)];
         containWeapon = true;
+        mesh.material = containWeaponMat;
         Debug.Log("Spawn " + curWeapon);
     }
     
@@ -44,16 +46,17 @@ public class EquipmentSpawner : Interactible
         if (containWeapon)
         {
             EquipmentSO newWeapon = null;
+            Player player = play.GetComponent<Player>();
             switch (curWeapon.equipType)
             {
                 case EquipmentType.GUN :
-                    PlayerShooter shooter = play.GetComponent<PlayerShooter>();
+                    PlayerShooter shooter = player.playerShoot;
                     newWeapon = shooter.GetCurWeapon;
                     shooter.ChangeWeapon((WeaponsSO)curWeapon);
                     Debug.Log("Player took " + curWeapon + " and dropped his " + newWeapon);
                     break;
                 case EquipmentType.LIGHT:
-                    FlashLight flashLight = play.GetComponent<FlashLight>();
+                    FlashLight flashLight = player.flashLight;
                     newWeapon = flashLight.GetFlashLight;
                     flashLight.ChangeLight((FlashLightSO)curWeapon);
                     break;

@@ -14,9 +14,12 @@ public class WaveTool : MonoBehaviour
 
     public int index = 0;
     private float timer;
+    private TimerUI timerUI;
 
     private void Start()
     {
+        timerUI = GameManager.instance.inGameUiManager.timerUI;
+        index = 0;
         if (waves.Length == 0) return;
         SpawnWave(waves[index]);
     }
@@ -38,6 +41,7 @@ public class WaveTool : MonoBehaviour
     {
         if (wave.enemies.Length == 0) return;
         NewWave?.Invoke(index);
+        GameManager.instance.messageDisplayer.DisplayText("Wave " + index, MessageDisplayer.TextHeight.HEADER, 3);
         foreach (var enemy in wave.enemies)
         {
             spawner.MakeWave(enemy.number, enemy.myType.ToString());
@@ -48,7 +52,18 @@ public class WaveTool : MonoBehaviour
 
     private IEnumerator WaveDuration(float t)
     {
-        yield return new WaitForSeconds(t);
+        timer = t;
+        while (timer>=0)
+        {
+            yield return new WaitForEndOfFrame();
+            timer -= Time.deltaTime;
+            timerUI.UpdateSliderValue(timer/t);
+        }
         GoToNextWave();
+    }
+
+    public void AllEnemiesDestroyed()
+    {
+        if (timer > 13) timer = 13;
     }
 }

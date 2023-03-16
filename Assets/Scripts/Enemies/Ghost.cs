@@ -6,110 +6,172 @@ using UnityEngine;
 public class Ghost : MonoBehaviour, IEnemy
 {
     [ReadOnly] public Room CurRoom;
-    
-    [Header("Stats")]
-    public GhostStatsSO _ghostSO;
+
+    [Header("Stats")] public GhostStatsSO _ghostSO;
     [SerializeField] private string _name = "Ghost";
-    [SerializeField] private Material _vulnerableMaterial;
-    [SerializeField] private Material _stunMaterial;
-    [SerializeField] private Material _veilMaterial;
+    [SerializeField] private GameObject _stunObject;
+    [SerializeField] private GameObject _veilLossObject;
+    [SerializeField] private GameObject _hitLightGameObject;
 
     [HideInInspector] public bool IsStun;
+    [HideInInspector] public bool IsFleeing;
+    [HideInInspector] public bool IsAttacking;
 
-    [Header("Stats in Runtime")]
-    [ReadOnly] private float _health = 3;
-    [ReadOnly] private float _veil = 1;
-    [ReadOnly] private float _regenVeilPoints;
-    [ReadOnly] private float _regenVeilCD;
-    [ReadOnly] private float _durationStun;
-    [ReadOnly] private int _damage = 1;
-    [ReadOnly] private int _speed = 5;
+    [Header("Stats in Runtime")] private float _health;
+    [HideInInspector] public float Veil;
+    private float _regenVeilPoints;
+    private float _regenVeilCD;
+    private float _regenVeilOverTime;
+    private float _stunTime;
 
     private MeshRenderer _meshRenderer;
 
     private bool _isVulnerable;
+    private bool _canBeStun;
+    private float _stunCounter;
+    private float _veilCounter;
 
-    private Coroutine StunCO;
-    private Coroutine VeilCO;
-    private Coroutine RegenCO;
+    private Color _colorHealth;
 
-    private void Start()
+    private Coroutine _regenCO;
+    private static readonly int Opacity = Shader.PropertyToID("_Opacity");
+    private static readonly int Hit = Shader.PropertyToID("_HIT");
+
+    private void OnEnable()
     {
         gameObject.name = _name;
         _health = _ghostSO.MaxHealth;
-        _veil = _ghostSO.MaxVeil;
-        _regenVeilPoints = _ghostSO.VeilRegen;
+        Veil = _ghostSO.MaxVeil;
+        _regenVeilPoints = _ghostSO.VeilRegenPoints;
         _regenVeilCD = _ghostSO.VeilRegenCD;
-        _durationStun = _ghostSO.StunDuration;
+        _regenVeilOverTime = _ghostSO.VeilRegenOverTime;
+        _stunTime = _ghostSO.StunDuration;
         _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer.enabled = false;
+        
+    }
+
+    private void Start()
+    {
+        GameManager.instance.inGameUiManager.UpdateEnemiesRemaining(true);
+    }
+
+    private void Update()
+    {
+        if (IsStun)
+        {
+            _stunCounter += Time.deltaTime;
+            if (_stunCounter >= _stunTime)
+            {
+                _stunObject.SetActive(false);
+                IsStun = false;
+            }
+        }
+
+        if (!_isVulnerable) return;
+        _veilCounter += Time.deltaTime;
+        if (!(_veilCounter >= _regenVeilCD)) return;
+        _hitLightGameObject.SetActive(false);
+        _regenCO = StartCoroutine(RegenVeil());
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet") && _isVulnerable)
+        if (!other.gameObject.CompareTag("Bullet") || !_isVulnerable) return;
+        if (_regenCO != null) StopCoroutine(_regenCO);
+        _veilCounter = 0;
+        if (other.gameObject.GetComponent<Bullet>().isPhysic)
         {
-            Pooler.instance.Depop(other.gameObject.GetComponent<Bullet>().key, other.gameObject);
-            TakeDamage(other.gameObject.GetComponent<Bullet>().Damage);
-            StopCoroutine(VeilCD());
-            if (_health > 0) StartCoroutine(VeilCD());
+            other.gameObject.GetComponent<Bullet>().Contact();
         }
+        _meshRenderer.material.SetFloat(Hit, 0.2f);
+        TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
+        _meshRenderer.material.SetFloat(Hit, 0);
     }
 
     public void TakeVeil(float damageVeil)
     {
-        if (_isVulnerable)
+        if (Veil > 0 && Veil - damageVeil <= 0)
         {
-            IsStun = true;
+            AudioManager.Instance.PlaySFXRandom("Ghost_Revealed", 0.8f, 1.2f);
+        }
+
+        Veil -= damageVeil;
+        _hitLightGameObject.SetActive(true);
+        if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
+        if (Veil <= 0)
+        {
+            Veil = 0;
             _isVulnerable = true;
-            if (VeilCO != null) StopCoroutine(VeilCO);
-            if (RegenCO != null) StopCoroutine(RegenCO);
-            if (StunCO != null) StopCoroutine(StunCO);
-            VeilCO = StartCoroutine(VeilCD());
-            StunCO = StartCoroutine(StunDuration());
-            return;
+            _veilLossObject.SetActive(true);
         }
-        _veil -= damageVeil;
-        StopCoroutine(RegenVeil());
-        
-        if (!(_veil <= 0)) return;
-        IsStun = true;
-        _isVulnerable = true;
-        VeilCO = StartCoroutine(VeilCD());
-        StunCO = StartCoroutine(StunDuration());
-    }
 
-    private IEnumerator StunDuration()
-    {
-        _meshRenderer.material = _stunMaterial;
-        yield return new WaitForSeconds(_durationStun);
-        IsStun = false;
-        _meshRenderer.material = _vulnerableMaterial;
-    }
-
-    private IEnumerator VeilCD()
-    {
-        yield return new WaitForSeconds(_regenVeilCD);
-        RegenCO = StartCoroutine(RegenVeil());
-    }
-
-    private IEnumerator RegenVeil()
-    {
-        while (_veil <= _ghostSO.MaxVeil)
+        var alpha = 1 - (Veil / _ghostSO.MaxVeil);
+        _meshRenderer.material.SetFloat(Opacity, alpha);
+        if (!_isVulnerable) return;
+        if (_ghostSO.AlwaysStun)
         {
-            yield return new WaitForSeconds(1);
-            _veil += _regenVeilPoints;
-            _meshRenderer.material = _veilMaterial;
-            _isVulnerable = false;
+            _stunCounter = 0;
+            IsStun = true;
+            _stunObject.SetActive(true);
         }
+        else if (!_canBeStun)
+        {
+            _canBeStun = true;
+            _stunCounter = 0;
+            IsStun = true;
+            _stunObject.SetActive(true);
+        }
+
+        if (_regenCO != null) StopCoroutine(_regenCO);
+        IsFleeing = true;
+        Veil = 0;
+        _veilCounter = 0;
     }
 
     public void TakeDamage(float damage)
     {
-        if (_health <= 0) return;
+        if (_health > 0 && _health - damage <= 0)
+        {
+            AudioManager.Instance.PlaySFXRandom(_ghostSO.Death_SFX, 0.8f, 1.2f);
+        }
+        else if (_health - damage > 0)
+        {
+            AudioManager.Instance.PlaySFXRandom(_ghostSO.Damage_SFX, 0.8f, 1.2f);
+        }
+
+        if (!_isVulnerable) return;
         _health -= damage;
+        _colorHealth = Color.Lerp(Color.red, Color.green, _health / _ghostSO.MaxHealth);
+        _colorHealth.a = 0.8f;
+        _meshRenderer.material.color = _colorHealth;
         if (_health <= 0)
         {
-            Pooler.instance.Depop("Ghost", gameObject);
+            GameManager.instance.inGameUiManager.UpdateEnemiesRemaining(false);
+            _health = 0;
+            GameObject ghostDeath = Pooler.instance.Pop(_ghostSO.DeathKey);
+            ghostDeath.transform.position = transform.position + Vector3.up;
+            Pooler.instance.Depop(_ghostSO.Key.ToString(), gameObject);
         }
+    }
+
+    private IEnumerator RegenVeil()
+    {
+        float alpha;
+        while (Veil <= _ghostSO.MaxVeil)
+        {
+            Veil += _regenVeilPoints;
+            _veilLossObject.SetActive(false);
+            _isVulnerable = false;
+            IsFleeing = false;
+            _canBeStun = false;
+            alpha = 1 - (Veil / _ghostSO.MaxVeil);
+            _meshRenderer.material.SetFloat(Opacity, alpha);
+            yield return new WaitForSeconds(_regenVeilOverTime);
+        }
+
+        alpha = 1 - (Veil / _ghostSO.MaxVeil);
+        _meshRenderer.material.SetFloat(Opacity, alpha);
+        if (Veil >= _ghostSO.MaxHealth) _meshRenderer.enabled = false;
     }
 }

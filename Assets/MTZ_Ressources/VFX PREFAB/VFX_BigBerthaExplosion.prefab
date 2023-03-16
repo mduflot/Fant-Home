@@ -29547,7 +29547,7 @@ Transform:
   - {fileID: 4309805360682558376}
   - {fileID: 4309805361692704495}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4309805361498953631
 ParticleSystem:
