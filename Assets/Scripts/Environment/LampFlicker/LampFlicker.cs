@@ -9,9 +9,13 @@ public class LampFlicker : MonoBehaviour
     [SerializeField] private float minFlickerCD = 0.08f, maxFLickerCD = 0.2f;
     private Light lamp;
     private Coroutine runningFlicker;
+    private float maxEmitDistance = 15f;
+    PlayerSpawnManager playerManager;
 
     private void Awake()
     {
+        if (GameObject.FindGameObjectWithTag("PlayerManager") != null)
+            playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerSpawnManager>();
         lamp = transform.parent.GetComponent<Light>();
     }
 
@@ -54,5 +58,21 @@ public class LampFlicker : MonoBehaviour
         }
         lamp.enabled = !lamp.enabled;
         runningFlicker = StartCoroutine(FlickerCoroutine());
+    }
+
+    private float CalculateLevelX()
+    {
+        float dist = Mathf.Infinity;
+        float levelX = 1f;
+        foreach (GameObject player in playerManager.playersList)
+        {
+            float currentDist = Vector3.Distance(player.transform.position, transform.position);
+            if (currentDist < dist)
+            {
+                dist = currentDist;
+            }
+        }
+        levelX = 1 * (maxEmitDistance - dist) / maxEmitDistance;
+        return levelX;
     }
 }
