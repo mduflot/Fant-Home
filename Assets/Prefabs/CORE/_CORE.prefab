@@ -142,7 +142,45 @@ MonoBehaviour:
   - {fileID: 3039647157714507627}
   - {fileID: 5539883479031818836}
   - {fileID: 4068280343504949178}
-  interiorSpawners: []
+  interiorSpawners:
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - associatedRoom: {fileID: 0}
+    spawners:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   _spawnRadius: 5
   curAvailableInteriorSpawners: []
 --- !u!1 &4838263968577460780
@@ -499,6 +537,18 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 4987919317452932528}
+    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].myType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
+      propertyPath: waves.Array.data[0].enemies.Array.data[0].number
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 27770905751116500, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
+      propertyPath: waves.Array.data[1].enemies.Array.data[0].myType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 27770905751116501, guid: c132bb19d683e45459fa0cd1d15ac98e, type: 3}
       propertyPath: m_Name
       value: WaveManager
@@ -781,10 +831,29 @@ PrefabInstance:
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6662094496622963823, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662094496622963823, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.14150941
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662094496622963823, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.06875222
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662094496622963823, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.11780856
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6662094496622963821, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 478391845}
   m_SourcePrefab: {fileID: 100100000, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
 --- !u!114 &792267964831976177 stripped
 MonoBehaviour:
@@ -802,6 +871,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6662094496429235586, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
   m_PrefabInstance: {fileID: 6235849555688548091}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &792267966075636374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6662094496622963821, guid: 919b1d1f1afce3045a328b70ed27f36e, type: 3}
+  m_PrefabInstance: {fileID: 6235849555688548091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &478391845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792267966075636374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b0e6931a2a5fa47c7aa2e658b56412d0, type: 2}
 --- !u!1001 &8103275791002873954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -856,16 +947,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7965921723786968057, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
       propertyPath: Mute
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849368044936227798, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849368044936227798, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
+      propertyPath: sfxSounds.Array.data[6].level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849368044936227798, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
+      propertyPath: sfxSounds.Array.data[7].level
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8938484287315418197, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8938484287315418197, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: cd9f685c677d2944fb8750751b1d33f1, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9005861718376916405, guid: f8a6d39a1b484cb4e95efded4eafa8eb, type: 3}
       propertyPath: m_Name
       value: AudioManager
