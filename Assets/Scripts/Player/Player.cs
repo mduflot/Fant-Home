@@ -1,6 +1,8 @@
 using System;
 using Entities;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _proximityGhostObject;
     [SerializeField] public PlayerShooter playerShoot;
     [SerializeField] public FlashLight flashLight;
+    public GameObject CanvasPlayer;
+    public TextMeshProUGUI NumPlayer;
+    public Image Arrow;
     public PlayerUI playerUI;
     
     private void Start()
