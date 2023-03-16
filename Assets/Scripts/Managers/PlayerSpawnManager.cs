@@ -15,6 +15,7 @@ public class PlayerSpawnManager : MonoBehaviour
     [SerializeField] private Transform[] spawnLocations;
     [SerializeField] private Color[] colors;
 
+    private static readonly int PlayerColor = Shader.PropertyToID("_PlayerColor");
     public List<GameObject> playersList = new List<GameObject>();
 
     private void Start()
@@ -34,10 +35,10 @@ public class PlayerSpawnManager : MonoBehaviour
         
         targetGroup.AddMember(playerInput.transform, 1,2);
 
-        /*foreach (var meshRenderer in playerInput.gameObject.GetComponentsInChildren<MeshRenderer>())
+        foreach (var meshRenderer in playerInput.gameObject.GetComponentsInChildren<MeshRenderer>())
         {
-            meshRenderer.material.color = colors[playerInput.playerIndex];
-        }*/
+            meshRenderer.material.SetColor(PlayerColor, colors[playerInput.playerIndex]);
+        }
         
         GameManager.instance.AddToAliveList();
 
