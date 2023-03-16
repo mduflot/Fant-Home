@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Floor
   - Interactable
+  - PlayerManager
   layers:
   - Default
   - TransparentFX

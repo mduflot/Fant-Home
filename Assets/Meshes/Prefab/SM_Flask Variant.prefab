@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloatingObject
       objectReference: {fileID: 0}
+    - target: {fileID: 1978509837520823047, guid: 1007f157823a4b547ba8cd8956eafe7b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5963939624161489018, guid: 1007f157823a4b547ba8cd8956eafe7b, type: 3}
       propertyPath: m_Center.x
       value: 0
@@ -63,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 7025316279975406615, guid: 1007f157823a4b547ba8cd8956eafe7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648867760096556058, guid: 1007f157823a4b547ba8cd8956eafe7b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -133,6 +141,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: be5f17d5bec8345fcac4ce17e0659a48, type: 3}
       propertyPath: m_Name
       value: SM_Flask Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: be5f17d5bec8345fcac4ce17e0659a48, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
