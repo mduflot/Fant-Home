@@ -144,7 +144,7 @@ MonoBehaviour:
   _ghostSO: {fileID: 11400000, guid: a31b5943ed09b4a45b9d0877bfbc9b56, type: 2}
   _name: Poltergeist
   _stunObject: {fileID: 1650820219272715681}
-  _veilLossObject: {fileID: 0}
+  _veilLossObject: {fileID: 136883221757835833}
   _hitLightGameObject: {fileID: 8732485144742242045}
   IsStun: 0
   IsFleeing: 0
@@ -368,5 +368,10 @@ PrefabInstance:
 --- !u!4 &136883221757835830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8884612855471768535, guid: ce8850c620075ff4f98ad2a675fdb773, type: 3}
+  m_PrefabInstance: {fileID: 8838933024819493345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &136883221757835833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8884612855471768536, guid: ce8850c620075ff4f98ad2a675fdb773, type: 3}
   m_PrefabInstance: {fileID: 8838933024819493345}
   m_PrefabAsset: {fileID: 0}

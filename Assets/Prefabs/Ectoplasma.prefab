@@ -171,7 +171,7 @@ MonoBehaviour:
   _ghostSO: {fileID: 11400000, guid: 36771088f896b2b4885db6162935fdf5, type: 2}
   _name: Ectoplasma
   _stunObject: {fileID: 1254573855023933819}
-  _veilLossObject: {fileID: 0}
+  _veilLossObject: {fileID: 8578324474967676822}
   _hitLightGameObject: {fileID: 1656914616584856827}
   IsStun: 0
   IsFleeing: 0
@@ -242,6 +242,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8850c620075ff4f98ad2a675fdb773, type: 3}
+--- !u!1 &8578324474967676822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8884612855471768536, guid: ce8850c620075ff4f98ad2a675fdb773, type: 3}
+  m_PrefabInstance: {fileID: 882750577870591054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8578324474967676825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8884612855471768535, guid: ce8850c620075ff4f98ad2a675fdb773, type: 3}
