@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     public void GetHit(int damage)
     {
-        _hitValue += 0.05f;
+        _hitValue += 0.01f;
         foreach (var meshRenderer in _meshRenderers)
         {
             meshRenderer.material.SetFloat(Hit, 0.6f);
