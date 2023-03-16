@@ -33,7 +33,7 @@ MonoBehaviour:
   DeathKey: VFX_GhostDeath
   InteractableKey: VFX_Interactable
   Key: 2
-  Attack_SFX: Ghost_Trash_Attack
-  Connect_SFX: Ghost_Trash_Attack_Connect
-  Damage_SFX: Ghost_Trash_Damage
-  Death_SFX: Ghost_Trash_Damage
+  Attack_SFX: Ghost_Ectoplasm_Attack
+  Connect_SFX: Ghost_Ectoplasm_Attack_Connect
+  Damage_SFX: Ghost_Ectoplasm_Damage
+  Death_SFX: Ghost_Ectoplasm_Damage
