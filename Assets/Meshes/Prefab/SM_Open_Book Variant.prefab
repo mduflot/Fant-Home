@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6490257315317648360}
     m_Modifications:
+    - target: {fileID: 719004688135888410, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1189643528532117015, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -26,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1189643528532117015, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: 1189643528532117015, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 1189643528532117015, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_LocalRotation.y
@@ -42,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1189643528532117015, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1189643528532117015, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -55,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 7676822783191894279, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_Name
       value: Spinning Object Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676822783191894279, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7790044268151111025, guid: 9ea6fa39ade5e16469effbaba70e56ba, type: 3}
       propertyPath: m_Radius
@@ -80,7 +88,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 06933edfa30844a96bf06b18c04fb07f, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 06933edfa30844a96bf06b18c04fb07f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06933edfa30844a96bf06b18c04fb07f, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 127
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cb8b9d46b381844d9a6d7d9439143eaf, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -88,6 +88,14 @@ PrefabInstance:
     - target: {fileID: 3319765821183026185, guid: 17145f211b88db642862b92623c4e828, type: 3}
       propertyPath: m_Name
       value: Laughing Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319765821183026185, guid: 17145f211b88db642862b92623c4e828, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575960178797425428, guid: 17145f211b88db642862b92623c4e828, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6060110847716387609, guid: 17145f211b88db642862b92623c4e828, type: 3}
       propertyPath: m_RootOrder
