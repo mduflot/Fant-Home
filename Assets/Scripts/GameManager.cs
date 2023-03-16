@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public InGameUIManager inGameUiManager;
 
     private int _alivePlayers;
+    private bool _isLastWave;
     private bool _isOver;
     
     private void Awake()
@@ -53,5 +54,14 @@ public class GameManager : MonoBehaviour
     public void RemoveFromAliveList()
     {
         _alivePlayers--;
+    }
+    
+    public void CheckWin()
+    {
+        
+        if (_isLastWave)
+        {
+            Debug.Log("Victory");
+        }
     }
 }

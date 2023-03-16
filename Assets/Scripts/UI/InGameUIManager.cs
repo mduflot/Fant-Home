@@ -25,6 +25,7 @@ public class InGameUIManager : MonoBehaviour
         if (enemiesNumber <= 0)
         {
             enemiesNumber = 0;
+            GameManager.instance.CheckWin();
             GameManager.instance.waveTool.AllEnemiesDestroyed();
         }
     }
