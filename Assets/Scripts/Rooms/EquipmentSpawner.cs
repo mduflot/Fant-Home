@@ -19,7 +19,7 @@ public class EquipmentSpawner : Interactible
     [SerializeField] private EquipmentSO curWeapon;
     [SerializeField] private Material emptyMat;
     [SerializeField] private Material containWeaponMat;
-    [SerializeField] private MeshRenderer mesh;
+    //[SerializeField] private MeshRenderer mesh;
     [SerializeField] private Collider col;
     [SerializeField] private GameObject infoPanel;
     [SerializeField] private TMP_Text infoText, nameText;
@@ -29,8 +29,8 @@ public class EquipmentSpawner : Interactible
     {
         GameManager.instance.waveTool.NewWave += CheckIfSpawn;
         containWeapon = false;
-        mesh.material = emptyMat;
-        mesh.gameObject.SetActive(false);
+        //mesh.material = emptyMat;
+        //mesh.gameObject.SetActive(false);
         col.enabled = false;
     }
 
@@ -43,10 +43,10 @@ public class EquipmentSpawner : Interactible
     {
         curWeapon = WeaponsToSpawn[Random.Range(0, WeaponsToSpawn.Count)];
         containWeapon = true;
-        mesh.gameObject.SetActive(true);
+        //mesh.gameObject.SetActive(true);
         col.enabled = true;
         weaponLogo.gameObject.SetActive(true);
-        mesh.material = containWeaponMat;
+        //mesh.material = containWeaponMat;
         Debug.Log("Spawn " + curWeapon);
         UpdateInfos();
     }
