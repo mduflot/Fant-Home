@@ -52,6 +52,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     {
         curState = PlayerState.DOWN;
         _vfxPlayerDead.SetActive(true);
+        _vfxPlayerDead.GetComponent<ParticleSystem>().Play();
         GetComponent<PlayerController>().Immobilisation();
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;
@@ -65,6 +66,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     {
         curState = PlayerState.BASE;
         _vfxPlayerDead.SetActive(false);
+        _vfxPlayerDead.GetComponent<ParticleSystem>().Stop();
         GetComponent<PlayerController>().enabled = true;
         
         GetComponent<Collider>().enabled = true;
