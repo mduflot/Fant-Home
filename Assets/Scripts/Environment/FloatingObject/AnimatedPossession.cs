@@ -58,8 +58,6 @@ public class AnimatedPossession : MonoBehaviour
         }
     }
 
-    Ontri
-
     private void OnGhostIn()
     {
         if (!soundOnAnimationStart)
