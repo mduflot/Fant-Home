@@ -8,7 +8,9 @@ namespace Entities
     public class PlayerShooter : MonoBehaviour
     {
         [SerializeField] private WeaponsSO weapon;
+        
         public WeaponsSO GetCurWeapon => weapon;
+        [SerializeField] private GameObject toothHolder;
         [SerializeField] private bool _triggerShoot;
         [SerializeField] private FlashLight flashLight;
         [SerializeField] private Player player;
@@ -17,7 +19,7 @@ namespace Entities
         private ShootAction _shootAction;
         
         private GameObject _bullet;
-        private GameObject _particle;
+        private Mesh _tooth;
         private Bullet _bulletScript;
         private Vector3 _eulerAngles;
         private float _bulletSpeed;
@@ -44,9 +46,11 @@ namespace Entities
             _reloadTime = weapon.reloadTime;
             _bulletSpread = weapon.bulletSpread;
             _bulletDamage = weapon.damage;
+            _tooth = weapon.tooth;
+
+            toothHolder.GetComponent<MeshFilter>().mesh = _tooth;
             AOE_Range = weapon.AOE_Range;
             _bulletKey = weapon.key.ToString();
-            _particle = weapon.particles;
             if (weapon.flashLight)
             {
                 flashLight.SetEquip(true, weapon.flashLight);

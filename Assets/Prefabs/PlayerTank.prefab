@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 24d267330eca0d2489ae186e4133ccf4, type: 2}
+  toothHolder: {fileID: 4777490565939488999}
   _triggerShoot: 1
   flashLight: {fileID: 4460099137264186308}
   player: {fileID: 5051371393466933211}
@@ -706,7 +707,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4777490565939488999}
-  m_Mesh: {fileID: -3929213157567206641, guid: aa9933b48cab0934db738dc667507271, type: 3}
+  m_Mesh: {fileID: -3929213157567206641, guid: 4b77ef5b8641e3e49a0de0310f20a92f, type: 3}
 --- !u!23 &6756923587931596960
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -960,7 +961,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6155
+  m_VersionIndex: 6158
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1428,7 +1429,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
