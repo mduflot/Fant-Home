@@ -40,7 +40,7 @@ namespace AI.PoltergeistAI
                         _poltergeistStatsSO.AttackCD),
                     new TaskAttack(transform, _poltergeistStatsSO.AttackDamage, _poltergeistStatsSO.AttackScale,
                         _poltergeistStatsSO.AttackKey, _poltergeistStatsSO.AttackDelayBeforeAttack,
-                        _poltergeistStatsSO.AttackRange, _playerMask),
+                        _poltergeistStatsSO.AttackRange, _playerMask, _poltergeistStatsSO.Attack_SFX, _poltergeistStatsSO.Connect_SFX),
                 }),
                 new Sequence(new List<Node>
                 {

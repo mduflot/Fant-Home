@@ -136,6 +136,7 @@ public class Ectoplasm : MonoBehaviour
         curState = EctoplasmState.ATTACKING;
         navAgent.isStopped = true;
         
+        transform.LookAt(target);
         GameObject ghost = Pooler.instance.Pop(_attackKey);
         ghost.transform.position = target;
         transform.GetComponent<Ghost>().IsAttacking = true;
@@ -143,9 +144,9 @@ public class Ectoplasm : MonoBehaviour
         ghost.transform.localPosition = new Vector3(0, 0, 1);
         ghost.transform.localEulerAngles = new Vector3(-180, 180, 0);
         ghost.transform.localScale = new Vector3(1, 1, _attackRange);
-        ghost.GetComponent<GhostAttack>().Explode(target, _attackScale, (target - transform.position), _attackDamage,
+        ghost.GetComponent<GhostAttack>().Explode(_attackScale, (target - transform.position), _attackDamage,
             _attackRange, _delayBeforeAttack,
-            transform.GetComponent<Ghost>(), playerMask, _attackKey, navAgent);
+            transform.GetComponent<Ghost>(), _attackKey, _stats.Attack_SFX, _stats.Connect_SFX, navAgent);
 
         yield return new WaitForSeconds(_delayBeforeAttack);
         curState = EctoplasmState.PATROL;
