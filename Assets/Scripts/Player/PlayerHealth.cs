@@ -1,4 +1,5 @@
 using System.Collections;
+using Entities;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IHitable
@@ -55,7 +56,9 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
+        GetComponentInChildren<PlayerShooter>().enabled = false;
         deathInteractionGO.SetActive(true);
+        GameManager.instance.RemoveFromAliveList();
     }
 
     public void GetUp()
@@ -66,7 +69,9 @@ public class PlayerHealth : MonoBehaviour, IHitable
         
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
+        GetComponentInChildren<PlayerShooter>().enabled = true;
         deathInteractionGO.SetActive(false);
         AudioManager.Instance.PlaySFXRandom("Player_Revive", 0.8f, 1.2f);
+        GameManager.instance.AddToAliveList();
     }
 }

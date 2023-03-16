@@ -38,6 +38,8 @@ public class PlayerSpawnManager : MonoBehaviour
         {
             meshRenderer.material.color = colors[playerInput.playerIndex];
         }*/
+        
+        GameManager.instance.AddToAliveList();
 
         playerInput.GetComponent<Player>().playerUI = playersUI[playerInput.playerIndex];
 
