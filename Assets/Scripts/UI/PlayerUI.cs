@@ -12,6 +12,7 @@ public class PlayerUI : MonoBehaviour
     {
         weaponIcons[0].sprite = newWeapon.icon;
         weaponIcons[1].sprite = newWeapon.flashLight? newWeapon.flashLight.icon : null;
+        weaponIcons[1].enabled = weaponIcons[1].sprite != null;
     }
 
     public void UpdateHealthUI(int newHealth)

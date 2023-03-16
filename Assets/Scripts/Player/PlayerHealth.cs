@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     private void Awake()
     {
         curState = PlayerState.BASE;
-        _meshRenderer = transform.GetComponent<MeshRenderer>();
+        _meshRenderer = transform.GetComponentInChildren<MeshRenderer>();
         if (!player) player = GetComponent<Player>();
     }
     
