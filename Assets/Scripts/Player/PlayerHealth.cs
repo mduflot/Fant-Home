@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     [SerializeField] private PlayerState curState;
 
     [SerializeField] private GameObject deathInteractionGO;
+    [SerializeField] private GameObject _vfxPlayerDead;
     [SerializeField] private Player player;
     private void Awake()
     {
@@ -49,6 +50,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     private void Fall()
     {
         curState = PlayerState.DOWN;
+        _vfxPlayerDead.SetActive(true);
         GetComponent<PlayerController>().Immobilisation();
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;
@@ -59,7 +61,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
     public void GetUp()
     {
         curState = PlayerState.BASE;
-        
+        _vfxPlayerDead.SetActive(false);
         GetComponent<PlayerController>().enabled = true;
         
         GetComponent<Collider>().enabled = true;
