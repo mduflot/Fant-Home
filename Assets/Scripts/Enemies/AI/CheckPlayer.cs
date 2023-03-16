@@ -208,7 +208,7 @@ namespace AI
                     for (var index = 0; index < playersInSameRoom.Count; index++)
                     {
                         var player = playersInSameRoom[index];
-                        float currentDistance = math.sqrt(math.lengthsq(_transform.position - hit.transform.position));
+                        float currentDistance = math.sqrt(math.lengthsq(_transform.position - player.transform.position));
                         if (currentDistance < previousDistance || previousDistance == 0)
                         {
                             previousDistance = currentDistance;
