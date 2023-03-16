@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef40a11ce64db691e97863d6b1f846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 1aea06f780224104da15f2b2e1ce1de8, type: 2}
+  weapon: {fileID: 11400000, guid: 24d267330eca0d2489ae186e4133ccf4, type: 2}
   _triggerShoot: 1
   flashLight: {fileID: 4460099137264186308}
   player: {fileID: 5051371393466933211}
@@ -1357,6 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 0
+  invincibleTime: 0
   curState: 0
   deathInteractionGO: {fileID: 1985378236534454118}
   _vfxPlayerDead: {fileID: 8436281705560433019}
