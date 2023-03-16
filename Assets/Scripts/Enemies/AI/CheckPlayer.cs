@@ -127,7 +127,7 @@ namespace AI
                         return _state;
                     }
                     
-                    var randomPlayer = Random.Range(0, _players.Count);
+                    var randomPlayer = Random.Range(0, playersInSameRoom.Count);
                     target = playersInSameRoom[randomPlayer].transform;
                     Parent.Parent.SetData("target", target);
                     _state = NodeState.SUCCESS;
