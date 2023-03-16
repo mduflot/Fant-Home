@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df89c6f072d23d4a9ab9b959dbc0562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveToSpawn: 5
+  waveToSpawn: 1
   WeaponsToSpawn:
   - {fileID: 11400000, guid: 1e92ff479f8f36b4d92c6dec6eb71250, type: 2}
   containWeapon: 0
