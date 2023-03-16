@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Entities;
+using TMPro;
 using UnityEngine;
+using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class EquipmentSpawner : Interactible
@@ -19,15 +21,16 @@ public class EquipmentSpawner : Interactible
     [SerializeField] private Material containWeaponMat;
     [SerializeField] private MeshRenderer mesh;
     [SerializeField] private Collider col;
+    [SerializeField] private GameObject infoPanel;
+    [SerializeField] private TMP_Text infoText, nameText;
+    [SerializeField] private Image weaponLogo;
     
-    
-
     private void Start()
     {
         GameManager.instance.waveTool.NewWave += CheckIfSpawn;
         containWeapon = false;
         mesh.material = emptyMat;
-        mesh.enabled = false;
+        mesh.gameObject.SetActive(false);
         col.enabled = false;
     }
 
@@ -40,10 +43,11 @@ public class EquipmentSpawner : Interactible
     {
         curWeapon = WeaponsToSpawn[Random.Range(0, WeaponsToSpawn.Count)];
         containWeapon = true;
-        mesh.enabled = true;
+        mesh.gameObject.SetActive(true);
         col.enabled = true;
         mesh.material = containWeaponMat;
         Debug.Log("Spawn " + curWeapon);
+        UpdateInfos();
     }
     
     public override void Interact(PlayerInteract play)
@@ -70,7 +74,26 @@ public class EquipmentSpawner : Interactible
             }
 
             curWeapon = newWeapon;
+            UpdateInfos();
         }
         else Debug.Log("No weapon");
+    }
+
+    public override void PlayerEnter(PlayerInteract player)
+    {
+        infoPanel.SetActive(true);
+        if(containWeapon) UpdateInfos();
+    }
+
+    private void UpdateInfos()
+    {
+        infoText.text = curWeapon.desc;
+        nameText.text = curWeapon.weaponName;
+        weaponLogo.sprite = curWeapon.icon;
+    }
+
+    public override void PlayerExit(PlayerInteract player)
+    {
+        if(curPlayers.Count == 0) infoPanel.SetActive(false);
     }
 }

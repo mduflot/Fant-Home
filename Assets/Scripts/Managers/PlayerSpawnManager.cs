@@ -48,6 +48,7 @@ public class PlayerSpawnManager : MonoBehaviour
         playGO.GetComponent<Player>().curRoom = initialRoom;
 
         playGO.GetComponent<PlayerHealth>().curHealth = stats.maxHealth;
+        playGO.GetComponent<PlayerHealth>().invincibleTime = stats.invincibleTime;
         
         playersList.Add(playGO);
     }
