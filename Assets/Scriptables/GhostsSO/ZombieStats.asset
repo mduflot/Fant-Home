@@ -20,18 +20,18 @@ MonoBehaviour:
   RangeVisibleToPlayer: 4
   MoveSpeed: 2.5
   StunDuration: 1.5
-  AlwaysStun: 1
+  AlwaysStun: 0
   AttackDamage: 1
   AttackRange: 3
-  AttackScale: {x: 0, y: 0, z: 0}
+  AttackScale: {x: 2, y: 1, z: 2}
   AttackCD: 3.5
   AttackDelayBeforeAttack: 1.5
   CanActivateObject: 0
   InteractionRange: 6
   InteractionCD: 6
-  AttackKey: TrashAttack
+  AttackKey: VFX_GhostAtk
   DeathKey: VFX_GhostDeath
-  InteractableKey: 
+  InteractableKey: VFX_Interactable
   Key: 2
   Attack_SFX: Ghost_Trash_Attack
   Connect_SFX: Ghost_Trash_Attack_Connect

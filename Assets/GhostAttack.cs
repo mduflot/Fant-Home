@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GhostAttack : MonoBehaviour
 {
@@ -14,10 +15,11 @@ public class GhostAttack : MonoBehaviour
     private int _damage;
     private float _attackDelayBeforeAttack;
     private string _attackKey;
+    private NavMeshAgent _navMesh;
 
     public void Explode(Vector3 center, Vector3 scale, Vector3 direction, int damage,
         float attackRange, float attackDelayBeforeAttack,
-        Ghost sender, LayerMask playerMask, string attackKey)
+        Ghost sender, LayerMask playerMask, string attackKey, NavMeshAgent navMesh = null)
     {
         _center = center;
         _scale = scale;
@@ -28,6 +30,7 @@ public class GhostAttack : MonoBehaviour
         _attackDelayBeforeAttack = attackDelayBeforeAttack;
         _attackKey = attackKey;
         _sender = sender;
+        _navMesh = navMesh;
 
         StartCoroutine(PrepareSpell());
     }
@@ -35,6 +38,7 @@ public class GhostAttack : MonoBehaviour
     private void OnParticleSystemStopped()
     {
         _sender.IsAttacking = false;
+        _navMesh.isStopped = false;
         RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, Quaternion.identity, _attackRange,
             _playerMask);
         bool hitAPlayer = false;
