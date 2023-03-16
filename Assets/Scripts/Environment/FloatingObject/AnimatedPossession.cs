@@ -21,8 +21,10 @@ public class AnimatedPossession : MonoBehaviour
 
     private void Awake()
     {
+        /*
         if (GameObject.FindGameObjectWithTag("PlayerManager") != null)
         playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerSpawnManager>();
+        */
         Transform objectToMove = null;
         if (transform.parent != null)
         {
@@ -96,6 +98,8 @@ public class AnimatedPossession : MonoBehaviour
 
     private float CalculateLevelX()
     {
+        return 1f;
+        /*
         float dist = Mathf.Infinity;
         float levelX = 1f;
         foreach (GameObject player in playerManager.playersList)
@@ -107,6 +111,6 @@ public class AnimatedPossession : MonoBehaviour
             }
         }
         levelX = 1 *(maxEmitDistance-dist)/ maxEmitDistance;
-        return levelX;
+        return levelX;*/
     }
 }
