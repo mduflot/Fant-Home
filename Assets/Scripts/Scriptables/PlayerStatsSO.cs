@@ -8,4 +8,5 @@ using UnityEngine.Serialization;
 public class PlayerStatsSO : ScriptableObject
 {
     public int maxHealth;
+    public float invincibleTime;
 }

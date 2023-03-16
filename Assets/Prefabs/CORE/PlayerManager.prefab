@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8995904436073657507}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: PlayerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ Transform:
   m_Children:
   - {fileID: 8995904436202379309}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8995904436073657506
 MonoBehaviour:
@@ -137,6 +137,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 2293f5e13799caa4fa716334cad39890, type: 2}
   PlayerGO: {fileID: 7367198177605583761, guid: b566adb69db1eef4abff7088519323c4, type: 3}
   targetGroup: {fileID: 0}
+  playersUI: []
   spawnLocations:
   - {fileID: 8995904437553969065}
   - {fileID: 8995904436205936281}
@@ -147,6 +148,7 @@ MonoBehaviour:
   - {r: 0.21016884, g: 1, b: 0, a: 1}
   - {r: 0, g: 0.06871343, b: 1, a: 1}
   - {r: 0.9914521, g: 1, b: 0, a: 1}
+  playersList: []
 --- !u!1 &8995904436202379308
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,9 +40,10 @@ public class GameManager : MonoBehaviour
 
     private void CheckAlivePlayers()
     {
-        if (_alivePlayers <= 0)
+        if (_alivePlayers <= 0 && !_isOver)
         {
             Debug.Log("perdu");
+            _isOver = true;
         }
     }
 
