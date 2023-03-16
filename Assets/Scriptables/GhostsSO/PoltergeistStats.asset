@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497126ebf80f405b9cdd58d91ac4a4fd, type: 3}
   m_Name: PoltergeistStats
   m_EditorClassIdentifier: 
-  MaxHealth: 150
-  MaxVeil: 40
+  MaxHealth: 120
+  MaxVeil: 35
   VeilRegenPoints: 1
   VeilRegenCD: 2.5
-  VeilRegenOverTime: 2.5
+  VeilRegenOverTime: 0.25
   RangeVisibleToPlayer: 6
   MoveSpeed: 10
   StunDuration: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
   AttackKey: VFX_PoltergeistAtk
   DeathKey: VFX_PoltergeistDeath
   InteractableKey: VFX_Interactable
-  Key: 0
+  Key: 1
   Attack_SFX: Ghost_PG_Attack
   Connect_SFX: Ghost_PG_Attack_Connect
   Damage_SFX: Ghost_PG_Damage

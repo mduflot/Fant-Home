@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 10
   MaxVeil: 1
-  VeilRegenPoints: 0.5
+  VeilRegenPoints: 1
   VeilRegenCD: 2.5
   VeilRegenOverTime: 2.5
   RangeVisibleToPlayer: 6

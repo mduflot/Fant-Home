@@ -49,6 +49,12 @@ public class Zombie : MonoBehaviour
 
     void Update()
     {
+        if (_ghost.IsStun)
+        {
+            navAgent.isStopped = true;
+            return;
+        }
+        navAgent.isStopped = false;
         CheckNearestPlayer();
 
         float targetDist = Vector3.Distance(transform.position, target);
@@ -114,11 +120,13 @@ public class Zombie : MonoBehaviour
         curState = ZombieState.ATTACKING;
         navAgent.isStopped = true;
 
-        GameObject ghost = Pooler.instance.Pop(_attackKey);
+        /*GameObject ghost = Pooler.instance.Pop(_attackKey);
         ghost.transform.position = target;
         ghost.GetComponent<GhostAttack>().Explode(target, _attackScale, (target - transform.position), _attackDamage,
             _attackRange, _delayBeforeAttack,
-            transform.GetComponent<Ghost>(), playerMask, _attackKey);
+            transform.GetComponent<Ghost>(), playerMask, _attackKey);*/
+        
+        
 
         yield return new WaitForSeconds(_delayBeforeAttack);
         navAgent.isStopped = false;

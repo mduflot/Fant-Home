@@ -48,7 +48,7 @@ MonoBehaviour:
   waveName: Wave 1
   waves:
   - waveNumber: 0
-    spawnTime: 0
+    spawnTime: 50
     enemies:
     - myType: 0
       number: 7
@@ -67,23 +67,156 @@ MonoBehaviour:
     - myType: 1
       number: 1
   - waveNumber: 0
-    spawnTime: 10
+    spawnTime: 115
     enemies:
     - myType: 0
       number: 10
+    - myType: 2
+      number: 10
+    - myType: 1
+      number: 1
   - waveNumber: 0
-    spawnTime: 10
+    spawnTime: 115
     enemies:
     - myType: 0
-      number: 10
+      number: 5
+    - myType: 2
+      number: 7
+    - myType: 1
+      number: 3
   - waveNumber: 0
-    spawnTime: 10
+    spawnTime: 115
     enemies:
     - myType: 0
-      number: 10
+      number: 15
+    - myType: 2
+      number: 15
+    - myType: 1
+      number: 4
   - waveNumber: 0
-    spawnTime: 10
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 8
+    - myType: 2
+      number: 10
+    - myType: 1
+      number: 4
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 38
+    - myType: 2
+      number: 4
+    - myType: 1
+      number: 5
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 8
+    - myType: 2
+      number: 11
+    - myType: 1
+      number: 5
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 8
+    - myType: 2
+      number: 11
+    - myType: 1
+      number: 7
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 8
+    - myType: 2
+      number: 11
+    - myType: 1
+      number: 7
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 9
+    - myType: 2
+      number: 12
+    - myType: 1
+      number: 7
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 12
+    - myType: 2
+      number: 11
+    - myType: 1
+      number: 8
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 1
+    - myType: 2
+      number: 4
+    - myType: 1
+      number: 12
+  - waveNumber: 0
+    spawnTime: 115
     enemies:
     - myType: 0
       number: 10
+    - myType: 2
+      number: 35
+    - myType: 1
+      number: 2
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 15
+    - myType: 2
+      number: 25
+    - myType: 1
+      number: 5
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 15
+    - myType: 2
+      number: 25
+    - myType: 1
+      number: 7
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 15
+    - myType: 2
+      number: 25
+    - myType: 1
+      number: 7
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 15
+    - myType: 2
+      number: 25
+    - myType: 1
+      number: 7
+  - waveNumber: 0
+    spawnTime: 115
+    enemies:
+    - myType: 0
+      number: 15
+    - myType: 2
+      number: 25
+    - myType: 1
+      number: 7
   index: 0

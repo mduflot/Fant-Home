@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
         _flashLight.LightRelease();
     }
 
+    private void OnPause()
+    {
+        GameManager.instance.inGameUiManager.TogglePause();
+    }
+
     private void FixedUpdate()
     {
         DoMove();
@@ -87,5 +92,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_rotateVal == Vector2.zero) return;
         head.transform.rotation = Quaternion.LookRotation(new Vector3(_rotateVal.x, 0, _rotateVal.y));
+    }
+
+    public void Immobilisation()
+    {
+        _moveVal = Vector2.zero;
+        _rb.velocity = Vector3.zero;
     }
 }
