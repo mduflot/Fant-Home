@@ -51,7 +51,7 @@ public class Ectoplasm : MonoBehaviour
 
     void Update()
     {
-        if (_ghost.IsStun)
+        if (_ghost.IsStun || _ghost.IsAttacking)
         {
             navAgent.isStopped = true;
             return;
