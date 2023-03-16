@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private int _alivePlayers;
     public bool isLastWave;
+    public bool started;
     private bool _isOver;
     
     private void Awake()
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isOver) return;
+        if (_isOver || !started) return;
         CheckAlivePlayers();
     }
 
