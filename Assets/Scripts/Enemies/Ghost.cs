@@ -65,6 +65,7 @@ public class Ghost : MonoBehaviour, IEnemy
             {
                 _stunObject.SetActive(false);
                 IsStun = false;
+                _meshRenderer.material.SetFloat(Hit, 0f);
             }
         }
 
@@ -84,7 +85,6 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             other.gameObject.GetComponent<Bullet>().Contact();
         }
-        _meshRenderer.material.SetFloat(Hit, 1 - (_health / _ghostSO.MaxHealth));
         TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
     }
 
@@ -113,6 +113,7 @@ public class Ghost : MonoBehaviour, IEnemy
             _stunCounter = 0;
             IsStun = true;
             _stunObject.SetActive(true);
+            _meshRenderer.material.SetFloat(Hit, 1f);
         }
         else if (!_canBeStun)
         {
@@ -120,6 +121,7 @@ public class Ghost : MonoBehaviour, IEnemy
             _stunCounter = 0;
             IsStun = true;
             _stunObject.SetActive(true);
+            _meshRenderer.material.SetFloat(Hit, 1f);
         }
 
         if (_regenCO != null) StopCoroutine(_regenCO);
