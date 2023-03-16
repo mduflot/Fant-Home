@@ -18,11 +18,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7d227e9ffaa0a034aa0c3d5096150227, type: 3}
   damage: 1
   bulletSpeed: 9
-  reloadTime: 0.15
+  reloadTime: 0.25
   bulletSpread: 0
   key: 2
   type: 2
   flashLight: {fileID: 11400000, guid: bfd0bbf64d2220c4ca540980b49207f9, type: 2}
-  particles: {fileID: 0}
   AOE_Range: 0
   bulletNumber: 3

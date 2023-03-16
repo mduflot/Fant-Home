@@ -19,11 +19,11 @@ MonoBehaviour:
   VeilRegenOverTime: 0.25
   RangeVisibleToPlayer: 6
   MoveSpeed: 10
-  StunDuration: 2
+  StunDuration: 1.5
   AlwaysStun: 0
   AttackDamage: 1
   AttackRange: 5
-  AttackScale: {x: 4, y: 1, z: 2}
+  AttackScale: {x: 2, y: 1, z: 1}
   AttackCD: 3
   AttackDelayBeforeAttack: 1.5
   CanActivateObject: 1
