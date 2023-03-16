@@ -1,5 +1,4 @@
 ﻿using BehaviorTree;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace AI.GhostAI
@@ -15,9 +14,10 @@ namespace AI.GhostAI
         private float _attackDelayBeforeAttack;
         private float _attackRange;
         private LayerMask _playerMask;
+        private string _attackSFX, _connectSFX;
 
         public TaskAttack(Transform transform, int damage, Vector3 attackScale, string attackKey,
-            float attackDelayBeforeAttack, float attackRange, LayerMask playerMask)
+            float attackDelayBeforeAttack, float attackRange, LayerMask playerMask, string attackSFX, string connectSFX)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
@@ -27,6 +27,8 @@ namespace AI.GhostAI
             _attackDelayBeforeAttack = attackDelayBeforeAttack;
             _attackRange = attackRange;
             _playerMask = playerMask;
+            _attackSFX = attackSFX;
+            _connectSFX = connectSFX;
         }
 
         public override NodeState Evaluate()
@@ -57,9 +59,9 @@ namespace AI.GhostAI
                     attackGhost.transform.localScale = new Vector3(1, 1, _attackRange);
                 }
 
-                attackGhost.GetComponent<GhostAttack>().Explode(_transform.position, _attackScale,
+                attackGhost.GetComponent<GhostAttack>().Explode(_attackScale,
                     target.position - _transform.position, _damage, _attackRange, _attackDelayBeforeAttack,
-                    _transform.GetComponent<Ghost>(), _playerMask, _attackKey);
+                    _transform.GetComponent<Ghost>(), _attackKey, _attackSFX, _connectSFX);
 
                 _transform.GetComponent<Ghost>().IsFleeing = true;
             }

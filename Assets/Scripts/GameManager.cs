@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public MessageDisplayer messageDisplayer;
     public InGameUIManager inGameUiManager;
 
+    private int _alivePlayers;
+    public bool isLastWave;
+    private bool _isOver;
+    
     private void Awake()
     {
         if(instance) Destroy(gameObject);
@@ -26,5 +30,39 @@ public class GameManager : MonoBehaviour
         if (playerManager == null) playerManager = FindObjectOfType<PlayerSpawnManager>();
         if (messageDisplayer == null) messageDisplayer = FindObjectOfType<MessageDisplayer>();
         if (inGameUiManager == null) inGameUiManager = FindObjectOfType<InGameUIManager>();
+    }
+
+    private void Update()
+    {
+        if (_isOver) return;
+        CheckAlivePlayers();
+    }
+
+    private void CheckAlivePlayers()
+    {
+        if (_alivePlayers <= 0 && !_isOver)
+        {
+            Debug.Log("perdu");
+            _isOver = true;
+        }
+    }
+
+    public void AddToAliveList()
+    {
+        _alivePlayers++;
+    }
+    
+    public void RemoveFromAliveList()
+    {
+        _alivePlayers--;
+    }
+    
+    public void CheckWin()
+    {
+        
+        if (isLastWave)
+        {
+            Debug.Log("Victory");
+        }
     }
 }

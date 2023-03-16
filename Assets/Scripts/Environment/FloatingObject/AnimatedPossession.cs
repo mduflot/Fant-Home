@@ -11,8 +11,26 @@ public class AnimatedPossession : MonoBehaviour
     [SerializeField]
     private string[] sounds;
     [SerializeField]
+    private float maxEmitDistance = 20f;
+    [SerializeField]
     private bool loopedSound = false;
+    [SerializeField]
+    private bool soundOnAnimationStart = false;
     private Coroutine loop;
+    PlayerSpawnManager playerManager;
+
+    private void Awake()
+    {
+        if (GameObject.FindGameObjectWithTag("PlayerManager") != null)
+        playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerSpawnManager>();
+        Transform objectToMove = null;
+        if (transform.parent != null)
+        {
+            objectToMove = transform.parent;
+            transform.parent = objectToMove.parent;
+            objectToMove.parent = transform.GetChild(0).transform;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,7 +60,8 @@ public class AnimatedPossession : MonoBehaviour
 
     private void OnGhostIn()
     {
-        PlaySound();
+        if (!soundOnAnimationStart)
+            PlaySound();
     }
 
     private void OnNoGhost()
@@ -57,11 +76,11 @@ public class AnimatedPossession : MonoBehaviour
         {
             loop = StartCoroutine(
                 LoopCoroutine(
-                    AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f)));
+                    AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f, CalculateLevelX())));
         }
         else
         {
-            AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f);
+            AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f, CalculateLevelX());
         }
     }
 
@@ -69,8 +88,25 @@ public class AnimatedPossession : MonoBehaviour
     {
         yield return new WaitForSeconds(length);
         int soundToPlay = Random.Range(0, sounds.Length);
-        loop = StartCoroutine(
-            LoopCoroutine(
-                AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f)));
+        if (!soundOnAnimationStart)
+            loop = StartCoroutine(
+                LoopCoroutine(
+                    AudioManager.Instance.PlaySFXRandom(sounds[soundToPlay], 0.8f, 1.2f, CalculateLevelX())));
    }
+
+    private float CalculateLevelX()
+    {
+        float dist = Mathf.Infinity;
+        float levelX = 1f;
+        foreach (GameObject player in playerManager.playersList)
+        {
+            float currentDist = Vector3.Distance(player.transform.position, transform.position);
+            if (currentDist < dist)
+            {
+                dist = currentDist;
+            }
+        }
+        levelX = 1 / dist * maxEmitDistance;
+        return levelX;
+    }
 }

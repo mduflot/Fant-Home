@@ -335,15 +335,15 @@ MonoBehaviour:
     level: 0.5
     clip: {fileID: 8300000, guid: 644886205fde98e4cbd6382952e517c2, type: 3}
   - name: Chain_Shoot
-    level: 0.2
+    level: 0.5
     clip: {fileID: 8300000, guid: 69f2bae65ce3d7045a42f9d6345fdf59, type: 3}
-  - name: Big Bertha_Shoot
+  - name: BigBertha_Shoot
     level: 0.5
     clip: {fileID: 8300000, guid: 7ae0ac444d67bcd4292583ac45a2516f, type: 3}
-  - name: Big Bertha_Thrust
+  - name: BigBertha_Thrust
     level: 0.5
     clip: {fileID: 8300000, guid: 54e94fb943df4cb4abceab01dceb83f5, type: 3}
-  - name: Big Bertha_Explode
+  - name: BigBertha_Explode
     level: 0.5
     clip: {fileID: 8300000, guid: 6f7e637cb7eee984ca9cd82548d6ea0b, type: 3}
   - name: Menu_Hover
@@ -413,8 +413,8 @@ MonoBehaviour:
     level: 0.7
     clip: {fileID: 8300000, guid: 8fd9d6ce020ea8f4dac571ec2fc08b0e, type: 3}
   - name: TV_WhiteNoise
-    level: 0
-    clip: {fileID: 8300000, guid: a5bcc099ba2be014db1f41cbfc5a9864, type: 3}
+    level: 0.5
+    clip: {fileID: 8300000, guid: 1eb7cc91f00092b4e8da9fd9f381e069, type: 3}
   - name: Radio_WhiteNoise1
     level: 0.5
     clip: {fileID: 8300000, guid: c59a52f887007d3458260386e3d1ecc3, type: 3}
@@ -429,6 +429,21 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f4e62d1acd13a4748a2145441f86b259, type: 3}
   - name: Shelf_Boom
     level: 0.5
-    clip: {fileID: 8300000, guid: 7d3bd895a2db5c844a2d110f61565892, type: 3}
+    clip: {fileID: 8300000, guid: 8d0ebfc6610ba444e9ef54d054c5b8e5, type: 3}
+  - name: Ghost_Ectoplasm_Attack
+    level: 0.5
+    clip: {fileID: 8300000, guid: bacce3b28c4fd2446934dbfd05b5d45b, type: 3}
+  - name: Ghost_Ectoplasm_AttackConnect
+    level: 0.5
+    clip: {fileID: 8300000, guid: 786a7302b66a2eb4eacbd5714ebc1d49, type: 3}
+  - name: Ghost_Ectoplasm_Damage
+    level: 0.5
+    clip: {fileID: 8300000, guid: db68e42728b5b474cb1b000095ac76d3, type: 3}
+  - name: Ghost_Ectoplasm_Death
+    level: 0.5
+    clip: {fileID: 8300000, guid: 78cbcc5620103c140b0a82319968bba1, type: 3}
+  - name: MultiZap_Shoot
+    level: 0.5
+    clip: {fileID: 8300000, guid: effb06779bf19124d8baac8a1b66691f, type: 3}
   musicSource: {fileID: 8938484287315418197}
   sfxSource: {fileID: 7965921723786968057}

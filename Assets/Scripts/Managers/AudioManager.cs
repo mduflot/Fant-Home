@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public float PlaySFXRandom(string name, float minRand, float maxRand)
+    public float PlaySFXRandom(string name, float minRand, float maxRand, float levelX = 1f)
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.pitch = Random.Range(minRand, maxRand);
-            sfxSource.PlayOneShot(s.clip, s.level);
+            sfxSource.PlayOneShot(s.clip, s.level*levelX);
         }
         return s.clip.length*sfxSource.pitch;
     }

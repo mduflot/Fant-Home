@@ -55,14 +55,14 @@ namespace Entities
             {
                 flashLight.SetEquip(false, null);
             }
-
-            _shootAction += ShootParticles;
-            _shootAction += weapon.type switch
+            
+            _shootAction = weapon.type switch
             {
                 BulletTypes.Multiple => ShootMultiple,
                 BulletTypes.Explosive => ShootExplosive,
                 _ => Shoot
             };
+            _shootAction += ShootParticles;
             
             player.playerUI.UpdateWeaponUI(weapon);
         }
@@ -70,6 +70,7 @@ namespace Entities
         // ReSharper disable Unity.PerformanceAnalysis
         private void ShootParticles()
         {
+            if (flashLight.isActive) return;
             GameObject particles = Pooler.instance.Pop("VFX_"+_bulletKey+"Launch");
             particles.transform.position = transform.position + transform.forward;
             Pooler.instance.DelayedDepop(0.5f, "VFX_"+_bulletKey+"Launch", particles);
@@ -116,7 +117,7 @@ namespace Entities
             {
                 _lastShootTime = Time.fixedTime;
 
-                Shoot();
+                _shootAction.Invoke();
             }
         }
 
