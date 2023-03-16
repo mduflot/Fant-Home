@@ -107,13 +107,13 @@ MonoBehaviour:
       refreshSpeed: 5
   - key: VFX_MultiZapLaunch
     pool:
-      prefab: {fileID: 8616110551902925102, guid: 9b635ac85e1db6840a7eabe160890ade, type: 3}
+      prefab: {fileID: 4955109852843824650, guid: abcf27c5f3ad26749b6598340ccae459, type: 3}
       baseCount: 10
       baseRefreshSpeed: 5
       refreshSpeed: 5
   - key: VFX_MultiZapHit
     pool:
-      prefab: {fileID: 944695900412284088, guid: 49451e22fd1992a45b8f163567b4cebd, type: 3}
+      prefab: {fileID: 8164102451002960070, guid: 9b503c483c633e44fb5bc0ceb7daac55, type: 3}
       baseCount: 10
       baseRefreshSpeed: 5
       refreshSpeed: 5

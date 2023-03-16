@@ -19,9 +19,6 @@ public class Bullet : MonoBehaviour
     private delegate void BulletContact();
     private BulletContact _contact;
 
-    [HideInInspector]
-    public bool isPhysic = false;
-
     private void OnEnable()
     {
         _currentSpeed = speed;
@@ -50,7 +47,6 @@ public class Bullet : MonoBehaviour
 
     public void SetBase()
     {
-        isPhysic = true;
         _behaviour += BaseBehaviour;
         _contact += BaseContact;
     }
@@ -66,7 +62,6 @@ public class Bullet : MonoBehaviour
     public void SetMultiple()
     {
         SetBase();
-        isPhysic = false;
         _behaviour += MultipleBehaviour;
         _contact -= BaseContact;
         _contact += MultipleContact;
@@ -111,6 +106,8 @@ public class Bullet : MonoBehaviour
 
     private void MultipleContact()
     {
-        //Debug.Log("BZZZZT");
+        GameObject particles = Pooler.instance.Pop("VFX_"+key+"Hit");
+        particles.transform.position = transform.position;
+        Pooler.instance.DelayedDepop(0.5f, "VFX_"+key+"Hit", particles);
     }
 }

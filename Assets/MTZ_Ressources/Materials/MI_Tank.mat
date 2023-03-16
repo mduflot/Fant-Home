@@ -78,6 +78,7 @@ Material:
     - _HIT: 0
     - _Hit_Flicker_Frequency: 40
     - _Hit_Flicker_Transition_Power: 0.2
+    - _PROGRESSIVE_DAMAGE: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roughness: 1
