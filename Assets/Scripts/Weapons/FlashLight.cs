@@ -71,7 +71,7 @@ public class FlashLight : MonoBehaviour
     {
         isActive = on;
         //flashLightGO.SetActive(on);
-        if(curLight) curLight.intensity = on ? 450 : 175;
+        if(curLight) curLight.intensity = on ? 350 : 75;
         
         if(curLoop != null) StopCoroutine(curLoop);
         if(on) curLoop = StartCoroutine(DamageTicksLoop());
