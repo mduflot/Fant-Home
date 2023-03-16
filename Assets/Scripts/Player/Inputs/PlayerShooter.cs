@@ -83,6 +83,7 @@ namespace Entities
             if (flashLight.isActive) return;
             GameObject particles = Pooler.instance.Pop("VFX_"+_bulletKey+"Launch");
             particles.transform.position = transform.position + transform.forward;
+            particles.transform.rotation = transform.rotation;
             Pooler.instance.DelayedDepop(0.5f, "VFX_"+_bulletKey+"Launch", particles);
         }
 

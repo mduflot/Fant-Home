@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     [SerializeField] private GameObject deathInteractionGO;
     [SerializeField] private GameObject _vfxPlayerDead;
+    [SerializeField] private ParticleSystem playerElectricity;
     [SerializeField] private Player player;
     private MeshRenderer[] _meshRenderers;
     private float _hitValue;
@@ -52,6 +53,8 @@ public class PlayerHealth : MonoBehaviour, IHitable
         if (curState == PlayerState.INVINCIBLE || curHealth <= 0) return;
 
         curHealth -= damage;
+        var playerElectricityEmission = playerElectricity.emission;
+        playerElectricityEmission.rateOverTime = 20 * _hitValue;
         player.playerUI.UpdateHealthUI(curHealth);
         Debug.Log("got hit");
         if (curHealth <= 0)
