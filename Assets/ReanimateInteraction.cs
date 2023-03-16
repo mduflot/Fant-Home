@@ -45,7 +45,6 @@ public class ReanimateInteraction : Interactible
             progress += Time.deltaTime;
             slider.value = progress;
         }
-        
         slider.value = 0;
         currentReviver = null;
         playerHealth.GetUp();
