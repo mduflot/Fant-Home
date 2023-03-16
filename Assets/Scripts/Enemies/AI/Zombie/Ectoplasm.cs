@@ -51,7 +51,7 @@ public class Ectoplasm : MonoBehaviour
 
     void Update()
     {
-        if (_ghost.IsStun)
+        if (_ghost.IsStun || _ghost.IsAttacking)
         {
             navAgent.isStopped = true;
             return;
@@ -101,11 +101,12 @@ public class Ectoplasm : MonoBehaviour
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, detectionLength, Vector3.down, detectionLength,
             playerMask);
 
+        bool newTarget = false;
         if (hits.Length > 0)
         {
-            bool newTarget = false;
             foreach (var hit in hits)
             {
+                if (hit.transform.GetComponent<PlayerHealth>().curHealth <= 0) continue;
                 if (EnemyIsVisible(hit.transform))
                 {
                     target = hit.transform.position;

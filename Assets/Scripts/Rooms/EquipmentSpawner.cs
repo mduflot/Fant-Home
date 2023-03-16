@@ -18,6 +18,7 @@ public class EquipmentSpawner : Interactible
     [SerializeField] private Material emptyMat;
     [SerializeField] private Material containWeaponMat;
     [SerializeField] private MeshRenderer mesh;
+    [SerializeField] private Collider col;
     
     
 
@@ -26,6 +27,8 @@ public class EquipmentSpawner : Interactible
         GameManager.instance.waveTool.NewWave += CheckIfSpawn;
         containWeapon = false;
         mesh.material = emptyMat;
+        mesh.enabled = false;
+        col.enabled = false;
     }
 
     private void CheckIfSpawn(int index)
@@ -37,6 +40,8 @@ public class EquipmentSpawner : Interactible
     {
         curWeapon = WeaponsToSpawn[Random.Range(0, WeaponsToSpawn.Count)];
         containWeapon = true;
+        mesh.enabled = true;
+        col.enabled = true;
         mesh.material = containWeaponMat;
         Debug.Log("Spawn " + curWeapon);
     }

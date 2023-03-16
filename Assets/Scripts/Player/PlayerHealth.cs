@@ -18,13 +18,17 @@ public class PlayerHealth : MonoBehaviour, IHitable
     [SerializeField] private GameObject _vfxPlayerDead;
     [SerializeField] private Player player;
     private MeshRenderer _meshRenderer;
+    private float _hitValue;
     private static readonly int Hit = Shader.PropertyToID("_HIT");
+    
+    [SerializeField] private GameObject reanimateUI;
     
     private void Awake()
     {
         curState = PlayerState.BASE;
         _meshRenderer = transform.GetComponentInChildren<MeshRenderer>();
         if (!player) player = GetComponent<Player>();
+        reanimateUI.SetActive(false);
     }
     
     [ContextMenu("TakeHits")]
@@ -35,16 +39,19 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     public void GetHit(int damage)
     {
-        _meshRenderer.material.SetFloat(Hit, 0.2f);
+        _meshRenderer.material.SetFloat(Hit, _hitValue += 0.2f);
         if (curState == PlayerState.INVINCIBLE || curHealth <= 0) return;
 
         curHealth -= damage;
         player.playerUI.UpdateHealthUI(curHealth);
         Debug.Log("got hit");
-        if (curHealth <= 0) Fall();
+        if (curHealth <= 0)
+        {
+            Fall();
+        }
         else StartCoroutine(Invincible());
         AudioManager.Instance.PlaySFXRandom("Player_Damage", 0.8f, 1.2f);
-        _meshRenderer.material.SetFloat(Hit, 0f);
+        
     }
 
     private IEnumerator Invincible()
@@ -58,6 +65,8 @@ public class PlayerHealth : MonoBehaviour, IHitable
     {
         curState = PlayerState.DOWN;
         _vfxPlayerDead.SetActive(true);
+        _hitValue = 0;
+        _meshRenderer.material.SetFloat(Hit, _hitValue);
         _vfxPlayerDead.GetComponent<ParticleSystem>().Play();
         GetComponent<PlayerController>().Immobilisation();
         GetComponent<PlayerController>().enabled = false;
@@ -65,12 +74,15 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponent<Rigidbody>().useGravity = false;
         GetComponentInChildren<PlayerShooter>().enabled = false;
         deathInteractionGO.SetActive(true);
+        reanimateUI.SetActive(true);
         GameManager.instance.RemoveFromAliveList();
     }
 
     public void GetUp()
     {
         curState = PlayerState.BASE;
+        curHealth = 3;
+        player.playerUI.UpdateHealthUI(curHealth);
         _vfxPlayerDead.SetActive(false);
         _vfxPlayerDead.GetComponent<ParticleSystem>().Stop();
         GetComponent<PlayerController>().enabled = true;
@@ -80,6 +92,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponentInChildren<PlayerShooter>().enabled = true;
         deathInteractionGO.SetActive(false);
         AudioManager.Instance.PlaySFXRandom("Player_Revive", 0.8f, 1.2f);
+        reanimateUI.SetActive(false);
         GameManager.instance.AddToAliveList();
     }
 }

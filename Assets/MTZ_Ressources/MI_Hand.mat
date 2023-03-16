@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Hand
-  m_Shader: {fileID: -6465566751694194690, guid: f1625654efce1e74c95b9b44e27631ee, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5679b6c5fd0dbff4493a054c170d2efe, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -45,6 +45,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Core_Size: 0.5
+    - _Electricity_Mask_Add_Intensity: 0.25
+    - _Electricity_Mask_Add_Power: 10
+    - _Electricity_Mask_Intensity: 0.63
+    - _Electricity_Mask_Power: 10
     - _Fresnel_Power: 0.21
     - _Gradient_Power: 1.09
     - _Gradient_Power_1: 7.88

@@ -75,6 +75,7 @@ MonoBehaviour:
   emptyMat: {fileID: 2100000, guid: 3f3c4d2bf4f39764c83e57c51d173e81, type: 2}
   containWeaponMat: {fileID: 2100000, guid: b30d6dc65bf93c24d8d063027c4081af, type: 2}
   mesh: {fileID: 3299705821477110927}
+  col: {fileID: 3299705820545982650}
 --- !u!1 &3299705821477110922
 GameObject:
   m_ObjectHideFlags: 0
