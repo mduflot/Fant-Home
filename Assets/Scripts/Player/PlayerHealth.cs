@@ -16,10 +16,13 @@ public class PlayerHealth : MonoBehaviour, IHitable
     [SerializeField] private GameObject deathInteractionGO;
     [SerializeField] private GameObject _vfxPlayerDead;
     [SerializeField] private Player player;
+    [SerializeField] private GameObject reanimateUI;
+    
     private void Awake()
     {
         curState = PlayerState.BASE;
         if (!player) player = GetComponent<Player>();
+        reanimateUI.SetActive(false);
     }
     
     [ContextMenu("TakeHits")]
@@ -57,11 +60,14 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
         deathInteractionGO.SetActive(true);
+        reanimateUI.SetActive(true);
     }
 
     public void GetUp()
     {
         curState = PlayerState.BASE;
+        curHealth = 3;
+        player.playerUI.UpdateHealthUI(curHealth);
         _vfxPlayerDead.SetActive(false);
         _vfxPlayerDead.GetComponent<ParticleSystem>().Stop();
         GetComponent<PlayerController>().enabled = true;
@@ -70,5 +76,6 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponent<Rigidbody>().useGravity = true;
         deathInteractionGO.SetActive(false);
         AudioManager.Instance.PlaySFXRandom("Player_Revive", 0.8f, 1.2f);
+        reanimateUI.SetActive(false);
     }
 }
