@@ -31,7 +31,7 @@ public class WaveTool : MonoBehaviour
         index++;
         if (index is 3 or 5 or 7)
         {
-            AudioManager.Instance.PlayNextMusic();
+            AudioManager.Instance.Fade(true, 0, 2);
         }
 
         if (index > waves.Length - 1)
@@ -46,7 +46,7 @@ public class WaveTool : MonoBehaviour
     {
         if (wave.enemies.Length == 0) return;
         NewWave?.Invoke(index);
-        GameManager.instance.messageDisplayer.DisplayText("Wave " + index, MessageDisplayer.TextHeight.HEADER, 3);
+        GameManager.instance.messageDisplayer.DisplayText("Wave " + (index + 1), MessageDisplayer.TextHeight.HEADER, 3);
         foreach (var enemy in wave.enemies)
         {
             spawner.MakeWave(enemy.number, enemy.myType.ToString());

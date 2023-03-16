@@ -69,7 +69,7 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound " + name + " not found");
+            //Debug.Log("Sound " + name + " not found");
 
             return 0f;
         }
@@ -90,5 +90,24 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
         index++;
         PlayMusic(musicSounds[index].name);
+        Fade(false, 1, 2);
+    }
+    
+    public IEnumerator Fade(bool isSkip, int targetVolume, float duration)
+    {
+        float currentTime = 0;
+        float start = musicSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        if (isSkip)
+        {
+            PlayNextMusic();
+        }
+        yield break;
     }
 }

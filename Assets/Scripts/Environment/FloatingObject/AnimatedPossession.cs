@@ -57,7 +57,7 @@ public class AnimatedPossession : MonoBehaviour
             }
         }
     }
-
+    
     private void OnGhostIn()
     {
         if (!soundOnAnimationStart)

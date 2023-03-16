@@ -84,9 +84,8 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             other.gameObject.GetComponent<Bullet>().Contact();
         }
-        _meshRenderer.material.SetFloat(Hit, 0.2f);
+        _meshRenderer.material.SetFloat(Hit, 1 - (_health / _ghostSO.MaxHealth));
         TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
-        _meshRenderer.material.SetFloat(Hit, 0);
     }
 
     public void TakeVeil(float damageVeil)
