@@ -40,10 +40,10 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     public void GetHit(int damage)
     {
-        _hitValue += 0.1f;
+        _hitValue += 0.05f;
         foreach (var meshRenderer in _meshRenderers)
         {
-            meshRenderer.material.SetFloat(Hit, 0.8f);
+            meshRenderer.material.SetFloat(Hit, 0.6f);
             meshRenderer.material.SetFloat(ProgressiveDamage, _hitValue);
             StartCoroutine(DamageVFX());
         }
