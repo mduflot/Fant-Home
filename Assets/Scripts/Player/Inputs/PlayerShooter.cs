@@ -10,10 +10,14 @@ namespace Entities
         [SerializeField] private WeaponsSO weapon;
         
         public WeaponsSO GetCurWeapon => weapon;
-        [SerializeField] private GameObject toothHolder;
         [SerializeField] private bool _triggerShoot;
         [SerializeField] private FlashLight flashLight;
         [SerializeField] private Player player;
+
+        [SerializeField] private GameObject baseCanon;
+        [SerializeField] private GameObject explosiveCanon;
+        [SerializeField] private GameObject lightCanon;
+        [SerializeField] private GameObject zapCanon;
 
         private delegate void ShootAction();
         private ShootAction _shootAction;
@@ -46,9 +50,6 @@ namespace Entities
             _reloadTime = weapon.reloadTime;
             _bulletSpread = weapon.bulletSpread;
             _bulletDamage = weapon.damage;
-            _tooth = weapon.tooth;
-
-            toothHolder.GetComponent<MeshFilter>().mesh = _tooth;
             AOE_Range = weapon.AOE_Range;
             _bulletKey = weapon.key.ToString();
             if (weapon.flashLight)
@@ -59,6 +60,11 @@ namespace Entities
             {
                 flashLight.SetEquip(false, null);
             }
+            
+            baseCanon.SetActive(weapon.type == BulletTypes.Classic);
+            explosiveCanon.SetActive(weapon.type == BulletTypes.Explosive);
+            zapCanon.SetActive(weapon.type == BulletTypes.Multiple);
+            //lightCanon.SetActive(weapon.type == BulletTypes.Classic);
             
             _shootAction = weapon.type switch
             {
