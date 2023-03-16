@@ -57,7 +57,7 @@ namespace AI.PoltergeistAI
                         _poltergeistStatsSO.AttackRange, _poltergeistStatsSO.RangeVisibleToPlayer,
                         _poltergeistStatsSO.MaxHealth, _poltergeistStatsSO.MaxVeil),
                 }),
-                new TaskPatrol(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed),
+                new TaskPatrol(transform, _roomWaypoints, _poltergeistStatsSO.MoveSpeed, GetComponent<Ghost>()),
             });
 
             return root;
