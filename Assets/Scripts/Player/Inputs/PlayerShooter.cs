@@ -18,6 +18,9 @@ namespace Entities
         [SerializeField] private GameObject explosiveCanon;
         [SerializeField] private GameObject lightCanon;
         [SerializeField] private GameObject zapCanon;
+        [SerializeField] private GameObject lightHandLight;
+        [SerializeField] private GameObject lightPhotos;
+        [SerializeField] private GameObject lightTorchLamp;
 
         private delegate void ShootAction();
         private ShootAction _shootAction;
@@ -55,10 +58,35 @@ namespace Entities
             if (weapon.flashLight)
             {
                 flashLight.SetEquip(true, weapon.flashLight);
+
+                switch (weapon.flashLight.type)
+                {
+                    case FlashLightSO.LightType.PHOTO_LIGHT:
+                        flashLight.curLight = lightPhotos.transform.GetChild(0).GetComponent<Light>();
+                        break;
+                    case FlashLightSO.LightType.HAND_LIGHT:
+                        flashLight.curLight = lightTorchLamp.transform.GetChild(0).GetComponent<Light>();
+                        break;
+                    case FlashLightSO.LightType.PHARE_LIGHT:
+                        flashLight.curLight = lightHandLight.transform.GetChild(0).GetComponent<Light>();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                
+                lightHandLight.SetActive(weapon.flashLight.type == FlashLightSO.LightType.PHARE_LIGHT);
+                lightTorchLamp.SetActive(weapon.flashLight.type == FlashLightSO.LightType.HAND_LIGHT);
+                lightPhotos.SetActive(weapon.flashLight.type == FlashLightSO.LightType.PHOTO_LIGHT);
+                
+                Debug.Log(weapon.flashLight.type);
             }
             else
             {
                 flashLight.SetEquip(false, null);
+                lightHandLight.SetActive(false);
+                lightCanon.SetActive(false);
+                lightPhotos.SetActive(false);
+                Debug.Log("No light");
             }
             
             baseCanon.SetActive(weapon.type == BulletTypes.Classic);
@@ -146,7 +174,7 @@ namespace Entities
         private void ShootExplosive()
         {
             _eulerAngles = transform.eulerAngles;
-            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
+            AudioManager.Instance.PlaySFXRandom("BigBertha_Shoot", 0.8f, 1.2f);
             SetBullet();
             _bulletScript.SetExplosive();
         }
@@ -154,7 +182,8 @@ namespace Entities
         private void ShootMultiple()
         {
             float totalAngle = weapon.bulletNumber %2 == 0 ? 30 : 45;
-            AudioManager.Instance.PlaySFXRandom("GunShot", 0.8f, 1.2f);
+            
+            AudioManager.Instance.PlaySFXRandom("TV_WhiteNoise", 0.8f, 1.2f);
             
             for (int i = 0; i < weapon.bulletNumber; i++)
             {

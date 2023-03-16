@@ -14,6 +14,15 @@ public class FlashLightSO : EquipmentSO
         CONIC
     }
 
+    public enum LightType
+    {
+        PHOTO_LIGHT,
+        HAND_LIGHT,
+        PHARE_LIGHT
+    }
+
+    public LightType type;
+
     [Header("Shapes")]
     public LightShape shape;
     [Range(0, 180)]

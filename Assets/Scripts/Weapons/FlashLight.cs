@@ -12,6 +12,7 @@ public class FlashLight : MonoBehaviour
     [SerializeField] private FlashLightSO stats;
     public FlashLightSO GetFlashLight => stats;
     public bool gunHaveLight;
+    public Light curLight;
     
     [SerializeField] private GameObject flashLightGO;
     public bool isActive;
@@ -69,7 +70,8 @@ public class FlashLight : MonoBehaviour
     private void TurnOn(bool on)
     {
         isActive = on;
-        flashLightGO.SetActive(on);
+        //flashLightGO.SetActive(on);
+        if(curLight) curLight.intensity = on ? 350 : 75;
         
         if(curLoop != null) StopCoroutine(curLoop);
         if(on) curLoop = StartCoroutine(DamageTicksLoop());
