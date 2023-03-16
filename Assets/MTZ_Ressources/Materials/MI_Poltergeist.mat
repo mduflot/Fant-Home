@@ -85,6 +85,7 @@ Material:
     - _FadeIntensity: 0.02
     - _FadePower: 4
     - _HIT: 0
+    - _HP: 1
     - _Hit_Flicker_Frequency: 40
     - _Hit_Flicker_Transition_Power: 0.2
     - _Opacity: 0
@@ -96,8 +97,9 @@ Material:
     m_Colors:
     - _Color: {r: 0, g: 1.0237021, b: 60.58241, a: 0}
     - _ColorEyes: {r: 0.003921569, g: 0.003921569, b: 0.015686275, a: 0}
-    - _ColorEyes_Atk: {r: 14.247049, g: 0.76083016, b: 194.0117, a: 1}
+    - _ColorEyes_Atk: {r: 0.8491943, g: 0.024056548, b: 4.5947914, a: 1}
     - _Color_Background: {r: 0.04846031, g: 0.0632105, b: 0.103773594, a: 0}
+    - _Color_LowHP: {r: 0, g: 18.379171, b: 8.313225, a: 0}
     - _Displacement_Axis_Intensity: {r: 1, g: 0.5, b: 0.25, a: 0}
     - _Displacement_Axis_Intensity_1: {r: 0, g: 0.5, b: 1, a: 0}
     - _Displacement_Axis_Intensity_2: {r: 1, g: 0.5, b: 0.75, a: 0}

@@ -9,6 +9,8 @@ public class Interactible : MonoBehaviour
 {
     private List<PlayerInteract> curPlayers = new List<PlayerInteract>();
     public virtual void Interact(PlayerInteract player) { }
+    
+    public virtual void PlayerExit(PlayerInteract player){ }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +31,7 @@ public class Interactible : MonoBehaviour
         if (!player) return;
         
         player.isInside(false);
+        PlayerExit(player);
         curPlayers.Remove(player);
     }
 

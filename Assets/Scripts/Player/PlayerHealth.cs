@@ -1,4 +1,5 @@
 using System.Collections;
+using Entities;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IHitable
@@ -20,11 +21,14 @@ public class PlayerHealth : MonoBehaviour, IHitable
     private float _hitValue;
     private static readonly int Hit = Shader.PropertyToID("_HIT");
     
+    [SerializeField] private GameObject reanimateUI;
+    
     private void Awake()
     {
         curState = PlayerState.BASE;
         _meshRenderer = transform.GetComponentInChildren<MeshRenderer>();
         if (!player) player = GetComponent<Player>();
+        reanimateUI.SetActive(false);
     }
     
     [ContextMenu("TakeHits")]
@@ -68,19 +72,27 @@ public class PlayerHealth : MonoBehaviour, IHitable
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
+        GetComponentInChildren<PlayerShooter>().enabled = false;
         deathInteractionGO.SetActive(true);
+        reanimateUI.SetActive(true);
+        GameManager.instance.RemoveFromAliveList();
     }
 
     public void GetUp()
     {
         curState = PlayerState.BASE;
+        curHealth = 3;
+        player.playerUI.UpdateHealthUI(curHealth);
         _vfxPlayerDead.SetActive(false);
         _vfxPlayerDead.GetComponent<ParticleSystem>().Stop();
         GetComponent<PlayerController>().enabled = true;
         
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
+        GetComponentInChildren<PlayerShooter>().enabled = true;
         deathInteractionGO.SetActive(false);
         AudioManager.Instance.PlaySFXRandom("Player_Revive", 0.8f, 1.2f);
+        reanimateUI.SetActive(false);
+        GameManager.instance.AddToAliveList();
     }
 }
