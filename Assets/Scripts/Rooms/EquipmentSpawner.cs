@@ -45,6 +45,7 @@ public class EquipmentSpawner : Interactible
         containWeapon = true;
         mesh.gameObject.SetActive(true);
         col.enabled = true;
+        weaponLogo.gameObject.SetActive(true);
         mesh.material = containWeaponMat;
         Debug.Log("Spawn " + curWeapon);
         UpdateInfos();

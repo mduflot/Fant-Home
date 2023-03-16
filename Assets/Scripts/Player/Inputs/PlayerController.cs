@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnLight()
     {
-        if (_shooter.ShootOrder) return;
+        if (_shooter.ShootOrder || GetComponent<PlayerHealth>().curHealth == 0) return;
         _flashLight.Light();
     }
 

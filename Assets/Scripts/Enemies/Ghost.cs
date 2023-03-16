@@ -11,7 +11,6 @@ public class Ghost : MonoBehaviour, IEnemy
     [SerializeField] private string _name = "Ghost";
     [SerializeField] private GameObject _stunObject;
     [SerializeField] private GameObject _veilLossObject;
-    [SerializeField] private GameObject _hitLightGameObject;
 
     [HideInInspector] public bool IsStun;
     [HideInInspector] public bool IsFleeing;
@@ -71,7 +70,6 @@ public class Ghost : MonoBehaviour, IEnemy
         if (!_isVulnerable) return;
         _veilCounter += Time.deltaTime;
         if (!(_veilCounter >= _regenVeilCD)) return;
-        _hitLightGameObject.SetActive(false);
         _regenCO = StartCoroutine(RegenVeil());
     }
 
@@ -80,13 +78,9 @@ public class Ghost : MonoBehaviour, IEnemy
         if (!other.gameObject.CompareTag("Bullet") || !_isVulnerable) return;
         if (_regenCO != null) StopCoroutine(_regenCO);
         _veilCounter = 0;
-        if (other.gameObject.GetComponent<Bullet>().isPhysic)
-        {
-            other.gameObject.GetComponent<Bullet>().Contact();
-        }
-        _meshRenderer.material.SetFloat(Hit, 0.2f);
+        other.gameObject.GetComponent<Bullet>().Contact();
+        _meshRenderer.material.SetFloat(Hit, 1 - (_health / _ghostSO.MaxHealth));
         TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
-        _meshRenderer.material.SetFloat(Hit, 0);
     }
 
     public void TakeVeil(float damageVeil)
@@ -97,7 +91,6 @@ public class Ghost : MonoBehaviour, IEnemy
         }
 
         Veil -= damageVeil;
-        _hitLightGameObject.SetActive(true);
         if (Veil < _ghostSO.MaxHealth) _meshRenderer.enabled = true;
         if (Veil <= 0)
         {
