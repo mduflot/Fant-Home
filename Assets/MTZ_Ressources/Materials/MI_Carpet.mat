@@ -91,6 +91,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roughness: 0
-    - _Unit_Size: 0.1
+    - _Unit_Size: 0.3
     m_Colors: []
   m_BuildTextureStacks: []

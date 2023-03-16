@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Corner_Texture:
-        m_Texture: {fileID: 2800000, guid: bcc50ac2c51f9ec49b34cb013fb3bb78, type: 3}
+        m_Texture: {fileID: 2800000, guid: 026c1ea344166b0428c2d4e81be06eec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GatherTexture2D_ab952bf2d8b54868a6e7d0efdb9cbe9e_Texture_1:
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Middle_Texture:
-        m_Texture: {fileID: 2800000, guid: 2f083509775ba6143b7d76466a94b379, type: 3}
+        m_Texture: {fileID: 2800000, guid: c3451e3fd225cdb44a152974dc3820da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_4dc4b91523614a66aa49a57a687dbb73_Texture_1:
@@ -65,11 +65,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Side_Texture:
-        m_Texture: {fileID: 2800000, guid: 4b3b907a8436a7c449d61ee9a0c0f3bd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 67a6fa0291074e94d97b7b4309dab5f3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Top_Texture:
-        m_Texture: {fileID: 2800000, guid: 14104a367f920af489a9e765a14afc06, type: 3}
+        m_Texture: {fileID: 2800000, guid: e3c65b1686bbf7a4ea11b22eeb81e36a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -91,6 +91,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roughness: 0
-    - _Unit_Size: 0.15
+    - _Unit_Size: 0.17
     m_Colors: []
   m_BuildTextureStacks: []
