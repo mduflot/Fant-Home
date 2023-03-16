@@ -9188,7 +9188,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.7616592
           inSlope: -0.39765894
           outSlope: -0.39765894
           tangentMode: 0
@@ -9197,7 +9197,7 @@ ParticleSystem:
           outWeight: 0.18042812
         - serializedVersion: 3
           time: 1
-          value: 0.24871181
+          value: 0.22798274
           inSlope: -0.31655887
           outSlope: -0.31655887
           tangentMode: 0
@@ -9768,7 +9768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2563993673586131119
 Transform:
   m_ObjectHideFlags: 0
@@ -9785,7 +9785,7 @@ Transform:
   - {fileID: 2563993672905771165}
   - {fileID: 2563993673810143894}
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: -180, y: -90, z: 0}
 --- !u!198 &2563993673586131116
 ParticleSystem:
@@ -9802,7 +9802,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10041,7 +10041,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 1.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
