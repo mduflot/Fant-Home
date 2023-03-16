@@ -35,6 +35,7 @@ public class Ghost : MonoBehaviour, IEnemy
 
     private Coroutine _regenCO;
     private static readonly int Opacity = Shader.PropertyToID("_Opacity");
+    private static readonly int Hit = Shader.PropertyToID("_HIT");
 
     private void OnEnable()
     {
@@ -83,8 +84,9 @@ public class Ghost : MonoBehaviour, IEnemy
         {
             other.gameObject.GetComponent<Bullet>().Contact();
         }
-
+        _meshRenderer.material.SetFloat(Hit, 0.2f);
         TakeDamage(other.gameObject.GetComponent<Bullet>().damage);
+        _meshRenderer.material.SetFloat(Hit, 0);
     }
 
     public void TakeVeil(float damageVeil)

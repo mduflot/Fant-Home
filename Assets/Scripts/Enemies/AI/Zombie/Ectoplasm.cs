@@ -29,6 +29,8 @@ public class Ectoplasm : MonoBehaviour
     private Vector3 _attackScale;
     private bool _attackIsInCD;
     private string _attackKey;
+    private float _isVisibleToPlayer;
+    private MeshRenderer _meshRenderer;
 
     private void Start()
     {
@@ -41,6 +43,8 @@ public class Ectoplasm : MonoBehaviour
         _attackCD = _stats.AttackCD;
         _delayBeforeAttack = _stats.AttackDelayBeforeAttack;
         _attackKey = _stats.AttackKey;
+        _isVisibleToPlayer = _stats.RangeVisibleToPlayer;
+        _meshRenderer = transform.GetComponent<MeshRenderer>();
 
         SetRandomTarget();
     }
@@ -74,6 +78,17 @@ public class Ectoplasm : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _isVisibleToPlayer, playerMask);
+
+        if (colliders.Length > 1)
+        {
+            _meshRenderer.enabled = true;
+        }
+        else if (_ghost.Veil >= _stats.MaxVeil)
+        {
+            _meshRenderer.enabled = false;
+        }
+
         if (target != navAgent.destination)
         {
             navAgent.stoppingDistance = _attackRange;
@@ -86,11 +101,12 @@ public class Ectoplasm : MonoBehaviour
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, detectionLength, Vector3.down, detectionLength,
             playerMask);
 
+        bool newTarget = false;
         if (hits.Length > 0)
         {
-            bool newTarget = false;
             foreach (var hit in hits)
             {
+                if (hit.transform.GetComponent<PlayerHealth>().curHealth <= 0) continue;
                 if (EnemyIsVisible(hit.transform))
                 {
                     target = hit.transform.position;

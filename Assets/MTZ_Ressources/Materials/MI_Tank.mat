@@ -96,4 +96,5 @@ Material:
     - _Displacement_Axis_Intensity_3: {r: 1, g: 0, b: 1, a: 0}
     - _Displacement_Axis_Intensity_4: {r: 1, g: 0.2, b: 1, a: 0}
     - _Hit_Color: {r: 0.81225234, g: 0, b: 0, a: 0}
+    - _PlayerColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
