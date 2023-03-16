@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4750111346868990688
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1142289781558550532
 ParticleSystem:
@@ -169,8 +169,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.75
-      minScalar: 0.5
+      scalar: 1.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -287,8 +287,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.15
-      minScalar: 0.35
+      scalar: 0.25
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -340,8 +340,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.15
-      minScalar: 0.35
+      scalar: 0.25
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4566,8 +4566,8 @@ ParticleSystem:
       maxColor: {r: 0.39607844, g: 0.34117648, b: 0.33333334, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.4811321, g: 0.4091568, b: 0.39716092, a: 1}
-        key1: {r: 0.40619135, g: 0.3421635, b: 0.3316231, a: 0.26707858}
+        key0: {r: 0.3679245, g: 0.30946994, b: 0.30024028, a: 1}
+        key1: {r: 0.24528301, g: 0.19831951, b: 0.19090423, a: 0.26707858}
         key2: {r: 0.24528301, g: 0.19831951, b: 0.19090423, a: 0}
         key3: {r: 0.24528301, g: 0.19831951, b: 0.19090423, a: 0}
         key4: {r: 0.24528301, g: 0.19831951, b: 0.19090423, a: 0}
@@ -4575,7 +4575,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 18890
-        ctime1: 44525
+        ctime1: 65535
         ctime2: 65535
         ctime3: 65535
         ctime4: 65535
@@ -4592,7 +4592,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
