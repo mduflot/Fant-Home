@@ -46,8 +46,16 @@ namespace AI.GhostAI
                 _transform.GetComponent<Ghost>().IsAttacking = true;
                 attackGhost.transform.parent = _transform;
                 attackGhost.transform.localPosition = new Vector3(0, 0, 1);
-                if (_attackKey.Contains("Poltergeist")) attackGhost.transform.localEulerAngles = new Vector3(-90, 90, 0);
-                else if (_attackKey.Contains("Ghost")) attackGhost.transform.localEulerAngles = new Vector3(-180, 180, 0);
+                if (_attackKey.Contains("Poltergeist"))
+                {
+                    attackGhost.transform.localEulerAngles = new Vector3(-90, 90, 0);
+                    attackGhost.transform.localScale = new Vector3(_attackRange, 1, 1);
+                }
+                else if (_attackKey.Contains("Ghost"))
+                {
+                    attackGhost.transform.localEulerAngles = new Vector3(-180, 180, 0);
+                    attackGhost.transform.localScale = new Vector3(1, 1, _attackRange);
+                }
 
                 attackGhost.GetComponent<GhostAttack>().Explode(_transform.position, _attackScale,
                     target.position - _transform.position, _damage, _attackRange, _attackDelayBeforeAttack,
