@@ -54,6 +54,7 @@ public class PlayerSpawnManager : MonoBehaviour
         playGO.GetComponent<PlayerHealth>().invincibleTime = stats.invincibleTime;
         
         playersList.Add(playGO);
+        GameManager.instance.started = true;
     }
     
 }

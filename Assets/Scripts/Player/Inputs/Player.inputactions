@@ -116,6 +116,39 @@
                 },
                 {
                     "name": "",
+                    "id": "64f71816-3204-470a-b082-d6464f7722fe",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bdb0bb6-40f7-4b2b-821a-68a9a2b62ef4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88baade9-1d73-4afc-b7b1-1740fe4b254b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2d01fbc9-22da-45e5-8406-bd9120b90704",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
