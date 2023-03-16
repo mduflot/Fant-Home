@@ -127,7 +127,7 @@ namespace AI
                         return _state;
                     }
                     
-                    var randomPlayer = Random.Range(0, _players.Count);
+                    var randomPlayer = Random.Range(0, playersInSameRoom.Count);
                     target = playersInSameRoom[randomPlayer].transform;
                     Parent.Parent.SetData("target", target);
                     _state = NodeState.SUCCESS;
@@ -208,7 +208,7 @@ namespace AI
                     for (var index = 0; index < playersInSameRoom.Count; index++)
                     {
                         var player = playersInSameRoom[index];
-                        float currentDistance = math.sqrt(math.lengthsq(_transform.position - hit.transform.position));
+                        float currentDistance = math.sqrt(math.lengthsq(_transform.position - player.transform.position));
                         if (currentDistance < previousDistance || previousDistance == 0)
                         {
                             previousDistance = currentDistance;

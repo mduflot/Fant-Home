@@ -47,7 +47,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6043481272550239876}
-  m_Mesh: {fileID: -6618000223932500615, guid: 82c99ebd8645ba149805947f79b6b29c, type: 3}
+  m_Mesh: {fileID: -8431357485042208128, guid: 82c99ebd8645ba149805947f79b6b29c, type: 3}
 --- !u!23 &636653961948503978
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -263,6 +263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 6657030887329439177, guid: 0f3f278e6ebd0ca449bb624bb0f871f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6657030887329439190, guid: 0f3f278e6ebd0ca449bb624bb0f871f0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -305,6 +309,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6657030887329439190, guid: 0f3f278e6ebd0ca449bb624bb0f871f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657030887329439191, guid: 0f3f278e6ebd0ca449bb624bb0f871f0, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

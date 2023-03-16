@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Hand 1
+  m_Name: MI_Hand 2
   m_Shader: {fileID: -6465566751694194690, guid: f8a58a0f42146c9418ad09ff1838bc19, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,6 +32,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_f0b00bae116347748ea7a708672054b4_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 9c627070f4c239c4ca57b48aa41eff21, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
         m_Texture: {fileID: 2800000, guid: 9c627070f4c239c4ca57b48aa41eff21, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
