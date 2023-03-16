@@ -58,6 +58,8 @@ public class AnimatedPossession : MonoBehaviour
         }
     }
 
+    Ontri
+
     private void OnGhostIn()
     {
         if (!soundOnAnimationStart)
@@ -106,7 +108,7 @@ public class AnimatedPossession : MonoBehaviour
                 dist = currentDist;
             }
         }
-        levelX = 1 / dist * maxEmitDistance;
+        levelX = 1 *(maxEmitDistance-dist)/ maxEmitDistance;
         return levelX;
     }
 }
