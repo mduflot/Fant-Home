@@ -22,6 +22,11 @@ public class InGameUIManager : MonoBehaviour
     {
         enemiesNumber += increase ? 1 : -1;
         enemiesRemaining.text = enemiesNumber.ToString();
+        if (enemiesNumber <= 0)
+        {
+            enemiesNumber = 0;
+            GameManager.instance.waveTool.AllEnemiesDestroyed();
+        }
     }
 
     public void TogglePause()

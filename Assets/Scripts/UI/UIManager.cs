@@ -20,8 +20,8 @@ public class UIManager : MonoBehaviour
         
     }
 
-     private void Update() 
+     /*private void Update() 
      {
          Debug.Log(eventSys.currentSelectedGameObject);
-     }
+     }*/
 }

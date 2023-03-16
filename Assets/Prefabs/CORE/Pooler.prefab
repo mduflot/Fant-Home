@@ -165,3 +165,9 @@ MonoBehaviour:
       baseCount: 5
       baseRefreshSpeed: 5
       refreshSpeed: 5
+  - key: ECTOPLASMA
+    pool:
+      prefab: {fileID: 6043481272550239876, guid: e57420a36563d76489a6097cf3594fec, type: 3}
+      baseCount: 50
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
