@@ -55,14 +55,14 @@ namespace Entities
             {
                 flashLight.SetEquip(false, null);
             }
-
-            _shootAction += ShootParticles;
-            _shootAction += weapon.type switch
+            
+            _shootAction = weapon.type switch
             {
                 BulletTypes.Multiple => ShootMultiple,
                 BulletTypes.Explosive => ShootExplosive,
                 _ => Shoot
             };
+            _shootAction += ShootParticles;
             
             player.playerUI.UpdateWeaponUI(weapon);
         }
@@ -116,7 +116,7 @@ namespace Entities
             {
                 _lastShootTime = Time.fixedTime;
 
-                Shoot();
+                _shootAction.Invoke();
             }
         }
 
