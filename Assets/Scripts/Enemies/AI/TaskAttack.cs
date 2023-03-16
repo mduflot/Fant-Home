@@ -49,7 +49,7 @@ namespace AI.GhostAI
                 if (_attackKey.Contains("Poltergeist"))
                 {
                     attackGhost.transform.localEulerAngles = new Vector3(-90, 90, 0);
-                    attackGhost.transform.localScale = new Vector3(_attackRange, 1, 1);
+                    attackGhost.transform.localScale = new Vector3(_attackRange / 2, 1, 1);
                 }
                 else if (_attackKey.Contains("Ghost"))
                 {
