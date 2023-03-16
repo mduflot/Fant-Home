@@ -25,7 +25,7 @@ namespace AI.GhostAI
                     new CheckPlayerInAttackRange(transform, _ghostStatsSO.AttackRange, _ghostStatsSO.AttackCD),
                     new TaskAttack(transform, _ghostStatsSO.AttackDamage, _ghostStatsSO.AttackScale,
                         _ghostStatsSO.AttackKey, _ghostStatsSO.AttackDelayBeforeAttack, _ghostStatsSO.AttackRange,
-                        _playerMask),
+                        _playerMask, _ghostStatsSO.Attack_SFX, _ghostStatsSO.Connect_SFX),
                 }),
                 new Sequence(new List<Node>
                 {
