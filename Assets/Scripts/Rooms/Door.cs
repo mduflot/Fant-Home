@@ -12,11 +12,11 @@ public class Door : MonoBehaviour
 
     [SerializeField] private Material unlockedMat, lockedMat;
 
-    private MeshRenderer _meshRend;
+    //private MeshRenderer _meshRend;
 
     private void Awake()
     {
-        _meshRend = doorGO.GetComponent<MeshRenderer>();
+        //_meshRend = doorGO.GetComponent<MeshRenderer>();
     }
 
     private void Start()
@@ -49,11 +49,9 @@ public class Door : MonoBehaviour
             if (room.IsLocked)
             {
                 locked = true;
-                _meshRend.material = lockedMat;
                 return;
             }
         }
         locked = false;
-        _meshRend.material = unlockedMat;
     }
 }
