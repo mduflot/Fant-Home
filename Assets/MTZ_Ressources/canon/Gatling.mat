@@ -63,12 +63,12 @@ Material:
     - _Displacement_Frequency: 1
     - _Displacement_Frequency_1: 1
     - _Displacement_Frequency_2: 1
-    - _Displacement_Frequency_3: 8
+    - _Displacement_Frequency_3: 10
     - _Displacement_Frequency_4: 60
     - _Displacement_Intensity: 1
     - _Displacement_Intensity_1: 1
     - _Displacement_Intensity_2: 1
-    - _Displacement_Intensity_3: 0.005
+    - _Displacement_Intensity_3: 0.02
     - _Displacement_Intensity_4: 0.2
     - _Fade_Power: 0
     - _HIT: 0
@@ -85,7 +85,7 @@ Material:
     - _Displacement_Axis_Intensity: {r: 1, g: 1, b: 1, a: 0}
     - _Displacement_Axis_Intensity_1: {r: 1, g: 1, b: 1, a: 0}
     - _Displacement_Axis_Intensity_2: {r: 1, g: 1, b: 1, a: 0}
-    - _Displacement_Axis_Intensity_3: {r: 1, g: 1, b: 1, a: 0}
+    - _Displacement_Axis_Intensity_3: {r: 0.5, g: 0, b: 1, a: 0}
     - _Displacement_Axis_Intensity_4: {r: 1, g: 0.2, b: 1, a: 0}
     - _Hit_Color: {r: 0.8117647, g: 0, b: 0, a: 0}
     - _PlayerColor: {r: 0, g: 0, b: 0, a: 0}

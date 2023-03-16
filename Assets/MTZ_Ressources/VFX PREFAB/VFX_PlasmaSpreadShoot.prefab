@@ -24492,7 +24492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4955109852843824647
 Transform:
   m_ObjectHideFlags: 0
@@ -24513,7 +24513,7 @@ Transform:
   - {fileID: 4955109852362936514}
   - {fileID: 4955109852691331176}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4955109852843824648
 ParticleSystem:
@@ -39206,7 +39206,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 1
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 1
+  m_RenderAlignment: 2
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 1
