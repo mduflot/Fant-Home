@@ -1293,7 +1293,7 @@ MonoBehaviour:
   _enemiesMask:
     serializedVersion: 2
     m_Bits: 128
-  _proximityGhostObject: {fileID: 0}
+  _proximityGhostObject: {fileID: 8666720657249855229}
   playerShoot: {fileID: 1526775785208591348}
   flashLight: {fileID: 4460099137264186308}
   playerUI: {fileID: 0}
@@ -1747,6 +1747,11 @@ PrefabInstance:
 --- !u!4 &4353996738163058199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4706047167829043359, guid: 1c7667f38e640ab498a171b17e89ae31, type: 3}
+  m_PrefabInstance: {fileID: 9017257587745607304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8666720657249855229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 388959406008510581, guid: 1c7667f38e640ab498a171b17e89ae31, type: 3}
   m_PrefabInstance: {fileID: 9017257587745607304}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9020284119923156020
