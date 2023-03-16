@@ -288,7 +288,7 @@ Transform:
   - {fileID: 8260292746833327038}
   - {fileID: 201022445910330054}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8849368044936227798
 MonoBehaviour:
@@ -445,5 +445,17 @@ MonoBehaviour:
   - name: MultiZap_Shoot
     level: 0.5
     clip: {fileID: 8300000, guid: effb06779bf19124d8baac8a1b66691f, type: 3}
+  - name: Evil_Laugh1
+    level: 0.5
+    clip: {fileID: 8300000, guid: d82da191168686a4888e37fd2af315fa, type: 3}
+  - name: Evil_Laugh2
+    level: 0.5
+    clip: {fileID: 8300000, guid: cd3d035be2c51e0458b44f33b515d410, type: 3}
+  - name: Evil_Laugh3
+    level: 0.5
+    clip: {fileID: 8300000, guid: 3587163aab688a14ca69316c053483eb, type: 3}
+  - name: Evil_Laugh4
+    level: 0.5
+    clip: {fileID: 8300000, guid: de4bfd725a8292c468b2641ba126aaa1, type: 3}
   musicSource: {fileID: 8938484287315418197}
   sfxSource: {fileID: 7965921723786968057}

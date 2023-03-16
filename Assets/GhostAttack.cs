@@ -33,6 +33,7 @@ public class GhostAttack : MonoBehaviour
         _attackSFX = attackSFX;
         _connectSFX = connectSFX;
 
+        _indicator.transform.localScale = scale;
         StartCoroutine(PrepareSpell());
     }
 

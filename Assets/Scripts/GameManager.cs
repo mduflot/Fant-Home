@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private int _alivePlayers;
     public bool isLastWave;
+    public bool started;
     private bool _isOver;
     
     private void Awake()
@@ -34,13 +35,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isOver) return;
+        if (_isOver || !started) return;
         CheckAlivePlayers();
     }
 
     private void CheckAlivePlayers()
     {
-        if (_alivePlayers <= 0 && !_isOver)
+        if (_alivePlayers <= 0 && !_isOver && playerManager.playersList.Count > 0)
         {
             Debug.Log("perdu");
             _isOver = true;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: W_BigBerthaGun
   m_EditorClassIdentifier: 
   weaponName: Big Bertha
-  desc: "Gros gun w\xE9"
+  desc: GROS GUN QUI BOOM BOOM
   equipType: 0
   icon: {fileID: 21300000, guid: cd3a5ea663f3f0f41a26f4d1f4c64a5b, type: 3}
   damage: 3
