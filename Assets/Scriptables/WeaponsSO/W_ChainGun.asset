@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108505e4fd0f45d5863394f50ab0d9ea, type: 3}
   m_Name: W_ChainGun
   m_EditorClassIdentifier: 
+  weaponName: name
+  desc: desc
   equipType: 0
   icon: {fileID: 21300000, guid: 08b7995f452054f4aa71bd95e77e070b, type: 3}
   damage: 1
   bulletSpeed: 9
-  reloadTime: 0.12
+  reloadTime: 0.08
   bulletSpread: 10
   key: 0
   type: 0
