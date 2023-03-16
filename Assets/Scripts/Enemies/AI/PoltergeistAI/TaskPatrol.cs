@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BehaviorTree;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace AI.PoltergeistAI
@@ -19,14 +20,16 @@ namespace AI.PoltergeistAI
         private float _waitCounter;
         private bool _waiting;
         private float _speed;
+        private Ghost _ghostComponent;
 
-        public TaskPatrol(Transform transform, Room[] roomWaypoints, float speed)
+        public TaskPatrol(Transform transform, Room[] roomWaypoints, float speed, Ghost ghostComponent)
         {
             _transform = transform;
             _animator = transform.GetComponent<Animator>();
             _roomWaypoints = roomWaypoints.ToList();
             _roomToRemove = new List<Room>();
             _speed = speed;
+            _ghostComponent = ghostComponent;
         }
 
         public override NodeState Evaluate()
@@ -45,6 +48,24 @@ namespace AI.PoltergeistAI
                 _roomWaypoints.Remove(room);
             }
             
+            if (_ghostComponent.CurRoom == null)
+            {
+                float currentDistance;
+                int currentIndex = 0;
+                float previousDistance = 0;
+                for (var index = 0; index < RoomsManager.Instance.rooms.Length; index++)
+                {
+                    var room = RoomsManager.Instance.rooms[index];
+                    currentDistance = math.sqrt(math.lengthsq(_transform.position - room.Floors[0].transform.position));
+                    if (currentDistance < previousDistance || previousDistance == 0)
+                    {
+                        previousDistance = currentDistance;
+                        currentIndex = index;
+                    }
+                }
+                _ghostComponent.CurRoom = RoomsManager.Instance.rooms[currentIndex];
+            }
+            
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;
@@ -56,6 +77,22 @@ namespace AI.PoltergeistAI
             }
             else
             {
+                if (Physics.Raycast(_transform.position, -Vector3.up, out var hit, 10.0f))
+                {
+                    Debug.DrawRay(_transform.position, -Vector3.up * hit.distance, Color.red);
+                    if (hit.transform.gameObject.CompareTag("Floor"))
+                    {
+                        foreach (var room in RoomsManager.Instance.rooms)
+                        {
+                            if (room.Floors.Contains(hit.transform.gameObject))
+                            {
+                                Debug.Log("Changing room");
+                                _ghostComponent.CurRoom = room;
+                            }
+                        }
+                    }
+                }
+                
                 Transform wp;
                 Vector3 wpPos = Vector3.zero;
                 Vector3 waypointPos = Vector3.zero;

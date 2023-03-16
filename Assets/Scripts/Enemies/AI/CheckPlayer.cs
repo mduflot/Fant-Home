@@ -80,6 +80,7 @@ namespace AI
                         {
                             if (room.Floors.Contains(hit.transform.gameObject))
                             {
+                                Debug.Log("Changing room");
                                 _ghostComponent.CurRoom = room;
                             }
                         }
