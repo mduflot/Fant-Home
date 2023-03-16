@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ccaac9653ea74bad5104f357d4459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorGO: {fileID: 8034350147441157271}
+  doorGO: {fileID: 1785149991021253711}
   opened: 0
   locked: 0
   linkedRooms: []
@@ -369,6 +369,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f2c987e917c6aa45aae82b170cf08b2, type: 3}
+--- !u!1 &1785149991021253711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3772398009775829903, guid: 5f2c987e917c6aa45aae82b170cf08b2, type: 3}
+  m_PrefabInstance: {fileID: 3214550293178558400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4255750694060619906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1698726500579401538, guid: 5f2c987e917c6aa45aae82b170cf08b2, type: 3}
