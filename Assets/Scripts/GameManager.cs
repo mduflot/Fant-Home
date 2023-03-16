@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("perdu");
             _isOver = true;
+            inGameUiManager.DefeatUI();
         }
     }
 
@@ -60,10 +61,11 @@ public class GameManager : MonoBehaviour
     
     public void CheckWin()
     {
-        
         if (isLastWave)
         {
             Debug.Log("Victory");
+            inGameUiManager.VictoryUI();
+            
         }
     }
 }

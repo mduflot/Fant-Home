@@ -20,4 +20,9 @@ public class MenuManager : MonoBehaviour
             button.interactable = enable;
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

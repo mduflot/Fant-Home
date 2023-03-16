@@ -9674,7 +9674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4462321203048616330
 Transform:
   m_ObjectHideFlags: 0
@@ -9690,7 +9690,7 @@ Transform:
   - {fileID: 406150968713786634}
   - {fileID: 2868462826056061317}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4462321203048616331
 ParticleSystem:
@@ -13853,7 +13853,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 2.1180825, g: 0.7313968, b: 0.16984628, a: 1}
+      maxColor: {r: 5.2561545, g: 1.2849804, b: 0.22313854, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
