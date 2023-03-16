@@ -17,9 +17,13 @@ public class PlayerHealth : MonoBehaviour, IHitable
     [SerializeField] private GameObject deathInteractionGO;
     [SerializeField] private GameObject _vfxPlayerDead;
     [SerializeField] private Player player;
+    private MeshRenderer _meshRenderer;
+    private static readonly int Hit = Shader.PropertyToID("_HIT");
+    
     private void Awake()
     {
         curState = PlayerState.BASE;
+        _meshRenderer = transform.GetComponent<MeshRenderer>();
         if (!player) player = GetComponent<Player>();
     }
     
@@ -31,6 +35,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
 
     public void GetHit(int damage)
     {
+        _meshRenderer.material.SetFloat(Hit, 0.2f);
         if (curState == PlayerState.INVINCIBLE || curHealth <= 0) return;
 
         curHealth -= damage;
@@ -39,6 +44,7 @@ public class PlayerHealth : MonoBehaviour, IHitable
         if (curHealth <= 0) Fall();
         else StartCoroutine(Invincible());
         AudioManager.Instance.PlaySFXRandom("Player_Damage", 0.8f, 1.2f);
+        _meshRenderer.material.SetFloat(Hit, 0f);
     }
 
     private IEnumerator Invincible()

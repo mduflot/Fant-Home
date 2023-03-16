@@ -38,7 +38,7 @@ public class GhostAttack : MonoBehaviour
     private void OnParticleSystemStopped()
     {
         _sender.IsAttacking = false;
-        _navMesh.isStopped = false;
+        if (_navMesh) _navMesh.isStopped = false;
         RaycastHit[] hits = Physics.BoxCastAll(_center, _scale / 2, _direction, Quaternion.identity, _attackRange,
             _playerMask);
         bool hitAPlayer = false;

@@ -29,6 +29,8 @@ public class Ectoplasm : MonoBehaviour
     private Vector3 _attackScale;
     private bool _attackIsInCD;
     private string _attackKey;
+    private float _isVisibleToPlayer;
+    private MeshRenderer _meshRenderer;
 
     private void Start()
     {
@@ -41,6 +43,8 @@ public class Ectoplasm : MonoBehaviour
         _attackCD = _stats.AttackCD;
         _delayBeforeAttack = _stats.AttackDelayBeforeAttack;
         _attackKey = _stats.AttackKey;
+        _isVisibleToPlayer = _stats.RangeVisibleToPlayer;
+        _meshRenderer = transform.GetComponent<MeshRenderer>();
 
         SetRandomTarget();
     }
@@ -72,6 +76,17 @@ public class Ectoplasm : MonoBehaviour
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
+        }
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _isVisibleToPlayer, playerMask);
+
+        if (colliders.Length > 1)
+        {
+            _meshRenderer.enabled = true;
+        }
+        else if (_ghost.Veil >= _stats.MaxVeil)
+        {
+            _meshRenderer.enabled = false;
         }
 
         if (target != navAgent.destination)
