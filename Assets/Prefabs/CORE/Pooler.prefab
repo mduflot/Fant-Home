@@ -171,3 +171,9 @@ MonoBehaviour:
       baseCount: 50
       baseRefreshSpeed: 5
       refreshSpeed: 5
+  - key: VFX_GhostTangibleAtk
+    pool:
+      prefab: {fileID: 2563993673586131106, guid: da65c09f097070f48ba59ee5f4fab702, type: 3}
+      baseCount: 20
+      baseRefreshSpeed: 5
+      refreshSpeed: 5
