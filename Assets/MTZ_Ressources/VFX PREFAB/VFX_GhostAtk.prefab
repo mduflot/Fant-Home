@@ -4922,7 +4922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4442875904893360425
 Transform:
   m_ObjectHideFlags: 0
@@ -4939,7 +4939,7 @@ Transform:
   - {fileID: 4442875906227769627}
   - {fileID: 4442875904987869968}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -180, y: -90, z: 0}
 --- !u!198 &4442875904893360426
 ParticleSystem:
@@ -9809,7 +9809,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -14440,8 +14440,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 0.8491943, g: 0.024056548, b: 4.5947914, a: 0.08627451}
-        key1: {r: 0.8491943, g: 0.024056548, b: 4.5947914, a: 0}
+        key0: {r: 3.3243575, g: 0.57126194, b: 0.15664501, a: 0.20392157}
+        key1: {r: 3.3243575, g: 0.57126194, b: 0.15664501, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -14731,7 +14731,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 3
@@ -14798,7 +14798,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442875906227769622}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.45
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -19257,8 +19257,8 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.38809058, g: 0.21215619, b: 1.1901444, a: 1}
-        key1: {r: 0.4811321, g: 0.4091568, b: 0.39716092, a: 0.26707858}
-        key2: {r: 0.40619135, g: 0.3421635, b: 0.3316231, a: 0}
+        key1: {r: 0.3207547, g: 0.17096831, b: 0.27101701, a: 0.26707858}
+        key2: {r: 0.047169805, g: 0.018753493, b: 0.014017441, a: 0}
         key3: {r: 0.24528301, g: 0.19831951, b: 0.19090423, a: 0}
         key4: {r: 0.24528301, g: 0.19831951, b: 0.19090423, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -19266,14 +19266,14 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 20432
-        ctime2: 40670
+        ctime2: 65535
         ctime3: 65535
         ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 18697
-        atime1: 35659
+        atime0: 22937
+        atime1: 40285
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -19282,7 +19282,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
-        m_NumColorKeys: 4
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
@@ -19577,7 +19577,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 1
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
